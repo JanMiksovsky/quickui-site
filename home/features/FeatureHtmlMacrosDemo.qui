@@ -1,0 +1,5 @@
+<Control name="FeatureHtmlMacrosDemo">
+    <Greet2/>
+    Yes!
+    <Greet2/>
+</Control>

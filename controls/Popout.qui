@@ -1,0 +1,24 @@
+<Control name="Popout">
+
+<style>
+{
+    overflow: hidden;
+}
+
+.Popout.hovered {
+    color: red;
+}
+</style>
+
+<script>
+Popout.prototype.extend({
+    initialize: function() {
+        var self = this;
+        this.hover(
+            function hoverIn() { self.addClass("hovered"); },
+            function hoverOut() { self.removeClass("hovered");  }
+        )
+    }
+});  
+</script>
+</Control>
