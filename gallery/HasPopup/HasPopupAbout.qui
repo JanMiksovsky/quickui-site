@@ -2,7 +2,8 @@
 <prototype>
 	<GalleryPage title="HasPopup" sourceFileExample="HasPopup/HasPopupDemo.qui" sourceFileControl="../quicommon/HasPopup.qui">
 		<summary>
-			A control that has an associated popup that will appear above or below the control.
+			A control that has an associated <GalleryLink>Popup</GalleryLink>
+			which will appear above or below the control.
 			See also <GalleryLink>ComboBox</GalleryLink>.
 		</summary>
 		<demo>

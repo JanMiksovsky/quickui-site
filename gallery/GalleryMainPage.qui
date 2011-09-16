@@ -38,6 +38,10 @@
                 <div>Base class for buttons which handles tracking of button states.</div>
             </div>
             <div>
+                <div><GalleryLink>ComboBox</GalleryLink></div>
+                <div>Base class for a combo box: a text input area with a dropdown set of choices.</div>
+            </div>
+            <div>
                 <div><GalleryLink>DeviceSpecific</GalleryLink></div>
                 <div>
                     Conditionally loads different content, control class, or styles
