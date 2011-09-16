@@ -15,8 +15,10 @@
 				<div id="GalleryPage_demo" />
 			</CodeOutput>
 
-			<h2>Sample usage</h2>
-			<SourceCode id="sourceCodeExample" />
+            <div id="usage">
+                <h2>Sample usage</h2>
+                <SourceCode id="sourceCodeExample" />
+            </div>
 
 			<h2>Full control source code</h2>
 			<SourceCode id="sourceCodeControl" />
@@ -27,12 +29,20 @@
 	</SitePage>
 </prototype>
 
+<style>
+#usage {
+    display: none;
+}
+</style>
+
 <script>
 GalleryPage.prototype.extend({
 	demo: Control.bindTo("$GalleryPage_demo", "content"),
 	notes: Control.bindTo("$GalleryPage_notes", "content"),
 	sourceFileControl: Control.bindTo("$sourceCodeControl", "sourceFile"),
-	sourceFileExample: Control.bindTo("$sourceCodeExample", "sourceFile"),
+	sourceFileExample: Control.bindTo("$sourceCodeExample", "sourceFile", function( sourceFileExample ) {
+	    this.$usage().toggle( sourceFileExample != null );
+	}),
 	summary: Control.bindTo("$GalleryPage_summary", "content")
 });
 </script>

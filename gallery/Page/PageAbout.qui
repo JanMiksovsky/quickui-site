@@ -1,6 +1,6 @@
 <Control name="PageAbout">
 <prototype>
-	<GalleryPage title="Page" sourceFileExample="Page/PageDemo.qui" sourceFileControl="../common/Page.qui">
+	<GalleryPage title="Page" sourceFileExample="Page/PageDemo.qui" sourceFileControl="../quicommon/Page.qui">
 		<summary>
 			Base class for creating top-level pages.
 			The Page class offers some simple page-level facilities: getting/setting

@@ -1,6 +1,6 @@
 <Control name="DeviceSpecificAbout">
 <prototype>
-	<GalleryPage title="DeviceSpecific" sourceFileExample="DeviceSpecific/DeviceSpecificDemo.qui" sourceFileControl="../common/DeviceSpecific.qui">
+	<GalleryPage title="DeviceSpecific" sourceFileExample="DeviceSpecific/DeviceSpecificDemo.qui" sourceFileControl="../quicommon/DeviceSpecific.qui">
 		<summary>
 			Conditionally loads different content, control class, or styles
 			depending on the type of device.

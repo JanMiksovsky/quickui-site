@@ -1,6 +1,6 @@
 <Control name="DialogAbout">
 <prototype>
-	<GalleryPage title="Dialog" sourceFileExample="Dialog/DialogDemo.qui" sourceFileControl="../common/Dialog.qui">
+	<GalleryPage title="Dialog" sourceFileExample="Dialog/DialogDemo.qui" sourceFileControl="../quicommon/Dialog.qui">
 		<summary>
             A modal dialog; must be dismissed before the user can interact with the UI behind it.
 		</summary>
