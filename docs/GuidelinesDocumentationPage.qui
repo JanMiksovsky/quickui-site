@@ -2,121 +2,197 @@
 <prototype>
 <DocumentationPage title="QuickUI control class guidelines">
 
+<p>
+To maximize the ability of other designers and developers to understand, debug,
+and reuse your code, consider the following guidelines.
+</p>
+
 <h2>Modularity</h2>
 <ul>
     <li>
-        Each control should have a clear task or responsibility that can be succinctly stated.
+        Each control should have a clear task or responsibility that can be succinctly
+        stated. State this purpose in a comment at the top of the markup.
     </li>
     <li>
-        Design controls to be as context-independent as possible. The control’s host should not need to expose specific properties or handle specific events in order for the control to work.
+        Design controls to be as context-independent as possible. The control should
+        make as few assumptions as possible about its container's class, styles, etc.
     </li>
     <li>
-        In general, a control should directly manipulate only the elements which it, itself, has added to the DOM (typically, by defining elements in the class’ content or prototype).
+        As an analogue of the
+        <a href="http://en.wikipedia.org/wiki/Law_Of_Demeter">Law of Demeter</a>,
+        a control should directly manipulate only the elements which it, itself,
+        has added to the DOM in the class’ <Tag>content</Tag> or <Tag>prototype</Tag>,
+        or in its own member functions.
     </li>
     <li>
-        As a corollary to the above point, a control should expose information to outside consumers via property setters and other methods, rather than expecting them to directly manipulate the control’s own contents.
+        As a corollary to the above point, a control should expose information to
+        outside consumers via property setters and other methods, rather than expecting
+        them to directly grovel the control’s own DOM.
     </li>
     <li>
-        It should generally be possible to set properties in any order. If a control has two properties that work in tandem, have the side-effect function for each invoke a “private” function that checks to see if both are set before doing its work.
-    </li>
-    <li>
-        Provide reasonable defaults. If someone instantiates the control as a standalone tag like <Tag>MyControl</Tag>, they should get some reasonably interesting default behavior.
-    </li>
-    <li>
-        Avoid requiring that a control must have properties set on it.
-    </li>
-    <li>
-         Law of Demeter
-    </li>
-    <li>
-        Controls should avoid manipulating global variables.
+        The script tag for a control should generally define the control class’ prototype
+        and (if applicable) class-level methods. Avoid other side-effects.
     </li>
 </ul>
 
 <h2>Subclassing</h2>
 <ul>
     <li>
-        A control may call “private” methods (indicated with an “_” underscore) in its parent classes.
+        Derive from standard base classes the QuickUI Common library
+        (quicommon.js/.css) when appropriate.
     </li>
     <li>
-        If a control overrides a superclass method (including initialize), the method should generally invoke the same method in the superclass’ prototype.
+        If a control overrides a superclass method, the method
+        should generally invoke the same method in the superclass’ prototype. This is
+        particularly important with definining an initialize() handler for any class
+        that doesn't inherit directly from Control. The base Control.initialize()
+        implementation doesn't do anything, and therefore does not have to be invoked.
     </li>
     <li>
-        Use the MyControl.prototype.extend({...}) to define control instance behavior.
+        A control may call “private” methods (indicated with an “_” underscore) in its
+        parent classes. That is, such methods are treated as if they were “protected”.
     </li>
     <li>
-        Use MyControl.extend({...}) to extend class behavior (e.g., enums shared by all instances of a class).
-    </li>
-    <li>
-        The script tag for a control should generally define the control class’ prototype and class. Avoid other side-effects.
-    </li>
-    <li>
-        General-purpose controls should work with general-purpose data structures.
-    </li>
-</ul>
+        Use the jQuery extend() method on the control's prototype to define control
+        instance behavior. If applicable, also use extend() on the control class itself
+        to define class-level behavior, such as enums shared by all instances of a class.
 
-<h2>Coding conventions</h2>
-<ul>
-    <li>
-        Derive from standard base classes when appropriate.
-    </li>
-    <li>
-        Follow the jQuery Core Style Guidelines.
-    </li>
-</ul>
+<pre>
+&lt;script&gt;
+MyControl.prototype.extend({
+    // Instance methods
+    foo: function() { ... },
+    bar: function() { ... },
+    ...
+});
 
-<h2>Naming conventions</h2>
-<ul>
-    <li>
-        Classes and properties should have meaningful names in PascalCase (for classes) and camelCase (for properties). Generally avoid abbreviations.
-    </li>
-    <li>
-        In closures, the variable to capture “this” is called “self”.
-    </li>
-    <li>
-        Indicate "private" methods which control consumers should <i>not</i> call directly
-        by prefixing their name with an underscore "_".
-    </li>
-    <li>
-        To avoid confusion and guarantee cross-language interoperation, follow these rules regarding the use of abbreviations:
-    </li>
-    <li>
-        Do not use abbreviations or contractions as parts of identifier names. For example, use GetWindow instead of GetWin.
-    </li>
-    <li>
-        Do not use acronyms that are not generally accepted in the computing field.
-    </li>
-    <li>
-        Where appropriate, use well-known acronyms to replace lengthy phrase names. For example, use UI for User Interface and OLAP for On-line Analytical Processing.
-    </li>
-    <li>
-        When using acronyms, use Pascal case or camel case for acronyms more than two characters long. For example, use HtmlButton or htmlButton. However, you should capitalize acronyms that consist of only two characters, such as System.IO instead of System.Io.
-    </li>
-    <li>
-        Do not use abbreviations in identifiers or parameter names. If you must use abbreviations, use camel case for abbreviations that consist of more than two characters, even if this contradicts the standard abbreviation of the word.
-    </li>
-</ul>
+MyControl.extend({
+    // Class methods
+    ...
+});
+&lt;/script&gt;
+</pre>
 
-<h2>Styling</h2>
-<ul>
-    <li>
-        When necessary, a control can define style rules that adjust the appearance of elements added by its parent classes.
-    </li>
-    <li>
-        General-purpose base classes should avoid defining styles for aesthetic purposes. If a base class wishes to provide a bare-bones UI (so that, e.g., control elements are legible and can be seen), the control should define style rules that apply when the CSS class “basic” has been applied to a control instance.
     </li>
 </ul>
 
 <h2>Properties</h2>
 <ul>
     <li>
-        As a general rule, values which are set on a control via a function should be retrievable by calling the same function as a getter.
+        Avoid requiring that a control must have properties set on it, and provide
+        useful default values for all properties. It should be possible to
+        instantiate a control class with a standalone tag. E.g., a control class called
+        Foo should be instantiable in markup just by saying <Tag>Foo/</Tag>. If possible,
+        the resulting control should ideally provide some minimal functionality or
+        behavior.
+    </li>
+    <li>
+        As a general rule, values which are set on a control via a setter should be
+        retrievable by calling the same function as a getter. Avoid write-only functions
+        that permanently change control state without affording access to that state.
+    </li>
+    <li>
+        It should be possible to set properties in any order. If a control has two
+        properties that work in tandem, have the side-effect function for each invoke
+        a “private” function that checks to see if both are set before doing its work.
     </li>
     <li>
         If someone will be likely to want to set a property through markup, support the ability to set a property as a string. Use the specific property constructors like Control.property.bool().
     </li>
     <li>
         If you want to set complex defaults in initialize(), remember that the initialize() call happens after per-instance properties have been set. The initialize handler should generally only set a property to its default value if the property hasn’t already been set.
+    </li>
+</ul>
+
+<h2>Coding style and naming conventions</h2>
+<ul>
+    <li>
+        Follow the 
+        <a href="http://docs.jquery.com/JQuery_Core_Style_Guidelines">jQuery Core Style Guidelines</a>.
+    </li>
+    <li>
+        The typical order of tags within a Control class is: <Tag>content</Tag> or
+        <Tag>prototype</Tag>, <Tag>style</Tag>, and finally <Tag>script</Tag>.
+        This recognizes the fact that the content or prototype is generally the most
+        helpful way to orient someone to the control's construction.
+
+<pre>
+&lt;Control name="Greet"&gt;
+
+&lt;content&gt;
+    Hello, &lt;span id="name"/&gt;!
+&lt;/content&gt;
+
+&lt;style&gt;
+#name {
+    font-weight: bold;
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+Greet.prototype.extend({
+    ...
+});
+&lt;/script&gt;
+
+&lt;/Control&gt;
+</pre>
+
+    </li>
+    <li>
+        For very simple controls which define no style or script, the
+        <Tag>content</Tag> tag can optionally be dropped.
+    </li>
+    <li>
+        Classes and properties should have meaningful names in PascalCase (for classes)
+        and camelCase (for properties). This convention is actually enforced by the QuickUI
+        markup compiler so that it can correctly identify classes and properties. 
+    </li>
+    <li>
+        Class names are generally nouns rather than verbs, and often reflect the
+        level of the UI at which they operate. E.g.: OrderEnterPage instead of
+        EnterOrder, AmountTextBox instead of TypeInAmount.
+    </li>
+    <li>
+        To indicate quasi-private methods which control consumers should <i>not</i> call
+        directly, prefix their name with an underscore "_".
+    </li>
+    <li>
+        Generally speaking, try to avoid abbreviations or contractions in identifier names.
+        E.g., a dialog class should be called SignUpDialog instead of SgnUpDlg.
+        Widely accepted acronyms are fine, but for acronyms three or more letters in
+        length, use lowercase for characters after the first position.
+        E.g.: EnterUrlDialog instead EnterURLDialog.
+    </li>
+    <li>
+        In closures, the variable to capture “this” is generally called “self”.
+    </li>
+</ul>
+
+<h2>Styling</h2>
+<ul>
+    <li>
+        General-purpose base classes should avoid imposing an arbitrary visual style
+        on all subclasses. Base classes can define styles that are likely to be
+        desired by all subclasses, but stylistic decisions should as color, font, etc.
+        should usually be left up to subclasses.
+    </li>
+    <li> 
+        Base classes can provide a bare-bones UI (so that, e.g., control elements
+        are visible and legible) by application of a generic class. This class should
+        be applied in the control's initialize() method by invoking this.genericIfClassIs()
+        method.
+    </li>
+    <li>
+        When necessary, a control subclass can define style rules that adjust the appearance of
+        elements added by its parent classes. I.e., those elements are treated as
+        protected members of the class.
+    </li>
+    <li>
+        It is not advisable to directly style the subelements of contained controls.
+        If necessary, create a subclass of the control in question, then override the
+        parent class style in that (per the above point). This at least makes apparent
+        the fact that the normal parent class styling is being overruled.
     </li>
 </ul>
 

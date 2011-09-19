@@ -24,19 +24,7 @@ var $button = $("#foo").control();
 console.log( $button.content() );   // "OK"
 </pre>
 
-<h2>$( element ).control({ properties })</h2>
-<p>
-Sets the indicated properties of the control at this element.
-</p>
-<pre>
-// Get an existing button and set some properties on it.
-var $button = $( "#deleteButton" ).control({
-    content: "Delete",
-    disabled: true
-});
-</pre>
-
-<h2>$( element ).control( class )</h2>
+<h2>$( element ).control( class, [ properties ] )</h2>
 <p>
 Creates a new instance of the indicated class around the element(s).
 Any existing element content will be passed to the control's content() property.
@@ -45,15 +33,40 @@ Any existing element content will be passed to the control's content() property.
 // Create instances of the MyControl class on some existing divs. 
 $( "div" ).control( MyControl );
 </pre>
-The above is equivalent to calling MyControl.createAt($("div")).
 
-<h2>$( element ).control( class, { properties })</h2>
 <p>
-Creates new control instance(s) and sets their content property.
+The above is equivalent to calling MyControl.createAt( $( "div" ) ).
+</p>
+<p>
+If properties are supplied to the control() call, the indicated properties are set
+on the control during control creation. This occurs <i>before</i> the control's
+initialize() call is made.
 </p>
 <pre>
 // Create a button and set its content property in one step.
 var $button = $( "#foo" ).control( ButtonBase, { content: "OK" } );
+</pre>
+
+<h2>$( element ).control({ properties })</h2>
+<p>
+Sets the indicated properties of the control at this element.
+</p>
+<pre>
+// Get an existing button and set some properties on it.
+$( "#deleteButton" ).control({
+    content: "Delete",
+    disabled: true
+});
+</pre>
+
+<p>
+The above is equivalent to:
+</p>
+<pre>
+// Get an existing button and set some properties on it.
+$( "#deleteButton" ).control()
+    .content( "Delete" )
+    .disabled( true );
 </pre>
 
 </DocumentationPage>
