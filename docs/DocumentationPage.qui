@@ -4,7 +4,8 @@
     <SitePage area="Docs">
         <navigationLinks>
             <Link id="linkIndex" href="#page=DocumentationMainPage">Index</Link>
-            <Link href="#page=FrameworkDocumentationPage">$.control() plugin</Link>
+            <Link href="#page=PluginDocumentationPage">$.control() plugin</Link>
+            <Link href="#page=ControlDocumentationPage">Control class</Link>
             <Link href="#page=GuidelinesDocumentationPage">Guidelines</Link>
         </navigationLinks>
     </SitePage>
