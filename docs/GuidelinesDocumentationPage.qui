@@ -1,0 +1,9 @@
+<Control name="GuidelinesDocumentationPage">
+<prototype>
+<DocumentationPage title="QuickUI control class guidelines">
+
+Guidelines go here...
+
+</DocumentationPage>
+</prototype>
+</Control>
