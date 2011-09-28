@@ -43,7 +43,7 @@ Control.prototype.extend({
 
 Fader.prototype.extend({
     
-    content: Control.bindTo("$Fader_content", "content"),
+    content: Control.chain("$Fader_content", "content"),
     
     initialize: function() {
         var self = this;

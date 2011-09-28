@@ -8,7 +8,7 @@
 
 <script>
 Link.prototype.extend({
-	href: Control.bindTo("prop/href"),
+	href: Control.chain("prop/href"),
 	initialize: function() {
 	    if (this.href() == "")
 	    {

@@ -70,11 +70,11 @@ pre {
 
 <script>
 Feature.prototype.extend({
-    control: Control.bindTo("$Feature_control", "content"),
-    description: Control.bindTo("$Feature_description", "content"),
-    example: Control.bindTo("$Feature_example", "content"),
-    name: Control.bindTo("$Feature_name", "content"),
-    result: Control.bindTo("$Feature_result", "content")
+    control: Control.chain("$Feature_control", "content"),
+    description: Control.chain("$Feature_description", "content"),
+    example: Control.chain("$Feature_example", "content"),
+    name: Control.chain("$Feature_name", "content"),
+    result: Control.chain("$Feature_result", "content")
 });
 </script>
 

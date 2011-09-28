@@ -30,7 +30,7 @@ a#link {
 <script>
 SourceCode.prototype.extend({
 	
-	content: Control.bindTo("$SourceCode_content", "content"),
+	content: Control.chain("$SourceCode_content", "content"),
 	
 	fileName: function(path) {
 		var pathNames = path.split("/");

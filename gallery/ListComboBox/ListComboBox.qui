@@ -23,9 +23,9 @@ the remainder of the item's content is AutoCompleted.
 <script>
 ListComboBox.prototype.extend({
     
-    itemClass: Control.bindTo( "$list", "itemClass" ),
-    items: Control.bindTo( "$list", "items" ),
-    mapFunction: Control.bindTo( "$list", "mapFunction" ),
+    itemClass: Control.chain( "$list", "itemClass" ),
+    items: Control.chain( "$list", "items" ),
+    mapFunction: Control.chain( "$list", "mapFunction" ),
     
     initialize: function() {
         

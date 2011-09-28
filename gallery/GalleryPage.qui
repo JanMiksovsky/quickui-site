@@ -37,13 +37,13 @@
 
 <script>
 GalleryPage.prototype.extend({
-	demo: Control.bindTo("$GalleryPage_demo", "content"),
-	notes: Control.bindTo("$GalleryPage_notes", "content"),
-	sourceFileControl: Control.bindTo("$sourceCodeControl", "sourceFile"),
-	sourceFileExample: Control.bindTo("$sourceCodeExample", "sourceFile", function( sourceFileExample ) {
+	demo: Control.chain("$GalleryPage_demo", "content"),
+	notes: Control.chain("$GalleryPage_notes", "content"),
+	sourceFileControl: Control.chain("$sourceCodeControl", "sourceFile"),
+	sourceFileExample: Control.chain("$sourceCodeExample", "sourceFile", function( sourceFileExample ) {
 	    this.$usage().toggle( sourceFileExample != null );
 	}),
-	summary: Control.bindTo("$GalleryPage_summary", "content")
+	summary: Control.chain("$GalleryPage_summary", "content")
 });
 </script>
 

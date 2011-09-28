@@ -11,7 +11,7 @@ members are available on Control as well.
 All of the functions below return "this", and are therefore chainable.
 </p>
 
-<h2>Control.bindTo( functionName1, functionName2, ..., functionNameN [, sideEffect] )</h2>
+<h2>Control.chain( functionName1, functionName2, ..., functionNameN [, sideEffect] )</h2>
 <p>
 Given an array of functions, repeatedly invoke them as a chain.
 </p>
@@ -25,7 +25,7 @@ getter/setter function called foo().
 </p>
 <pre>
 MyControl.prototype.extend({
-    foo: Control.bindTo("$foo", "content")
+    foo: Control.chain("$foo", "content")
 });
 </pre>
 <p>
@@ -151,7 +151,7 @@ the governs the application of a given CSS class.
 MyControl.prototype.extend({
     // Expose a boolean disabled() property that causes the "disabled"
     // CSS class to be applied or removed.
-    disabled: Control.bindTo("applyClass/disabled")
+    disabled: Control.chain("applyClass/disabled")
 });
 &lt;/script&gt;
 

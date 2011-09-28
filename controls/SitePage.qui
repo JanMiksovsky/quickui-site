@@ -110,9 +110,9 @@
 SitePage.prototype.extend({
 	
 	area: Control.property(),
-	content: Control.bindTo("$SitePage_content", "content"),
-	navigationLinks: Control.bindTo("$SitePage_navigationLinks", "content"),
-	sidebar: Control.bindTo("$SitePage_sidebar", "content"),
+	content: Control.chain("$SitePage_content", "content"),
+	navigationLinks: Control.chain("$SitePage_navigationLinks", "content"),
+	sidebar: Control.chain("$SitePage_sidebar", "content"),
 	
 	initialize: function() {
 		this.$navigationBar().highlightCurrentArea();

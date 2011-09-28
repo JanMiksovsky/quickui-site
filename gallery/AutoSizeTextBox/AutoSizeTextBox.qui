@@ -40,7 +40,7 @@ This works by copying the text to a hidden div whose height can be measured.
 <script>
 AutoSizeTextBox.prototype.extend({
     
-    minHeight: Control.bindTo("css/min-height"),
+    minHeight: Control.chain("css/min-height"),
     
     initialize: function() {
         var self = this;
@@ -79,7 +79,7 @@ AutoSizeTextBox.prototype.extend({
         this.$textCopy().content(this.$textBox().content());
     },
     
-    content: Control.bindTo("$textBox", "content", function() {
+    content: Control.chain("$textBox", "content", function() {
         this.autoSize();
     })
     

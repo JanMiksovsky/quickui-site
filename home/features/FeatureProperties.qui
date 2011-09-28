@@ -37,10 +37,10 @@ accessible as JavaScript class members.
 Recipe.prototype.extend({
 
 content:
-Control.bindTo("$Recipe_content", "content"),
+Control.chain("$Recipe_content", "content"),
 
 name:
-Control.bindTo("$Recipe_name", "content"),
+Control.chain("$Recipe_name", "content"),
 
 rating: Control.property.integer(
   function(rating) {

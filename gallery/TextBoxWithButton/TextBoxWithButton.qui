@@ -24,8 +24,8 @@ Control with a content area (usually some form of text box) and an associated "G
 <script>
 TextBoxWithButton.prototype.extend({
     
-    goButton: Control.bindTo("$TextBoxWithButton_goButton", "content"),    
-    textBox: Control.bindTo("$TextBoxWithButton_textBox", "content"),
+    goButton: Control.chain("$TextBoxWithButton_goButton", "content"),    
+    textBox: Control.chain("$TextBoxWithButton_textBox", "content"),
     
     initialize: function() {
         var self = this;

@@ -2,7 +2,7 @@
 <prototype>
 <TutorialPage title="Compact property definition using property bindings">
 
-<h2>Declaring a property using a binding</h2>
+<h2>Declaring a property using a chain of jQuery calls</h2>
 <p>
 Defining a control property like Greet.content is so common, the QuickUI framework
 includes some JavaScript helper classes to more concisely define common types of properties.
@@ -13,22 +13,27 @@ HTML element within the control’s DOM.
 
 <pre>
 content: function(value) {
-    return this.$Greet_content.html(value);
+    if (value === undefined) {
+        return this.$Greet_content().eq(0).html();
+    } else {
+        this.$Greet_content().html(value);
+        return this;
+    }
 }
 </pre>
 
 <p>
 To facilitate construction of such functions, the QuickUI run-time library includes
-a helper class called bindTo that serves as a factory for functions like the one above.
+a helper function called chain() that serves as a factory for functions like the one above.
 So we can replace the above property definition with this one:
 </p>
 
 <pre>
-content: Control.bindTo("$Greet_content", "html")
+content: Control.chain("$Greet_content", "html")
 </pre>
 
 <p>
-The function bindTo() itself returns a function that will apply the indicated
+The function chain() itself returns a function that will apply the indicated
 parameters as a jQuery-style chain. When invoked as a setter, i.e., with a defined
 argument, the function will pass that argument to the function indicated by the final
 parameter. In the above example, that would be $.html(). As a result, the two function
@@ -36,7 +41,7 @@ definitions above are equivalent.
 </p>
 
 <p>
-Using bindTo reduces the amount of code required to define control properties,
+Using chain reduces the amount of code required to define control properties,
 and correspondingly reduces the chances for bugs. It also allows someone else reading the
 code to clearly see the intent of the property declaration. In the example above,
 the developer wishes to expose the HTML content an element called with id="Greet_content"
@@ -48,7 +53,7 @@ via a getter/setter function called content().
 <p>
 The use of the $.html() function above can be replaced with a more flexible function
 defined in QuickUI called content(). The $.html() function can only deal with strings,
-but content() function can work with real DOM elements or jQuery objects.
+but the content() function can work with real DOM elements or jQuery objects.
 In that regard, it's similar the jQuery $.contents() function (with a plural "s"),
 only content() can also be called as a setter while $.contents() is read-only.
 </p>
@@ -59,7 +64,7 @@ as the last part of the binding:
 </p>
 
 <pre>
-content: Control.bindTo("$Greet_content", "content")
+content: Control.chain("$Greet_content", "content")
 </pre>
 
 <p>
@@ -72,7 +77,7 @@ its content to one of the elements it contains.
 <h2>Defining multiple “slots” with additional properties</h2>
 
 <p>
-Let’s adapt our Greet control to use the Control.bindTo() property factory above.
+Let’s adapt our Greet control to use the Control.chain() property factory above.
 Since it’s so easy to define new control properties, let’s extend our Greet control
 with an additional property to control the type of punctuation used at the end of the
 greeting:
@@ -105,7 +110,7 @@ etc.
 <h2>Chaining property calls</h2>
 
 <p>
-Property functions defined using bindTo return "this", and therefore support jQuery-style
+Property functions defined using chain return "this", and therefore support jQuery-style
 chaining.
 </p>
 

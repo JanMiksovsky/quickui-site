@@ -20,8 +20,8 @@
 <script>
 ScreencastLink.prototype.extend({
     
-    content: Control.bindTo("$ScreencastLink_content", "content"),
-    href: Control.bindTo("$ScreencastLink_content", "href"),
+    content: Control.chain("$ScreencastLink_content", "content"),
+    href: Control.chain("$ScreencastLink_content", "href"),
     
     initialize: function() {
         var self = this;

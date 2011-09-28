@@ -5,7 +5,12 @@
 <script>
 Greet.prototype.extend({
 	content: function(value) {
-		return this.$Greet_content().html(value);
+	    if (value === undefined) {
+            return this.$Greet_content().eq(0).html();
+	    } else {
+            this.$Greet_content().html(value);
+            return this;
+	    }
 	}
 });
 </script>

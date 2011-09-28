@@ -65,10 +65,8 @@ language and many alternative routes are possible. Some notes on the particular 
 		the property to that value.
 	</li>
 	<li>
-	    To support jQuery-style chaining, the setter function should return "this".
-	    In this case, $.html() already returns "this" when called as a setter (and the HTML
-	    contents when called as a getter) so no addition processing is necessary to
-	    support chaining. 
+	    The getter function returns the value on the first element.
+	    The setter function returns "this" to support jQuery-style chaining.
 	</li>
 	<li>
 		In this particular property example, we’re defining a property called “content” that will form the significant

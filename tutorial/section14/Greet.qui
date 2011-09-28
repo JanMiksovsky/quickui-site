@@ -19,10 +19,10 @@
 <script>
 Greet.prototype.extend({
 	
-    content: Control.bindTo("$Greet_content", "content"),
-    enabled: Control.bindTo("$Greet_content", "applyClass/enabled"),
-    punctuation: Control.bindTo("$Greet_punctuation", "content"),
-    text: Control.bindTo("$Greet_content", "text"),
+    content: Control.chain("$Greet_content", "content"),
+    enabled: Control.chain("$Greet_content", "applyClass/enabled"),
+    punctuation: Control.chain("$Greet_punctuation", "content"),
+    text: Control.chain("$Greet_content", "text"),
 
 	initialize: function() {
 		var self = this;
