@@ -18,16 +18,16 @@
 <script>
 Greet.prototype.extend({
 	
-	content: Control.chain("$Greet_content", "content"),
-	punctuation: Control.chain("$Greet_punctuation", "content"),
-	text: Control.chain("$Greet_content", "text"),
+	content: Control.chain( "$Greet_content", "content" ),
+	punctuation: Control.chain( "$Greet_punctuation", "content" ),
+	text: Control.chain( "$Greet_content", "text" ),
 
 	initialize: function() {
 		var self = this;
 		this.$Greet_content().click(function() {
-			var newName = prompt("Enter name:", self.text());
-			if (newName != null) {
-				self.text(escape(newName));
+			var newName = prompt( "Enter name:", self.text() );
+			if ( newName != null ) {
+				self.text( escape( newName ) );
 			}
 		});
 	}	

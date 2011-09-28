@@ -13,8 +13,8 @@ to control instance.
 When we’re finished, we’ll be able to set a property on a control through JavaScript:
 </p>
 <pre>
-var g = $("div").control(Greet);
-g.content("Alice");
+var g = $( "div" ).control( Greet );
+g.content( "Alice" );
 </pre>
 <p>
 and through Quick markup:
@@ -58,7 +58,7 @@ The key expression is
 
 <![CDATA[
 <pre>
-this._define("$Greet_content", Control("&lt;span id=\"Greet_content\" /&gt;"))
+this._define( "$Greet_content", Control( "&lt;span id=\"Greet_content\" /&gt;" ) )
 </pre>
 ]]>
 

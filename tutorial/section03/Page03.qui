@@ -37,7 +37,7 @@ contents in demo.html to instantiate the Sample control class
 <pre>
 &lt;script language="JavaScript"&gt;
 $(function() {
-    $("body").control(Sample);
+    $( "body" ).control( Sample );
 });
 &lt;/script&gt;
 </pre>

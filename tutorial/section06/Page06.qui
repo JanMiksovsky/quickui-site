@@ -37,8 +37,8 @@ If we have a reference to a control, we can simply call the property function
 and pass in the new desired value for the property:
 
 <pre>
-var g = $("body").control(Greet);   // Instantiate the control.
-g.content("Dan");                   // Set a property.
+var g = $( "body" ).control( Greet );   // Instantiate the control.
+g.content( "Dan" );                     // Set a property.
 </pre>
 
 <p>
@@ -48,7 +48,7 @@ properties on it through optional arguments to the jQuery plugin:
 
 <pre>
 // Instantiate the control and set its content in one step.
-$("body").control(Greet, { content: "Dan" });
+$( "body" ).control( Greet, { content: "Dan" });
 </pre>
 
 <p>
@@ -57,7 +57,7 @@ property function with no arguments:
 </p>
 
 <pre>
-var g = $("body").control();        // Retrieve a reference to the control.
+var g = $( "body" ).control();        // Retrieve a reference to the control.
 var name = g.content();             // Get the control's current content.
 </pre>
 
@@ -75,7 +75,7 @@ any custom properties like the content() property we've defined here.
 </p>
 
 <pre>
-var s = $("body");          // s is instance of jQuery
+var s = $( "body" );          // s is instance of jQuery
 var g = s.control();        // g is instance of Greet
 </pre>
 
@@ -92,7 +92,7 @@ we can set the content() property of all of them in one property call:
 <pre>
 $(".Greet")                 // Get all Greet elements on the page.
     .control()              // Cast them to their original Greet class.
-    .content("Angela");     // Set the content of all of them at once.
+    .content( "Angela" );   // Set the content of all of them at once.
 </pre>
 
 <Link href="/tutorial/section07/default.html">Next ></Link>

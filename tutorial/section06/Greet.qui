@@ -4,11 +4,11 @@
 
 <script>
 Greet.prototype.extend({
-    content: function(value) {
-        if (value === undefined) {
+    content: function( value ) {
+        if ( value === undefined ) {
             return this.$Greet_content().eq(0).html();
         } else {
-            this.$Greet_content().html(value);
+            this.$Greet_content().html( value );
             return this;
         }
     }

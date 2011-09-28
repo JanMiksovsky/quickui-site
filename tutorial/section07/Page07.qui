@@ -12,11 +12,11 @@ HTML element within the control’s DOM.
 </p>
 
 <pre>
-content: function(value) {
-    if (value === undefined) {
+content: function( value ) {
+    if ( value === undefined ) {
         return this.$Greet_content().eq(0).html();
     } else {
-        this.$Greet_content().html(value);
+        this.$Greet_content().html( value );
         return this;
     }
 }
@@ -29,7 +29,7 @@ So we can replace the above property definition with this one:
 </p>
 
 <pre>
-content: Control.chain("$Greet_content", "html")
+content: Control.chain( "$Greet_content", "html" )
 </pre>
 
 <p>
@@ -60,11 +60,11 @@ only content() can also be called as a setter while $.contents() is read-only.
 
 <p>
 So it will generally be more useful to define our content function with content()
-as the last part of the binding:    
+as the last part of the chain:
 </p>
 
 <pre>
-content: Control.chain("$Greet_content", "content")
+content: Control.chain( "$Greet_content", "content" )
 </pre>
 
 <p>
@@ -117,8 +117,8 @@ chaining.
 <pre>
 $(".Greet")                 // Get all Greet elements on the page.
     .control()              // Cast them to their original Greet class.
-    .content("Angela")      // Set the content of all of them.
-    .punctuation("!");      // Set the punctunation of all of them.
+    .content( "Angela" )    // Set the content of all of them.
+    .punctuation( "!" );    // Set the punctunation of all of them.
 </pre>
 
 <Link href="/tutorial/section08/default.html">Next ></Link>

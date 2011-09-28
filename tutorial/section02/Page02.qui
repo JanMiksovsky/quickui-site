@@ -90,7 +90,7 @@ we'll see the JavaScript which the qc compiler has generated:
 Earlier we saw how the Greet class could be instantiated via a call like:
 
 <pre>
-$("body").control(Greet);
+$( "body" ).control( Greet );
 </pre>
 
 This code creates a jQuery object pointing to a particular DOM element (here, the page
