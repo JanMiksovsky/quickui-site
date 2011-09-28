@@ -72,6 +72,43 @@ Returns true if the indicated elements represent instantiated controls, or false
 if they are plain DOM elements.    
 </p>
 
+<h2>Control.iterator ( fn )</h2>
+<p>
+Controls are subclasses of the jQuery class, so its generally expected that a
+control's methods should be able to copy with being applied to an array of 
+controls (not just a single control). The iterator() helper function takes
+a function that expects to work against a since control, and returns an
+iterator function that will perform that work against an array.
+</p>
+
+<pre>
+MyControl.prototype.extend({
+    log: Control.iterator( function() {
+        console.log(this);
+    })
+});
+</pre>
+
+<p>
+This is equivalent to:
+</p>
+
+<pre>
+MyControl.prototype.extend({
+    log: function() {
+        return this.eachControl(function(index, $control) {
+            console.log($control);
+        });
+    }
+});
+</pre>
+
+<p>
+If the wrapped function returns a defined value (i.e., not "undefined"),
+then the function is assumed to be a property getter, and that result is
+return immediately. Otherwise, "this" is returned to permit chaining.
+</p>
+
 <h2>Control.property( [sideEffectFn] [, defaultValue] )</h2>
 <p>
 Generates a getter/setter function that can be used to store arbitrary data on a
@@ -233,43 +270,6 @@ used for wiring up event handlers, perform any initial calculations, etc.
         when this has happened, or it can listen for an event like DOMNodeInserted.
     </li>
 </ul>
-
-<h2>Control.prototype.iterators ( members )</h2>
-<p>
-Controls are subclasses of the jQuery class, so its generally expected that a
-control's methods should be able to copy with being applied to an array of 
-controls (not just a single control). The iterators() helper function is
-similar to $.extend, but wraps simple functions (which expect just a single
-control) to create iterators that work across an array.
-</p>
-
-<pre>
-MyControl.prototype.iterators({
-    log: function() {
-        console.log(this);
-    }
-});
-</pre>
-
-<p>
-This is equivalent to:
-</p>
-
-<pre>
-MyControl.prototype.extend({
-    log: function() {
-        return this.eachControl(function(index, $control) {
-            console.log($control);
-        });
-    }
-});
-</pre>
-
-<p>
-If the wrapped function returns a defined value (i.e., not "undefined"),
-then the function is assumed to be a property getter, and that result is
-return immediately. Otherwise, "this" is returned to permit chaining.
-</p>
 
 <h2>Control.prototype.multiProperty( propertyName, values )</h2>
 <p>
