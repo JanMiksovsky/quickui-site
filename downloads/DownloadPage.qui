@@ -21,11 +21,10 @@ build the QuickUI tools yourself from the
 	Download <Link href="http://www.mono-project.com">Mono</Link>.
     The QuickUI tools themselves are written in .NET,
     and the Mono binaries allow QuickUI to run fine on OS/X.
-    (Yes, .NET. Just chill, it'll be fine.
-    You can use the QuickUI tools with complete disregard for their .NET heritage;
+    (You can use the QuickUI tools with complete disregard for their .NET heritage;
     all actual coding for QuickUI controls is done in plain JavaScript.
     For those with an allergic reaction to .NET, a Python port is being explored.
-    Help would be welcomed with that.)
+    Help with that would be welcomed.)
     </li>
 	<li>Download <Link href="/downloads/QuickUI.zip">QuickUI.zip</Link> and expand it.</li>
     <li>Copy the expanded contents to a location, e.g., /Developer/Applications/QuickUI.</li>
@@ -53,7 +52,8 @@ to easily, or automatically, invoke the qb build tool when saving QuickUI source
 <h2>TextMate</h2>
 
 <ol>
-    <li>Download the <Link href="textmate/QuickUI.zip">QuickUI bundle</Link>.</li>
+    <li>Download and extract the <Link href="textmate/QuickUI.zip">QuickUI bundle</Link>.</li>
+    <li>Drag the QuickUI TextMate bundle into the TextMate Bundle Editor window.</li>
     <li>
         Make sure your TextMate preferences include the qb/bin folder on your path.
         (Set under Preferences / Advanced / Shell Variables.)
