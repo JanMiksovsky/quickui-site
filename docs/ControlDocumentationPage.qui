@@ -35,14 +35,14 @@ is an automatically created element function that returns the element(s) with
 id="#foo" within the control's DOM.
 </p>
 <p>
-The parameters to bindTo are the names of functions that are invoked in
+The parameters to chain are the names of functions that are invoked in
 turn to produce the result. The last parameter may be an optional side
 effect function that will be invoked whenever the binding function is
 invoked as a setter.
 </p>
 <p>
 The function names passed as parameters may also define an optional
-string-valued parameter that will be passed in. So bindTo("css/display")
+string-valued parameter that will be passed in. So chain("css/display")
 creates a curried setter/getter function equivalent to css("display", value).
 </p>
 
@@ -167,7 +167,7 @@ These functions are available on all control <i>instances</i>.
 Gets or sets whether the given CSS class(es) are applied to the controls. This
 combines the functions of $.hasClass (when called as a getter) and $.toggleClass
 (when called as a setter). This applyClass() function is useful in the context
-of a bindTo() binding, allowing the control to expose a boolean getter/setter
+of a chain() binding, allowing the control to expose a boolean getter/setter
 the governs the application of a given CSS class.
 </p>
 
