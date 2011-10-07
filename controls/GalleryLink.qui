@@ -8,7 +8,7 @@
 GalleryLink.prototype.extend({
     content: Control.property(function(content) {
         GalleryLink.superclass.prototype.content.call(this, content);
-        this.href(href="/gallery/default.html#page=" + content + "About");
+        this.href(href="/catalog/default.html#page=" + content + "About");
     })
 });
 </script>
