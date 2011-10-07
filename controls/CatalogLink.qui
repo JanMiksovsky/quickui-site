@@ -1,0 +1,16 @@
+<Control name="CatalogLink">
+
+<prototype>
+    <Link/>
+</prototype>
+
+<script>
+CatalogLink.prototype.extend({
+    content: Control.property(function(content) {
+        CatalogLink.superclass.prototype.content.call(this, content);
+        this.href(href="/catalog/default.html#page=" + content + "About");
+    })
+});
+</script>
+
+</Control>
