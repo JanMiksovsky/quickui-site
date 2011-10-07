@@ -10,7 +10,7 @@ In addition to stock content and styling it’s extremely common to want to defi
 </p>
 
 <p>
-A simple example is the <GalleryLink>Tag</GalleryLink> control, used throughout the QuickUI site to format Quick markup tags. So the text on these pages can easily format references to a <Tag>style</Tag> tag or <Tag>script</Tag> tag.
+A simple example is the <CatalogLink>Tag</CatalogLink> control, used throughout the QuickUI site to format Quick markup tags. So the text on these pages can easily format references to a <Tag>style</Tag> tag or <Tag>script</Tag> tag.
 
 </p>
 

@@ -1,13 +1,13 @@
-<Control name="GalleryLink">
+<Control name="CatalogLink">
 
 <prototype>
     <Link/>
 </prototype>
 
 <script>
-GalleryLink.prototype.extend({
+CatalogLink.prototype.extend({
     content: Control.property(function(content) {
-        GalleryLink.superclass.prototype.content.call(this, content);
+        CatalogLink.superclass.prototype.content.call(this, content);
         this.href(href="/catalog/default.html#page=" + content + "About");
     })
 });
