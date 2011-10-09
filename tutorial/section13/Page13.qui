@@ -25,7 +25,7 @@ which returns a function that adds or removes a CSS class from a named element.
 This function is identical to $.toggleClass() when invoked as a setter (i.e.,
 it sets the indicated class), and to $.hasClass() when invoked as a getter (it
 indicates whether or not the element has the indicated class). Here we use
-some syntax supported by the bindTo() function to pass a parameter to applyClass:
+some syntax supported by the chain() function to pass a parameter to applyClass:
 the name of the class we want to get or set.
 </p>
 
