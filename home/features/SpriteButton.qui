@@ -3,29 +3,29 @@
 <Control name="SpriteButton">
 
 <prototype>
-	<ButtonBase>
-		<Sprite id="backgroundLeft" />
-		<Sprite id="backgroundRight" />
-	    <button id="SpriteButton_content" />
-	</ButtonBase>
+    <ButtonBase>
+        <Sprite id="backgroundLeft" />
+        <Sprite id="backgroundRight" />
+        <button id="SpriteButton_content" />
+    </ButtonBase>
 </prototype>
 
 <style>
 
 {
-	display: inline-block;
-	position: relative;
+    display: inline-block;
+    position: relative;
 }
 
 .Sprite {
-	height: 100%;
-	position: absolute;
-	top: 0;
-	/* 
-	 * Each sprite covers half the background
-	 */
-	width: 50%;
-	z-index: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    /* 
+     * Each sprite covers half the background
+     */
+    width: 50%;
+    z-index: 0;
 }
 
 #backgroundLeft {
@@ -34,30 +34,30 @@
 }
 
 #backgroundRight {
-	background-position: right 0;
-	/*
-	 * Use left: 50% instead of right: 0, as the latter doesn't work exactly right on WebKit.
-	 */
-	left: 50%;
+    background-position: right 0;
+    /*
+     * Use left: 50% instead of right: 0, as the latter doesn't work exactly right on WebKit.
+     */
+    left: 50%;
 }
 
 button {
-	background: transparent none repeat scroll 0 0;
-	border: medium none;
-	cursor: pointer;
-	outline: none;
-	-moz-outline: none;
-	overflow: visible;
-	position: relative;
-	white-space: nowrap;
+    background: transparent none repeat scroll 0 0;
+    border: medium none;
+    cursor: pointer;
+    outline: none;
+    -moz-outline: none;
+    overflow: visible;
+    position: relative;
+    white-space: nowrap;
 }
 
 .SpriteButton.disabled button {
-	cursor: default;
+    cursor: default;
 }
 
 </style>
-	
+    
 <script>
 SpriteButton.prototype.extend({
 	
@@ -65,7 +65,7 @@ SpriteButton.prototype.extend({
     image: Control.chain("$sprites", "image"),
 
 	initialize: function() {
-		SpriteButton.superclass.prototype.initialize.call(this);
+		this._super();
 		var self = this;
 		this.$SpriteButton_content()
 			.blur(function() { self.blur(); })
@@ -82,7 +82,7 @@ SpriteButton.prototype.extend({
 		{
 			this.$SpriteButton_content().attr("disabled", String(value) == "true");
 		}
-		return SpriteButton.superclass.prototype.disabled.call(this, value);
+		return this._super( value );
 	},
 	
 	$sprites: function() {
@@ -92,7 +92,8 @@ SpriteButton.prototype.extend({
 	_renderButtonState: function(buttonState) {
 		this.$sprites().currentCell(buttonState);
 	}
+
 });
 </script>
-	
+
 </Control>

@@ -120,14 +120,12 @@ SitePage.prototype.extend({
 	},
 	
 	title: function(value) {
-		if (value !== undefined)
+		if (value === undefined)
 		{
-			this.$SitePage_title().html(value);
-			return SitePage.superclass.prototype.title.call(this, value + " - QuickUI");
-		}
-		else
-		{
-			return SitePage.superclass.prototype.title.call(this);
+		    return this._super();
+        } else {
+			this.$SitePage_title().content( value );
+			return this._super( value + " - QuickUI" );
 		}
 	}
 	
