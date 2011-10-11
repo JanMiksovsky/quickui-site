@@ -30,35 +30,33 @@ a#link {
 <script>
 SourceCode.prototype.extend({
 	
-	content: Control.chain("$SourceCode_content", "content"),
-	
-	fileName: function(path) {
-		var pathNames = path.split("/");
-		return (pathNames.length == 0)
-			? null
-			: pathNames[pathNames.length - 1];
-	},
-	
-	source: function(source) {
+	content: function( source ) {
 	    if (source === undefined)
 	    {
-	        return this.content();
+	        return this.$SourceCode_content().content();
 	    }
 	    else
 	    {
             var formatted = this._normalizeLineEndings( this._tabsToSpaces( source ) );
-            this.content( formatted );
+            this.$SourceCode_content().content( formatted );
 	    }
 	},
 	
-	sourceFile: Control.property(function(value) {
+	fileName: function( path ) {
+		var pathNames = path.split( "/" );
+		return ( pathNames.length === 0 )
+			? null
+			: pathNames[ pathNames.length - 1 ];
+	},
+	
+	sourceFile: Control.property( function( value ) {
 		var self = this;
 		// Load the file.
-		$.get(value, function(data) {
-		    self.source(data);
+		$.get( value, function( data) {
+		    self.content( data );
 		});
-		this.$link().attr("href", value);
-		this.$linkText().html(this.fileName(value));
+		this.$link().attr( "href", value );
+		this.$linkText().html( this.fileName(value) );
 	}),
 	
 	_normalizeLineEndings: function(s) {
