@@ -1,8 +1,8 @@
 <Control name="CodeColorizer">
 
-<prototype>
-    <SourceCode/>
-</prototype>
+<content>
+    <pre id="CodeColorizer_content"/>
+</content>
 
 <style>
 /* HTML styles */
@@ -38,22 +38,19 @@
 CodeColorizer.prototype.extend({
     
     initialize: function() {
-        CodeColorizer.superclass.prototype.initialize.call( this );
-        this.$SourceCode_content().addClass( "language-html" );
+        this._super();
+        this.$CodeColorizer_content().addClass( "language-html" );
     },
     
-    source: function( source ) {
-        var result = this._super( source );
-        if ( source !== undefined ) {
-            // Colorize code with highlight.js if installed
-            if ( window[ "hljs" ] ) {
-                this.each( function( index, element ) {
-                    hljs.highlightBlock( element );
-                });
-            }
+    // Using $.text() escapes the HTML/XML in the content.
+    content: Control.chain( "$CodeColorizer_content", "text", function ( content ) {
+        // Colorize code with highlight.js if installed
+        if ( window[ "hljs" ] ) {
+            this.$CodeColorizer_content().each( function( index, element ) {
+                hljs.highlightBlock( element );
+            });
         }
-        return result;
-    }
+    })
     
 })    
 </script>

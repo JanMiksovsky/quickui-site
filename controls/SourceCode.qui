@@ -1,7 +1,7 @@
 <Control name="SourceCode">
 
 <content>
-	<pre id="SourceCode_content" />
+	<CodeColorizer id="SourceCode_content" />
 	<div id="_divLink">
 		<a id="link">→ <span id="linkText"/></a>
 	</div>
@@ -42,13 +42,12 @@ SourceCode.prototype.extend({
 	source: function(source) {
 	    if (source === undefined)
 	    {
-	        return this.$SourceCode_content().text();
+	        return this.content();
 	    }
 	    else
 	    {
-            var formatted = this._normalizeLineEndings(this._tabsToSpaces(source));
-            // Using $.text() escapes the HTML/XML.
-            this.$SourceCode_content().text(formatted);
+            var formatted = this._normalizeLineEndings( this._tabsToSpaces( source ) );
+            this.content( formatted );
 	    }
 	},
 	
