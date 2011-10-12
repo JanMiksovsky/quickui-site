@@ -21,7 +21,7 @@ instantiated.
 <SourceCode sourceFile="Greet.qui" />
 
 <p>
-Here the ready() function creates a click handler for the <Tag>span</Tag> identified
+Here the initialize() function creates a click handler for the <Tag>span</Tag> identified
 by this.Greet_content. As we saw earlier, that property holds a reference to a
 HTMLSpanElement. We can pass that reference to the jQuery $() function and invoke its
 click method to create an event handler.

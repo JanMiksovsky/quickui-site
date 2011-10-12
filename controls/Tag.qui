@@ -1,4 +1,4 @@
-<Control name="Tag">
+<Control name="Tag" tag="span">
 
 <content>&lt;<span id="Tag_content" />&gt;</content>
 

@@ -24,7 +24,7 @@ QuickUI (Quick User Interface) is a framework that simplifies the design, develo
     </li>
     <li>
         Write markup in your favorite IDE, then compile it using the QuickUI
-        tools (on OS/X or Windows) into highly legible and debuggable JavaScript classes.
+        tools (on Windows, OS/X, or Linux) into highly legible and debuggable JavaScript classes.
     </li>
     <li>
         Define a programmatic interface for your controls that lets them be
