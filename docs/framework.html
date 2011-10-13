@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../quicommon/quicommon.css" />
+<link rel="stylesheet" type="text/css" href="../controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="../site.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="../lib/quickui.js"></script>
+<script type="text/javascript" src="../plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="../quicommon/quicommon.js"></script>
+<script type="text/javascript" src="../controls/controls.js"></script>
+
+<body data-create-controls="true" data-control="SitePage" data-area="Docs" data-title="QuickUI Framework Overview">
+
+<p>
+<i>
+This overview is intended for an audience with a basic understanding of
+JavaScript programming and the jQuery framework. This is currently a draft;
+the final version will be expanded with sample code. 
+</i>
+</p>
+
+<p>
+QuickUI makes it easy to create new user interface components, called
+“controls”, which can be easily reused and shared. The core part of QuickUI is a
+framework that builds on top of the popular jQuery library. All aspects of
+jQuery, as well as a range of facilities designed specifically for creating and
+using controls, are available to controls built with QuickUI.
+</p>
+<p>
+This page summarizes the control facilities delivered by the QuickUI framework
+in the form of a JavaScript runtime called quickui.js. Both this runtime and the
+core jQuery must be included in a web page to use QuickUI.
+</p>
+<p>
+Control users and authors can create controls using just the QuickUI framework
+using traditional web development tools that edit JavaScript, CSS, and HTML.
+For additional efficiency, developers can choose to use the optional QuickUI
+markup language, designed specifically to permit highly legible and maintainable
+control source code.
+</p>
+
+<h2>Control class creation</h2>
+<ul>
+<li>
+QuickUI builds on the prototype-based class system offered in jQuery via its
+$.sub() function. What this means is that controls in the QuickUI framework are
+instances of full JavaScript classes. For example, controls have a type which
+can be checked directly using JavaScript’s instanceof keyword.    
+</li>
+<li>
+Control instances are full jQuery objects. Any operation that can be performed
+on a jQuery object — showing or hiding the control, changing stylistic
+attributes such as color, animated transitions, programmatically adding or
+removing the control, etc. — can all be performed on a control.
+</li>
+<li>
+In addition to the jQuery features, custom features can be easily added to
+control classes as class methods. These methods are, in fact, jQuery plugins
+(extensions). This means methods can be easily applied using the full power of
+jQuery’s selection engine. In jQuery style, control methods are also chainable,
+and can be applied to arrays of objects in a single call.
+</li>
+<li>
+QuickUI’s use of JavaScript classes provides a built-in scoping mechanism for
+class methods. In raw jQuery plugin creation, a common concern is the crowding
+of the jQuery plugin namespace. This forces developers to take measures such as
+squeezing all features of a new jQuery extension into a single overloaded
+function, which can compromise clarity and maintainability. In QuickUI,
+namespace pollution is less of an issue because each control receives its own
+plugin namespace.
+</li>
+<li>
+Using a class system means that control instances automatically have access to
+JavaScript methods defined by their class or parent classes. Well-designed class
+hierarchies can thereby achieve a proper separation of concerns, which
+facilitates code creation and maintenance.
+</li>
+<li>
+In general, QuickUI controls follow a single inheritance model. This is rarely a
+limitation: for most non-trivial controls, a chunk of one UI is either one kind
+of component or another. It is possible to fold JavaScript-style mixins into a
+control’s definition. For example, jQuery UI’s lower-level facilities for mouse
+interaction or drag-and-drop can be easily added to a QuickUI control.
+</li>
+<li>
+QuickUI control classes have access to a _super() function that makes it simple
+for a class method to extend the behavior defined in a base class.
+</li>
+</ul>
+
+<h2>Instantiation, rendering, initialization</h2>
+<ul>
+<li>
+Controls can be instantiated from a set of DOM elements via a top-level
+jQuery plugin called $.control(). The basic form of this renders all DOM
+elements selected by the jQuery object into instances of the corresponding
+control class.
+</li>
+<li>
+Controls can also be instantiated from a class by calling the class’
+.create() method. This renders a detached instance of that class which can
+later be added to the DOM.
+</li>
+<li>
+Rendering a DOM element into a control generally entails populating the
+element with a new collection of subelements and applying CSS classes associated
+with the control class.
+</li>
+<li>
+A core aspect of QuickUI is that it defines a render sequence that
+corresponds to a control’s class hierarchy. When an element is rendered into a
+control, each class in the control’s class hierarchy has an opportunity to add
+subelements to the top-level element. This is done by starting from a base class
+called Control (which inherits directly from jQuery), and working down the class
+hierarchy to the control’s specific class. This arrangement means that each
+level of the class hierarchy can add elements into positions that depend upon
+the DOM structure created by their parent classes.
+</li>
+<li>
+After a control instance has been rendered, QuickUI automatically invokes
+an initialization function on the instance called initialize(). This gives the
+each level of the control’s class hierarchy the chance to perform additional
+work beyond simply rendering the control.
+</li>
+</ul>
+
+<h2>Element classification</h2>
+<ul>
+<li>
+When a control class is rendered into a DOM element, the QuickUI framework
+preserves an association between that element and that class.
+</li>
+<li>
+This effectively means that a given DOM element can “have” a custom class.
+The DOM element is still really an instance of a DOM class like HTMLDivElement.
+A DOM class is notoriously problematic to actually subclass, but the QuickUI
+association between an element and a control class provides a way to get most of
+the benefits of subclassing a DOM class without any of the many problems that
+come with that.
+</li>
+<li>
+The control class for an element can be quickly retrieved by finding that
+element with a normal jQuery selector, then invoking the $.control() plugin on
+that jQuery object. This casts the jQuery object to an object of the appropriate
+class. The object will still be a jQuery object (because all control classes
+inherit from the jQuery base class), but it will also be an instance of the
+relevant control class and its control parent classes. This is what affords
+access to the control class’ namespace of custom jQuery methods (plugins).
+</li>
+<li>
+The class of a DOM element can be changed dynamically at run-time by
+“transmuting” a control instance into an instance of a different class.
+</li>
+</ul>
+
+<h2>Styling controls with CSS</h2>
+<ul>
+<li>
+QuickUI provides for an automatic association between JavaScript control classes
+and an identically-named set of CSS classes. Every control class Foo implies a
+corresponding CSS class called “.Foo”.
+</li>
+<li>
+When a control class is rendered into a DOM element, the QuickUI framework
+automatically stamps that element’s “class” attribute with the CSS classes that
+correspond to the control class and its parent classes. These CSS classes are
+applied in order from most specific to most general class. E.g., if a control
+MyButton derives from Control, the creating an instance of MyButton will produce
+a DOM element that has class=”.MyButton .Control”.
+</li>
+<li>
+Control designers can capitalize on this aspect of QuickUI using a convention
+for writing style rules. A style rule of the form “.MyButton { color: red }”
+will have the effect that all text within a MyButton control will be red.
+</li>
+<li>
+This arrangement allows the creation of CSS styles that correspond clearly and
+directly to a control class. The browser will then ensure that instances of a
+given control class end up receiving all of that control class’ style rules.
+</li>
+<li>
+Because these CSS classes are applied to a control’s top-level element in order
+from most specific to most general class, subclasses can override the CSS style
+rules defined by base classes.
+</li>
+</ul>
+
+<h2>Properties</h2>
+<ul>
+<li>
+A general guideline for controls is that they make their properties available as
+jQuery-style getter/setter functions. This means that, if a value is passed to
+the property function, it sets the property; if no value is passed in, the
+function returns the current value of that property.
+</li>
+<li>
+To facilitate the creation of getter/setter property functions, QuickUI provides
+a set of helper functions. The base Control.property() function creates a
+getter/setter that automatically handles per-control storage of the property
+value via jQuery $.data(). A side-effect function can also be defined that will
+be executed whenever the property is set, so the control can do custom work if
+the property changes.
+</li>
+<li>
+A number of related Control.property helper functions are designed to simplify
+the setting of properties via strings. This is done to support the use of
+controls in QuickUI markup.
+</li>
+<li>
+All property getter/setters created via Control.property automatically work
+against arrays of controls, and are chainable.
+</li>
+</ul>
+
+<h2>Chaining properties</h2>
+<ul>
+<li>
+It’s important for controls to hide their implementation to some degree, so that
+troublesome dependencies are not created upon the control’s current
+implementation and thereby impede future improvements. This is especially
+important when it comes to the control’s DOM – a control’s host shouldn’t need
+to know anything about the DOM below the control’s top-level element.
+</li>
+<li>
+Rather than expecting hosts to directly read or manipulate a control’s DOM,
+QuickUI controls expose programmatic interfaces, notably with getter/setter
+properties, that form an abstraction around the DOM. That is, controls expose
+an external API of getter/setter property functions that can manipulate a
+control’s internal DOM.
+</li>
+<li>
+It is very common for these getter/setter properties to execute a single chain
+of jQuery methods that locate a specific DOM element within the control and then
+manipulate some aspect of that element such as its content or styling.
+</li>
+<li>
+To facilitate the creation of such jQuery chains, QuickUI provides a helper
+function called Control.chain. This constructs a getter/setter property that
+generally manipulates some aspect of the control’s internal DOM. The resulting
+property is automatically applicable to arrays of controls, and is automatically
+chainable.
+</li>
+</ul>
+
+<h2>Content</h2>
+<ul>
+<li>
+The QuickUI framework recognizes that, in most cases, a given user interface
+control will have portion of it that represents the control’s primary “content”.
+In simple cases, such as a button, the button’s content is its label. In more
+complex cases, such as a tab in a set of tabs, the tab’s content is the
+collection of elements shown when the tab is selected (as opposed to the tab’s
+label, which appears in the set of tab buttons).
+</li> 
+<li>
+QuickUI defines a general notion of element content via a getter/setter property
+called content(). The base implementation of this property handles standard HTML
+elements. The content of an input control is defined as its value via $.val().
+The content of any other standard element is the array of child nodes. (For
+comparison, jQuery provides a $.contents() function – with a final “s” – that
+returns child nodes, but QuickUI’s content() function is writeable, whereas
+jQuery’s $.contents() is read-only.
+</li>
+<li>
+The QuickUI content() property attempts to normalize content values. For
+example, if the content of a div element is a single text node, the text node
+is returned as a simple string, rather than an array containing a single text
+node. This simplifies the transfer of values out of the DOM, e.g., for the
+purpose of sending data to the server.
+</li>
+<li>
+Control classes can override the base content() property to redefine what they
+consider to be their “content”.
+</li>
+</ul>
+
+<h2>Subclasses can fill in “slots” in DOM elements created by their superclasses</h2>
+<ul>
+<li>
+The combination of subclass-ability and getter/setter property functions which
+manipulate the contents of a control’s internal DOM elements, leads to a
+powerful model in which base classes can define multiple “slots” in their UI.
+</li>
+<li>
+These “slots” can be filled in by subclasses. That is, a base control can fill
+out part of its UI and leave multiple slots which can be filled in by
+subclasses. The subclasses can fill in these slots with their own UI elements.
+</li>
+<li>
+Subclasses in turn can leaves slots to be filled in by more specific subclasses.
+</li>
+</ul>
+
+<h2>Element reference functions</h2>
+<ul>
+<li>
+Once a control populates its DOM with various elements, it can be problematic
+later on to reacquire references to those elements. For example, per the above
+discussion of “slots”, a control’s content may be partially filled out by
+subclasses. These subclasses may add elements within the control’s DOM with
+conflicting IDs or CSS classes.
+</li>
+<li>
+To ensure a control can work with the elements it, itself, has added to the DOM,
+QuickUI provides support for element reference functions. These functions
+capture a reference to an element at the moment the element is first created.
+The reference can later be retrieved to obtain the original element, without
+concern that a similar element may have since been introduced to the DOM.
+</li>
+<li>
+Element reference functions are jQuery plugins that can be applied to a jQuery
+array and are chainable. In essence, an element reference function is a mapping
+function that maps a jQuery array of controls to an array of corresponding
+elements within those controls.
+</li>
+</ul>
+
+<h2>Generic styling</h2>
+<ul>
+<li>
+QuickUI encourages control authors to provide as little aesthetic styling as
+possible, simplifying the adaptation of a control to a product’s particular
+visual aesthetic.
+</li>
+<li>
+At the same time, it’s useful for a control author to define some very basic
+styling for the control so that it can be used without requiring any styling.
+</li>
+<li>
+For this purpose, QuickUI defines a notion of a “generic” style. A control shows
+its generic style by default.
+</li>
+<li>
+A control host can explicit turn off the generic style.
+</li>
+<li>
+If a control is subclassed, the generic style is automatically surpressed.
+</li>
+</ul>
+
+<h2>Search Engine Optimization</h2>
+<ul>
+<li>
+QuickUI controls can be created dynamically in JavaScript. Such controls are
+said to be in a “live” state in which they can be programmatically manipulated.
+</li>
+<li>
+It’s disadvantageous for sites to completely define pages via JavaScript code;
+much of the site’s content may not be crawlable by a web search engine, leading
+to poor performance in web searches.
+</li>
+<li>
+Accordingly, QuickUI controls can also be created in a “dehydrated” state via
+static HTML. Standard “data-” properties are added to the static HTML to
+indicate which content should be “rehydrated” on the client as controls. The
+existence of the static content gives the resulting web page good SEO (Search
+Engine Optimization) characteristics. Once the controls have been rehydrated on
+the client (via inclusion of a simple script), the controls are otherwise
+indistinguishable from controls created dynamically via JavaScript.
+</li>
+</ul>
+
+<h2>Utilities for common control needs</h2>
+<ul>
+<li>
+Sometimes a control needs to perform custom layout work, and such work may not
+be possible until the control has been actually added to the DOM. (E.g., a
+control may have zero height until it’s in the DOM.) Actually knowing when
+something has been added to the DOM can be tricky, especially in different
+browsers. QuickUI provides a cross-browser .inDocument() callback that lets a
+control perform such custom work.
+</li>
+<li>
+Similarly, QuickUI provides a cross-browser resize() event for controls that is
+fired when the control’s size changes (e.g., in response to the user resizing
+the window).
+</li>
+<li>
+The jQuery Globalize library provides access to a number of culture-specific
+details such as preferred formats for numbers, dates, and times. If the
+Globalize library is included on a page, QuickUI controls have access to the
+current culture via a .culture() property. This can be overridden on a
+per-control basis to simplify testing of controls in various cultures.
+</li> 
+<li>
+QuickUI provides several helper functions that combine a read-only jQuery
+function and a write-only jQuery function into a single read/write getter/setter
+property. E.g., jQuery’s read-only hasClass function and write-only toggleClass
+function are combined to create an applyClass function. A similar function
+provides an ability to both read and write a control’s visible state.
+</li>
+<li>
+A propertyVector function that makes it easy to set the same property on
+multiple controls while giving each control a different value for that property.
+Conversely, the current value for a single property can be obtained from
+multiple controls as an array.
+</li>
+<li>
+QuickUI defines a :control selector that can be used to find controls or test to
+see whether an element is a control. E.g., a jQuery call to find(“:control”)
+will find all controls within a given jQuery context.
+</li>
+<li>
+QuickUI provides an eachControl() looping construct that combines the function
+of jQuery’s each() loop with automatic casting to the correct control type.
+</li>
+<li>
+A catalog of common base controls allows developers to accelerate control
+development by building upon (subclassing) existing functionality.
+</li>
+<li>
+QuickUI provides control guidelines to facilitate the exchange of controls among
+different organizations.
+</li>
+</ul>
+
+</body>
+
+</html>
