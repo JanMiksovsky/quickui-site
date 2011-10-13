@@ -5,6 +5,13 @@
 
     <div id="table">
         <div>
+            <div><Link href="framework.html">Framework overview</Link></div>
+            <div>
+                A summary of the features in the QuickUI framework
+                intended for people familiar with JavaScript.
+            </div>
+        </div>
+        <div>
             <div><Link href="#page=PluginDocumentationPage">$.control() plugin</Link></div>
             <div>
                 The main jQuery plugin for creating or accessing a QuickUI control
