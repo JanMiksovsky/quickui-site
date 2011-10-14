@@ -6,6 +6,10 @@ block of text. Using $.text() won't suffice, because that won't handle
 line breaks. Using $.html() doesn't always work either, because HTML
 entities (e.g., "<") found in the text will get interpreted as HTML instead of
 being rendered as plain text.
+
+This uses a pre tag to render the text, but applies the control's own font
+If the control has a proportionally-spaced font, the pre tag will end up with that
+instead of the default pre styling.
 -->
 
 <Control name="Text">

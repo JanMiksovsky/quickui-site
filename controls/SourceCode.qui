@@ -8,6 +8,10 @@ script must be loaded for code to be colorized.
 <Control name="SourceCode" tag="pre">
 
 <style>
+{
+    white-space; pre-wrap;
+}
+
 /* Generic appearance */
 .SourceCode.generic.comment {
     color: gray;

@@ -7,7 +7,7 @@ file is provided.
 <Control name="SourceFileContents">
 
 <prototype>
-    <FileContents tabToSpaceCount="4" >
+    <FileContents>
         <SourceCode id="SourceFileContents_content" />
         <div id="linkContainer">
             <a id="link">→ <span id="linkText"/></a>
@@ -38,16 +38,18 @@ SourceFileContents.prototype.extend({
 	
 	content: Control.chain( "$SourceFileContents_content", "content" ),
 	
-	path: Control.chain( "$SourceFileContents_content", "path", function( path ) {
-
-        this.$link().attr( "href", path );
-
-        var pathNames = path ? path.split( "/" ) : null;
-        var fileName = ( pathNames && pathNames.length > 0 )
-            ? pathNames[ pathNames.length - 1 ]
-            : null;
-		this.$linkText().html( fileName );
-	})
+	path: function( path ) {
+	    result = this._super( path );
+        if ( path !== undefined ) {
+            this.$link().attr( "href", path );
+            var pathNames = path ? path.split( "/" ) : null;
+            var fileName = ( pathNames && pathNames.length > 0 )
+                ? pathNames[ pathNames.length - 1 ]
+                : null;
+    		this.$linkText().html( fileName );
+        }
+        return result;
+	}
 	
 });
 </script>

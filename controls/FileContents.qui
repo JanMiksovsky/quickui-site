@@ -1,20 +1,22 @@
 <!--
 Shows the contents of a file on the same domain.
+
 Because of the same origin policy, it's not possible to get the contents of
 a file on another domain.
-
-The file contents will have line endings normalized. If the tabToSpaceCount
-property is set to an integer, tabs will be converted to that many spaces.
 -->
 
-<Control name="FileContents">
-    
-<prototype>
-    <Text tabToSpacesCount="8" />
-</prototype>
+<Control name="FileContents" tag="pre">
 
+<style>
+{
+    white-space: pre-wrap; /* So lines wrap */
+}
+</style>
+ 
 <script>
 FileContents.prototype.extend({
+    
+    content: Control.chain( "text" ),
 
     /*
      * Path of the file whose contents should be shown. 
@@ -30,4 +32,4 @@ FileContents.prototype.extend({
 });
 </script>
 
-</Control>
+</Control>
