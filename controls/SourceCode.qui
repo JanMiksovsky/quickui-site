@@ -1,73 +1,64 @@
-<Control name="SourceCode">
+<!--
+Show a block of source code.
+Code is colorized using the excellent highlight.js plugin, which can be
+found at http://softwaremaniacs.org/soft/highlight/en/. The highlight.js
+script must be loaded for code to be colorized.
+-->
 
-<content>
-	<CodeColorizer id="SourceCode_content" />
-	<div id="_divLink">
-		<a id="link">→ <span id="linkText"/></a>
-	</div>
-</content>
+<Control name="SourceCode" tag="pre">
 
 <style>
-
-{
-	position: relative;
+/* Generic appearance */
+.SourceCode.generic.comment {
+    color: gray;
 }
 
-#_divLink {
-	top: 5px;
-	position: absolute;
-	right: 8px;
-	text-align: right;
-	width: 100%;
+.SourceCode.generic .tag {
+}
+.SourceCode.generic .tag .title {
+    color: blue;
+}
+.SourceCode.generic .tag .attribute {
+    font-style: italic;
+}
+.SourceCode.generic .tag .value {
+    color: green;
 }
 
-a#link {
-	border: none !important;
+.SourceCode.generic .css .value {
+    color: green;
 }
 
+.SourceCode.generic .javascript .keyword {
+    color: blue;
+}
+.SourceCode.generic .javascript .string {
+    color: green;
+}
 </style>
 
 <script>
 SourceCode.prototype.extend({
-	
-	content: function( source ) {
-	    if (source === undefined)
-	    {
-	        return this.$SourceCode_content().content();
-	    }
-	    else
-	    {
-            var formatted = this._normalizeLineEndings( this._tabsToSpaces( source ) );
-            this.$SourceCode_content().content( formatted );
-	    }
-	},
-	
-	fileName: function( path ) {
-		var pathNames = path.split( "/" );
-		return ( pathNames.length === 0 )
-			? null
-			: pathNames[ pathNames.length - 1 ];
-	},
-	
-	sourceFile: Control.property( function( value ) {
-		var self = this;
-		// Load the file.
-		$.get( value, function( data) {
-		    self.content( data );
-		});
-		this.$link().attr( "href", value );
-		this.$linkText().html( this.fileName(value) );
-	}),
-	
-	_normalizeLineEndings: function(s) {
-	    return s.replace(/\r\n/g, "\n");
-	},
-	
-	_tabsToSpaces: function(s) {
-		return s.replace(/\t/g, "    ");
-	}
-	
-});
+    
+    initialize: function() {
+        
+        this._super();
+        this.genericIfClassIs( SourceCode );
+        
+        this.addClass( "language-html" );
+    },
+    
+    // Using $.text() escapes the HTML/XML in the content.
+    content: Control.chain( "text", function ( content ) {
+        // Colorize code with highlight.js if installed
+        if ( window.hljs ) {
+            this.each( function( index, element ) {
+                hljs.highlightBlock( element );
+            });
+        }
+    })
+    
+})    
 </script>
 
 </Control>

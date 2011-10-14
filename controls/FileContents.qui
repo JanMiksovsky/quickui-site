@@ -1,0 +1,46 @@
+<!--
+Shows the contents of a file on the same domain.
+Because of the same origin policy, it's not possible to get the contents of
+a file on another domain.
+
+The file contents will have line endings normalized. If the tabToSpaceCount
+property is set to an integer, tabs will be converted to that many spaces.
+-->
+
+<Control name="FileContents">
+    
+<prototype>
+    <MultiLineText/>
+</prototype>
+
+<script>
+FileContents.prototype.extend({
+    
+    _spacesForTab: Control.property(),
+    
+    path: Control.property( function( path ) {
+
+        var spacesForTab = this._spacesForTab();
+
+        // Load the file.
+        var self = this;
+        $.get( path ).success( function( data) {
+            var content = spacesForTab
+                ? data.replace( /\t/g, spacesForTab )
+                : data;
+            self.content( content );
+        });
+    }),
+    
+    // If set, tabs in the file will be replaced this this many spaces.
+    tabToSpaceCount: Control.property.integer( function( count ) {
+        var spaces = count
+            ? Array( count + 1 ).join( " " )    // a run of <count> spaces
+            : null;
+        this._spacesForTab( spaces );
+    })
+    
+});
+</script>
+
+</Control>

@@ -1,0 +1,55 @@
+<!--
+Show the contents of a source code file.
+The code is colorized via the SourceCode control, and a link to the original
+file is provided.
+-->
+
+<Control name="SourceFileContents">
+
+<prototype>
+    <FileContents tabToSpaceCount="4" >
+        <SourceCode id="SourceFileContents_content" />
+        <div id="linkContainer">
+            <a id="link">→ <span id="linkText"/></a>
+        </div>
+    </FileContents>
+</prototype>
+
+<style>
+{
+	position: relative;
+}
+
+#linkContainer {
+	top: 5px;
+	position: absolute;
+	right: 8px;
+	text-align: right;
+	width: 100%;
+}
+
+a#link {
+	border: none !important;
+}
+</style>
+
+<script>
+SourceFileContents.prototype.extend({
+	
+	content: Control.chain( "$SourceFileContents_content", "content" ),
+	
+	path: Control.chain( "$SourceFileContents_content", "path", function( path ) {
+
+        this.$link().attr( "href", path );
+
+        var pathNames = path ? path.split( "/" ) : null;
+        var fileName = ( pathNames && pathNames.length > 0 )
+            ? pathNames[ pathNames.length - 1 ]
+            : null;
+		this.$linkText().html( fileName );
+	})
+	
+});
+</script>
+
+</Control>
