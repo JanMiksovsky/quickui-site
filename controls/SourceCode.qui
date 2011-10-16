@@ -23,7 +23,7 @@ script must be loaded for code to be colorized.
     color: blue;
 }
 .SourceCode.generic .tag .attribute {
-    font-style: italic;
+    /* font-style: italic; */
 }
 .SourceCode.generic .tag .value {
     color: green;
@@ -75,12 +75,15 @@ SourceCode.prototype.extend({
         // which add extra space unless the CDATA and its contents are
         // jammed against the opening SourceCode tag, we trim whitespace
         // at the beginning and end of the contents.
-        var trimmed = $.trim( this.content() ); 
+        var text = $.trim( this.content() ); 
+            
+        // Remove carriage returns so IE8 doesn't render extra lines.
+        text = text.replace( /\r/g, "" );
 
         // Using $.text() escapes the HTML/XML in the content.
         this
             .empty()
-            .text( trimmed );
+            .text( text );
         
         // Colorize code with highlight.js if installed
         if ( window.hljs ) {

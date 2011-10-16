@@ -4,14 +4,14 @@
 
 <style>
 {
-	display: inline;
-	font-family: Consolas, Lucida Console, Courier, Courier New, monospace;
+    display: inline;
+    font-family: Consolas, Lucida Console, Courier, Courier New, monospace;
 }
 </style>
 
 <script>
 Tag.prototype.extend({
-	content: Control.chain("$Tag_content", "content")
+    content: Control.chain("$Tag_content", "content")
 });
 </script>
 
