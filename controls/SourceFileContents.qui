@@ -6,14 +6,12 @@ file is provided.
 
 <Control name="SourceFileContents">
 
-<prototype>
-    <FileContents>
-        <SourceCode id="SourceFileContents_content" />
-        <div id="linkContainer">
-            <a id="link">→ <span id="linkText"/></a>
-        </div>
-    </FileContents>
-</prototype>
+<content>
+    <SourceCode id="SourceFileContents_content" />
+    <div id="linkContainer">
+        <a id="link">→ <span id="linkText"/></a>
+    </div>
+</content>
 
 <style>
 {
@@ -39,7 +37,15 @@ SourceFileContents.prototype.extend({
 	content: Control.chain( "$SourceFileContents_content", "content" ),
 	
 	path: function( path ) {
-	    result = this._super( path );
+
+        // Load the file's contents.
+        var self = this;
+        $.get( path )
+            .success( function( data) {
+                self.content( data );
+            });
+
+        // Show the path to the file.
         if ( path !== undefined ) {
             this.$link().attr( "href", path );
             var pathNames = path ? path.split( "/" ) : null;
@@ -48,7 +54,8 @@ SourceFileContents.prototype.extend({
                 : null;
     		this.$linkText().html( fileName );
         }
-        return result;
+        
+        return this;
 	}
 	
 });

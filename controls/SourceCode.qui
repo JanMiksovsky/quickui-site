@@ -44,19 +44,28 @@ script must be loaded for code to be colorized.
 <script>
 SourceCode.prototype.extend({
     
+    // TODO: Remove this complexity once Highlight.js can handle working
+    // against a pre element not in the DOM.
+    _needsRefresh: Control.property.bool(),
+    
     initialize: function() {
         this._super();
         this
             .genericIfClassIs( SourceCode )
             .addClass( "language-html" )
             .inDocument( function( $control ) {
-                $control._refresh();
+                if ( $control._needsRefresh() ) {
+                    $control._refresh();
+                    $control._needsRefresh( false );
+                }
             });
     },
     
     content: Control.property( function ( content ) {
         if ( this.inDocument() ) {
             this._refresh();
+        } else {
+            this._needsRefresh( true );
         }
     }),
     
