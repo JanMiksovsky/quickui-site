@@ -45,22 +45,41 @@ script must be loaded for code to be colorized.
 SourceCode.prototype.extend({
     
     initialize: function() {
-        
         this._super();
-        this.genericIfClassIs( SourceCode );
-        
-        this.addClass( "language-html" );
+        this
+            .genericIfClassIs( SourceCode )
+            .addClass( "language-html" )
+            .inDocument( function( $control ) {
+                $control._refresh();
+            });
     },
     
-    // Using $.text() escapes the HTML/XML in the content.
-    content: Control.chain( "text", function ( content ) {
+    content: Control.property( function ( content ) {
+        if ( this.inDocument() ) {
+            this._refresh();
+        }
+    }),
+    
+    _refresh: function() {
+        
+        // To simplify the use of this control with CDATA elements,
+        // which add extra space unless the CDATA and its contents are
+        // jammed against the opening SourceCode tag, we trim whitespace
+        // at the beginning and end of the contents.
+        var trimmed = $.trim( this.content() ); 
+
+        // Using $.text() escapes the HTML/XML in the content.
+        this
+            .empty()
+            .text( trimmed );
+        
         // Colorize code with highlight.js if installed
         if ( window.hljs ) {
             this.each( function( index, element ) {
                 hljs.highlightBlock( element );
             });
         }
-    })
+    }
     
 })    
 </script>
