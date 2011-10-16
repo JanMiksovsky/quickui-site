@@ -41,6 +41,7 @@ pre {
     background-color: #faf3ed;
     border: 1px solid #d7c5b4;
     font-family: Inconsolata, Courier, Courier New, monospace;
+    font-size: 11pt;
     padding: 10px;
     white-space: pre-wrap;
 }

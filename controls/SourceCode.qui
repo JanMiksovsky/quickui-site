@@ -13,7 +13,7 @@ script must be loaded for code to be colorized.
 }
 
 /* Generic appearance */
-.SourceCode.generic.comment {
+.SourceCode.generic .comment {
     color: gray;
 }
 
