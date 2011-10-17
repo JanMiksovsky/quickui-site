@@ -87,9 +87,13 @@ SourceCode.prototype.extend({
         
         // Colorize code with highlight.js if installed
         if ( window.hljs ) {
-            this.each( function( index, element ) {
-                hljs.highlightBlock( element );
-            });
+            // HACK: disable highlighting in IE8, which does weird things
+            // with formatted XML tags, until this can be resolved. 
+            if ( !$.browser.msie || parseInt( $.browser.version ) >= 9 ) {
+                this.each( function( index, element ) {
+                    hljs.highlightBlock( element );
+                });
+            }
         }
     }
     
