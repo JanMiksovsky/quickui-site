@@ -6,9 +6,9 @@ You’ve clicked this <span id="count">0</span> times.
 
 <style>
 {
-    user-select: none;
     -khtml-user-select:none;
     -moz-user-select: none;
+    user-select: none;
 }
 </style>
 
@@ -17,10 +17,16 @@ Counter.prototype.extend({
     initialize: function() {
         // Points to above span.
         var $count = this.$count();
-        this.click(function() {
-            $count.text(1 +
-             parseInt($count.text()));
+        this.click( function( event ) {
+            $count.text(1 + parseInt( $count.text() ) );
         });
+        
+        // Extra measures to disable text selection on double-click
+        if ( $.browser.msie ) {
+            this.bind( "selectstart", function() { return false; } );
+        } else if ( !$.browser.mozilla ) {
+            this.mousedown( function() { return false; } );
+        }
     }
 });
 </script>
