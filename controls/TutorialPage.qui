@@ -27,7 +27,7 @@ TutorialPage.prototype.extend({
     initialize: function() {
         this._super();
         // Turn plain pre tags into colorized source code.
-        this.find( "pre" ).not( ".Control" ).control( CodeColorizer );
+        //this.find( "pre" ).not( ".Control" ).control( SourceCode );
     }
     
 });
