@@ -1,17 +1,17 @@
 <Control name="Greet">
-	
-	Hello, <i><span id="Greet_content"/></i>!
+    
+    Hello, <i><span id="Greet_content"/></i>!
 
 <script>
 Greet.prototype.extend({
-	content: function( value ) {
-	    if ( value === undefined ) {
+    content: function( value ) {
+        if ( value === undefined ) {
             return this.$Greet_content().eq(0).html();
-	    } else {
+        } else {
             this.$Greet_content().html( value );
             return this;
-	    }
-	}
+        }
+    }
 });
 </script>
 

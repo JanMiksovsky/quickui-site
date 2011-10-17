@@ -18,31 +18,31 @@ Quick markup is comprised of the following element types, each identified by sim
 </p>
 
 <ol>
-	<li>
-		A single outer <Tag>Control</Tag> tag. This is analogous to an <Tag>html</Tag> tag for a document.
-		The tag name, “Control”, must be capitalized.
-	</li>
-	<li>
-		HTML body elements. Any standard HTML 5 tag (<Tag>p</Tag>, <Tag>input</Tag>, etc.)
-		that can be used within the <Tag>body</Tag> of an HTML document is recognized
-		as HTML. The standard HTML tags are considered reserved in Quick markup, and may
-		not be used to define custom members (below). HTML tags that are only valid outside
-		the <Tag>body</Tag>, such as <Tag>head</Tag>, <Tag>title</Tag>, etc., are not
-		reserved in Quick markup.
-	</li>
-	<li>
-		Quick class tags. These allow you to instantiate one Quick control inside another.
-		They correspond to JavaScript classes that derive from the Quick control base class,
-		Control. Quick class tags begin with an uppercase letter, e.g., <Tag>Greet</Tag>.
-		This corresponds to the common JavaScript convention in which class names follow
-		Pascal casing. A class tag may not the name of a standard HTML element (see above).
-	</li>
-	<li>
-		Quick property tags. As their name suggests, these correspond to JavaScript properties
-		(instance variables). Quick property tags begin with an lowercase letter, e.g., <Tag>name</Tag>.
-		This corresponds to the JavaScript convention in which property names follow camel casing.
-		A property tag may not the name of a standard HTML element (see above).
-	</li>
+    <li>
+        A single outer <Tag>Control</Tag> tag. This is analogous to an <Tag>html</Tag> tag for a document.
+        The tag name, “Control”, must be capitalized.
+    </li>
+    <li>
+        HTML body elements. Any standard HTML 5 tag (<Tag>p</Tag>, <Tag>input</Tag>, etc.)
+        that can be used within the <Tag>body</Tag> of an HTML document is recognized
+        as HTML. The standard HTML tags are considered reserved in Quick markup, and may
+        not be used to define custom members (below). HTML tags that are only valid outside
+        the <Tag>body</Tag>, such as <Tag>head</Tag>, <Tag>title</Tag>, etc., are not
+        reserved in Quick markup.
+    </li>
+    <li>
+        Quick class tags. These allow you to instantiate one Quick control inside another.
+        They correspond to JavaScript classes that derive from the Quick control base class,
+        Control. Quick class tags begin with an uppercase letter, e.g., <Tag>Greet</Tag>.
+        This corresponds to the common JavaScript convention in which class names follow
+        Pascal casing. A class tag may not the name of a standard HTML element (see above).
+    </li>
+    <li>
+        Quick property tags. As their name suggests, these correspond to JavaScript properties
+        (instance variables). Quick property tags begin with an lowercase letter, e.g., <Tag>name</Tag>.
+        This corresponds to the JavaScript convention in which property names follow camel casing.
+        A property tag may not the name of a standard HTML element (see above).
+    </li>
 </ol>
 
 <p>
@@ -69,12 +69,12 @@ we'll see the JavaScript which the qc compiler has generated:
 </p>
 <SourceCode sourceFile="build/Greet.js" />
 <p>
-	This code defines Greet as a subclass of a class called Control, the base class from
-	which all QuickUI controls eventually derive. Control itself is a subclass of
-	the standard jQuery object. This means Greet inherits all the normal jQuery
-	operations, as well as some additional methods for working with controls.
-	Later on, we'll see how we can define class-specific methods and properties 
-	for the Greet class which will only be available to Greet instances.
+    This code defines Greet as a subclass of a class called Control, the base class from
+    which all QuickUI controls eventually derive. Control itself is a subclass of
+    the standard jQuery object. This means Greet inherits all the normal jQuery
+    operations, as well as some additional methods for working with controls.
+    Later on, we'll see how we can define class-specific methods and properties 
+    for the Greet class which will only be available to Greet instances.
 </p>
 <p>
     The function renderGreet() above is a compiled version of the original Quick
@@ -101,7 +101,7 @@ This produces the desired output, now with italics:
 </p>
 
 <CodeOutput>
-	<Greet />
+    <Greet />
 </CodeOutput>
 
 <h2>QuickUI classes as HTML element classes</h2>

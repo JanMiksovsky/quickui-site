@@ -33,17 +33,17 @@ This is one of two approaches to defining control behavior with JavaScript:
 </p>
 
 <ol>
-	<li>
-		Embed the JavaScript in the Quick markup file (as shown above). This approach simplifies maintenance,
-		as the markup and its accompanying code travel together. The disadvantage is that the embedded code
-		will end up getting copied into the generated JavaScript file, which will complicate debugging.
-	</li>
-	<li>
-		Put a control's JavaScript in a separate .js file. This is called the "code behind" approach.
-		The advantage of this approach is that you can debug the JavaScript as you would any other code.
-		The disadvantages are that the control and its associated JavaScript will live in separate files,
-		complicating maintenance; you'll also have more .js dependencies to track and reference in HTML files.
-	</li>
+    <li>
+        Embed the JavaScript in the Quick markup file (as shown above). This approach simplifies maintenance,
+        as the markup and its accompanying code travel together. The disadvantage is that the embedded code
+        will end up getting copied into the generated JavaScript file, which will complicate debugging.
+    </li>
+    <li>
+        Put a control's JavaScript in a separate .js file. This is called the "code behind" approach.
+        The advantage of this approach is that you can debug the JavaScript as you would any other code.
+        The disadvantages are that the control and its associated JavaScript will live in separate files,
+        complicating maintenance; you'll also have more .js dependencies to track and reference in HTML files.
+    </li>
 </ol>
 
 <h2>Control properties as setter/getter functions</h2>
@@ -52,29 +52,29 @@ The code above uses a jQuery-flavored approach to defining control properties, b
 language and many alternative routes are possible. Some notes on the particular choices made here:
 </p>
 <ul>
-	<li>
-		Here the code calls extend() utility function inherited from jQuery
-		(remember, Greet ultimately inherits from jQuery)
-		to add a property to the Greet class by modifying the class’ prototype.
-		As we add more properties, the extend() approach is very compact.
-	</li>
-	<li>
-		Also following jQuery convention, QuickUI control classes generally define properties as setter/getter functions.
-		These are functions that accept a single value. If the value is undefined (missing), the function call behaves as
-		a getter, and returns the current value of the property. If the function call includes a value, the function sets
-		the property to that value.
-	</li>
-	<li>
-	    The getter function returns the value on the first element.
-	    The setter function returns "this" to support jQuery-style chaining.
-	</li>
-	<li>
-		In this particular property example, we’re defining a property called “content” that will form the significant
-		chunk of the control’s DOM. The easiest way to store this property is in the DOM itself, directly delegating
-		responsibility for getting and setting the property value to the jQuery html() function. That particular
-		function gets or sets the inner HTML for an element. Here it will get or set the inner HTML for the <Tag>span</Tag>
-		tag using the reference we defined in the Quick markup.		
-	</li>
+    <li>
+        Here the code calls extend() utility function inherited from jQuery
+        (remember, Greet ultimately inherits from jQuery)
+        to add a property to the Greet class by modifying the class’ prototype.
+        As we add more properties, the extend() approach is very compact.
+    </li>
+    <li>
+        Also following jQuery convention, QuickUI control classes generally define properties as setter/getter functions.
+        These are functions that accept a single value. If the value is undefined (missing), the function call behaves as
+        a getter, and returns the current value of the property. If the function call includes a value, the function sets
+        the property to that value.
+    </li>
+    <li>
+        The getter function returns the value on the first element.
+        The setter function returns "this" to support jQuery-style chaining.
+    </li>
+    <li>
+        In this particular property example, we’re defining a property called “content” that will form the significant
+        chunk of the control’s DOM. The easiest way to store this property is in the DOM itself, directly delegating
+        responsibility for getting and setting the property value to the jQuery html() function. That particular
+        function gets or sets the inner HTML for an element. Here it will get or set the inner HTML for the <Tag>span</Tag>
+        tag using the reference we defined in the Quick markup.        
+    </li>
 </ul>
 
 <p>

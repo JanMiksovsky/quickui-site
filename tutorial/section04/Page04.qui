@@ -40,7 +40,7 @@ standard HTML “id” attribute. We can replace the static text “world” use
 (We could make this more efficient by assigning the ID to the <Tag>i</Tag> tag itself,
 but the above arrangement is more convenient for some modifications we’ll make later.)
 </p>
-	
+    
 <h2>Element functions</h2>
 
 <p>

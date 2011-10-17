@@ -1,11 +1,11 @@
 <Control name="Greet">
-	
-	Hello, <span id="Greet_content"/><span id="Greet_punctuation">.</span>
+    
+    Hello, <span id="Greet_content"/><span id="Greet_punctuation">.</span>
 
 <script>
 Greet.prototype.extend({
-	content: Control.chain( "$Greet_content", "content" ),
-	punctuation: Control.chain( "$Greet_punctuation", "content" )
+    content: Control.chain( "$Greet_content", "content" ),
+    punctuation: Control.chain( "$Greet_punctuation", "content" )
 });
 </script>
 

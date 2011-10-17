@@ -4,8 +4,8 @@
 
 <style>
 {
-	display: inline;
-	font-family: Consolas, Lucida Console, Courier, Courier New, monospace;
+    display: inline;
+    font-family: Consolas, Lucida Console, Courier, Courier New, monospace;
 }
 </style>
 

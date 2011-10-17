@@ -8,13 +8,13 @@
 
 <script>
 Link.prototype.extend({
-	href: Control.chain("prop/href"),
-	initialize: function() {
-	    if (this.href() == "")
-	    {
+    href: Control.chain("prop/href"),
+    initialize: function() {
+        if (this.href() == "")
+        {
             this.href("javascript:");
-	    }
-	}
+        }
+    }
 });
 </script>
 

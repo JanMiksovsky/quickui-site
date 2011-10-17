@@ -1,27 +1,27 @@
 <Control name="Logo">
 
 <content>
-		<Link href="/home/default.html" id="logotype">
-			<span class="bracket">&lt;</span>QuickUI<span class="bracket">&gt;</span>
-		</Link>
-		<div id="tagline">Web control framework</div>
+        <Link href="/home/default.html" id="logotype">
+            <span class="bracket">&lt;</span>QuickUI<span class="bracket">&gt;</span>
+        </Link>
+        <div id="tagline">Web control framework</div>
 </content>
 
 <style>
 #logotype {
-	border: none !important;
-	color: white !important;
-	font-size: 24pt;
-	font-weight: bold;
+    border: none !important;
+    color: white !important;
+    font-size: 24pt;
+    font-weight: bold;
 }
 
 .bracket {
-	color: #D7C5B4;
-	font-weight: normal;
+    color: #D7C5B4;
+    font-weight: normal;
 }
 
 #tagline {
-	font-size: 10pt;
+    font-size: 10pt;
 }
 </style>
 

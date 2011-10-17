@@ -1,13 +1,13 @@
 <Control name="Sample">
 
 <content>
-	<h1>QuickUI sample</h1>
-	<Greet>Alice</Greet>
-	<EmphaticGreet>Bob</EmphaticGreet>
-	<Greet punctuation="?" enabled="false">
-		<i>Carol</i>
-	</Greet>
-	<EmphaticGreet>David</EmphaticGreet>
+    <h1>QuickUI sample</h1>
+    <Greet>Alice</Greet>
+    <EmphaticGreet>Bob</EmphaticGreet>
+    <Greet punctuation="?" enabled="false">
+        <i>Carol</i>
+    </Greet>
+    <EmphaticGreet>David</EmphaticGreet>
 </content>
 
 </Control>

@@ -15,28 +15,28 @@ file is provided.
 
 <style>
 {
-	position: relative;
+    position: relative;
 }
 
 #linkContainer {
-	top: 5px;
-	position: absolute;
-	right: 8px;
-	text-align: right;
-	width: 100%;
+    top: 5px;
+    position: absolute;
+    right: 8px;
+    text-align: right;
+    width: 100%;
 }
 
 a#link {
-	border: none !important;
+    border: none !important;
 }
 </style>
 
 <script>
 SourceFileContents.prototype.extend({
-	
-	content: Control.chain( "$SourceFileContents_content", "content" ),
-	
-	path: function( path ) {
+    
+    content: Control.chain( "$SourceFileContents_content", "content" ),
+    
+    path: function( path ) {
 
         // Load the file's contents.
         var self = this;
@@ -52,12 +52,12 @@ SourceFileContents.prototype.extend({
             var fileName = ( pathNames && pathNames.length > 0 )
                 ? pathNames[ pathNames.length - 1 ]
                 : null;
-    		this.$linkText().html( fileName );
+            this.$linkText().html( fileName );
         }
         
         return this;
-	}
-	
+    }
+    
 });
 </script>
 

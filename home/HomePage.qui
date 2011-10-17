@@ -4,7 +4,7 @@
 <SitePage area="Home" title="QuickUI web control framework">
 
 <sidebar>
-	<GetStartedModule/>
+    <GetStartedModule/>
 </sidebar>
 
 <p>

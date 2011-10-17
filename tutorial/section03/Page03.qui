@@ -47,7 +47,7 @@ Opening this page now produces three instances of our Greet control:
 </p>
 
 <CodeOutput>
-	<Sample/>
+    <Sample/>
 </CodeOutput>
 
 <p>
