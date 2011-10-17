@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="home/home.css" />
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="../thirdParty/highlight.min.js"></script>
 <script type="text/javascript" src="../lib/quickui.js"></script>
 <script type="text/javascript" src="../plugins/quickui.rehydrate.js"></script>
 <script type="text/javascript" src="../quicommon/quicommon.js"></script>
@@ -23,6 +24,8 @@
 <div data-property="sidebar">
     <div data-control="GetStartedModule"></div>
 </div>
+
+<!-- Introduction -->
 
 <p>
 QuickUI (Quick User Interface) is a framework that simplifies the design,
@@ -72,6 +75,38 @@ The page you are reading now (and this entire site) is built using QuickUI.
 The following brief demos of various QuickUI aspects each show the live output
 of a QuickUI control running on this page.
 </p>
+
+
+<!-- Features -->
+
+<!-- HTML macros -->
+<div data-control="Feature" data-demoClass="FeatureHtmlMacrosDemo">
+
+    <p>
+        <div data-control="ScreencastLink"
+            href="http://www.youtube.com/watch?v=LF8agaCt0v4">
+            Video: Creating an HTML macro
+        </div>
+    </p>
+    <p>
+        Define your own tag to stand for a block of HTML content. This content
+        will get inserted wherever you use that tag.
+    </p>
+
+<div data-property="name">HTML macros</div>
+<div data-property="source">
+&lt;Control name="Greet"&gt;
+Hello &lt;i&gt;world!&lt;/i&gt;
+&lt;/Control&gt;
+</div>
+<div data-property="example">
+&lt;Greet/&gt;
+Yes!
+&lt;Greet/&gt;
+</div>
+</div>
+
+<!-- Conclusion -->
 
 <h2 class="section">Next steps</h2>
 
