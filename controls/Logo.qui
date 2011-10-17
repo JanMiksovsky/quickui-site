@@ -1,7 +1,7 @@
 <Control name="Logo">
 
 <content>
-        <Link href="/home/default.html" id="logotype">
+        <Link href="/" id="logotype">
             <span class="bracket">&lt;</span>QuickUI<span class="bracket">&gt;</span>
         </Link>
         <div id="tagline">Web control framework</div>

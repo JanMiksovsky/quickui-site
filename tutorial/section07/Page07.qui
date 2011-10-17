@@ -121,7 +121,7 @@ $(".Greet")                 // Get all Greet elements on the page.
     .punctuation( "!" );    // Set the punctunation of all of them.
 </pre>
 
-<Link href="/tutorial/section08/default.html">Next ></Link>
+<Link href="/tutorial/section08">Next ></Link>
 
 </TutorialPage>
 </prototype>

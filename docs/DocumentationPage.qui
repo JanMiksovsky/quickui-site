@@ -3,11 +3,11 @@
 <prototype>
     <SitePage area="Docs">
         <navigationLinks>
-            <Link id="linkIndex" href="default.html#page=DocumentationMainPage">Index</Link>
+            <Link id="linkIndex" href="index.html#page=DocumentationMainPage">Index</Link>
             <Link href="framework.html">Framework overview</Link>
-            <Link href="default.html#page=PluginDocumentationPage">$.control() plugin</Link>
-            <Link href="default.html#page=ControlDocumentationPage">Control class</Link>
-            <Link href="default.html#page=GuidelinesDocumentationPage">Guidelines</Link>
+            <Link href="index.html#page=PluginDocumentationPage">$.control() plugin</Link>
+            <Link href="index.html#page=ControlDocumentationPage">Control class</Link>
+            <Link href="index.html#page=GuidelinesDocumentationPage">Guidelines</Link>
         </navigationLinks>
     </SitePage>
 </prototype>

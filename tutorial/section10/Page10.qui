@@ -98,7 +98,7 @@ so the CSS will apply to both. However, in such cases it is generally desired to
 apply the same formatting to both, so the end result is usually acceptable.)
 </p>
 
-<Link href="/tutorial/section11/default.html">Next ></Link>
+<Link href="/tutorial/section11">Next ></Link>
 
 </TutorialPage>
 </prototype>

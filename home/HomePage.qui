@@ -65,10 +65,10 @@ of a QuickUI control running on this page.
 <h2 class="section">Next steps</h2>
 
 <p>
-The <Link href="/tutorial/section01/default.html">tutorial</Link>
+The <Link href="/tutorial">tutorial</Link>
 walks through the development of a simple control step-by-step.
 You can see some sample and ready-to-use QuickUI controls in the
-<Link href="/catalog/default.html">Catalog</Link>.
+<Link href="/catalog">Catalog</Link>.
 </p>
 
 <p>
@@ -77,7 +77,7 @@ is open under the <Link href="http://www.opensource.org/licenses/mit-license.php
 </p>
 
 <p>
-<Link href="/downloads/default.html">Download QuickUI</Link>
+<Link href="/downloads">Download QuickUI</Link>
 </p>
 
 <br/>

@@ -11,7 +11,7 @@
 
 <p>    
     You can
-    <Link href="/downloads/default.html">download QuickUI</Link> and then follow
+    <Link href="/downloads">download QuickUI</Link> and then follow
     along yourself, or you can read through this first to get a feel for what it’s like
     to develop in QuickUI.
 </p>
@@ -153,7 +153,7 @@ As with any user interface framework, we’ve had to jump through a number of ho
 to produce a trivial result, but now we’ve laid the foundation for more complex results.
 </p>
 
-<Link href="/tutorial/section02/default.html">Next ></Link>
+<Link href="/tutorial/section02">Next ></Link>
 
 </TutorialPage>
 </prototype>

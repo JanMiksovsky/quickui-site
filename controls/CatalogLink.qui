@@ -8,7 +8,7 @@
 CatalogLink.prototype.extend({
     content: function( content ) {
         if ( content !== undefined ) {
-            this.href( href="/catalog/default.html#page=" + content + "About" );
+            this.href( href="/catalog/#page=" + content + "About" );
         }
         return this._super( content );
     }

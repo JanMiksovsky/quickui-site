@@ -3,8 +3,8 @@
 <content>
     <h2>Get started</h2>
     <ul>
-        <li><Link href="/downloads/default.html">Download QuickUI</Link></li>
-        <li><Link href="/tutorial/section01/default.html">Read the Tutorial</Link></li>
+        <li><Link href="/downloads">Download QuickUI</Link></li>
+        <li><Link href="/tutorial">Read the Tutorial</Link></li>
     </ul>
 </content>
 

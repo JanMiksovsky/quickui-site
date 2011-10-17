@@ -1,39 +1,56 @@
-<Control name="DownloadPage">
-<prototype>
-<SitePage area="Download" title="Download QuickUI">
-    
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../quicommon/quicommon.css" />
+<link rel="stylesheet" type="text/css" href="../controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="../site.css" />
+<link rel="stylesheet" type="text/css" href="downloads.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="../lib/quickui.js"></script>
+<script type="text/javascript" src="../plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="../quicommon/quicommon.js"></script>
+<script type="text/javascript" src="../controls/controls.js"></script>
+<script type="text/javascript" src="downloads.js"></script>
+
+<body data-create-controls="true" data-control="SitePage" data-area="Download" data-title="Download QuickUI">
+
 <p>
-You can download the QuickUI tools here, or 
-build the QuickUI tools yourself from the
-<Link href="https://github.com/JanMiksovsky/quickui">source code</Link>.
-</p>
-    
+    You can download the QuickUI tools here, or 
+    build the QuickUI tools yourself from the
+      <a data-control="Link" href="https://github.com/JanMiksovsky/quickui">
+       QuickUI repository on GitHub</a>.
+<p>
+
 <h2>Windows</h2>
 
 <ol>
-    <li><Link href="/downloads/QuickUI%20Setup.msi">Download the installer</Link>.</li>
+    <li><a data-control="Link" href="/downloads/QuickUI%20Setup.msi">Download the installer</a>.</li>
     <li>Add the QuickUI tools folder (e.g., C:\Program Files\QuickUI\bin) to your path.</li>
 </ol>
 
-<h2>Mac OS/X</h2>
+<h2>Mac OS/X and Linux</h2>
 <ol>
     <li>
-    Download <Link href="http://www.mono-project.com">Mono</Link>.
+    Download <a data-control="Link" href="http://www.mono-project.com">Mono</a>.
     The QuickUI tools themselves are written in .NET,
-    and the Mono binaries allow QuickUI to run fine on OS/X.
+    and the Mono binaries allow QuickUI to run on OS/X and Linux.
     (You can use the QuickUI tools with complete disregard for their .NET heritage;
     all actual coding for QuickUI controls is done in plain JavaScript.
     For those with an allergic reaction to .NET, a Python port is being explored.
     Help with that would be welcomed.)
     </li>
-    <li>Download <Link href="/downloads/QuickUI.zip">QuickUI.zip</Link> and expand it.</li>
+    <li>Download <a data-control="Link" href="/downloads/QuickUI.zip">QuickUI.zip</a> and expand it.</li>
     <li>Copy the expanded contents to a location, e.g., /Developer/Applications/QuickUI.</li>
     <li>Add the resulting location of the QuickUI bin folder (e.g., /Developer/Applications/QuickUI/bin) to your path.</li>
     <li>If you installed in a location other than /Developer/Applications/QuickUI,
     then update the qb and qc scripts in the bin folder to point to the location you used.</li>
 </ol>
 
-<p>After downloading, you can run through the quick <Link href="/tutorial/section01">tutorial</Link>.</p>
+<p>After downloading, you can run through the quick <a data-control="Link" href="/tutorial/section01">tutorial</a>.</p>
 
 <h1>Integrate QuickUI into a development environment</h1>
 
@@ -52,7 +69,7 @@ to easily, or automatically, invoke the qb build tool when saving QuickUI source
 <h2>TextMate</h2>
 
 <ol>
-    <li>Download and extract the <Link href="textmate/QuickUI.zip">QuickUI bundle</Link>.</li>
+    <li>Download and extract the <a data-control="Link" href="textmate/QuickUI.zip">QuickUI bundle</a>.</li>
     <li>Drag the QuickUI TextMate bundle into the TextMate Bundle Editor window.</li>
     <li>
         Make sure your TextMate preferences include the qb/bin folder on your path.
@@ -66,8 +83,8 @@ to easily, or automatically, invoke the qb build tool when saving QuickUI source
 
 <h2>Aptana Studio</h2>
 
-You can configure <Link href="http://www.aptana.com/studio">Aptana Studio</Link>
-on OS/X or Windows to automatically build a QuickUI project whenever a project file is saved.
+You can configure <a data-control="Link" href="http://www.aptana.com/studio">Aptana Studio</a>
+to automatically build a QuickUI project whenever a project file is saved.
 
 <ol>
     <li>Create or open a project in Aptana Studio.</li>
@@ -101,11 +118,10 @@ To get most of the benefits of Aptana's HTML editor, in Aptana'a Preferences
 dialog, under General / Editors / File Associates, set the editor for *.qui files
 to be “Aptana HTML Editor”. The editor will complain about the custom tags in
 Quick markup, but that won't prevent you from getting work done, and you'll
-pick up smart editing for the contents of <Tag>style</Tag> and <Tag>script</Tag> tags. 
+pick up smart editing for the contents of <span data-control="Tag">style</span>
+and <span data-control="Tag">script</span> tags. 
 </p>
 
-</SitePage>
+</body>
 
-</prototype>
-
-</Control>
+</html>
