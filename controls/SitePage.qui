@@ -109,15 +109,25 @@
 <script>
 SitePage.prototype.extend({
     
-    area: Control.property(),
     content: Control.chain("$SitePage_content", "content"),
     navigationLinks: Control.chain("$SitePage_navigationLinks", "content"),
     sidebar: Control.chain("$SitePage_sidebar", "content"),
     
     initialize: function() {
-        this.$navigationBar().highlightCurrentArea();
+        
+        this._super();
         this.$SitePage_navigationLinks().highlightCurrentPage();
+        
+        if ( this.$SitePage_title().content().length === 0
+            && this.title().length > 0 ) {
+            // Extract default page heading from dehydrated document title.
+            this.title( this.title() );
+        }
     },
+    
+    area: Control.property( function( area ) {
+        this.$navigationBar().highlightCurrentArea();
+    }),
     
     title: function(value) {
         if (value === undefined)

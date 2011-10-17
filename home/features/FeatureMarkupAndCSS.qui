@@ -1,6 +1,6 @@
 <Control name="FeatureMarkupAndCSS">
 <prototype>
-<Feature>
+<Feature demoClass="FeatureMarkupAndCSSDemo">
 
 <name>Keep related markup and CSS right next to each other</name>
 
@@ -32,10 +32,6 @@ Old school HTML pages kept the markup and CSS right next to each other, which wa
 Quick markup has &lt;Tag&gt;style&lt;/Tag&gt; and &lt;Tag&gt;script&lt;/Tag&gt; elements, just like HTML.
 </pre>
 </example>
-
-<result>
-<FeatureMarkupAndCSSDemo/>
-</result>
 
 </Feature>
 </prototype>

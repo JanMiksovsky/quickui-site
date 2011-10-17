@@ -72,9 +72,9 @@ pre {
 Feature.prototype.extend({
     control: Control.chain("$Feature_control", "content"),
     description: Control.chain("$Feature_description", "content"),
+    demoClass: Control.chain("$Feature_result", "transmute"),
     example: Control.chain("$Feature_example", "content"),
-    name: Control.chain("$Feature_name", "content"),
-    result: Control.chain("$Feature_result", "content")
+    name: Control.chain("$Feature_name", "content")
 });
 </script>
 

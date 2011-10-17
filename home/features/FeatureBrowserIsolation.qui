@@ -1,6 +1,6 @@
 <Control name="FeatureBrowserIsolation">
 <prototype>
-<Feature>
+<Feature demoClass="FeatureBrowserIsolationDemo">
 
 <name>Isolate browser inconsistencies</name>
 
@@ -35,11 +35,6 @@ this.css(property, value);
 &lt;Gradient start="#808080" end="#f0f0f0"/&gt;
 </pre>
 </example>
-
-<result>
-<FeatureBrowserIsolationDemo/>
-</result>
-
 
 </Feature>
 </prototype>

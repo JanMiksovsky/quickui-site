@@ -1,6 +1,6 @@
 <Control name="FeatureElementIDs">
 <prototype>
-<Feature>
+<Feature demoClass="Counters">
 
 <name>Refer to DOM elements as class members</name>
 
@@ -42,12 +42,6 @@ initialize: function() {
 &lt;Counter/&gt;
 </pre>
 </example>
-
-<result>
-<Counter/>
-<Counter/>
-<Counter/>
-</result>
 
 </Feature>
 </prototype>

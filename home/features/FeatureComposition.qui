@@ -1,6 +1,6 @@
 <Control name="FeatureComposition">
 <prototype>
-<Feature>
+<Feature demoClass="SearchBox">
 
 <name>Define new controls by composing existing ones</name>
 
@@ -26,10 +26,6 @@ QuickUI controls can be used as building blocks for larger and more complex cont
 &lt;SearchBox/&gt;
 </pre>
 </example>
-
-<result>
-<SearchBox/>
-</result>
 
 </Feature>
 </prototype>

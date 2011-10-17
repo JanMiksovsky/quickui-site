@@ -1,6 +1,6 @@
 <Control name="FeatureSubclassing">
 <prototype>
-<Feature>
+<Feature demoClass="FeatureSubclassingDemo">
 
 <name>Subclassing</name>
 
@@ -71,10 +71,6 @@ buttons: Control.element(
 &lt;/Control&gt;
 </pre>
 </example>
-
-<result>
-<FeatureSubclassingDemo/>
-</result>
 
 </Feature>
 </prototype>

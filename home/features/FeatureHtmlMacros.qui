@@ -1,6 +1,6 @@
 <Control name="FeatureHtmlMacros">
 <prototype>
-<Feature>
+<Feature demoClass="FeatureHtmlMacrosDemo">
 
 <name>HTML macros</name>
 
@@ -31,10 +31,6 @@ Yes!
 &lt;Greet/&gt;
 </pre>
 </example>
-
-<result>
-<FeatureHtmlMacrosDemo/>
-</result>
 
 </Feature>
 </prototype>

@@ -1,6 +1,6 @@
 <Control name="FeatureProperties">
 <prototype>
-<Feature>
+<Feature demoClass="FeaturePropertiesDemo">
 
 <name>Easy property definition</name>
 
@@ -72,10 +72,6 @@ rating: Control.property.integer(
 &lt;/Recipe&gt;
 </pre>
 </example>
-
-<result>
-<FeaturePropertiesDemo/>
-</result>
 
 </Feature>
 </prototype>

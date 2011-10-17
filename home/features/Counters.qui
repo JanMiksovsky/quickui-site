@@ -1,0 +1,9 @@
+<Control name="Counters">
+
+<content>
+    <Counter/>
+    <Counter/>
+    <Counter/>
+</content>
+
+</Control>

@@ -1,6 +1,6 @@
 <Control name="FeatureScoping">
 <prototype>
-<Feature>
+<Feature demoClass="FeatureScopingDemo">
 
 <name>Prevent style rule collisions with style scoping</name>
 
@@ -44,10 +44,6 @@ Controls on a page are as independent of each other as possible, so you can mix 
 &lt;Green/&gt;
 </pre>
 </example>
-
-<result>
-<FeatureScopingDemo/>
-</result>
 
 </Feature>
 </prototype>
