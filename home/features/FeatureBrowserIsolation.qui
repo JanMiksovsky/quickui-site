@@ -4,14 +4,14 @@
 
 <name>Isolate browser inconsistencies</name>
 
-<description>
+<content>
 Getting something working across the mainstream browsers often involves variations
 in the CSS or JavaScript you need. Bundle up that knowledge in a control so you
 can reapply it when needed. See the complete <CatalogLink>Gradient</CatalogLink>
 source.
-</description>
+</content>
 
-<control>
+<source>
 <pre>
 &lt;Control name="Gradient"&gt;
 &lt;script&gt;
@@ -28,7 +28,7 @@ this.css(property, value);
 &lt;/script&gt;
 &lt;/Control&gt;
 </pre>
-</control>
+</source>
 
 <example>
 <pre>

@@ -4,11 +4,11 @@
 
 <name>Keep related markup and CSS right next to each other</name>
 
-<description>
+<content>
 Old school HTML pages kept the markup and CSS right next to each other, which was great for simple pages but can’t scale up to today’s complex apps. QuickUI restores this simplicity in a scalable way by letting you define a control in a single file that keeps the control’s markup and CSS rules together. No more hunting around for all the styles defined for a particular component!
-</description>
+</content>
 
-<control>
+<source>
 <pre>
 &lt;Control name="Tag"&gt;
 
@@ -25,7 +25,7 @@ Old school HTML pages kept the markup and CSS right next to each other, which wa
 …
 &lt;/Control&gt;
 </pre>        
-</control>
+</source>
 
 <example>
 <pre>

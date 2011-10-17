@@ -4,7 +4,7 @@
 
 <name>Easy property definition</name>
 
-<description>
+<content>
 
 <p>
     <ScreencastLink href="http://www.youtube.com/watch?v=skyxSnywAYo">Video: Defining control properties in QuickUI</ScreencastLink>
@@ -19,9 +19,9 @@ for control consumers define rich property values. All proprties are directly
 accessible as JavaScript class members.
 </p>
 
-</description>
+</content>
 
-<control>
+<source>
 <pre>
 &lt;Control name="Recipe"&gt;
 
@@ -53,7 +53,7 @@ rating: Control.property.integer(
 
 &lt;/Control&gt;
 </pre>
-</control>
+</source>
 
 <example>
 <pre>

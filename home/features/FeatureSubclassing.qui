@@ -4,7 +4,7 @@
 
 <name>Subclassing</name>
 
-<description>
+<content>
 Quick controls can be easily subclassed to create true prototype-based
 JavaScript subclasses. These inherit DOM elements, CSS rules, and behavior
 from their parent classes in a well-defined way. One use for subclassing
@@ -12,9 +12,9 @@ is to create templates for dialogs, page sections, or complete pages (such as
 the <CatalogLink>GalleryPage</CatalogLink> example). Subclasses generally allow
 for clean factoring of a user interface into easily maintainable and reusable
 components.
-</description>
+</content>
 
-<control>
+<source>
 <pre>
 &lt;!-- Sample dialog template --&gt;
 &lt;Control name="OrangeDialog"&gt;
@@ -44,7 +44,7 @@ buttons: Control.element(
 
 &lt;/Control&gt;
 </pre>
-</control>
+</source>
 
 <example>
 <pre>

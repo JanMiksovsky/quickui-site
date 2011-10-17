@@ -4,11 +4,11 @@
 
 <name>Define new controls by composing existing ones</name>
 
-<description>
+<content>
 QuickUI controls can be used as building blocks for larger and more complex controls. Snap together some markup, CSS, and JavaScript behavior—and now you have a new class that can be used anywhere you want. See the full <CatalogLink>SearchBox</CatalogLink> example.
-</description>
+</content>
 
-<control>
+<source>
 <pre>
 &lt;Control name="SearchBox"&gt;
 
@@ -19,7 +19,7 @@ QuickUI controls can be used as building blocks for larger and more complex cont
 …
 &lt;/Control&gt;
 </pre>
-</control>
+</source>
 
 <example>
 <pre>

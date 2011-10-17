@@ -4,7 +4,7 @@
 
 <name>Prevent style rule collisions with style scoping</name>
 
-<description>
+<content>
     
 <p>
     <ScreencastLink href="http://www.youtube.com/watch?v=uZSlmav9_w8">Video: How style scoping works</ScreencastLink>
@@ -14,9 +14,9 @@
 Controls on a page are as independent of each other as possible, so you can mix controls freely without concern for collisions in the namespaces for DOM element IDs or CSS rule names. For example, the QuickUI compiler ensures that a control’s CSS only applies to instances of that control: each control defines a corresponding CSS class, and the DOM roots of all that control’s instances are stamped with that CSS class. So if two controls define CSS for a class called, say, “message”, the generated CSS will apply the correct rules to each control.
 </p>
 
-</description>
+</content>
 
-<control>
+<source>
 <pre>
 &lt;Control name="Red"&gt;
 &lt;div class="message"&gt;I’m red&lt;/div&gt;
@@ -36,7 +36,7 @@ Controls on a page are as independent of each other as possible, so you can mix 
 &lt;/style&gt;
 &lt;/Control&gt;
 </pre>
-</control>
+</source>
 
 <example>
 <pre>

@@ -62,7 +62,7 @@ pre {
     margin-top: .5em;
 }
 
-#Feature_description {
+#Feature_content {
     font-size: 10pt;
     margin-bottom: 1em;
 }
