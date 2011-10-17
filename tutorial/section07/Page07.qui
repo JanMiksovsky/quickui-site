@@ -83,13 +83,13 @@ with an additional property to control the type of punctuation used at the end o
 greeting:
 </p>
 
-<SourceCode sourceFile="Greet.qui" />
+<SourceFileContents path="Greet.qui" />
 
 <p>
 We can then use the new slot like this:
 </p>
 
-<SourceCode sourceFile="Sample.qui" />
+<SourceFileContents path="Sample.qui" />
 
 <p>
 This produces:

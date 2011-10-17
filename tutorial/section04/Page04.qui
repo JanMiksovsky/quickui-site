@@ -34,7 +34,7 @@ standard HTML “id” attribute. We can replace the static text “world” use
 <Tag>span</Tag> that has an ID:
 </p>
 
-<SourceCode sourceFile="Greet.qui" />
+<SourceFileContents path="Greet.qui" />
 
 <p>
 (We could make this more efficient by assigning the ID to the <Tag>i</Tag> tag itself,
@@ -50,7 +50,7 @@ on the control class. The key property assignment to this.Greet_content can be f
 the generated code:
 </p>
 
-<SourceCode sourceFile="build/Greet.js" />
+<SourceFileContents path="build/Greet.js" />
 
 <p>
 The key expression is

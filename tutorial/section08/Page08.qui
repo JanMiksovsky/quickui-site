@@ -84,7 +84,7 @@ Rather than baking italics into the control, we can let the control caller decid
 and where italics are appropriate. First, we’ll remove the italics from the Greet control:
 </p>
 
-<SourceCode sourceFile="Greet.qui" />
+<SourceFileContents path="Greet.qui" />
 
 <p>
 Next, we’ll rewrite the Sample control to set the content of the various Greet instances
@@ -92,7 +92,7 @@ using the property tag syntax. And let’s take advantage of the ability to embe
 content by setting just the name of the third Greet instance in italics:
 </p>
 
-<SourceCode sourceFile="Sample.qui" />
+<SourceFileContents path="Sample.qui" />
 
 <p>
 This produces:

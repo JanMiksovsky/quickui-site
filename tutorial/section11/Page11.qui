@@ -10,7 +10,7 @@ a Greet instance. If we want the styling to apply to the entire control, we can 
 the ID reference from the rule in the <Tag>style</Tag> tag:
 </p>
 
-<SourceCode sourceFile="Greet.qui" />
+<SourceFileContents path="Greet.qui" />
 
 <p>
 This style rule is not a legal CSS rule on its own, but will get transformed into:
@@ -41,7 +41,7 @@ a <Tag>style</Tag> tag of its own. As before, we’ll also take this opportunity
 the Sample control’s prototype in a <Tag>prototype</Tag> tag.
 </p>
 
-<SourceCode sourceFile="Sample.qui" />
+<SourceFileContents path="Sample.qui" />
 
 <p>
 Now all Greet instances appear in the desired font, and the middle Greet instance

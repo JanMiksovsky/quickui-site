@@ -19,7 +19,7 @@ We can lift out these aspects and create a new subclass of Greet called
 EmphaticGreet (and stored in EmphaticGreet.qui):
 </p>
 
-<SourceCode sourceFile="EmphaticGreet.qui" />
+<SourceFileContents path="EmphaticGreet.qui" />
 
 <p>
 This control doesn’t define a <Tag>content</Tag> tag. Instead it uses a tag
@@ -53,7 +53,7 @@ original “bob” control element, and simplify the definition of the Sample co
 also add an additional instance of the EmphaticGreet class at the end:
 </p>
 
-<SourceCode sourceFile="Sample.qui" />
+<SourceFileContents path="Sample.qui" />
 
 <p>
 All instances of our new EmphaticGreet class receive the same styling and content

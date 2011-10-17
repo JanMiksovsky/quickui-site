@@ -13,7 +13,7 @@ This lets you easily compose or assemble a complex control from simpler parts.
 Let’s define a new QuickUI class called Sample, and then use our new <Tag>Greet</Tag> tag
 to create multiple instances of the Greet class:
 </p>
-<SourceCode sourceFile="Sample.qui" />
+<SourceFileContents path="Sample.qui" />
 
 <p>
 We can save the above markup in a file called Sample.qui and rebuild our project.

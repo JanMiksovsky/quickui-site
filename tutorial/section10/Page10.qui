@@ -9,7 +9,7 @@ formatting is provided by the browser. You can define formatting for a control
 through the addition of a <Tag>style</Tag> tag, much as you can in HTML:
 </p>
 
-<SourceCode sourceFile="Greet.qui" />
+<SourceFileContents path="Greet.qui" />
 
 <p>
 When the control is built, the qc compiler will extract the contents of the
@@ -62,7 +62,7 @@ If we inspect the contents of generated Greet.css file, we can see the <Tag>styl
 tag contents extracted from Greet.qui — along with a small but important transformation:
 </p>
 
-<SourceCode sourceFile="build/Greet.css" />
+<SourceFileContents path="build/Greet.css" />
 
 <p>
 The original CSS rule for #Greet_content has been prepended with a reference to the

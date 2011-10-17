@@ -10,7 +10,7 @@ control tag. Here’s our Sample control again, which holds three instances of G
 We can now give each instance different content:
 </p>
 
-<SourceCode sourceFile="Sample.qui" />
+<SourceFileContents path="Sample.qui" />
 
 <p>
 This outputs:

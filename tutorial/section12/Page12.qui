@@ -18,7 +18,7 @@ control’s ready() function, a control can have its own code execute when the c
 instantiated.
 </p>
 
-<SourceCode sourceFile="Greet.qui" />
+<SourceFileContents path="Greet.qui" />
 
 <p>
 Here the initialize() function creates a click handler for the <Tag>span</Tag> identified
