@@ -35,7 +35,7 @@
     or grab the file by clicking the link to the original source code.)
 </p>
 
-<SourceCode sourceFile="Greet.qui" />
+<SourceFileContents path="Greet.qui" />
 
 <p>
     This defines a QuickUI control called “Greet”. It does very little: it will cause
@@ -115,7 +115,7 @@ $
     following contents:
 </p>
 
-<SourceCode sourceFile="demo.html"/>
+<SourceFileContents path="demo.html"/>
 
 <p>
     This demo.html file references three required JavaScript files: the jQuery library

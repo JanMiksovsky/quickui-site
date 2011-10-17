@@ -17,7 +17,7 @@ can govern that behavior by defining a “enabled” property. When this propert
 to false, the control will ignore clicks:
 </p>
 
-<SourceCode sourceFile="Greet.qui" />
+<SourceFileContents path="Greet.qui" />
 
 <p>
 The enabled property is defined by calling the helper function applyClass(),
@@ -51,7 +51,7 @@ through markup. We can leave the first two <Tag>Greet</Tag> tags alone,
 but apply the disabled property to the third:
 </p>
 
-<SourceCode sourceFile="Sample.qui" />
+<SourceFileContents path="Sample.qui" />
 
 <p>
 With this change, clicking “Alice” or “Bob” will invoke the dialog we defined earlier,

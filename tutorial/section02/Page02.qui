@@ -59,7 +59,7 @@ have content we can embed plain HTML. Here we can extend our minimal Greet contr
 to set one word in italics with an <Tag>i</Tag> tag:
 </p>
 
-<SourceCode sourceFile="Greet.qui" />
+<SourceFileContents path="Greet.qui" />
 
 <h2>Control rendering</h2>
 
@@ -67,7 +67,7 @@ to set one word in italics with an <Tag>i</Tag> tag:
 If we recompile the updated file above and open the generated Greet.js file,
 we'll see the JavaScript which the qc compiler has generated:
 </p>
-<SourceCode sourceFile="build/Greet.js" />
+<SourceFileContents path="build/Greet.js" />
 <p>
     This code defines Greet as a subclass of a class called Control, the base class from
     which all QuickUI controls eventually derive. Control itself is a subclass of

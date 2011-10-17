@@ -55,7 +55,7 @@ different aspects of the control.
 sample Greet control to (arguably) improve legibility:
 </p>
 
-<SourceCode sourceFile="Greet.qui" />
+<SourceFileContents path="Greet.qui" />
 
 <p>
 In this light, the <Tag>content</Tag> of a control in a Quick markup file is

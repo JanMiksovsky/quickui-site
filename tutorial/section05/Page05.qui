@@ -16,7 +16,7 @@ QuickUI controls use native JavaScript to define properties. Quick markup afford
 to put this code: embed it directly in the markup inside a <Tag>script</Tag> tag, as in normal HTML.
 </p>
 
-<SourceCode sourceFile="Greet.qui" />
+<SourceFileContents path="Greet.qui" />
 
 <p>
 The qc compiler leaves the contents of a control’s <Tag>script</Tag> tag untouched, and simply appends
@@ -24,7 +24,7 @@ the tag’s contents to the bottom of the generated JavaScript output, as shown 
 (QuickUI can also be used with a “code behind” approach, described later.)
 </p>
 
-<SourceCode sourceFile="build/Greet.js" />
+<SourceFileContents path="build/Greet.js" />
 
 <h2>Two approaches to writing JavaScript for a control</h2>
 <p>
