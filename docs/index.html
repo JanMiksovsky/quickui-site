@@ -43,23 +43,38 @@
 
 <body data-create-controls="true" data-control="DocumentationPage">
 
+<p>
+QuickUI makes it easy to create new user interface components, called
+“controls”, which can be easily reused and shared. The core part of QuickUI is a
+framework that builds on top of the popular jQuery library. All aspects of
+jQuery, as well as a range of facilities designed specifically for creating and
+using controls, are available to controls built with QuickUI.
+</p>
+<p>
+Control users and authors can create controls using just the QuickUI framework
+using traditional web development tools that edit JavaScript, CSS, and HTML.
+For additional efficiency, developers can choose to use the optional QuickUI
+markup language, designed specifically to permit highly legible and maintainable
+control source code.
+</p>
+
 <div id="table">
     <div>
-        <div><Link href="framework.html">Framework overview</Link></div>
+        <div><a data-control="Link" href="framework.html">Framework overview</a></div>
         <div>
             A summary of the features in the QuickUI framework
             intended for people familiar with JavaScript.
         </div>
     </div>
     <div>
-        <div><Link href="controlPlugin.html">$.control() plugin</Link></div>
+        <div><a data-control="Link" href="controlPlugin.html">$.control() plugin</a></div>
         <div>
             The main jQuery plugin for creating or accessing a QuickUI control
             from a plain jQuery instance.
         </div>
     </div>
     <div>
-        <div><Link href="controlClass.html">Control class</Link></div>
+        <div><a data-control="Link" href="controlClass.html">Control class</a></div>
         <div>
             The base Control class from which all QuickUI control classes inherit.
             This is a subclass of jQuery, so all controls also inherit the standard
@@ -67,7 +82,7 @@
         </div>
     </div>
     <div>
-        <div><Link href="controlGuidelines.html">Guidelines</Link></div>
+        <div><a data-control="Link" href="controlGuidelines.html">Guidelines</a></div>
         <div>
             Guidelines for creating control classes that can be readily understood
             and reused by other developers.
