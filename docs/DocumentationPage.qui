@@ -3,7 +3,7 @@
 <prototype>
     <SitePage area="Docs">
         <navigationLinks>
-            <Link id="linkIndex" href="index.html#page=DocumentationMainPage">Index</Link>
+            <Link id="linkIndex" href="/docs">Index</Link>
             <Link href="framework.html">Framework overview</Link>
             <Link href="controlPlugin.html">$.control() plugin</Link>
             <Link href="controlClass.html">Control class</Link>

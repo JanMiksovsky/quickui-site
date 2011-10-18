@@ -1,29 +1,80 @@
 <!DOCTYPE html>
-
 <html>
 <head>
-    
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="../plugins/quickui.rehydrate.css" />
 <link rel="stylesheet" type="text/css" href="../quicommon/quicommon.css" />
 <link rel="stylesheet" type="text/css" href="../controls/controls.css" />
 <link rel="stylesheet" type="text/css" href="../site.css" />
 <link rel="stylesheet" type="text/css" href="docs.css" />
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-<script type="text/javascript" src="../thirdParty/jquery.ba-hashchange.js"></script>
 <script type="text/javascript" src="../lib/quickui.js"></script>
+<script type="text/javascript" src="../plugins/quickui.rehydrate.js"></script>
 <script type="text/javascript" src="../quicommon/quicommon.js"></script>
 <script type="text/javascript" src="../controls/controls.js"></script>
 <script type="text/javascript" src="docs.js"></script>
 
-<script language="JavaScript">
-$(function() {
-    Page.trackClassFromUrl(DocumentationMainPage);
-});
-</script>
+<title>QuickUI Framework Documentation</title>
+
+<style>
+#table {
+    display: table;
+}
+#table > * {
+    display: table-row;
+}
+#table > * > * {
+    display: table-cell;
+    padding-bottom: .5em;
+}
+#table > * > *:first-child {
+    white-space: nowrap;
+}
+#table > * > *:not(:last-child) {
+    padding-right: 1em;
+}
+</style>
 
 </head>
-<body/>
+
+<body data-create-controls="true" data-control="DocumentationPage">
+
+<div id="table">
+    <div>
+        <div><Link href="framework.html">Framework overview</Link></div>
+        <div>
+            A summary of the features in the QuickUI framework
+            intended for people familiar with JavaScript.
+        </div>
+    </div>
+    <div>
+        <div><Link href="controlPlugin.html">$.control() plugin</Link></div>
+        <div>
+            The main jQuery plugin for creating or accessing a QuickUI control
+            from a plain jQuery instance.
+        </div>
+    </div>
+    <div>
+        <div><Link href="controlClass.html">Control class</Link></div>
+        <div>
+            The base Control class from which all QuickUI control classes inherit.
+            This is a subclass of jQuery, so all controls also inherit the standard
+            jQuery methods.
+        </div>
+    </div>
+    <div>
+        <div><Link href="controlGuidelines.html">Guidelines</Link></div>
+        <div>
+            Guidelines for creating control classes that can be readily understood
+            and reused by other developers.
+        </div>
+    </div>
+</div>
+
+</body>
+
 </html>
