@@ -6,6 +6,7 @@ You’ve clicked this <span id="count">0</span> times.
 
 <style>
 {
+    cursor: pointer;
     -khtml-user-select:none;
     -moz-user-select: none;
     user-select: none;

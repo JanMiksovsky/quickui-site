@@ -5,7 +5,7 @@
         <div class="row">
             <div class="cell">
                 <h2 id="Feature_name"/>
-                <SourceCode id="Feature_source"/>
+                <SourceCode id="Feature_markup"/>
             </div>
             <div class="cell">
                 <div id="Feature_content"/>
@@ -73,8 +73,8 @@ Feature.prototype.extend({
     content: Control.chain( "$Feature_content", "content" ),
     demoClass: Control.chain( "$Feature_result", "transmute" ),
     example: Control.chain( "$Feature_example", "content" ),
-    name: Control.chain( "$Feature_name", "content" ),
-    source: Control.chain( "$Feature_source", "content" )
+    markup: Control.chain( "$Feature_markup", "content" ),
+    name: Control.chain( "$Feature_name", "content" )
 });
 </script>
 
