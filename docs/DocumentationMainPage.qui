@@ -12,14 +12,14 @@
             </div>
         </div>
         <div>
-            <div><Link href="#page=PluginDocumentationPage">$.control() plugin</Link></div>
+            <div><Link href="controlPlugin.html">$.control() plugin</Link></div>
             <div>
                 The main jQuery plugin for creating or accessing a QuickUI control
                 from a plain jQuery instance.
             </div>
         </div>
         <div>
-            <div><Link href="#page=ControlDocumentationPage">Control class</Link></div>
+            <div><Link href="controlClass.html">Control class</Link></div>
             <div>
                 The base Control class from which all QuickUI control classes inherit.
                 This is a subclass of jQuery, so all controls also inherit the standard
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div>
-            <div><Link href="#page=GuidelinesDocumentationPage">Guidelines</Link></div>
+            <div><Link href="controlGuidelines.html">Guidelines</Link></div>
             <div>
                 Guidelines for creating control classes that can be readily understood
                 and reused by other developers.

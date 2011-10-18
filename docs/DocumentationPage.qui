@@ -5,9 +5,9 @@
         <navigationLinks>
             <Link id="linkIndex" href="index.html#page=DocumentationMainPage">Index</Link>
             <Link href="framework.html">Framework overview</Link>
-            <Link href="index.html#page=PluginDocumentationPage">$.control() plugin</Link>
-            <Link href="index.html#page=ControlDocumentationPage">Control class</Link>
-            <Link href="index.html#page=GuidelinesDocumentationPage">Guidelines</Link>
+            <Link href="controlPlugin.html">$.control() plugin</Link>
+            <Link href="controlClass.html">Control class</Link>
+            <Link href="controlGuidelines.html">Guidelines</Link>
         </navigationLinks>
     </SitePage>
 </prototype>
