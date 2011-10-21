@@ -18,31 +18,33 @@
 <script type="text/javascript" src="../lib/quickui.js"></script>
 <script type="text/javascript" src="../plugins/quickui.rehydrate.js"></script>
 <script type="text/javascript" src="../quicommon/quicommon.js"></script>
-<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pub=janmiksovsky"></script>
 <script type="text/javascript" src="../controls/controls.js"></script>
 <script type="text/javascript" src="home/home.js"></script>
 
 <script language="JavaScript">
+/*
 $(function() {
-     //Page.trackClassFromUrl( HomePage );
+     Page.trackClassFromUrl( HomePage );
 });
+*/
 </script>
 
 </head>
 
-<body data-create-controls="true">
+<body>
 
-<pre id="foo">
-&lt;Control name="Greet"&gt;
-Hello &lt;i&gt;world!&lt;/i&gt;
-&lt;/Control&gt;
-</pre>
+<select multiple="multiple">
+    <option><img src="resources/water.jpg"/>A <b>bold</b> item</option>
+    <option>B</option>
+    <option>C</option>
+</select>
 
-<pre data-control="SourceCode" id="bar">
-&lt;Control name="Greet"&gt;
-Hello &lt;i&gt;world!&lt;/i&gt;
-&lt;/Control&gt;
-</pre>
+<input type="text" list="list"/>
+<datalist id="list">
+    <option><img src="resources/water.jpg"/>A <b>bold</b> item</option>
+    <option>B</option>
+    <option>C</option>
+</datalist>
 
 </body>
 
