@@ -36,7 +36,7 @@ SourceFileContents.prototype.extend({
     
     content: Control.chain( "$SourceFileContents_content", "content" ),
     
-    path: function( path ) {
+    path: Control.property( function( path ) {
 
         // Load the file's contents.
         var self = this;
@@ -55,8 +55,7 @@ SourceFileContents.prototype.extend({
             this.$linkText().html( fileName );
         }
         
-        return this;
-    }
+    })
     
 });
 </script>
