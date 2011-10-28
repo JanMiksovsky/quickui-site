@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="../plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="../quicommon/quicommon.css" />
+<link rel="stylesheet" type="text/css" href="../controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="../site.css" />
+<link rel="stylesheet" type="text/css" href="docs.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="../lib/quickui.js"></script>
+<script type="text/javascript" src="../plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="../quicommon/quicommon.js"></script>
+<script type="text/javascript" src="../controls/controls.js"></script>
+<script type="text/javascript" src="docs.js"></script>
+
+<title>Control classes</title>
+
+</head>
+
+<body data-create-controls="true" data-control="DocumentationPage">
+
+<h2>Controls are JavaScript classes</h2>
+
+<p>
+    To define a new kind of control in the QuickUI framework, you create a
+    JavaScript class. This class will determine all aspects of the control's
+    behavior, including:
+</p>
+
+<ul>
+    <li>
+        The elements which make up the visible control in the DOM. 
+    </li>
+    <li>
+        Properties (functions) that can be used to change or inspect control
+        behavior or contents.
+    </li>
+    <li>
+        Event handlers
+    </li>
+</ul>
+
+<h2>Determining a control's class</h2>
+<p>
+    Control classes are "real" JavaScript classes. For example, if you have
+    a reference to a control, you can determine whether it is an instance of
+    a given class with the JavaScript instanceof keyword:
+</p>
+
+
+<pre data-control="SourceCode">
+>>> var c = MyControl.create();
+>>> c instanceof MyControl
+true
+>>> c instanceof Control
+true                                    // Always true for controls
+>>> c instanceof jQuery
+true                                    // Also always true for controls
+</pre>
+
+<p>
+    If you have a control of unknown class, you can retrieve its class
+    via the .controlClass() method:
+</p>
+
+<pre data-control="SourceCode">
+>>> var c = MyControl.create();
+>>> c.controlClass
+[ MyControl constructor ]
+>>> c.controlClass === MyControl
+true
+>>> c.controlClass === Control
+false [ The specific control class is MyControl, not Control. ]
+</pre>
+
+<p>
+    When debugging, it can be useful to obtain the string name of a control's
+    class:
+</p>
+
+<pre data-control="SourceCode">
+>>> var c = MyControl.create();
+>>> c.className
+"MyControl"
+</pre>
+
+<p>
+QuickUI builds on the prototype-based class system offered in jQuery via its
+$.sub() function. What this means is that controls in the QuickUI framework are
+instances of full JavaScript classes. For example, controls have a type which
+can be checked directly using JavaScript’s instanceof keyword.    
+</p>
+
+<p>
+Control instances are full jQuery objects. Any operation that can be performed
+on a jQuery object — showing or hiding the control, changing stylistic
+attributes such as color, animated transitions, programmatically adding or
+removing the control, etc. — can all be performed on a control.
+</p>
+<p>
+In addition to the jQuery features, custom features can be easily added to
+control classes as class methods. These methods are, in fact, jQuery plugins
+(extensions). This means methods can be easily applied using the full power of
+jQuery’s selection engine. In jQuery style, control methods are also chainable,
+and can be applied to arrays of objects in a single call.
+</p>
+<p>
+QuickUI’s use of JavaScript classes provides a built-in scoping mechanism for
+class methods. In raw jQuery plugin creation, a common concern is the crowding
+of the jQuery plugin namespace. This forces developers to take measures such as
+squeezing all features of a new jQuery extension into a single overloaded
+function, which can compromise clarity and maintainability. In QuickUI,
+namespace pollution is less of an issue because each control receives its own
+plugin namespace.
+</p>
+<p>
+Using a class system means that control instances automatically have access to
+JavaScript methods defined by their class or parent classes. Well-designed class
+hierarchies can thereby achieve a proper separation of concerns, which
+facilitates code creation and maintenance.
+</p>
+<p>
+In general, QuickUI controls follow a single inheritance model. This is rarely a
+limitation: for most non-trivial controls, a chunk of one UI is either one kind
+of component or another. It is possible to fold JavaScript-style mixins into a
+control’s definition. For example, jQuery UI’s lower-level facilities for mouse
+interaction or drag-and-drop can be easily added to a QuickUI control.
+</p>
+<p>
+QuickUI control classes have access to a _super() function that makes it simple
+for a class method to extend the behavior defined in a base class.
+</p>
+
+</body>
+
+</html>
