@@ -16,6 +16,7 @@
 <script type="text/javascript" src="../plugins/quickui.rehydrate.js"></script>
 <script type="text/javascript" src="../quicommon/quicommon.js"></script>
 <script type="text/javascript" src="../controls/controls.js"></script>
+<script type="text/javascript" src="../release/version.js"></script>
 <script type="text/javascript" src="downloads.js"></script>
 
 <body data-create-controls="true" data-control="SitePage" data-area="Download" data-title="Download QuickUI">
@@ -30,8 +31,11 @@
 <h2>Windows</h2>
 
 <ol>
-    <li><a data-control="Link" href="/downloads/QuickUI%20Setup.msi">Download the installer</a>.</li>
-    <li>Add the QuickUI tools folder (e.g., C:\Program Files\QuickUI\bin) to your path.</li>
+    <li>
+        Download and run the installer
+        <a data-control="VersionedFileLink" data-file="setup"></a>.
+    </li>
+    <li>Add the QuickUI bin folder (e.g., C:\Program Files\QuickUI\bin) to your path.</li>
 </ol>
 
 <h2>Mac OS/X and Linux</h2>
@@ -45,8 +49,11 @@
     For those with an allergic reaction to .NET, a Python port is being explored.
     Help with that would be welcomed.)
     </li>
-    <li>Download <a data-control="Link" href="/downloads/QuickUI.zip">QuickUI.zip</a> and expand it.</li>
-    <li>Copy the expanded contents to a location, e.g., /Developer/Applications/QuickUI.</li>
+    <li>
+        Download
+        <a data-control="VersionedFileLink" data-file="zip"></a>
+        and expand it, for example, to /Developer/Applications/QuickUI.
+    </li>
     <li>Add the resulting location of the QuickUI bin folder (e.g., /Developer/Applications/QuickUI/bin) to your path.</li>
 </ol>
 

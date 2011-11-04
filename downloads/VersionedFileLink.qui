@@ -1,0 +1,21 @@
+<Control name="VersionedFileLink">
+
+<prototype>
+    <Link/>
+</prototype>
+
+<script>
+VersionedFileLink.prototype.extend({
+    
+    file: Control.property( function( file ) {
+        var fileInfo = quickUIVersion[ file ];
+        this.content( fileInfo.fileName );
+        var releaseUrl = "/release/";
+        var url = releaseUrl + fileInfo.fileName;
+        this.href( url );
+    })
+    
+});
+</script>
+
+</Control>
