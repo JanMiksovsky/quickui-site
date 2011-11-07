@@ -1,3 +1,5 @@
+<!-- Wraps an anchor tag -->
+
 <Control name="Link" tag="a">
 
 <style>
@@ -8,11 +10,15 @@
 
 <script>
 Link.prototype.extend({
-    href: Control.chain("prop/href"),
+    
+    href: Control.chain( "prop/href" ),
+    target: Control.chain( "prop/target" ),
+    
     initialize: function() {
-        if (this.href() == "")
+        if ( this.href() === "" )
         {
-            this.href("javascript:");
+            // Use a placeholder href so the browser will use a hand cursor.
+            this.href( "javascript:" );
         }
     }
 });
