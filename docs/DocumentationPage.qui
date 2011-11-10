@@ -4,6 +4,7 @@
     <SitePage area="Docs">
         <navigationLinks>
             <Link id="linkIndex" href="/docs">Index</Link>
+            <Link href="principles.html">Core principles</Link>
             <Link href="framework.html">Framework overview</Link>
             <Link href="controlPlugin.html">$.control() plugin</Link>
             <Link href="controlClass.html">Control class</Link>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="../plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="../quicommon/quicommon.css" />
+<link rel="stylesheet" type="text/css" href="../controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="../site.css" />
+<link rel="stylesheet" type="text/css" href="docs.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="../lib/quickui.js"></script>
+<script type="text/javascript" src="../plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="../quicommon/quicommon.js"></script>
+<script type="text/javascript" src="../controls/controls.js"></script>
+<script type="text/javascript" src="docs.js"></script>
+
+<title>Core design principles</title>
+
+</head>
+
+<body data-create-controls="true" data-control="DocumentationPage">
+
+<p>
+To get wide adoption, a shared framework for reusable, extensible user
+interface components should, at its core, define the minimum set of
+requirements necessary to achieve interoperability. This page looks at the
+principles in QuickUI that allow it support this goal.  
+</p>
+
+<h2>Why create a user interface as reusable UI components?</h2>
+
+<p>
+You have enough things to do — solving the same problems over and over is
+wasting time. If you’ve finally figured out, say, the perfect CSS that wrestles
+some HTML element into position in one context, it should be possible to use
+those same exact lines of code somewhere else without resorting to
+copy-and-paste. It should be straightforward to code your solution as a
+reusable user interface component that can be used in multiple places — not only by you, but your team, your organization, and the wider web community if you desire.
+</p>
+
+<p>
+Creating a UI component shouldn’t be something special; it should be easy
+enough to be the normal way you create UI — to be a natural part of the UI
+design and development process. As you go, the output of your work should end
+up as components that you can again and again. This not only increases your own
+productivity, it opens the possibility of true network effects in the web UI
+community: the work we each do should help everyone else go faster, and thereby
+speed up the rate at which we can all create great user experiences.
+</p>
+
+<p>
+There are a variety of ways to create reusable UI components, but many are not
+extensible. How many times have you found a plugin or widget that did almost —
+but not quite — what you wanted? Most components aren’t built to be extensible.
+While their framework may support extensibility, it doesn’t make that easy
+enough to be the normal course of things.
+</p>
+
+<p>
+The QuickUI framework’s entire reason for existence is to create reusable,
+extensible user interface components. The framework itself makes this the
+normal course of events.
+</p>
+
+<h2>Core principles</h2>
+
+<p>
+QuickUI has the following core principles:
+</p>
+
+<ol>
+<li>A control should be as self-contained and context-independent as possible.</li>
+<li>A control’s behavior is defined with a regular JavaScript class.</li>
+<li>A control’s class can be subclassed.</li>
+<li>A control instance is a jQuery instance.</li>
+<li>A control instance can host other elements, including additional controls.</li>
+<li>A control class can render control instances into the DOM.</li>
+<li>A control instance and its top-level DOM element can refer to each other.</li>
+<li>A control instance’s properties are read and manipulated with getter/setter functions.</li>
+</ol>
+
+<p>
+Let’s look at each of these principles in turn.
+</p>
+
+<h2>1. A control should be as self-contained and context-independent as possible</h2>
+
+<p>
+A control shouldn’t need to know anything about its host components (the
+elements it sits within). If a control can perform some operation inside one
+element, it should be able to deliver the same functionality inside another
+element. You shouldn’t have to specially configure the host with styles,
+contents, event handlers, and so on, just to get the control to work.
+</p>
+
+<p>
+A corollary of being context-independent is that the addition of a control to
+the page should generally not have unexpected effects on other elements on the
+page. For example, the CSS that defines a control’s visual appearance should,
+to the degree possible with today’s browsers, only affect instances of that
+control class. The styles should not inadvertently be picked up by other
+elements on the page.
+</p>
+
+<p>
+You should be able to add a control to a page anywhere without breaking or
+otherwise effecting other aspects of that page. For that matter, you should
+generally be able to add multiple instances of a control to a page, and
+everything should still work.
+</p>
+
+<h2>2. A control’s behavior is defined with a regular JavaScript class</h2>
+
+<p>
+If you’re a JavaScript developer, you already use JavaScript’s native class
+support to define reusable behavior. In QuickUI, when you’re creating a new
+kind of control, you’re creating a JavaScript class. You can define control
+behavior through instance methods and class methods as regular JavaScript
+functions. Everything about working with controls is the same as working with
+classes: e.g., you can test whether an instance of a control class is a member 
+of class with the standard “instanceof” keyword.
+</p>
+
+<h2>3. A control’s class can be subclassed</h2>
+
+<p>
+You can create a control class that inherits from another control using a
+standard prototype-based inheritance scheme. This means that all the behavior
+of the superclass (also known as the base class) is available to your subclass.
+Rather than creating a new inheritance scheme, QuickUI uses the inheritance
+system built into jQuery. All QuickUI controls inherit from a base Control
+class, which in turn inherits from the base jQuery class.
+</p>
+
+<h2>4. A control class instance is a jQuery instance</h2>
+
+<p>
+Because all control classes ultimately derive from the base jQuery class, all
+QuickUI control instances are also jQuery instances. You can show and hide
+control instances with $.show() and $.hide(), you can manipulate a control’s
+CSS styling with $.css(), you can animate a control with $.animate(), and so on.
+</p>
+
+<h2>5. A control instance can host other elements, including additional
+    controls</h2>
+
+<p>
+Controls are typically nestable. Control classes can be designed so that you
+can place additional elements, either plain HTML or other controls, inside a
+given control instance. Whether and where a control allows nested elements is
+up to the control class.
+</p>
+
+<p>
+Following the principle of context-independence (above), a control class should
+generally be able to contain and cope with arbitrary contents. So if you find
+or create, say, a certain kind of tabbed UI control, you should be able to
+place whatever content you want inside a tab, and you should be able to put
+that tabbed UI inside other controls.
+</p>
+
+<h2>6. A control class can render instances as complete DOM subtrees</h2>
+
+<p>
+When you create a control class, your class can define a render function: a
+function which will be invoked when a new instance of your control class is
+being created. This render function creates the DOM elements that comprise the
+control’s initial structure.
+</p>
+
+<p>
+This means that control classes can be instantiated without depending upon
+placeholder elements having been previously entered into the DOM. In some 
+control frameworks, it’s a requirement that certain HTML elements be created
+first, before a user interface component can be created; the component relies
+on those elements, manipulating and adding to them as it sees fit.
+Unfortunately, this technique creates brittle dependencies on your control 
+class’ definition. If you decide that your control should be constituted with 
+a different set of HTML elements, all existing hosts of that control class will
+have to be updated to match. In contrast, a QuickUI control class can render
+all the elements it needs itself. You can change your class’ definition later 
+without fear of breaking all existing uses of that class.
+</p>
+
+<p>
+When a control instance is rendered, a top-level DOM element is created
+(usually a <span data-control="Tag">div</span>, but a control class can ask for
+a different top-level element). This element becomes the top of a DOM subtree
+containing all elements of the control. Which elements get added to that
+subtree is determined by your control class’ hierarchy. Each class in the
+hierarchy, from the base Control class, and moving down to your specific 
+control class, gets a chance to render DOM elements into the subtree. The 
+subtree can then be added to the page DOM, or saved for use later.
+</p>
+
+<p>
+What this means is that QuickUI control classes have a rigorously-defined
+relationship to their parent classes and subclasses. Your control class can
+rely upon its parent classes having already added their elements to the DOM
+subtree. Your class can then add its own elements to the subtree, nesting those
+within the elements that are guaranteed to be there. Finally, your class can 
+give its own subclasses a chance to add their nested elements to the subtree.
+</p>
+
+<h2>7. A control instance and its top-level DOM element can refer to each other</h2>
+
+<p>
+As mentioned above, a control instance is a jQuery instance. The value of that
+jQuery instance is an array of one or more elements that point to DOM subtrees
+which have been rendered by the control class. In other words, when you have a
+reference to a logical control object, you inherently have access to the DOM
+elements that visually represent that control.
+</p>
+
+<p>
+Conversely, the visual DOM subtree rendered by a control instance retains a
+persistent reference pointing back to the logical control instance. This allows
+you to obtain a reference to a DOM element, for example, using jQuery
+selectors, and then get back the control instance that originally created that
+DOM element. This control reference is automatically cast back to the correct
+JavaScript class for you; you don’t have to remember which class was used to
+create which elements.
+</p>
+
+<h2>8. A control instance’s properties are read and manipulated with
+    getter/setter functions</h2>
+
+<p>
+When you want to manipulate a control instance, you do so by invoking control
+instance methods, which are typically defined as jQuery-style getter/setter
+property functions. Such functions generally take one optional parameter. If
+the parameter is omitted, the function is being invoked to get the value of 
+that property. If the single parameter is supplied, the function is being
+invoked to set the value of that property.
+</p>
+
+<p>
+Following jQuery convention, the setter form of a property function is
+chainable, meaning that you can continue applying additional instance functions
+to it. Also following jQuery convention, the setter form of a property function
+can manipulate an array of controls in a single call. This makes it easy for
+you to quickly manipulate collections of similar controls, e.g., all the 
+controls in a list.
+</p>
+
+<h2>Next steps</h2>
+
+<p>
+The QuickUI framework allows you to create and use controls in either plain
+JavaScript or in an efficient markup language called QuickUI markup. For the
+time being, the latter is the better documented of the two approaches; see the
+tutorial. Additional documentation for the plain JavaScript approach is under
+construction.
+</p>
+
+</body>
+
+</html>
