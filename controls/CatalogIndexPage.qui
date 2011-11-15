@@ -38,9 +38,7 @@
 
 <script>
 CatalogIndexPage.prototype.extend({
-    initialize: function() {
-        this.$tileList().items( controlRecords );
-    }
+    controlRecords: Control.chain( "$tileList", "items" )
 });
 </script>
 
