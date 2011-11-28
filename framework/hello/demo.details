@@ -1,11 +1,9 @@
----
- name: Hello QuickUI
- description: This shows the creation of a simple QuickUI control in plain JavaScript.
- authors:
-   - Jan Miksovsky
- resources:
-   - http://quickui/lib/quickui.js
-   - http://quickui/quicommon/quicommon.js
-   - http://quickui/catalog/quickui-catalog.js
- normalize_css: no
- ...
+name: Hello QuickUI
+description: This shows the creation of a simple QuickUI control in plain JavaScript.
+authors:
+  - Jan Miksovsky
+resources:
+  - http://quickui.org/lib/quickui.js
+  - http://quickui.org/quicommon/quicommon.js
+  - http://quickui.org/catalog/quickui-catalog.js
+normalize_css: no
