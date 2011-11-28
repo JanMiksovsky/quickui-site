@@ -1,5 +1,5 @@
-name: Hello QuickUI
-description: This shows the creation of a simple QuickUI control in plain JavaScript.
+name: Hello
+description: Testing jsFiddle+GitHub integration
 authors:
   - Jan Miksovsky
 normalize_css: no
