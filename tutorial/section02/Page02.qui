@@ -77,10 +77,12 @@ we'll see the JavaScript which the qc compiler has generated:
     for the Greet class which will only be available to Greet instances.
 </p>
 <p>
-    The function renderGreet() above is a compiled version of the original Quick
-    markup above. Here it simply states that the control’s content should be a
-    static HTML string. As we’ll see, the contents of a control can become
-    considerably more complex. The key point is that the Quick markup is getting
+    The collection of properties passed to subclass
+    (the part in curly braces) is a compiled
+    version of the original Quick markup above. Here it simply states that the
+    control’s content should be a static HTML string.
+    As we’ll see, the contents of a control can become considerably more complex.
+    The key point is that the Quick markup is getting
     compiled down to JavaScript code. Although it’s not visible in the code above,
     the generated code ultimately invokes jQuery methods to populate the page DOM
     with the desired elements.
