@@ -53,38 +53,36 @@ the generated code:
 <SourceFileContents path="build/Greet.js" />
 
 <p>
-The key expression is
+The key line is the one that defines an ID property:
 </p>
 
 <![CDATA[
 <pre>
-this._define( "$Greet_content", Control( "&lt;span id=\"Greet_content\" /&gt;" ) )
+                    id: "Greet_content"
 </pre>
 ]]>
 
 <p>
-This line is doing three distinct things:
+This property has three effects:
 </p>
 
 <ol>
     
 <li>
-First, the bit on the right creates
-a <Tag>span</Tag> element via a standard jQuery call. It doesn't look like it,
-but since the Control class is a subclass of jQuery, the Control(...) call
-is really just like a normal $("&lt;span/&gt;") element creation.
+First, the line will set the ID attribute of the indicated HTML <Tag>span</Tag>.
 </li>
 
 <li>
-The second piece of work here is to save a reference to that just-created element
-behind the scenes, as part of the control's $.data(). This reference ensures that
+Second, the line will cause QuickUI to save a reference to that element
+behind the scenes, as part of the control's $.data(). This reference is created
+the instant the <Tag>span</Tag> is created. This ensures that
 the control can always quickly retrieve the specific <Tag>span</Tag> that belongs to it.
 This is both safer and faster than trying to search again for that element. (When one
 control contains another control, the possibility arises for an ID collision.)
 </li>
 
 <li>
-Finally, the third act here is to define a new function on the Greet prototype
+Third, as a side effect, QuickUI will define a new function on the Greet prototype
 called $Greet_content(). This is called an <i>element function</i> that
 returns the saved reference to the <Tag>span</Tag>.  An element function is essentially
 a mapping function that maps a control, or array of controls, to the desired
