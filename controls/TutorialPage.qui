@@ -3,20 +3,20 @@
 <prototype>
     <SitePage area="Tutorial">
         <navigationLinks>
-            <Link href="/tutorial/section01">Hello, world</Link>
-            <Link href="/tutorial/section02">How QuickUI works</Link>
-            <Link href="/tutorial/section03">Composing controls</Link>
-            <Link href="/tutorial/section04">Referencing control elements</Link>
-            <Link href="/tutorial/section05">Defining control properties</Link>
-            <Link href="/tutorial/section06">Setting control properties</Link>
-            <Link href="/tutorial/section07">Property bindings</Link>
-            <Link href="/tutorial/section08">Markup within properties</Link>
-            <Link href="/tutorial/section09">Control content</Link>
-            <Link href="/tutorial/section10">Styling controls</Link>
-            <Link href="/tutorial/section11">More on styling</Link>
-            <Link href="/tutorial/section12">Defining interactivity</Link>
-            <Link href="/tutorial/section13">Controlling behavior</Link>
-            <Link href="/tutorial/section14">Subclassing controls</Link>
+            <Link href="/tutorial/section01/">Hello, world</Link>
+            <Link href="/tutorial/section02/">How QuickUI works</Link>
+            <Link href="/tutorial/section03/">Composing controls</Link>
+            <Link href="/tutorial/section04/">Referencing control elements</Link>
+            <Link href="/tutorial/section05/">Defining control properties</Link>
+            <Link href="/tutorial/section06/">Setting control properties</Link>
+            <Link href="/tutorial/section07/">Property bindings</Link>
+            <Link href="/tutorial/section08/">Markup within properties</Link>
+            <Link href="/tutorial/section09/">Control content</Link>
+            <Link href="/tutorial/section10/">Styling controls</Link>
+            <Link href="/tutorial/section11/">More on styling</Link>
+            <Link href="/tutorial/section12/">Defining interactivity</Link>
+            <Link href="/tutorial/section13/">Controlling behavior</Link>
+            <Link href="/tutorial/section14/">Subclassing controls</Link>
         </navigationLinks>
     </SitePage>
 </prototype>
