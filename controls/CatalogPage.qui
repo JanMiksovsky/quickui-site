@@ -123,7 +123,7 @@ CatalogPage.prototype.extend({
             
             this.$controlClassHierarchy().controlClass( className );
 
-            var sourceUrlTemplate = "https://github.com/JanMiksovsky/quickui-catalog/blob/master/quickui.catalog/{0}/{0}.qui";
+            var sourceUrlTemplate = "https://github.com/JanMiksovsky/quickui-catalog/blob/master/quickui.catalog/{0}.qui";
             var sourceUrl = sourceUrlTemplate.replace( /\{0\}/g, className );
             var sourceLinkText = "full source for " + className;
             this.$linkSourceCodeControl()
