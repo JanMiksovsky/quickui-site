@@ -10,27 +10,27 @@
    </url>
 
    <url>
-      <loc>http://quickui.org/downloads</loc>
+      <loc>http://quickui.org/downloads/</loc>
       <changefreq>monthly</changefreq>
    </url>
 
    <url>
-      <loc>http://quickui.org/tutorial</loc>
+      <loc>http://quickui.org/tutorial/</loc>
       <changefreq>monthly</changefreq>
    </url>
 
    <url>
-      <loc>http://quickui.org/docs</loc>
+      <loc>http://quickui.org/docs/</loc>
       <changefreq>monthly</changefreq>
    </url>
 
    <url>
-      <loc>http://quickui.org/catalog</loc>
+      <loc>http://quickui.org/catalog/</loc>
       <changefreq>weekly</changefreq>
    </url>
 
    <url>
-      <loc>http://quickui.org/screencasts</loc>
+      <loc>http://quickui.org/screencasts/</loc>
       <changefreq>monthly</changefreq>
    </url>
    
