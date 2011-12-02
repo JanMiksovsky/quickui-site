@@ -42,8 +42,9 @@
                 <div id="CatalogPage_content" />
             </div>
 
-            <h2>Full control source code</h2>
-            <SourceFileContents id="sourceCodeControl" />
+            <p>
+                View the <Link id="linkSourceCodeControl"/> on GitHub.
+            </p>
 
         </content>
     </SitePage>
@@ -60,7 +61,6 @@ CatalogPage.prototype.extend({
     
     autoFocus: Control.property.bool( null, true ),
     demo: Control.chain( "$CatalogPage_demo", "content" ),
-    sourceFileControl: Control.chain( "$sourceCodeControl", "path" ),
     summary: Control.chain( "$CatalogPage_summary", "content" ),
     
     initialize: function() {
@@ -123,9 +123,12 @@ CatalogPage.prototype.extend({
             
             this.$controlClassHierarchy().controlClass( className );
 
-            if ( !this.sourceFileControl() ) {
-                this.sourceFileControl( className + ".qui" );
-            }
+            var sourceUrlTemplate = "https://github.com/JanMiksovsky/quickui-catalog/blob/master/{0}/{0}.qui";
+            var sourceUrl = sourceUrlTemplate.replace( /\{0\}/g, className );
+            var sourceLinkText = "full source for " + className;
+            this.$linkSourceCodeControl()
+                .text( sourceLinkText )
+                .href( sourceUrl );
         }
         return result;
     }
