@@ -121,10 +121,10 @@ Inspecting the DOM at run time for the above output (e.g., via a tool such as
 &lt;/html&gt;
 </pre>
 <p>
-The Greet.render() method has added the control’s contents to the DOM.
+The $.control() plugin has instantiated the control, adding its initial contents
+(which were defined in the above call to Control.subclass) to the DOM.
 The <Tag>body</Tag> has also been stamped with two class names: Greet and Control.
-This operation was automatically performed by the QuickUI $.control() extension.
-When that call instantiates a control class, it adds the name of that class and
+When QuickUI instantiates a control, it adds the name of its class and
 the names of all its parent classes to the “class” attribute of the element on which
 the control was instantiated.
 </p>
