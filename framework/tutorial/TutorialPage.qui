@@ -1,0 +1,9 @@
+<Control name="TutorialPage">
+
+<prototype>
+    <SitePage>
+        Hello
+    </SitePage>
+</prototype>
+
+</Control>
