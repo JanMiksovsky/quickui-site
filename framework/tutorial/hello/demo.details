@@ -4,5 +4,7 @@ description: Shows how to instantiate a couple of QuickUI controls.
 authors:
   - Jan Miksovsky
 resources:
-  - /js/empty.js
+  - "http://quickui.org/release/quickui.catalog.css"
+  - "http://quickui.org/lib/quickui.js"
+  - "http://quickui.org/release/quickui.catalog.js"
 ...
