@@ -3,6 +3,7 @@
 <prototype>
     <SitePage>
         Hello
+        <CodeEditor/>
     </SitePage>
 </prototype>
 

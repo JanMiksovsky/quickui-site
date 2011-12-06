@@ -32,7 +32,7 @@
             <div>Conditionally shows contents for specific browsers.</div>
         </div>
         <div>
-            <div><CatalogLink>ButtonBase</CatalogLink></div>
+            <div><CatalogLink>BasicButton</CatalogLink></div>
             <div>Base class for buttons which handles tracking of button states.</div>
         </div>
         <div>

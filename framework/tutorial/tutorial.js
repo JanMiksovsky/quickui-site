@@ -3,7 +3,14 @@
 //
 CodeEditor = Control.subclass({
     name: "CodeEditor",
-    content: " "
+    content: [
+        " ",
+        {
+            control: "BasicButton",
+            content: "Hello"
+        },
+        " "
+    ]
 });
 
 //
@@ -11,6 +18,12 @@ CodeEditor = Control.subclass({
 //
 TutorialPage = SitePage.subclass({
     name: "TutorialPage",
-    content: " Hello "
+    content: [
+        " Hello ",
+        {
+            control: "CodeEditor"
+        },
+        " "
+    ]
 });
 

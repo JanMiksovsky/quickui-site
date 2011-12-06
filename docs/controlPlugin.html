@@ -38,10 +38,10 @@ is returned.
 </p>
 <pre>
 // Create a button. 
-var $button = $( "#foo" ).control( ButtonBase );
+var $button = $( "#foo" ).control( BasicButton );
 $button.content( "OK" );
 
-// ... Later, we can retrieve the element and cast it to ButtonBase instance.
+// ... Later, we can retrieve the element and cast it to BasicButton instance.
 var $button = $("#foo").control();
 console.log( $button.content() );   // "OK"
 </pre>
@@ -66,7 +66,7 @@ initialize() call is made.
 </p>
 <pre>
 // Create a button and set its content property in one step.
-var $button = $( "#foo" ).control( ButtonBase, { content: "OK" } );
+var $button = $( "#foo" ).control( BasicButton, { content: "OK" } );
 </pre>
 
 <h2>$( element ).control({ properties })</h2>
