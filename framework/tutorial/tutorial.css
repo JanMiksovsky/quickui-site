@@ -1,0 +1,7 @@
+/*** CodeEditor ***/
+
+.CodeEditor .pane {
+    border: 1px solid lightgray;
+    width: 50%;
+}
+

@@ -2,8 +2,11 @@
 
 <prototype>
     <SitePage>
-        Hello
-        <CodeEditor/>
+        <CodeEditor>
+            <content>
+                Here's a sample step introduction.
+            </content>
+        </CodeEditor>
     </SitePage>
 </prototype>
 
