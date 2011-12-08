@@ -5,11 +5,12 @@ var $button = BasicButton.create()
     });
 
 var $comboBox = ColorSwatchComboBox.create()
-    .content( "Green" )
+    .content( "Orange" )
     .items([
-        "Red",
+        "Blue",
         "Green",
-        "Blue"
+        "Orange",
+        "Red"
     ]);
 
 $( "#demo" ).append(

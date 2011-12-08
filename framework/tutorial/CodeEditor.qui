@@ -7,10 +7,10 @@
     </div>
 
     <div id="runner">
-        <div>
-            <textarea id="CodeEditor_code" class="pane" spellcheck="false" />
+        <div id="codePane">
+            <textarea id="CodeEditor_code" spellcheck="false" />
         </div>
-        <div id="result" class="pane" />
+        <div id="result"/>
     </div>
     
     <div id="CodeEditor_error"/>
@@ -29,31 +29,21 @@
 }
 
 #runner > * {
-    border: 1px solid lightgray;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     display: table-cell;
     height: 100%;
-    max-width: 400px;
-    min-width: 400px;
     vertical-align: top;
-    width: 400px;
+    width: 50%;
 }
 
-.pane {
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 2px;
+#codePane {
+    padding-right: 1em;
 }
 
 #CodeEditor_code {
-    border: none;
     /* Inconsolata from Google Web Fonts */
     font-family: Inconsolata, Monaco, Courier, Courier New, monospace;
+    font-size: 15px;
     height: 100%;
     margin: 0;
     resize: none;
