@@ -2,16 +2,10 @@
 
 <content>
     
-    <div id="CodeEditor_content"/>
-    
     <div id="toolbar">
         <BasicButton id="buttonRun">Run</BasicButton> (Ctrl+Enter)
     </div>
 
-    <!--
-    <textarea id="CodeEditor_dom" class="pane" />
-    -->
-    
     <div id="runner">
         <div>
             <textarea id="CodeEditor_code" class="pane"/>
@@ -54,7 +48,7 @@
 
 #CodeEditor_code {
     border: none;
-    /* Inconsolate from Google Web Fonts */
+    /* Inconsolata from Google Web Fonts */
     font-family: Inconsolata, Monaco, Courier, Courier New, monospace;
     height: 100%;
     margin: 0;
@@ -66,22 +60,30 @@
 <script>
 CodeEditor.prototype.extend({
     
-    // dom: Control.chain( "$CodeEditor_dom", "content" ),
-    code: Control.chain( "$CodeEditor_code", "content" ),
-    content: Control.chain( "$CodeEditor_content", "content" ),
+    code: Control.chain( "$CodeEditor_code", "content", function() {
+        if ( this.inDocument() ) {
+            this.run();
+        }
+    }),
+    
     error: Control.chain( "$CodeEditor_error", "content" ),
     
     initialize: function() {
         
         var self = this;
-        this.$buttonRun().click( function() { self.run(); } );
-        
-        //this.$CodeEditor_dom().content( "<div id='demo'/>" );
-        this.$CodeEditor_code().content( "$('#demo').text('Hello, world');" );
-        
-        this.inDocument( function( $control ) {
-            $control.run();
+        this.$buttonRun().click( function() {
+            self.run();
         });
+        
+        this
+            .keydown( function( event ) {
+                self._keydown( event );
+            })
+            .inDocument( function( $control ) {
+                $control.run();
+                $control.$CodeEditor_code().focus();
+            });
+        
     },
     
     result: Control.chain( "$result", "content" ),
@@ -96,6 +98,13 @@ CodeEditor.prototype.extend({
         }
         catch ( error ) {
             this.error( error.toString() );
+        }
+    },
+    
+    _keydown: function( event ) {
+        if ( event.which === 13 && event.ctrlKey ) {
+            this.run();
+            event.stopPropagation( true );
         }
     }
     

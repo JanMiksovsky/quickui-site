@@ -2,12 +2,28 @@
 
 <prototype>
     <SitePage>
-        <CodeEditor>
-            <content>
-                Here's a sample step introduction.
-            </content>
-        </CodeEditor>
+    
+        <div id="TutorialPage_content"/>
+    
+        <CodeEditor id="editor"/>
+        
     </SitePage>
 </prototype>
+
+<script>
+TutorialPage.prototype.extend({
+    
+    content: Control.chain( "$TutorialPage_content", "content" ),
+    
+    javascriptFile: Control.property( function( path ) {
+        var self = this;
+        $.get( path )
+            .success( function( data) {
+                self.$editor().code( data );
+            });
+    })
+    
+});
+</script>
 
 </Control>

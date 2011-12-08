@@ -4,7 +4,9 @@ YOUR GOAL: You should see two buttons called "Hello" and "World" in the Results 
 Each page of this tutorial also contains a "Next page" link that leads to the next step of the tutorial. You can find the working Next link in the "Result" pane in the page's lower right quarter (below the buttons you've created).
 */
 
-$( "#demo" ).append(
-    ButtonBase.create().content( "Hello" ),
-    ButtonBase.create().content( "World" )
-);
+function foo() {
+    $( "#demo" ).append(
+        ButtonBase.create().content( "Hello" ),
+        ButtonBase.create().content( "World" )
+    );
+}
