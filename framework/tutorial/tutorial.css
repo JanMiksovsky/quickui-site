@@ -28,6 +28,8 @@
 
 .CodeEditor #CodeEditor_code {
     border: none;
+    /* Inconsolate from Google Web Fonts */
+    font-family: Inconsolata, Monaco, Courier, Courier New, monospace;
     height: 100%;
     margin: 0;
     resize: none;

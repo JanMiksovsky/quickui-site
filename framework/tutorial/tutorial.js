@@ -48,6 +48,11 @@ CodeEditor = Control.subclass({
                 " "
             ]
         },
+        " ",
+        {
+            html: "<div />",
+            id: "CodeEditor_error"
+        },
         " "
     ]
 });
@@ -56,6 +61,7 @@ CodeEditor.prototype.extend({
     // dom: Control.chain( "$CodeEditor_dom", "content" ),
     code: Control.chain( "$CodeEditor_code", "content" ),
     content: Control.chain( "$CodeEditor_content", "content" ),
+    error: Control.chain( "$CodeEditor_error", "content" ),
     
     initialize: function() {
         
@@ -73,8 +79,16 @@ CodeEditor.prototype.extend({
     result: Control.chain( "$result", "content" ),
     
     run: function() {
+        
+        this.error( null );
+        
         this.$result().html( "<div id='demo'/>" );
-        eval( this.code() );
+        try {
+            eval( this.code() );
+        }
+        catch ( error ) {
+            this.error( error.toString() );
+        }
     }
     
 });
