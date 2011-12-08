@@ -39,8 +39,9 @@
     display: table-cell;
     height: 100%;
     max-width: 400px;
+    min-width: 400px;
     vertical-align: top;
-    width: 50%;
+    width: 400px;
 }
 
 .pane {
