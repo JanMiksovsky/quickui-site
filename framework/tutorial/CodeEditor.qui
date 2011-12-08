@@ -5,26 +5,62 @@
     <div id="CodeEditor_content"/>
     
     <div id="toolbar">
-        <BasicButton id="buttonRun">Run</BasicButton>
+        <BasicButton id="buttonRun">Run</BasicButton> (Ctrl+Enter)
     </div>
-    
+
+    <!--
     <textarea id="CodeEditor_dom" class="pane" />
-    <textarea id="CodeEditor_code" class="pane" />
-    <div id="result" class="pane" />
+    -->
+    
+    <div id="runner">
+        <div>
+            <textarea id="CodeEditor_code" class="pane"/>
+        </div>
+        <div id="result" class="pane" />
+    </div>
     
 </content>
 
 <style>
-.pane {
+#runner {
+    display: table;
+    height: 400px;
+    width: 100%;
+}
+
+#runner > * {
     border: 1px solid lightgray;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: table-cell;
+    height: 100%;
+    vertical-align: top;
     width: 50%;
+}
+
+.pane {
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 2px;
+}
+
+#CodeEditor_code {
+    border: none;
+    height: 100%;
+    margin: 0;
+    resize: none;
+    width: 100%;
 }
 </style>
 
 <script>
 CodeEditor.prototype.extend({
     
-    dom: Control.chain( "$CodeEditor_dom", "content" ),
+    // dom: Control.chain( "$CodeEditor_dom", "content" ),
     code: Control.chain( "$CodeEditor_code", "content" ),
     content: Control.chain( "$CodeEditor_content", "content" ),
     
@@ -33,14 +69,18 @@ CodeEditor.prototype.extend({
         var self = this;
         this.$buttonRun().click( function() { self.run(); } );
         
-        this.$CodeEditor_dom().content( "<div id='foo'/>")
-        this.$CodeEditor_code().content( "$('#foo').text('Hello, world');" );
+        //this.$CodeEditor_dom().content( "<div id='demo'/>" );
+        this.$CodeEditor_code().content( "$('#demo').text('Hello, world');" );
+        
+        this.inDocument( function( $control ) {
+            $control.run();
+        });
     },
     
     result: Control.chain( "$result", "content" ),
     
     run: function() {
-        this.$result().html( this.dom() );
+        this.$result().html( "<div id='demo'/>" );
         eval( this.code() );
     }
     

@@ -1,7 +1,36 @@
 /*** CodeEditor ***/
 
-.CodeEditor .pane {
+.CodeEditor #runner {
+    display: table;
+    height: 400px;
+    width: 100%;
+}
+
+.CodeEditor #runner > * {
     border: 1px solid lightgray;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: table-cell;
+    height: 100%;
+    vertical-align: top;
     width: 50%;
+}
+
+.CodeEditor .pane {
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 2px;
+}
+
+.CodeEditor #CodeEditor_code {
+    border: none;
+    height: 100%;
+    margin: 0;
+    resize: none;
+    width: 100%;
 }
 
