@@ -7,13 +7,45 @@
     
         <CodeEditor id="editor"/>
         
+        <BasicButton id="buttonNext">Next »</BasicButton>
+        
     </SitePage>
 </prototype>
+
+<style>
+#SitePage_content {
+    max-width: inherit;
+}
+h1, p {
+    max-width: 800px;
+}
+
+#editor {
+    margin: 1em 0;
+}
+
+#buttonNext {
+    display: none;
+}
+</style>
 
 <script>
 TutorialPage.prototype.extend({
     
     content: Control.chain( "$TutorialPage_content", "content" ),
+    
+    initialize: function() {
+        
+        this._super();
+        
+        var self = this;
+        this.$buttonNext().click( function() {
+            var nextPage = self.nextPage();
+            if ( nextPage ) {
+                window.location = nextPage;
+            }
+        });
+    },
     
     javascriptFile: Control.property( function( path ) {
         var self = this;
@@ -21,8 +53,12 @@ TutorialPage.prototype.extend({
             .success( function( data) {
                 self.$editor().code( data );
             });
-    })
+    }),
     
+    nextPage: Control.property( function( nextPage) {
+        this.$buttonNext().css( "display", nextPage ? "inline-block": "none" );
+    })
+
 });
 </script>
 

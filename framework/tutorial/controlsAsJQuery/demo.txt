@@ -1,0 +1,18 @@
+var $button = BasicButton.create()
+    .content( "Toggle" )
+    .click( function() {
+        $comboBox.toggle();
+    });
+
+var $comboBox = ColorSwatchComboBox.create()
+    .content( "Green" )
+    .items([
+        "Red",
+        "Green",
+        "Blue"
+    ]);
+
+$( "#demo" ).append(
+    $( "<div/>" ).append( $button ),
+    $comboBox
+);

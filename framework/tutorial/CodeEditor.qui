@@ -8,7 +8,7 @@
 
     <div id="runner">
         <div>
-            <textarea id="CodeEditor_code" class="pane"/>
+            <textarea id="CodeEditor_code" class="pane" spellcheck="false" />
         </div>
         <div id="result" class="pane" />
     </div>
@@ -18,6 +18,10 @@
 </content>
 
 <style>
+#toolbar {
+    margin-bottom: 0.5em;
+}
+
 #runner {
     display: table;
     height: 400px;
