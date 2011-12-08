@@ -101,14 +101,64 @@ CodeEditor.prototype.extend({
         }
     },
     
+    _insertTextAtCursor: function( text ) {
+        var $editor = this.$CodeEditor_code();
+        var position = $editor.cursorPosition();
+        var content = $editor.content();
+        content = content.substr( 0, position ) + text + content.slice( position );
+        $editor
+            .content( content )
+            .cursorPosition( position + text.length );
+    },
+    
     _keydown: function( event ) {
         if ( event.which === 13 && event.ctrlKey ) {
             this.run();
             event.stopPropagation( true );
+            return false;
+        } else if ( event.which === 9 ) {
+            event.stopPropagation();
+            event.preventDefault();
+            this._insertTextAtCursor( "    " );
+            return false;
         }
     }
     
 });
+
+// Set/get the position of the cursor in an element (namely, an input box or text area).
+// TODO: Fold into CodeEditor.
+jQuery.fn.cursorPosition = function( position ) {
+    if ( position === undefined ) {
+        var position = 0;
+        var element = $(this).get(0);
+        if ( !element ) {
+            position = -1;
+        } else if ( document.selection ) {
+            element.focus();
+            var selection = document.selection.createRange();
+            var length = selection.text.length;
+            selection.moveStart( "character" , -element.value.length) ;
+            position = selection.text.length - length;
+        } else if ( element.selectionStart ) {
+            // Firefox
+            position = element.selectionStart;
+        }
+        return position;
+    } else {
+        return this.each(function(index, element) {
+            if ( element.createTextRange ) {
+                var range = element.createTextRange();
+                range.move( "character", position );
+                range.select();
+            } else if ( element.setSelectionRange ) {
+                // Firefox
+                element.focus();
+                element.setSelectionRange( position, position );
+            }
+        });
+    }
+};
 </script>
 
 </Control>
