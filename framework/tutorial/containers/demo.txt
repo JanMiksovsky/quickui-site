@@ -1,4 +1,4 @@
-$( "#demo" ).append(
+$demo.append(
     SlidingPagesWithDots.create().content([
         FlickrInterestingnessPhoto.create(),
         FlickrInterestingnessPhoto.create(),

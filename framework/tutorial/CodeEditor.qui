@@ -103,7 +103,8 @@ CodeEditor.prototype.extend({
         
         this.error( null );
         
-        this.$result().html( "<div id='demo'/>" );
+        var $demo = $( "<div id='demo'/>" );
+        this.$result().html( $demo );
         try {
             eval( this.code() );
         }

@@ -13,7 +13,7 @@ var $comboBox = ColorSwatchComboBox.create()
         "Red"
     ]);
 
-$( "#demo" ).append(
+$demo.append(
     $( "<div/>" ).append( $button ),
     $comboBox
 );
