@@ -1,0 +1,17 @@
+var $comboBox = ColorSwatchComboBox.create()
+    .content( "Orange" )
+    .items([
+        "Blue",
+        "Green",
+        "Orange",
+        "Red"
+    ]);
+
+$( "#demo" ).append( $comboBox );
+
+$( "#demo" ).append(
+    $( "<p/>" ).text( "Instance of ColorSwatchComboBox: "
+        + ( $comboBox instanceof ColorSwatchComboBox ) ),
+    $( "<p/>" ).text( "Instance of ListComboBox: "
+        + ( $comboBox instanceof ListComboBox ) )
+);

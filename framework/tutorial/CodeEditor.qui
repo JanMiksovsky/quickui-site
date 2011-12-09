@@ -2,15 +2,22 @@
 
 <content>
     
-    <div id="toolbar">
-        <BasicButton id="buttonRun">Run</BasicButton> (Ctrl+Enter)
-    </div>
-
     <div id="runner">
-        <div id="codePane">
-            <textarea id="CodeEditor_code" spellcheck="false" />
+        <div>
+            <div>
+                <span class="label">Edit JavaScript here</span>
+            </div>
+            <div class="label">
+                <SiteButton id="buttonRun">&#9654; Run</SiteButton>
+                <!-- to see result: -->
+            </div>
         </div>
-        <div id="result"/>
+        <div>
+            <div id="codePane">
+                <textarea id="CodeEditor_code" spellcheck="false" />
+            </div>
+            <div id="result"/>
+        </div>
     </div>
     
     <div id="CodeEditor_error"/>
@@ -18,22 +25,28 @@
 </content>
 
 <style>
-#toolbar {
-    margin-bottom: 0.5em;
-}
-
 #runner {
     display: table;
-    height: 400px;
     width: 100%;
 }
-
 #runner > * {
+    display: table-row;
+}
+#runner > * > * {
     box-sizing: border-box;
     display: table-cell;
-    height: 100%;
-    vertical-align: top;
     width: 50%;
+}
+
+.label {
+    color: #928274;
+    font-size: larger;
+    font-weight: bold;
+    padding-bottom: 0.5em;
+}
+
+#buttonRun {
+    margin: 0;
 }
 
 #codePane {
@@ -44,10 +57,14 @@
     /* Inconsolata from Google Web Fonts */
     font-family: Inconsolata, Monaco, Courier, Courier New, monospace;
     font-size: 15px;
-    height: 100%;
+    height: 400px;
     margin: 0;
     resize: none;
     width: 100%;
+}
+
+#result {
+    vertical-align: top;
 }
 </style>
 

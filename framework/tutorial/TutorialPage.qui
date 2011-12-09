@@ -7,7 +7,7 @@
     
         <CodeEditor id="editor"/>
         
-        <BasicButton id="buttonNext">Next »</BasicButton>
+        <SiteButton id="buttonNext">Next »</SiteButton>
         
     </SitePage>
 </prototype>

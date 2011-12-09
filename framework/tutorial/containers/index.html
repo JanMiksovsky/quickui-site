@@ -18,29 +18,13 @@
 <script type="text/javascript" src="/controls/controls.js"></script>
 <script type="text/javascript" src="/framework/tutorial/tutorial.js"></script>
 
-<title>Controls are jQuery instances</title>
+<title>Containers</title>
 
 <body
     data-create-controls="true"
     data-control="TutorialPage"
     data-javascriptFile="demo.txt"
-    data-nextPage="../controlsAsClasses"
 >
-
-<p>
-Rather than creating a new inheritance scheme, QuickUI uses the inheritance system built into jQuery. All QuickUI controls inherit from a base Control class, which in turn inherits from the base jQuery class.
-</p>
-<p>
-Because all control classes ultimately derive from the base jQuery class, all QuickUI control instances are also jQuery instances. You can show and hide control instances with $.show() and $.hide(), you can manipulate a control’s CSS styling with $.css(), you can animate a control with $.animate(), and so on.</p>
-</p>
-<p>
-<b>Your goal:</b> Change the jQuery toggle() call below to a call to fadeToggle(),
-which will animate the showing and hiding of the combo box. Then try clicking
-the Toggle button to see how the combo box fades in and out.
-</p>
-<p>
-You can also add a duration parameter to the jQuery $.fadeToggle() effect. The duration can be a string like "fast" or "slow", or a number in milliseconds. (For a complete reference, see http://api.jquery.com/fadeToggle/.)
-</p>
 
 </body>
 
