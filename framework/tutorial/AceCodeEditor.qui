@@ -9,16 +9,24 @@ Must set an ID on a control instance for this to work!
 AceCodeEditor.prototype.extend({
     
     content: function( content ) {
+        var editor = this._editor();
         if ( content === undefined ) {
-            return this._editor().getSession().getValue();
+            return editor
+                ? editor.getSession().getValue()
+                : this._content();
         } else {
-            this._editor().getSession().setValue( content );
+            if ( editor ) {
+                editor.getSession().setValue( content );
+            } else {
+                this._content( content );
+            }
             return this;
         }
     },
     
     initialize: function() {
         this.inDocument( function( $control ) {
+            var content = $control.content();
             var id = $control.prop( "id" );
             var editor = ace.edit( id );
             $control._editor( editor );
@@ -29,8 +37,12 @@ AceCodeEditor.prototype.extend({
             editor.setTheme( "ace/theme/textmate" );
             var JavaScriptMode = require( "ace/mode/javascript" ).Mode;
             session.setMode( new JavaScriptMode() );
+            $control.content( content );
         });
     },
+    
+    // Copy of the content, used to save content until editor is ready.
+    _content: Control.property(),
     
     _editor: Control.property()
 });
