@@ -24,13 +24,11 @@ AceCodeEditor.prototype.extend({
             $control._editor( editor );
             var session = editor.getSession();
             session.setUseSoftTabs( true );
-            //editor.renderer.setShowGutter( false );
+            editor.renderer.setShowGutter( false );
             editor.renderer.setHScrollBarAlwaysVisible( false );
-            /*
             editor.setTheme( "ace/theme/textmate" );
             var JavaScriptMode = require( "ace/mode/javascript" ).Mode;
-            editor.getSession().setMode( new JavaScriptMode() );
-            */
+            session.setMode( new JavaScriptMode() );
         });
     },
     
@@ -38,4 +36,4 @@ AceCodeEditor.prototype.extend({
 });
 </script>
 
-</Control>
+</Control>

@@ -113,8 +113,9 @@ CodeEditor.prototype.extend({
         
         var $demo = $( "<div id='demo'/>" );
         this.$result().html( $demo );
+        var code = this.code();
         try {
-            eval( this.code() );
+            eval( code );
         }
         catch ( error ) {
             this.error( error.toString() );
