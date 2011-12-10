@@ -1,0 +1,45 @@
+var $listBox = ListBox.create()
+    .itemClass( ColorSwatchButton )
+    .items([
+        "Red",
+        "Orange",
+        "Yellow",
+        "Green",
+        "Blue"
+    ]);
+
+var $colorTextBox = ColorSwatchTextBox.create();
+
+var $addButton = BasicButton.create()
+    .content( "Add" )
+    .click( function() {
+        var color = $colorTextBox.content();
+        if ( color && color.length > 0 ) {
+            var items = $listBox.items();
+            if ( $.inArray( color, items ) < 0 ) {
+                items.push( color );
+                $listBox.items( items );
+            }
+        }
+    });
+
+var $removeButton = BasicButton.create()
+    .content( "Remove" )
+    .click( function() {
+        var index = $listBox.selectedIndex();
+        if ( index >= 0 ) {
+            var items = $listBox.items();
+            $colorTextBox.content( items[ index ] );
+            items.splice( index, 1 );
+            $listBox
+                .items( items )
+                .selectedIndex( index );
+        }
+    });
+
+$demo.append(
+    $colorTextBox,
+    $addButton,
+    $removeButton,
+    $listBox
+);

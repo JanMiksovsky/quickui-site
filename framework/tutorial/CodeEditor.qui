@@ -14,7 +14,8 @@
         </div>
         <div>
             <div id="codePane">
-                <textarea id="CodeEditor_code" spellcheck="false" />
+                <!-- <textarea id="CodeEditor_code" spellcheck="false" /> -->
+                <AceCodeEditor id="CodeEditor_code"/>
             </div>
             <div id="result"/>
         </div>
@@ -59,12 +60,18 @@
     font-size: 15px;
     height: 400px;
     margin: 0;
+    position: relative;
     resize: none;
     width: 100%;
 }
 
 #result {
     vertical-align: top;
+}
+
+/* Space out demo elements */
+#demo > * {
+    margin: 0.25em;
 }
 </style>
 
