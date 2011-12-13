@@ -22,10 +22,31 @@
 
 <title>Controls are jQuery instances</title>
 
+<script id="demo">
+var $button = BasicButton.create()
+    .content( "Toggle" )
+    .click( function() {
+        $comboBox.toggle();
+    });
+
+var $comboBox = ColorSwatchComboBox.create()
+    .content( "Orange" )
+    .items([
+        "Blue",
+        "Green",
+        "Orange",
+        "Red"
+    ]);
+
+$demo.append(
+    $button,
+    $comboBox
+);
+</script>
+
 <body
     data-create-controls="true"
     data-control="TutorialPage"
-    data-javascriptFile="demo.txt"
     data-nextPage="../controlsAsClasses"
 >
 

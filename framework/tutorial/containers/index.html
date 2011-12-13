@@ -22,10 +22,32 @@
 
 <title>Containers</title>
 
+<script id="demo">
+var $buttons;
+
+var $textBox = TextBox.create()
+    .content( "Hello" )
+    .on( "keyup", function() { $textBox.echo(); });
+$textBox.echo = function() {
+    var content = $textBox.content();
+    $buttons.content( content );
+};
+
+$demo.append(
+    $textBox,
+    "<br/>",
+    BasicButton.create(),
+    BasicButton.create(),
+    BasicButton.create()
+);
+
+$buttons = $demo.find( ".BasicButton" ).control();
+$textBox.echo();
+</script>
+
 <body
     data-create-controls="true"
     data-control="TutorialPage"
-    data-javascriptFile="demo.txt"
     data-nextPage="../listManager"
 >
 

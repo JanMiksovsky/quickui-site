@@ -22,10 +22,16 @@
 
 <title>Welcome to the QuickUI tutorial</title>
 
+<script id="demo">
+$demo.append(
+    BasicButton.create().content( "Hello" ),
+    BasicButton.create().content( "World" )
+);
+</script>
+
 <body
     data-create-controls="true"
     data-control="TutorialPage"
-    data-javascriptFile="demo.txt"
     data-nextPage="../controlsAsJQuery"
 >
 

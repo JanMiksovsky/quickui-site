@@ -1,4 +1,0 @@
-$demo.append(
-    BasicButton.create().content( "Hello" ),
-    BasicButton.create().content( "World" )
-);

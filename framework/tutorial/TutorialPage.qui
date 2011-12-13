@@ -45,6 +45,9 @@ TutorialPage.prototype.extend({
                 window.location = nextPage;
             }
         });
+        
+        var code = $.trim( $( "script#demo" ).html() );
+        this.$editor().code( code );
     },
     
     javascriptFile: Control.property( function( path ) {
@@ -60,6 +63,17 @@ TutorialPage.prototype.extend({
     })
 
 });
+
+/*
+ * The tutorial demo scripts depend upon an element being defined called
+ * "$demo". Since the demo script will actually execute when the page is
+ * loaded, we define a dummy $demo element which the demo script can
+ * manipulate. This will have no effect, so the script won't throw an
+ * exception. Later, when the script is run, a closure will define a
+ * separate identifier called $demo that will point at the demo element which
+ * the script can safely modify.
+ */
+var $demo = $();
 </script>
 
 </Control>

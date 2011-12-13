@@ -22,10 +22,28 @@
 
 <title>Controls are defined by JavaScript classes</title>
 
+<script id="demo">
+var $comboBox = ColorSwatchComboBox.create()
+    .content( "Orange" )
+    .items([
+        "Blue",
+        "Green",
+        "Orange",
+        "Red"
+    ]);
+
+$demo.append(
+    $comboBox,
+    $( "<p/>" ).text( "Instance of ColorSwatchComboBox: "
+        + ( $comboBox instanceof ColorSwatchComboBox ) ),
+    $( "<p/>" ).text( "Instance of ListComboBox: "
+        + ( $comboBox instanceof ListComboBox ) )
+);
+</script>
+
 <body
     data-create-controls="true"
     data-control="TutorialPage"
-    data-javascriptFile="demo.txt"
     data-nextPage="../content"
 >
 

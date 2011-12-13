@@ -22,10 +22,30 @@
 
 <title>Content</title>
 
+<script id="demo">
+var $textBox = TextBox.create()
+    .on( "change keyup", function() {
+        var content = $textBox.content();
+        var $buttons = $demo.find( ".BasicButton" ).control();
+        if ( $buttons ) {
+            $buttons.content( content );
+        }
+    });
+
+$demo.append(
+    $textBox,
+    "<br/>",
+    BasicButton.create(),
+    BasicButton.create(),
+    BasicButton.create()
+);
+
+$textBox.content( "Hello" );
+</script>
+
 <body
     data-create-controls="true"
     data-control="TutorialPage"
-    data-javascriptFile="demo.txt"
     data-nextPage="../containers"
 >
 
