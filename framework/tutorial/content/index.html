@@ -25,14 +25,15 @@
 <script id="demo">
 var $textBox = TextBox.create()
     .on( "change keyup", function() {
-        var content = $textBox.content();
         var $buttons = $demo.find( ".BasicButton" ).control();
         if ( $buttons ) {
+            var content = $textBox.content();
             $buttons.content( content );
         }
     });
 
 $demo.append(
+    "Label: ",
     $textBox,
     "<br/>",
     BasicButton.create(),
