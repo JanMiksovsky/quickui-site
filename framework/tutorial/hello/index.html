@@ -14,7 +14,6 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="/thirdparty/ace/ace.js"></script>
 <script type="text/javascript" src="/thirdparty/ace/mode-javascript.js"></script>
-<script type="text/javascript" src="/thirdparty/ace/theme-textmate.js"></script>
 <script type="text/javascript" src="/lib/quickui.js"></script>
 <script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
 <script type="text/javascript" src="/release/quickui.catalog.js"></script>
@@ -31,16 +30,25 @@
 >
 
 <p>
-This tutorial is a sequence of "fiddles" -- mini web pages with HTML, JavaScript, and CSS -- that demonstrate the basics of using QuickUI. Each page of the tutorial
-shows a basic QuickUI concept, and gives you a goal of something to try yourself.    
+This tutorial is a sequence of short, live code examples that demonstrate the
+basics of using QuickUI. Each page of the tutorial presents a goal for something
+for you to try out yourself.    
 </p>
 
 <p>
-This page loads the jQuery framework, plus three JavaScript and CSS resources (see the "Manage Resources" pane on the left): the quickui.js file for the framework itself, plus .js and .css files for the QuickUI Catalog of common controls.
+This page (and the ones that follow) all load the jQuery framework, plus three
+JavaScript and CSS resources: the quickui.js file for the framework itself,
+and .js and .css files for the QuickUI Catalog of common controls.
 </p>
 
 <p>
-The code in the JavaScript pane (below) creates two instances of the QuickUI Catalog control called BasicButton, and sets the content of each to a text label. The result of these calls will be two control instances, which are then handed to the jQuery $.append() function to add the controls to a div on the page. The buttons will react to mouse events, but don't do anything else yet.
+The code in the JavaScript pane (below) creates two instances of the QuickUI
+Catalog control called BasicButton, and sets the content of each to a text
+label. The result of these calls will be two control instances, which are then
+handed to the jQuery append() function to add the controls to a div on the page.
+(The reference $demo is created by the page; in your own code, you would
+substitute any jQuery reference created by normal means.)
+The buttons will react to mouse events, but don't do anything else yet.
 </p>
 
 </body>

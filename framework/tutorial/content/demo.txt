@@ -1,0 +1,18 @@
+var $textBox = TextBox.create()
+    .content( "Hello" )
+    .on( "keyup", function() { $textBox.echo(); });
+$textBox.echo = function() {
+    var content = $textBox.content();
+    $buttons.content( content );
+};
+
+$demo.append(
+    $textBox,
+    "<br/>",
+    BasicButton.create(),
+    BasicButton.create(),
+    BasicButton.create()
+);
+
+var $buttons = $demo.find( ".BasicButton" ).control();
+$textBox.echo();

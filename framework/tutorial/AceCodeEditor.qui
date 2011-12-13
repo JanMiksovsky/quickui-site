@@ -34,7 +34,6 @@ AceCodeEditor.prototype.extend({
             session.setUseSoftTabs( true );
             editor.renderer.setShowGutter( false );
             editor.renderer.setHScrollBarAlwaysVisible( false );
-            editor.setTheme( "ace/theme/textmate" );
             var JavaScriptMode = require( "ace/mode/javascript" ).Mode;
             session.setMode( new JavaScriptMode() );
             $control.content( content );

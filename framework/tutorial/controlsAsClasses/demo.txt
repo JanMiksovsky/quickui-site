@@ -7,9 +7,8 @@ var $comboBox = ColorSwatchComboBox.create()
         "Red"
     ]);
 
-$demo.append( $comboBox );
-
 $demo.append(
+    $comboBox,
     $( "<p/>" ).text( "Instance of ColorSwatchComboBox: "
         + ( $comboBox instanceof ColorSwatchComboBox ) ),
     $( "<p/>" ).text( "Instance of ListComboBox: "
