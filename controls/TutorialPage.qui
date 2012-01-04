@@ -21,14 +21,6 @@
     </SitePage>
 </prototype>
 
-<style>
-p.highlight {
-    background-color: #FAF3ED;
-    border: 1px solid #D7C5B4;
-    padding: 1em;    
-}    
-</style>
-
 <script>
 TutorialPage.prototype.extend({
     

@@ -1,0 +1,26 @@
+/*** TutorialPage ***/
+
+.TutorialPage #SitePage_content {
+    max-width: inherit;
+}
+.TutorialPage h1, .TutorialPage p, .TutorialPage ol, .TutorialPage ul {
+    max-width: 800px;
+}
+
+.TutorialPage #editor {
+    margin: 1em 0;
+}
+
+.TutorialPage #buttonNext {
+    display: none;
+}
+
+.TutorialPage p.highlight {
+    border-width: 1px;
+    border-color: #D7C5B4;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    margin: 2em 0;
+    padding: 1em 0;
+}
+

@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
 <link rel="stylesheet" type="text/css" href="/controls/controls.css" />
 <link rel="stylesheet" type="text/css" href="/site.css" />
-<link rel="stylesheet" type="text/css" href="/framework/tutorial/tutorial.css" />
+<link rel="stylesheet" type="text/css" href="/framework/framework.css" />
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="/thirdparty/ace/ace.js"></script>
@@ -18,17 +18,17 @@
 <script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
 <script type="text/javascript" src="/release/quickui.catalog.js"></script>
 <script type="text/javascript" src="/controls/controls.js"></script>
-<script type="text/javascript" src="/framework/tutorial/tutorial.js"></script>
+<script type="text/javascript" src="/framework/framework.js"></script>
 
-<title>A control’s top element “knows” what class of control it is</title>
+<title>Casting a DOM element reference to a control class instance</title>
 
 <script id="demo">
 $demo.append(
     BasicButton.create().content( "Hello" )
 );
 
-var $element = $demo.find( "div" );
-var content = $element.content();
+var $button = $demo.find( "div" );
+var content = $button.content();
 
 $demo.append( content );
 </script>
@@ -80,7 +80,7 @@ content(), the call to $element.content() fails.
 
 <p>
 <b>Your goal:</b> Invoke control() on the result of the find() to cast the
-object reference to an instance of BasicButton. You will then be able to get the
+jQuery reference to an instance of BasicButton. You will then be able to get the
 content() of the resulting object.
 </p>
 
