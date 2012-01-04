@@ -20,81 +20,52 @@
 <script type="text/javascript" src="/controls/controls.js"></script>
 <script type="text/javascript" src="/framework/tutorial/tutorial.js"></script>
 
-<title>Respond to user interactions with event handlers</title>
+<title>Controls can be manipulated as an array</title>
 
 <script id="demo">
-var $listBox = ListBox.create()
-    .items([
-        "Bird",
-        "Cat",
-        "Dog",
-        "Fish"
-    ])
-    .on( "selectionChanged", function() {
-        // TODO: Set to list box's selectedItem() value.
-        var choice;
-        $choice.text( choice );
+var $textBox = TextBox.create()
+    .on( "change keyup", function() {
+        var $buttons = $demo.find( ".BasicButton" ).control();
+        if ( $buttons ) {
+            $buttons.content( $textBox.content() );
+        }
     });
-    
-var $choice = $( "<p/>" );
 
 $demo.append(
-    $listBox,
-    $choice
+    "Label: ",
+    $textBox,
+    "<br/>",
+    BasicButton.create()
 );
+
+$textBox.content( "Hello" );
 </script>
 
 <body
     data-create-controls="true"
     data-control="TutorialPage"
-    data-nextPage="metaControls.html"
+    data-nextPage="eventHandlers.html"
 >
 
 <p class="highlight">
-<b>Core idea:</b> You can bind to event handlers on a control instance as with
-any jQuery object.
-</p>
-<p>
-The HTML elements contained within a control raise the standard events (click,
-change, etc.), and you may want to handle those events. A control class may also
-define events unique to the class. You can have a control instance respond to
-both standard and custom events using jQuery’s built-in event handling
-mechanism. Generally, you will invoke jQuery’s on() function, passing in the
-name of the event you wish to handle and a function that should be invoked to
-handle the event.  
-</p>
-<p>
-Within the event handling function, you will often want to read properties or
-otherwise manipulate the control involved. You can do this in one of two ways:
-</p>
-<ol>
-    <li>
-        Create a variable outside the event handler that refers to the control,
-        and which will be available within the scope of that function. In the
-        event handler below, the reference $listBox refers to the list box 
-        control, and could be used within the event handler.
-    </li>
-    <li>
-        Wrap “this” in a jQuery constructor and cast the resulting jQuery object
-        to the appropriate control class. Within a jQuery-bound event handler, 
-        “this” will refer to the DOM element that was the target of the event. 
-        This element can be wrapped in a jQuery constructor, then cast using the 
-        control() plugin to be an instance of the correct control class. Within 
-        the handler below, the expression $( this ).control() will refer to the
-        list box control.
-    </li>
-</ol>
-
-<p>
-<b>The demo code</b> binds to the list box’s custom selectionChanged event,
-although the event handler doesn’t do anything interesting yet.
+<b>Core idea:</b> A control is a jQuery object, which means it’s an array that
+can contain multiple DOM elements. You can exploit this to manipulate a
+collection of controls in a single call.
 </p>
 
 <p>
-<b>Your goal:</b> Within the event handler, get the selectedItem() property of
-the list box, referencing that control using either of the two methods described 
-above. Use the value of that selectedItem() property to populate the $choice 
-paragraph with the user’s currently-selected choice. 
+<b>The demo code</b> creates a text box whose content is used as the label of a
+button; changes to the text are immediately reflected in the button’s label. The
+$buttons declaration produces an array of class BasicButton; the array will 
+contain an item for the top element of each button in the demo. (Initially, the
+array will contain just one item.) The subsequent call to $buttons.content()
+sets the content of any buttons in one step.
+</p>
+
+<p>
+<b>Your goal:</b> Add some more BasicButton.create() calls to create more
+buttons, then try typing in the text box to change the labels for all the
+buttons at once.
 </p>
 
 </body>
