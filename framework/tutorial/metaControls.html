@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+<link rel="stylesheet" type="text/css" href="/framework/tutorial/tutorial.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/thirdparty/ace/ace.js"></script>
+<script type="text/javascript" src="/thirdparty/ace/mode-javascript.js"></script>
+<script type="text/javascript" src="/lib/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="/framework/tutorial/tutorial.js"></script>
+
+<title>Meta-controls can create and manipulate other controls</title>
+
+<script id="demo">
+var items = [
+    "Red",
+    "Orange",
+    "Yellow",
+    "Green",
+    "Blue"
+];
+
+$demo.append(
+    List.create()
+        .items( items )
+);
+</script>
+
+<body
+    data-create-controls="true"
+    data-control="TutorialPage"
+    data-nextPage="contextIndependent.html"
+>
+
+<p class="highlight">
+<b>Core idea:</b> Meta-controls are controls that create, arrange, or otherwise
+manipulate other controls. For example, the QuickUI catalog provides several
+meta-controls that present JavaScript arrays as various types of lists whose
+items are represented by individual controls.
+</p>
+
+<p>
+<b>The demo code</b> renders an array of text strings using a List control. The
+List class takes an array passed to its items() property, and creates a control
+for each item in the array. The string value of each array item will be passed
+to the content() property of the corresponding control. By default, a List 
+renders each item as a plain Control instance, which has no special UI, and
+is effectively just a wrapper for a div.
+</p>
+<p>
+The two buttons are then handed to the jQuery append() function, which adds them
+to a <span data-control="Tag">div</span> on this page. For demo purposes, that div has already been
+created and made available to the JavaScript code through the identifier
+“$demo”. In your own code, you would obtain a similar reference with any jQuery
+selector.
+</p>
+<p>
+You can see the result of the running code on the right. The buttons react to
+mouse events and keyboard focus, but don't do anything else yet. They show
+generic styling: the minimum styling necessary to use the control. Most
+designers will want to style the controls further to fit their application’s
+visual aesthetic; more on that later.
+</p>
+
+<p>
+<b>Your goal:</b> Change the created control from a List to a ListBox. The
+ListBox class renders its items as list items, which are essentially buttons
+with no border. It also confers selection semantics, and adds keyboard support
+for moving the selection up and down the list. Once you’ve tried the control as
+a ListBox, change it to a MultiListBox (for multiple selection support) or a
+ListComboBox (for a combo box variant that includes AutoComplete).
+</p>
+<p>
+You can change the control class used to render list items by setting the list’s
+itemClass() property. Try changing the list back to a plain List, then set
+itemClass(ColorSwatchButton) to render each string as a CSS color swatch. Then
+step through the above progression: ListBox, MultiListBox, ListComboBox, to see 
+how each meta-control class now handles the list items. Each class’ behavior —
+e.g., keyboard navigation, AutoComplete — should still work.
+</p>
+
+</body>
+
+</html>

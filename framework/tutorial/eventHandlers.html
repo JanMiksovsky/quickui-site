@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+<link rel="stylesheet" type="text/css" href="/framework/tutorial/tutorial.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/thirdparty/ace/ace.js"></script>
+<script type="text/javascript" src="/thirdparty/ace/mode-javascript.js"></script>
+<script type="text/javascript" src="/lib/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="/framework/tutorial/tutorial.js"></script>
+
+<title>Welcome to the QuickUI tutorial</title>
+
+<script id="demo">
+$demo.append(
+    BasicButton.create().content( "Hello" ),
+    BasicButton.create().content( "World" )
+);
+</script>
+
+<body
+    data-create-controls="true"
+    data-control="TutorialPage"
+    data-nextPage="contextIndependent.html"
+>
+
+<p class="highlight">
+<b>Core idea:</b> The QuickUI framework lets you can build good user interfaces
+quickly with reliable, reusable, and adaptable UI components called controls.
+</p>
+<p>
+This tutorial is a sequence of short, live code exercises demonstrating how to
+create a user interface using QuickUI controls. Each tutorial page proposes a
+goal for you to try yourself.
+</p>
+<p>
+This page (like the pages that follow) has already loaded a recent version of
+the jQuery framework and the quickui.js file for the QuickUI framework. For
+instructional purposes, this page has also loaded the .js and .css file for the
+optional <Link href="/catalog">QuickUI Catalog</Link> of common controls.
+</p>
+
+<p>
+<b>The demo code</b> on this particular page creates two instances of a QuickUI control
+class called BasicButton. Each call to BasicButton’s create() method returns an
+instance of that class: an independent, self-contained copy of all the elements
+the control needs to function. Each instance is subsequently modified to set its
+content (label) to a string value.
+</p>
+<p>
+The two buttons are then handed to the jQuery append() function, which adds them
+to a <span data-control="Tag">div</span> on this page. For demo purposes, that div has already been
+created and made available to the JavaScript code through the identifier
+“$demo”. In your own code, you would obtain a similar reference with any jQuery
+selector.
+</p>
+<p>
+You can see the result of the running code on the right. The buttons react to
+mouse events and keyboard focus, but don't do anything else yet. They show
+generic styling: the minimum styling necessary to use the control. Most
+designers will want to style the controls further to fit their application’s
+visual aesthetic; more on that later.
+</p>
+
+<p>
+<b>Your goal:</b> Create a third button by adding another call to BasicButton.create()
+to the invocation of jQuery’s append() function. Once you’ve updated the code,
+press the Run button (or type Ctrl+Enter) to see the result.
+</p>
+
+</body>
+
+</html>

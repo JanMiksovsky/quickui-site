@@ -20,63 +20,76 @@
 <script type="text/javascript" src="/controls/controls.js"></script>
 <script type="text/javascript" src="/framework/tutorial/tutorial.js"></script>
 
-<title>Welcome to the QuickUI tutorial</title>
+<title>Create controls in or out of the DOM</title>
 
 <script id="demo">
+var $div = $( "<div></div>" );
+
 $demo.append(
-    BasicButton.create().content( "Hello" ),
-    BasicButton.create().content( "World" )
+    ColorSwatchComboBox.create().content( "Red" ),
+    $div
 );
+
+$div.control( ColorSwatchComboBox );
 </script>
 
 <body
     data-create-controls="true"
     data-control="TutorialPage"
-    data-nextPage="contextIndependent.html"
+    data-nextPage="cssClasses.html"
 >
 
 <p class="highlight">
-<b>Core idea:</b> The QuickUI framework lets you can build good user interfaces
-quickly with reliable, reusable, and adaptable UI components called controls.
+<b>Core idea:</b> Depending on your needs, you can create a control outside the
+DOM and then add it to the DOM as a separate step, or you can create a control 
+from an existing DOM element. The latter strategy for creating controls allows
+you to create pages with traditional HTML design and development tools, then 
+convert specific elements into control instances.
 </p>
 <p>
-This tutorial is a sequence of short, live code exercises demonstrating how to
-create a user interface using QuickUI controls. Each tutorial page proposes a
-goal for you to try yourself.
+Until this point, the examples have created a control by invoking a control
+class’ create() function, then appending the resulting element tree to the DOM. 
+Another approach to creating controls entails applying the control() plugin to
+an existing DOM element. We’ve already seen how the control() plugin can be
+invoked without parameters to cast a jQuery instance to an instance of a more
+specific control class. By supplying a control class to control(), the same
+plugin can also be used to convert an existing DOM element into an instance of 
+the indicated control class.
 </p>
 <p>
-This page (like the pages that follow) has already loaded a recent version of
-the jQuery framework and the quickui.js file for the QuickUI framework. For
-instructional purposes, this page has also loaded the .js and .css file for the
-optional <Link href="/catalog">QuickUI Catalog</Link> of common controls.
-</p>
-
-<p>
-<b>The demo code</b> on this particular page creates two instances of a QuickUI control
-class called BasicButton. Each call to BasicButton’s create() method returns an
-instance of that class: an independent, self-contained copy of all the elements
-the control needs to function. Each instance is subsequently modified to set its
-content (label) to a string value.
+This process will modify the existing element. Any existing contents within the
+element will be temporarily removed from the DOM. The control class will then
+populate the element with any sub-elements the control requires. Finally, the
+element’s previous contents will be passed to the new class’ content() property. 
+In this way, converting an element into a control can subsume the element’s 
+previous contents.
 </p>
 <p>
-The two buttons are then handed to the jQuery append() function, which adds them
-to a <span data-control="Tag">div</span> on this page. For demo purposes, that div has already been
-created and made available to the JavaScript code through the identifier
-“$demo”. In your own code, you would obtain a similar reference with any jQuery
-selector.
-</p>
-<p>
-You can see the result of the running code on the right. The buttons react to
-mouse events and keyboard focus, but don't do anything else yet. They show
-generic styling: the minimum styling necessary to use the control. Most
-designers will want to style the controls further to fit their application’s
-visual aesthetic; more on that later.
+Note: The resulting control can generally only work properly if the control()
+plugin is applied to a DOM element of the type the control class expects. Most 
+control classes expect their top element to be a div.
 </p>
 
 <p>
-<b>Your goal:</b> Create a third button by adding another call to BasicButton.create()
-to the invocation of jQuery’s append() function. Once you’ve updated the code,
-press the Run button (or type Ctrl+Enter) to see the result.
+<b>The demo code</b> creates two combo box controls. The first combo box is
+created by the same create() call we’ve seen earlier. The second combo box is 
+created in two steps: 1) a plain div is added to the DOM, 2) the control()
+plugin converts that plain div into an instance of the ColorSwatchComboBox 
+class.
+</p>
+<p>
+In this example, the second step happens immediately after the first, but they 
+could just as easily be separated in time. You could create the div at
+design-time in HTML, and turn it into a control through code at run-time.
+</p>
+
+<p>
+<b>Your goal:</b> As noted above, any content in the pre-existing div used to
+create the second combo box will be automatically passed to the class’ content()
+property. In the case of the ColorSwatchComboBox class, the content() is the
+name of the color being set. Take advantage of this to set the default content
+on the second combo box by putting a CSS color value between the opening and
+closing div tag, e.g.: <span data-control="Tag">div</span>Orange<span data-control="Tag">/div</span>.
 </p>
 
 </body>
