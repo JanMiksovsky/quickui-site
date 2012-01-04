@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+<link rel="stylesheet" type="text/css" href="/framework/tutorial/tutorial.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/thirdparty/ace/ace.js"></script>
+<script type="text/javascript" src="/thirdparty/ace/mode-javascript.js"></script>
+<script type="text/javascript" src="/lib/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="/framework/tutorial/tutorial.js"></script>
+
+<title>Adding content to a control</title>
+
+<script id="demo">
+$demo.append(
+    BasicButton.create(),
+    ColorSwatch.create(),
+    ColorSwatchButton.create(),
+    ColorSwatchComboBox.create()
+);
+
+$demo.children().control({
+    content: "Orange"
+});
+</script>
+
+<body
+    data-create-controls="true"
+    data-control="TutorialPage"
+    data-nextPage="properties.html"
+>
+
+<p class="highlight">
+<b>Core idea:</b> Every control class has a content() property which, by
+convention, refers to the main user-visible information rendered within the
+control.
+</p>
+<p>
+QuickUI properties emulate jQuery’s pervasive use of getter/setter functions: a
+single function that can either get or set a value, depending on whether an
+argument is supplied. The getter form has no arguments, and will return the
+given property value for the first element in the jQuery object it’s applied to.
+The setter form takes a single argument, and will set that property to that
+value on every element in the jQuery object it’s applied to.
+</p>
+<p>
+The semantics of the “content” property vary from control class to control
+class. The base Control class defines a standard implementation of the content()
+getter/setter function, but a control class can override this. Most controls
+take anything passed to content() and stash it within an element somewhere in
+the control’s DOM tree. In this common case, the content may be either anything
+supported by jQuery’s append() function: a string, a DOM element, a jQuery
+object (including a control), an array, etc.
+</p>
+<p>
+The standardization of the content function makes it easier to learn how to use
+new control classes, simplifies the transfer of data into or out of various
+controls, and minimizes the amount of code which must be rewritten when
+experimenting to see which control class works best for a job. It also
+facilitates the creation of meta-controls, discussed later.
+</p>
+
+<p>
+<b>The demo code</b> sets the content on instances of several different control
+classes. Each class implements the content() function differently. *** One of
+the controls is an instance of the Repeater control, a meta-control that creates
+a given number of instances of the indicated control class. (Meta-controls are
+covered later.) The Repeater class’ content() property is defined to set the 
+same content on all the controls it has generated. ***
+</p>
+<p>
+Keep in mind that just because the same content property can be set on all these
+controls doesn’t mean all controls can accept the same types of content. Some
+controls can only accept text content, some only expect a single element, and
+so on.
+</p>
+
+<p>
+<b>Your goal:</b> Add instances of the TextBox and AutoSizeTextBox control
+classes to the demo, and see how they handle their content.
+</p>
+
+</body>
+
+</html>

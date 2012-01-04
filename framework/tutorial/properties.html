@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+<link rel="stylesheet" type="text/css" href="/framework/tutorial/tutorial.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/thirdparty/ace/ace.js"></script>
+<script type="text/javascript" src="/thirdparty/ace/mode-javascript.js"></script>
+<script type="text/javascript" src="/lib/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="/framework/tutorial/tutorial.js"></script>
+
+<title>Controls are manipulated through properties</title>
+
+<script id="demo">
+$demo.append(
+    CollapsibleWithHeadingButton.create()
+        .content([
+            FlickrInterestingnessPhoto.create(),
+            LoremIpsum.create().paragraphs( 2 )
+        ])
+        .css({
+            background: "lightyellow"
+        })
+        .duration( "slow" )
+        .heading( "Heading" )
+);
+</script>
+
+<body
+    data-create-controls="true"
+    data-control="TutorialPage"
+    data-nextPage="casting.html"
+>
+
+<p class="highlight">
+<b>Core idea:</b> You can manipulate the appearance and behavior of controls
+through properties. Properties are implemented as standard jQuery-style
+getter/setter functions. You can also set multiple properties through a property
+dictionary.
+</p>
+<p>
+The content() property shown previously is just one standard control property —
+controls can expose any number of properties to let you manipulate their content
+and behavior. Some control properties may map directly to contents of elements 
+in the control’s DOM subtree, or to aspects (e.g., CSS style attributes) of 
+those elements. Other control properties may be stored internally for later use
+by the control, e.g., to govern the control’s response to events.
+</p>
+<p>
+Following jQuery convention, the setter form of a property function is
+chainable, meaning that you can continue applying additional instance functions
+to it. Also following jQuery convention, the setter form of a property function 
+can manipulate an array of controls in a single call. This makes it easy for you
+to quickly manipulate collections of similar controls, e.g., all the controls in 
+a list.
+</p>
+<p>
+Finally, you can also define a property dictionary to set multiple properties on
+a control at once, such as during the create call. So
+MyControl.create().foo(1).bar(2) is equivalent to
+MyControl.create({ foo: 1, bar: 2 }).
+</p>
+
+<p>
+<b>The demo code</b> creates a collapsible panel, then invokes several property
+setters on the resulting control instance. The first call is to the standard
+jQuery css() setter function to apply some styling to the control. The calls
+which follow invoke the standard content() setter, as well as setter functions
+unique to this control class. The content() and heading() properties directly
+populate portions of the control’s DOM tree. The duration() property, in 
+contrast, stores its value for later use. In this case, the value determines the
+animation speed in response to a heading button click.
+</p>
+
+<p>
+<b>Your goal:</b> The CollapsibleWithHeadingButton class has two properties,
+expandedButtonContent and collapsedButtonContent, which define the
+state-depended content of the little button in the control’s upper-right corner. 
+By default, these properties are the minus sign (“–”) and plus sign (“+”),
+respectively. Override these defaults by setting these properties to something 
+else, such as the strings “Hide” and “Show”.
+</p>
+
+</body>
+
+</html>

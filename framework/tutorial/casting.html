@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+<link rel="stylesheet" type="text/css" href="/framework/tutorial/tutorial.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/thirdparty/ace/ace.js"></script>
+<script type="text/javascript" src="/thirdparty/ace/mode-javascript.js"></script>
+<script type="text/javascript" src="/lib/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="/framework/tutorial/tutorial.js"></script>
+
+<title>A control’s top element “knows” what class of control it is</title>
+
+<script id="demo">
+$demo.append(
+    BasicButton.create().content( "Hello" )
+);
+
+var $element = $demo.find( "div" );
+var content = $element.content();
+
+$demo.append( content );
+</script>
+
+<body
+    data-create-controls="true"
+    data-control="TutorialPage"
+    data-nextPage="controlsFromElements.html"
+>
+
+<p class="highlight">
+<b>Core idea:</b> The QuickUI control() plugin can be invoked on the element at
+the top of a control’s DOM subtree to retrieve the logical control object that
+put that element there. This control reference is automatically cast to the
+correct JavaScript class for you, so that you end up with full access to the 
+control’s features via plain JavaScript function calls.
+</p>
+<p>
+A logical control object is an invisible entity distinct from the tree of DOM
+elements that may make up its visual manifestation. In casual parlance, the 
+term “control” can refer to either the logical entity or the visual tree, or 
+even both these things together. During coding, however, it’s essential to
+understand which aspect of a control — logical or visual — you’re dealing with.
+</p>
+<p>
+To go from a logical control object to the top of its DOM element tree is 
+straightforward: as discussed earlier, a control object is itself a jQuery array
+that contains a reference to the control’s top-level DOM element.
+</p>
+<p>
+To go the other way, from a DOM element to the corresponding logical control, 
+first use a jQuery selector to obtain a jQuery object referencing the DOM
+element in question. You can then convert, or “cast”, that object to a more
+specific class by invoking a jQuery plugin called control(). If the element in
+question was the top element created by a control, then the control() plugin 
+will return an instance of that control class. This will be a jQuery instance
+exposing the full functionality of the control. (If the element in question is
+not the top element of a control, passing the element to control() will return
+null.)
+</p>
+
+<p>
+<b>The demo code</b> doesn’t work initially. It uses jQuery’s find() function to
+retrieve a reference to the div at the root of the button. (This div is 
+created implicitly by the BasicButton.create() call.) That result of the 
+find() will be of type jQuery. Since there’s no jQuery function called
+content(), the call to $element.content() fails.
+</p>
+
+<p>
+<b>Your goal:</b> Invoke control() on the result of the find() to cast the
+object reference to an instance of BasicButton. You will then be able to get the
+content() of the resulting object.
+</p>
+
+</body>
+
+</html>
