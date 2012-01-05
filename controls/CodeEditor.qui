@@ -136,6 +136,7 @@ CodeEditor.prototype.extend({
         if ( event.which === 13 && event.ctrlKey ) {
             this.run();
             event.stopPropagation( true );
+            event.preventDefault();
             return false;
         } else if ( event.which === 9 ) {
             event.stopPropagation();
