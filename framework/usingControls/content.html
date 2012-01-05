@@ -24,15 +24,14 @@
 
 <script id="demo">
 $demo.append(
-    BasicButton.create(),
-    ColorSwatch.create(),
-    ColorSwatchButton.create(),
-    ColorSwatchComboBox.create()
+    BasicButton.create().content( "Orange" ),
+    ColorSwatchButton.create().content( "Orange" ),
+    ColorSwatchComboBox.create().content( "Orange" ),
+    Repeater.create()
+        .controlClass( ColorSwatchButton )
+        .count( 3 )
+        .content( "Orange" )
 );
-
-$demo.children().control({
-    content: "Orange"
-});
 </script>
 
 <body
@@ -73,11 +72,11 @@ facilitates the creation of meta-controls, discussed later.
 
 <p>
 <b>The demo code</b> sets the content on instances of several different control
-classes. Each class implements the content() function differently. *** One of
+classes. Each class implements the content() function differently. One of
 the controls is an instance of the Repeater control, a meta-control that creates
 a given number of instances of the indicated control class. (Meta-controls are
-covered later.) The Repeater class’ content() property is defined to set the 
-same content on all the controls it has generated. ***
+discussed more later.) The Repeater class’ content() property is defined to set the 
+same content on all the controls it has generated.
 </p>
 <p>
 Keep in mind that just because the same content property can be set on all these
@@ -87,8 +86,8 @@ so on.
 </p>
 
 <p>
-<b>Your goal:</b> Add instances of the TextBox and AutoSizeTextBox control
-classes to the demo, and see how they handle their content.
+<b>Your goal:</b> Add instances of the ColorSwatchTextBox and AutoSizeTextBox
+control classes to the demo, and see how they handle their content.
 </p>
 
 </body>
