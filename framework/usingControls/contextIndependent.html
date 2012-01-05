@@ -12,8 +12,8 @@
 <link rel="stylesheet" type="text/css" href="/framework/framework.css" />
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="/thirdparty/ace/ace.js"></script>
-<script type="text/javascript" src="/thirdparty/ace/mode-javascript.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/ace.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/mode-javascript.js"></script>
 <script type="text/javascript" src="/lib/quickui.js"></script>
 <script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
 <script type="text/javascript" src="/release/quickui.catalog.js"></script>
@@ -29,7 +29,7 @@ $demo.append(
        .content([
            // TODO: Move the photo here
        ]),
-   FlickrInterestingnessPhoto.create()
+   FlickrInterestingPhoto.create()
 );
 </script>
 
@@ -41,7 +41,7 @@ $demo.append(
 
 <p class="highlight">
 <b>Core idea:</b> A control doesn’t generally need to know anything about its
-host elements, the elements it sits within. Neither does a control depend on
+host elements — the elements it sits within. Neither does a control depend on
 other elements previously added to the DOM. The control itself normally provides
 all the elements it needs to function, as well as basic styling. Additionally,
 most controls generally impose few or no restrictions on the type of content
@@ -51,7 +51,7 @@ they can hold.
 When a control instance is created, a DOM element is created to serve as the
 top, or root, of the control’s elements. This top element is usually a
 <span data-control="Tag">div</span>,
-although a control class can ask for a different element. The control class
+although a control class can ask for a different top element. The control class
 and its parent classes may then populate this element with any other
 elements they require. The control’s subtree of elements is returned as the
 result of the create() call. You can then add the subtree to the document
@@ -65,9 +65,10 @@ to quickly refactor a user interface.
 </p>
 
 <p>
-<b>The demo code</b> creates two adjacent controls: one showing a random photo from
-Flickr’s Interestingness collection, and a CollapsibleWithHeadingButton panel
-that can be toggled between a collapsed and an expanded state. Each control
+<b>The demo code</b> creates two adjacent controls: 1) a
+CollapsibleWithHeadingButton panel that can be toggled between a collapsed and
+an expanded state, and 2) one showing a random photo from Flickr’s
+Interestingness collection. Each control
 adds all the elements it needs to the DOM. These controls could be added
 anywhere on any page and, in principle, the controls would not need to be
 modified for the new situation.
@@ -77,9 +78,9 @@ modified for the new situation.
 <b>Your goal:</b> Move the call that creates the photo so that it sits <i>inside</i>
 the content of the collapsible control, instead of sitting just below it.
 You will then be able to collapse or
-expand the section containing the photo. (If you're curious, you can also prove
-the point that controls are generally context-independent by swapping the heading 
-and content values, so that the photo ends up in the <i>heading</i>.)
+expand the section containing the photo. (If you're curious, you can further
+test the proposition that controls are generally context-independent by swapping
+the heading and content values, so that the photo ends up in the <i>heading</i>.)
 </p>
 
 </body>

@@ -12,8 +12,8 @@
 <link rel="stylesheet" type="text/css" href="/framework/framework.css" />
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="/thirdparty/ace/ace.js"></script>
-<script type="text/javascript" src="/thirdparty/ace/mode-javascript.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/ace.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/mode-javascript.js"></script>
 <script type="text/javascript" src="/lib/quickui.js"></script>
 <script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
 <script type="text/javascript" src="/release/quickui.catalog.js"></script>
@@ -37,13 +37,13 @@ Control( $demo ).rehydrate();
 <body
     data-create-controls="true"
     data-control="TutorialPage"
-    data-nextPage="contextIndependent.html"
+    data-nextPage=""
 >
 
 <p class="highlight">
 <b>Core idea:</b> For search engine visibility, controls can be created from
 static HTML pages created by any means (an HTML authoring tool, a CMS, etc.) by
-marking up HTML tags and then “rehydrated” them to create live controls.
+marking up HTML tags and then “rehydrating” them into live controls.
 </p>
 <p>
 Search engines only crawl static HTML content, not live JavaScript controls. For
@@ -73,9 +73,9 @@ heading() setter.
 <b>The demo code</b> populates an element with a set of static HTML div
 elements, then invokes the QuickUI rehydrate() function to turn these into live
 controls. For demo purposes, the static elements are added through JavaScript; 
-in normal practice, you would author the static <div> elements in whatever
-    manner you currently used to create HTML content: an HTML editor, a content
-    management system, etc.
+in normal practice, you would author the static elements in whatever
+manner you currently used to create HTML content: an HTML editor, a content
+management system, etc.
 </p>
 
 <p>
