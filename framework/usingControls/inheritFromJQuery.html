@@ -23,14 +23,14 @@
 <title>A control instance is a jQuery instance</title>
 
 <script id="demo">
+var $photo = FlickrInterestingPhoto.create();
+
 var $button = BasicButton.create()
    .content( "Toggle" )
    .click( function() {
        $photo.toggle();
    });
    
-var $photo = FlickrInterestingPhoto.create();
-
 $demo.append(
    $button,
    "<br/>",
