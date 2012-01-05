@@ -1,0 +1,104 @@
+<Control name="TutorialPage">
+
+<prototype>
+    <SitePage>
+        
+        <navigationLinks>
+            <Link href="/framework/usingControls/">Introduction</Link>
+            <Link href="/framework/usingControls/contextIndependent.html">Context independence</Link>
+            <Link href="/framework/usingControls/definedByClasses.html">Control classes</Link>
+            <Link href="/framework/usingControls/inheritFromJQuery.html">Inheriting from jQuery</Link>
+            <Link href="/framework/usingControls/content.html">Control content</Link>
+            <Link href="/framework/usingControls/properties.html">Control properties</Link>
+            <Link href="/framework/usingControls/casting.html">Casting jQuery objects</Link>
+            <Link href="/framework/usingControls/controlsFromElements.html">Using existing elements</Link>
+            <Link href="/framework/usingControls/cssClasses.html">CSS class names</Link>
+            <Link href="/framework/usingControls/manipulatingArrays.html">Control arrays</Link>
+            <Link href="/framework/usingControls/eventHandlers.html">Handling events</Link>
+            <Link href="/framework/usingControls/metaControls.html">Meta-controls</Link>
+            <Link href="/framework/usingControls/rehydration.html">Controls in static HTML</Link>
+        </navigationLinks>
+    
+        <div id="TutorialPage_content"/>
+    
+        <CodeEditor id="editor"/>
+        
+        <SiteButton id="buttonNext">Next »</SiteButton>
+        
+    </SitePage>
+</prototype>
+
+<style>
+#SitePage_content {
+    max-width: inherit;
+}
+h1, p, ol, ul {
+    max-width: 800px;
+}
+
+#editor {
+    margin: 1em 0;
+}
+
+#buttonNext {
+    display: none;
+}
+
+p.highlight {
+    border-width: 1px;
+    border-color: #D7C5B4;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    margin: 2em 0;
+    padding: 1em 0;
+}
+</style>
+
+<script>
+TutorialPage.prototype.extend({
+    
+    content: Control.chain( "$TutorialPage_content", "content" ),
+    
+    initialize: function() {
+        
+        this._super();
+        
+        var self = this;
+        this.$buttonNext().click( function() {
+            var nextPage = self.nextPage();
+            if ( nextPage ) {
+                window.location = nextPage;
+            }
+        });
+        
+        var code = $.trim( $( "script#demo" ).html() );
+        this.$editor().code( code );
+    },
+    
+    javascriptFile: Control.property( function( path ) {
+        var self = this;
+        $.get( path )
+            .success( function( data) {
+                self.$editor().code( data );
+            });
+    }),
+    
+    nextPage: Control.property( function( nextPage) {
+        this.$buttonNext().css( "display", nextPage ? "inline-block": "none" );
+    })
+
+});
+
+/*
+ * The tutorial demo scripts depend upon an element being defined called
+ * "$demo". Since the demo script will actually execute when the page is
+ * loaded, we define a dummy $demo element which the demo script can
+ * manipulate. This will have no effect, so the script won't throw an
+ * exception. Later, when the script is run, a closure will define a
+ * separate identifier called $demo that will point at the demo element which
+ * the script can safely modify.
+ */
+var $demo = $();
+</script>
+
+</Control>

@@ -1,0 +1,186 @@
+<Control name="CodeEditor">
+
+<content>
+    
+    <div id="runner">
+        <div>
+            <div>
+                <span class="label">Edit JavaScript here</span>
+            </div>
+            <div class="label">
+                <SiteButton id="buttonRun">&#9654; Run</SiteButton>
+                <!-- to see result: -->
+            </div>
+        </div>
+        <div>
+            <div id="codePane">
+                <!-- <textarea id="CodeEditor_code" spellcheck="false" /> -->
+                <AceCodeEditor id="CodeEditor_code"/>
+            </div>
+            <div id="result"/>
+        </div>
+    </div>
+    
+    <div id="CodeEditor_error"/>
+    
+</content>
+
+<style>
+#runner {
+    display: table;
+    width: 100%;
+}
+#runner > * {
+    display: table-row;
+}
+#runner > * > * {
+    box-sizing: border-box;
+    display: table-cell;
+    width: 50%;
+}
+
+.label {
+    color: #928274;
+    font-size: larger;
+    font-weight: bold;
+    padding-bottom: 0.5em;
+}
+
+#buttonRun {
+    margin: 0;
+}
+
+#codePane {
+    padding-right: 1em;
+}
+
+#CodeEditor_code {
+    /* Inconsolata from Google Web Fonts */
+    border: 1px solid lightgray;
+    font-family: Inconsolata, Monaco, Courier, Courier New, monospace;
+    font-size: 15px;
+    height: 400px;
+    margin: 0;
+    position: relative;
+    resize: none;
+    width: 100%;
+}
+
+#result {
+    vertical-align: top;
+}
+
+/* Space out demo elements */
+#demo > * {
+    margin: 0 0.25em 0.25em 0;
+}
+</style>
+
+<script>
+CodeEditor.prototype.extend({
+    
+    code: Control.chain( "$CodeEditor_code", "content", function() {
+        if ( this.inDocument() ) {
+            this.run();
+        }
+    }),
+    
+    error: Control.chain( "$CodeEditor_error", "content" ),
+    
+    initialize: function() {
+        
+        var self = this;
+        this.$buttonRun().click( function() {
+            self.run();
+        });
+        
+        this
+            .keydown( function( event ) {
+                self._keydown( event );
+            })
+            .inDocument( function( $control ) {
+                $control.run();
+                $control.$CodeEditor_code().focus();
+            });
+        
+    },
+    
+    result: Control.chain( "$result", "content" ),
+    
+    run: function() {
+        
+        this.error( null );
+        
+        var $demo = $( "<div id='demo'/>" );
+        this.$result().html( $demo );
+        var code = this.code();
+        try {
+            eval( code );
+        }
+        catch ( error ) {
+            this.error( error.toString() );
+        }
+    },
+    
+    _insertTextAtCursor: function( text ) {
+        var $editor = this.$CodeEditor_code();
+        var position = $editor.cursorPosition();
+        var content = $editor.content();
+        content = content.substr( 0, position ) + text + content.slice( position );
+        $editor
+            .content( content )
+            .cursorPosition( position + text.length );
+    },
+    
+    _keydown: function( event ) {
+        if ( event.which === 13 && event.ctrlKey ) {
+            this.run();
+            event.stopPropagation( true );
+            event.preventDefault();
+            return false;
+        } else if ( event.which === 9 ) {
+            event.stopPropagation();
+            event.preventDefault();
+            this._insertTextAtCursor( "    " );
+            return false;
+        }
+    }
+    
+});
+
+// Set/get the position of the cursor in an element (namely, an input box or text area).
+// TODO: Fold into CodeEditor.
+jQuery.fn.cursorPosition = function( position ) {
+    if ( position === undefined ) {
+        var position = 0;
+        var element = $(this).get(0);
+        if ( !element ) {
+            position = -1;
+        } else if ( document.selection ) {
+            element.focus();
+            var selection = document.selection.createRange();
+            var length = selection.text.length;
+            selection.moveStart( "character" , -element.value.length) ;
+            position = selection.text.length - length;
+        } else if ( element.selectionStart ) {
+            // Firefox
+            position = element.selectionStart;
+        }
+        return position;
+    } else {
+        return this.each(function(index, element) {
+            if ( element.createTextRange ) {
+                var range = element.createTextRange();
+                range.move( "character", position );
+                range.select();
+            } else if ( element.setSelectionRange ) {
+                // Firefox
+                element.focus();
+                element.setSelectionRange( position, position );
+            }
+        });
+    }
+};
+</script>
+
+</Control>

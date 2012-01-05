@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+<link rel="stylesheet" type="text/css" href="/framework/framework.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/ace.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/mode-javascript.js"></script>
+<script type="text/javascript" src="/lib/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="/framework/framework.js"></script>
+
+<title>Controls are defined as regular JavaScript classes</title>
+
+<script id="demo">
+var $comboBox = ColorSwatchComboBox.create()
+    .content( "Orange" )
+    .items([
+        "Blue",
+        "Green",
+        "Orange",
+        "Red"
+    ]);
+$comboBox.test = function( className ) {
+    var classFn = window[ className ];
+    var isInstance = ( classFn && this instanceof classFn );
+    var message = "I am " +
+        ( isInstance ? "" : " not" ) +
+        " an instance of " + className + ".";
+    return $( "<p/>" ).text( message) ;
+}
+
+$demo.append(
+    $comboBox,
+    $comboBox.test( "ColorSwatchComboBox" ),
+    $comboBox.test( "ListComboBox" ),
+    $comboBox.test( "ComboBox" ),
+    $comboBox.test( "BasicButton" )
+);
+</script>
+
+<body
+    data-create-controls="true"
+    data-control="TutorialPage"
+    data-nextPage="inheritFromJQuery.html"
+>
+
+<p class="highlight">
+<b>Core idea:</b> QuickUI controls are defined with regular JavaScript classes.
+</p>
+<p>
+As a JavaScript developer, you already use JavaScript’s native class support to
+define reusable behavior. QuickUI control classes are simply JavaScript classes.
+There are several ways to create an instance of a control class, but the
+simplest is to invoke the create() method shown earlier. This function produces
+an instance of the given control class.
+</p>
+<p>
+You can do anything to a control class or control instance that you can normally
+do in JavaScript. You can extend the class’s behavior by extending its
+prototype, you can test whether a control instance is a member of a given class
+with the JavaScript “instanceof” keyword, and so on.
+</p>
+
+<p>
+<b>The demo code</b> creates an instance of the ColorSwatchComboBox control
+class by calling the class' create() method. This class provides a reasonably
+complex user interface element that lets a user type a CSS color name or pick
+one from a list of choices. The class inherits much of its behavior from
+superclasses called ListComboBox and ComboBox.
+</p>
+<p>
+The demo code also adds a function to the control object that tests for
+membership of a class with a given name. This function is invoked several times
+to show that a ColorSwatchComboBox control is also an instance of some of its
+parent classes, but is not an instance of the BasicButton class.
+</p>
+
+<p>
+<b>Your goal:</b> Add tests to convince yourself that a ColorSwatchComboBox is
+also an instance of the Control class.
+</p>
+
+</body>
+
+</html>

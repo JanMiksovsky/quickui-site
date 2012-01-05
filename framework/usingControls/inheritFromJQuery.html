@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+<link rel="stylesheet" type="text/css" href="/framework/framework.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/ace.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/mode-javascript.js"></script>
+<script type="text/javascript" src="/lib/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="/framework/framework.js"></script>
+
+<title>A control instance is a jQuery instance</title>
+
+<script id="demo">
+var $photo = FlickrInterestingPhoto.create();
+
+var $button = BasicButton.create()
+   .content( "Toggle" )
+   .click( function() {
+       $photo.toggle();
+   });
+   
+$demo.append(
+   $button,
+   "<br/>",
+   $photo
+);
+</script>
+
+<body
+    data-create-controls="true"
+    data-control="TutorialPage"
+    data-nextPage="content.html"
+>
+
+<p class="highlight">
+<b>Core idea:</b> All control classes derive from jQuery. You can directly
+manipulate controls using the full power of jQuery, the most widely-used
+JavaScript library for web user interface development.
+</p>
+<p>
+Control classes inherit from a base class called Control, which itself inherits
+from jQuery. To the normal jQuery feature set, Control adds functionality for
+creating and manipulating controls. New control classes created in the QuickUI
+framework are subclasses of the Control class, adding further specialization.
+</p>
+<p>
+So when you have a reference to a control, you have a jQuery object as well. You
+can show and hide control instances with show() and hide(), you can manipulate a
+control’s CSS styling with css(), you can animate a control with animate(), and
+so on.
+</p>
+<p>
+Like any jQuery object, the value of a control object is an array containing one
+or more DOM elements. In the case of a newly-created control, the array will
+contain a reference to single element: the element (usually a div) that serves
+as the root of the control’s DOM subtree, and which the control has
+populated with the sub-elements it needs.
+</p>
+
+<p>
+<b>The demo code</b> creates a button and a photo. Because the button is a
+jQuery object, a click event handler can be attached to it which toggles display
+of the photo. Since the photo is also a jQuery object, it can be hidden and
+shown by applying jQuery’s toggle() function to it.
+</p>
+<p>
+The demo code also adds a function to the control object that tests for
+membership of a class with a given name. This function is invoked several times
+to show that a ColorSwatchComboBox control is also an instance of some of its
+parent classes, but is not an instance of the BasicButton class.
+</p>
+
+<p>
+<b>Your goal:</b> Change the click handler to use jQuery’s
+<Link href="http://api.jquery.com/fadeToggle/">fadeToggle()</Link>
+function instead, which will animate the transition from visible to hidden. You
+can try adding a duration parameter to fadeToggle(), such as “fast”, “slow”, or
+a number in milliseconds.
+</p>
+
+</body>
+
+</html>

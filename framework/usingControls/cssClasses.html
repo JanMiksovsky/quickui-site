@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+<link rel="stylesheet" type="text/css" href="/framework/framework.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/ace.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/mode-javascript.js"></script>
+<script type="text/javascript" src="/lib/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="/framework/framework.js"></script>
+
+<title>Reference controls with CSS class names</title>
+
+<script id="demo">
+$demo.append(
+    BasicButton.create().content( "Hello" ),
+    ColorSwatchButton.create().content( "Purple" )
+);
+
+$demo.find( ".BasicButton" ).css( "background", "lightyellow" );
+</script>
+
+<body
+    data-create-controls="true"
+    data-control="TutorialPage"
+    data-nextPage="manipulatingArrays.html"
+>
+
+<p class="highlight">
+<b>Core idea:</b> A control’s top element in the DOM has a “class” attribute
+that includes the names of all classes in the control’s class hierarchy. This 
+enables the key ability of visually styling controls with CSS rules referencing
+specific control classes. This can also allow you to efficiently find controls 
+of a given class, including controls that inherit from a class you’re looking for.
+</p>
+<p>
+The web development platform uses the term “class” to refer to two completely
+different things: 1) JavaScript classes, and 2) DOM element classes styled with
+CSS. Each meaning gives rise to its own namespace of classes. QuickUI
+facilitates searching, manipulating, and styling controls by creating a
+correspondence between these two namespaces.
+</p>
+<p>
+To this end, QuickUI sets the “class” attribute of a newly-instantiated control
+to include the names of all JavaScript classes in the control’s class hierarchy. 
+The JavaScript class names will appear in order from most specific class to most 
+general class. (Although all controls ultimately inherit from jQuery and Object,
+those names are not included in the list of class names.)
+</p>
+<p>
+Among other things, this means that, if you want all instances of, say,
+BasicButton, to have a particular style, you can create a CSS rule for
+“.BasicButton”. You can also use jQuery with the selector “.BasicButton” to find
+all existing instances of BasicButton.
+</p>
+
+<p>
+<b>The demo code</b> creates two buttons: one of the plain BasicButton class,
+and another of class ColorSwatchButton, which inherits from BasicButton. The 
+“class” attributes of these controls will reflect the class hierarchy of each. 
+(You can verify this in the debugger.) The first control will have
+class=“BasicButton Control”, because a BasicButton inherits from Control. The
+second control will have class=“ColorSwatchButton BasicButton Control”, because
+a ColorSwatchButton inherits from BasicButton.
+</p>
+
+<p>
+<b>Your goal:</b> Using a find() call similar to the one shown here, search for
+all ColorSwatchButton instances by class name, then set their CSS so that
+“font-weight” is set to “bold”.
+</p>
+
+</body>
+
+</html>

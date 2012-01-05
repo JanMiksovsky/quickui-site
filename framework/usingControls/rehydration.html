@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+<link rel="stylesheet" type="text/css" href="/framework/framework.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/ace.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/mode-javascript.js"></script>
+<script type="text/javascript" src="/lib/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="/framework/framework.js"></script>
+
+<title>Create controls from static HTML for searchability</title>
+
+<script id="demo">
+$demo.html(
+    "<div data-control='CollapsibleWithHeadingButton'>" +
+        "<div data-property='heading'>A <i>rich</i> heading</div>" +
+        "<div data-control='LoremIpsum' data-paragraphs=”3”/>" +
+        "<div data-control='BasicButton'>OK</div>" +
+        "<div data-control='BasicButton'>Cancel</div>" +
+   "</div>"
+);
+Control( $demo ).rehydrate();
+</script>
+
+<body
+    data-create-controls="true"
+    data-control="TutorialPage"
+    data-nextPage=""
+>
+
+<p class="highlight">
+<b>Core idea:</b> For search engine visibility, controls can be created from
+static HTML pages created by any means (an HTML authoring tool, a CMS, etc.) by
+marking up HTML tags and then “rehydrating” them into live controls.
+</p>
+<p>
+Search engines only crawl static HTML content, not live JavaScript controls. For
+pages which are generally document-like, you can achieve SEO (Search Engine 
+Optimization) benefits by writing HTML in normal means and including extra 
+information that can be used later to quickly create a corresponding collection
+of live controls. This process is called “rehydration”, and is accomplished with 
+a QuickUI function called rehydrate().
+</p>
+<p>
+The rehydrate() function looks for any elements with the data attribute
+“data-control”. The value of this attribute should be the string name of a
+QuickUI control class; this will be the class of the control from the
+HTML element.
+</p>
+
+<p>
+There are three ways to set properties on a control during rehydration:
+</p>
+
+<ol>
+    <li>
+    A data-<i>foo</i> attribute on the tag will pass the value of that
+    attribute to the control’s foo() property. E.g., in the demo,
+    data-paragraphs=”3” will invoke
+    paragraphs(3) on the newly-created LoremIpsum control.
+    </li>
+    <li>
+    To set complex properties in static HTML,
+    create a child and set its “data-property” attribute to the string name of the
+    property you want to set. In the demo, the first child, with 
+    data-property=”heading”, will have its HTML contents passed to the control’s
+    heading() setter.
+    </li>
+    <li>
+    Any remaining child elements (i.e., those without a data-property attribute)
+    will be passed to the new control’s content() property.
+    </li>
+</ol>
+
+<p>
+<b>The demo code</b> populates an element with a set of static HTML div
+elements, then invokes the QuickUI rehydrate() function to turn these into live
+controls. For demo purposes, the static elements are added through JavaScript; 
+in normal practice, you would author the static elements in whatever
+manner you currently used to create HTML content: an HTML editor, a content
+management system, etc.
+</p>
+
+<p>
+<b>Your goal:</b> Update the static HTML so that the Cancel button’s disabled()
+property is set to true when the control is rehydrated. Use either method #1
+or method #2 above.
+</p>
+
+</body>
+
+</html>

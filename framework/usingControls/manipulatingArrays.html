@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+<link rel="stylesheet" type="text/css" href="/framework/framework.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/ace.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/mode-javascript.js"></script>
+<script type="text/javascript" src="/lib/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="/framework/framework.js"></script>
+
+<title>Controls can be manipulated as an array</title>
+
+<script id="demo">
+var $textBox = TextBox.create()
+    .on( "change keyup", function() {
+        var $buttons = $demo.find( ".BasicButton" ).control();
+        if ( $buttons ) {
+            $buttons.content( $textBox.content() );
+        }
+    });
+
+$demo.append(
+    "Label: ",
+    $textBox,
+    "<br/>",
+    BasicButton.create()
+);
+
+$textBox.content( "Hello" );
+</script>
+
+<body
+    data-create-controls="true"
+    data-control="TutorialPage"
+    data-nextPage="eventHandlers.html"
+>
+
+<p class="highlight">
+<b>Core idea:</b> A control is a jQuery object, which means it’s an array that
+can contain multiple DOM elements. You can exploit this to manipulate a
+collection of controls in a single call.
+</p>
+
+<p>
+<b>The demo code</b> creates a text box whose content is used as the label of a
+button; changes to the text are immediately reflected in the button’s label. The
+$buttons declaration produces an array of class BasicButton; the array will 
+contain an item for the top element of each button in the demo. (Initially, the
+array will contain just one item.) The subsequent call to $buttons.content()
+sets the content of any buttons in one step.
+</p>
+
+<p>
+<b>Your goal:</b> Add some more BasicButton.create() calls to create more
+buttons, then try typing in the text box to change the labels for all the
+buttons at once.
+</p>
+
+</body>
+
+</html>

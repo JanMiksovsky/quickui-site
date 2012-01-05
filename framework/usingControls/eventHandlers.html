@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+<link rel="stylesheet" type="text/css" href="/framework/framework.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/ace.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/mode-javascript.js"></script>
+<script type="text/javascript" src="/lib/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="/framework/framework.js"></script>
+
+<title>Respond to user interactions with event handlers</title>
+
+<script id="demo">
+var $listBox = ListBox.create()
+    .items([
+        "Bird",
+        "Cat",
+        "Dog",
+        "Fish"
+    ])
+    .on( "selectionChanged", function() {
+        // TODO: Set to list box's selectedItem() value.
+        var choice;
+        $choice.text( choice );
+    });
+    
+var $choice = $( "<p/>" );
+
+$demo.append(
+    $listBox,
+    $choice
+);
+</script>
+
+<body
+    data-create-controls="true"
+    data-control="TutorialPage"
+    data-nextPage="metaControls.html"
+>
+
+<p class="highlight">
+<b>Core idea:</b> You can bind to event handlers on a control instance as with
+any jQuery object.
+</p>
+<p>
+The HTML elements contained within a control raise the standard events (click,
+change, etc.), and you may want to handle those events. A control class may also
+define events unique to the class. You can have a control instance respond to
+both standard and custom events using jQuery’s built-in event handling
+mechanism. Generally, you will invoke jQuery’s on() function, passing in the
+name of the event you wish to handle and a function that should be invoked to
+handle the event.  
+</p>
+<p>
+Within the event handling function, you will often want to read properties or
+otherwise manipulate the control involved. You can do this in one of two ways:
+</p>
+<ol>
+    <li>
+        Create a variable outside the event handler that refers to the control,
+        and which will be available within the scope of that function. In the
+        event handler below, the reference $listBox refers to the list box 
+        control, and could be used within the event handler.
+    </li>
+    <li>
+        Wrap “this” in a jQuery constructor and cast the resulting jQuery object
+        to the appropriate control class. Within a jQuery-bound event handler, 
+        “this” will refer to the DOM element that was the target of the event. 
+        This element can be wrapped in a jQuery constructor, then cast using the 
+        control() plugin to be an instance of the correct control class. Within 
+        the handler below, the expression $( this ).control() will refer to the
+        list box control.
+    </li>
+</ol>
+
+<p>
+<b>The demo code</b> binds to the list box’s custom selectionChanged event,
+although the event handler doesn’t do anything interesting yet.
+</p>
+
+<p>
+<b>Your goal:</b> Within the event handler, get the selectedItem() property of
+the list box, referencing that control using either of the two methods described 
+above. Use the value of that selectedItem() property to populate the $choice 
+paragraph with the user’s currently-selected choice. 
+</p>
+
+</body>
+
+</html>
