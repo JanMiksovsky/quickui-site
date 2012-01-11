@@ -20,29 +20,106 @@
 <script type="text/javascript" src="/controls/controls.js"></script>
 <script type="text/javascript" src="/framework/framework.js"></script>
 
-<title></title>
+<title>Concisely define properties with a jQuery function chain</title>
 
 <script id="demo">
+var UserTile = Control.subclass({
+    name: "UserTile",
+    content: [
+        {
+            control: FlickrInterestingPhoto,
+            css: {
+                "margin-right": "0.5em",
+                "vertical-align": "middle",
+            },
+            photoSize: "s"
+        },
+        {
+            html: "<span/>",
+            id: "name"
+        }
+    ],
+    prototype: {
+        name: function( value ) {
+            if ( value === undefined ) {
+                return this.$name().content();
+            } else {
+                this.$name().content( value );
+                return this;
+            }
+        }
+    }
+})
+
+$demo.append(
+    UserTile.create().name( "Alice" ),
+    UserTile.create().name( "Bob" ),
+    UserTile.create().name( "Carol" )
+);
 </script>
 
 <body
     data-create-controls="true"
     data-control="TutorialPage"
-    data-nextPage="overriding-content-property.html"
+    data-nextPage="subclassing-other-classes.html"
 >
 
 <p class="highlight">
 <b>Core idea:</b>
+Many control properties invoke a chain of jQuery functions to perform their
+work. You can define such properties concisely with a QuickUI helper function
+called Control.chain().
 </p>
 <p>
+Consider the definition for a property foo() like this, which gets or sets the
+content of an element with id #foo.
+</p>
+<pre>
+        foo: function( value ) {
+            if ( value === undefined ) {
+                return this.$foo().content();
+            } else {
+                this.$foo().content( value );
+                return this;
+            }
+        }
+</pre>
+<p>
+Both the getter and setter forms of the function apply the $foo() function to
+“this”, then apply the 
+<a data-control="Link" href="content.html">content() function</a>
+to the result. The setter form
+takes the extra step of passing the supplied value to the last function in the
+chain. The setter form also returns “this” to support chaining.
+</p>
+<p>
+The above property definition is so common that QuickUI provides a helper
+function called Control.chain(). The above code can be replaced by:
+</p>
+<pre>
+        foo: Control.chain( "$foo", "content" )
+</pre>
+<p>
+Control.chain() returns a function that will apply the given sequence of named
+functions to “this”. If called as a setter, the function will pass the supplied
+value to the last function in the chain, and will also return “this” so the
+function can be chained.
+</p>
+<p>
+An argument can be passed to a named function by following the name with a “/”.
+For example: Control.chain( “$foo”, “css/color” ) would return a function that
+gets or sets the color of the element #foo.
 </p>
 
 <p>
 <b>The demo code</b> 
+defines the class’ name() property to get or set the content of the span with id
+“name”.
 </p>
 
 <p>
 <b>Your goal:</b> 
+Simplify the definition of name() to a single line by using Control.chain().
 </p>
 
 </body>

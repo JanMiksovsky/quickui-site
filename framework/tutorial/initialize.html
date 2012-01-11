@@ -20,9 +20,27 @@
 <script type="text/javascript" src="/controls/controls.js"></script>
 <script type="text/javascript" src="/framework/framework.js"></script>
 
-<title></title>
+<title>Initializing a control</title>
 
 <script id="demo">
+var MessageButton = BasicButton.subclass({
+    name: "MessageButton",
+    generic: true,
+    prototype: {
+        initialize: function() {
+            this._super();
+            this.click( function() {
+                var content = ""; // TODO: get control content
+                alert( content + " to you, too." );
+            });
+        }
+    }
+});
+
+$demo.append(
+    MessageButton.create().content( "Hello" ),
+    MessageButton.create().content( "Goodbye" )
+);
 </script>
 
 <body
@@ -33,16 +51,59 @@
 
 <p class="highlight">
 <b>Core idea:</b>
+You can wire up event handlers and perform other setup tasks inside a control’s
+initialize() method.
 </p>
 <p>
+The initialize() method is invoked as soon as the control is created. If the
+control is created through a call to the class’ create() method, then the
+initialize() method will execute while the control is still outside of the DOM.
+The initialize() method is invoked as soon as the control is created. If the 
+control is created through a call to the class’ create() method, then the
+initialize() method will execute while the control is still outside of the DOM.
 </p>
+<p>
+The initialize() method can be concisely defined by adding an “initialize:” key
+to the prototype in a class’ JSON. Inside this function, “this” will refer to
+the new control. When subclassing a class other that Control, your initialize()
+method should invoke this._super() to give its superclass(es) a chance to
+perform their own initialization.
+</p>
+<p>
+As discussed earlier, you can wire up
+<a data-control="Link" href="event-handlers.html">event handlers</a>
+using the standard
+jQuery on() function. Inside an event handler, you’ll often want to reference
+the control’s own methods or properties. You can do this in one of two ways:
+</p>
+<ol>
+    <li>
+        Inside a handler bound via jQuery, the variable “this” will refer to the
+        DOM element which triggered the event. You can
+        <a data-control="Link" href="casting.html">cast that element</a> 
+        to get the control via the expression: “$(this).control()”.
+    </li>
+    <li>
+        Create a variable outside the click handler that references the control,
+        for example, “var self = this;”. The function closure in which the event
+        handler runs can then reference the logical control object via “self”.
+    </li>
+</ol>
 
 <p>
 <b>The demo code</b> 
+creates a button class that displays an alert when clicked. As written, the
+alert message is incomplete.
 </p>
 
 <p>
 <b>Your goal:</b> 
+Have the click handler show the button’s own content in the alert’s message:
+clicking the Hello button should produce the message, “Hello to you, too”, and
+clicking the Goodbye button should produce the message, “Goodbye to you, too”.
+To get the button’s content inside the handler, use either of the two techniques
+described above to get a reference to the control, then get the control’s
+content() property.
 </p>
 
 </body>

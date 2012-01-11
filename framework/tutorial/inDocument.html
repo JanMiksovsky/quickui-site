@@ -20,9 +20,26 @@
 <script type="text/javascript" src="/controls/controls.js"></script>
 <script type="text/javascript" src="/framework/framework.js"></script>
 
-<title></title>
+<title>Executing code when a control is added to the document</title>
 
 <script id="demo">
+var Square = Control.subclass({
+    name: "Square",
+    content: "I'm a square",
+    css: {
+        border: "1px solid gray",
+        display: "inline-block"
+    },
+    prototype: {
+        initialize: function() {
+            this.height( this.width() + "px" );
+        }
+    }
+});
+
+$demo.append(
+    Square.create()
+);
 </script>
 
 <body
@@ -33,16 +50,46 @@
 
 <p class="highlight">
 <b>Core idea:</b>
+If control initialization code requires that a control instance be in the page
+DOM, wrap the code in a callback function. Pass the callback to the control’s
+inDocument() method to queue the callback for execution.
 </p>
 <p>
+The
+<a data-control="Link" href="initialize.html">initialize()</a>
+method runs as soon as a control is instantiated, but some tasks may require a
+control to actually be in the page DOM. For example, layout properties such as
+height() and width(), and any properties related to CSS, will return useless
+values if invoked before the control is in the document.
+</p>
+<p>
+The base Control class supplies a method called inDocument that accepts a
+callback function. If the control is already in the document, the callback is
+executed immediately. If the control is still outside the DOM, the callback is
+queued up; when the control is later added to the DOM, the callback will be
+invoked.
+</p>
+<p>
+Inside the callback, “this” refers to the control that was (just) added to the
+DOM.
 </p>
 
 <p>
 <b>The demo code</b> 
+creates a Square control that tries to initialize itself to be as tall as it is
+wide. The code doesn’t work yet, because the initialize() function is invoked as
+soon as the control is created – before the control is in the DOM and has a
+known width. At that point the width will be zero, so the initialize() function
+will set the height of the control to zero.
 </p>
 
 <p>
-<b>Your goal:</b> 
+<b>Your goal:</b>
+Wrap the line that sets this.height() inside a callback function that is passed
+to this.inDocument(). When the control is created, the callback will be queued
+up. When the Square instance is added to the DOM in the $demo.append() call, the
+callback will be invoked. At that point, the control will have a known width,
+and should be able to set its height such that the resulting control is square.
 </p>
 
 </body>

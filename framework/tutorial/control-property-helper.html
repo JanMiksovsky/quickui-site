@@ -20,9 +20,30 @@
 <script type="text/javascript" src="/controls/controls.js"></script>
 <script type="text/javascript" src="/framework/framework.js"></script>
 
-<title></title>
+<title>Properties that store values</title>
 
 <script id="demo">
+var MessageButton = BasicButton.subclass({
+    name: "MessageButton",
+    generic: true,
+    prototype: {
+        initialize: function() {
+            this._super();
+            var self = this;
+            this.click( function() {
+                alert( self.message() );
+            });
+        },
+        message: Control.property()
+    }
+});
+
+$demo.append(
+    MessageButton.create()
+        .content( "Hello" ),
+    MessageButton.create()
+        .content( "Goodbye" )
+);
 </script>
 
 <body
@@ -33,16 +54,47 @@
 
 <p class="highlight">
 <b>Core idea:</b>
+You can easily define properties that provide internal per-control storage with
+the Control.property() helper function.
 </p>
 <p>
+The control properties created in earlier exercises store values in DOM
+elements, but there will be cases where you want to store a control property
+value without having to keep this value in the DOM. QuickUI provides a helper
+function called Control.property() that, like
+<a data-control="Link" href="control-chain-helper.html">Control.chain()</a>,
+generates a function that can be used to implement a property.
+</p>
+<p>
+The function returned by Control.property() will store an arbitrary value for a
+given control instance. The implementation of the returned function uses
+jQuery’s data() facility to associate the property value with the control’s top
+element. Among other things, this means the property value stays associated with
+the control instance even if that control is moved in or out of the DOM. One
+advantage of Control.property() over jQuery’s data() is that it’s not necessary
+to define a string name under which the property value will be stored.
+</p>
+<p>
+To facilitate the acceptance and conversion of string property values (e.g., to
+support
+<a data-control="Link" href="rehydration.html">rehydration from static HTML</a>),
+variations of the basic Control.property() helper function
+will convert a string parameter to a native JavaScript type.
+Control.property.bool() returns a function optimized to store a Boolean value,
+and Control.property.integer() does the same for an integral value.
 </p>
 
 <p>
-<b>The demo code</b> 
+<b>The demo code</b>
+defines a MessageButton class with a property called message(). This message()
+property can be used to associate an arbitrary chunk of content (e.g., a string)
+with a MessageButton instance. Clicking the button displays its message.
 </p>
 
 <p>
-<b>Your goal:</b> 
+<b>Your goal:</b>
+Add message() calls to the two MessageButton instances so that each
+button displays a unique message.
 </p>
 
 </body>

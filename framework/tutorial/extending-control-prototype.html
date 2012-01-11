@@ -20,9 +20,37 @@
 <script type="text/javascript" src="/controls/controls.js"></script>
 <script type="text/javascript" src="/framework/framework.js"></script>
 
-<title></title>
+<title>Adding functionality to a control class’ prototype</title>
 
 <script id="demo">
+var UserTile = Control.subclass({
+    name: "UserTile",
+    content: [
+        {
+            control: FlickrInterestingPhoto,
+            css: {
+                "margin-right": "0.5em",
+                "vertical-align": "middle",
+            },
+            photoSize: "s"
+        },
+        {
+            html: "<span>User tile</span>"
+
+        }
+    ],
+    prototype: {
+        highlight: function() {
+            return this; // TODO
+        }
+    }
+})
+
+$demo.append(
+    UserTile.create(),
+    UserTile.create().highlight(),
+    UserTile.create()
+);
 </script>
 
 <body
@@ -33,16 +61,44 @@
 
 <p class="highlight">
 <b>Core idea:</b>
+You add new functionality to a control class by defining functions on the class’
+prototype.
 </p>
 <p>
+As in normal JavaScript, you give instances of a control class access to a new
+function by extending the class’ JavaScript prototype. There are several ways to
+do this. One efficient way is pass the subclass() call a dictionary containing a
+key called “prototype:”. The value of the “prototype:” key typically be a nested
+dictionary of functions.
+</p>
+<p>
+These will be copied over to the new class’ prototype, making the functions
+available to all instances of the control class (or to instances of any
+subclasses for that class which you define later). If you select a control’s top
+element out of the DOM to obtain a general jQuery object, you’ll need to
+<a data-control="Link" href="casting.html">cast that object</a>
+to the more specific class before you can invoke the class’ function.
 </p>
 
 <p>
 <b>The demo code</b> 
+defines a simple function that will get copied to become
+UserTile.prototype.highlight(). This highlight() function can then be invoked on
+any UserTile instances. The demo creates three instances of the UserTile class,
+and invokes highlight() on the second instance.
+</p>
+<p>
+For now, the highlight() function has no effect, and simply returns the control
+itself. (Returning “this” permits jQuery-style function chaining.)
 </p>
 
 <p>
 <b>Your goal:</b> 
+Change the body of the highlight function so that it does something visually
+interesting to the control. A simple example would be to use the jQuery css()
+function to set the background of the control to some noticeable color. Be sure
+that the highlight function continues to return “this” so that the function can
+be chained.
 </p>
 
 </body>

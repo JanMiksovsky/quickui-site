@@ -20,9 +20,42 @@
 <script type="text/javascript" src="/controls/controls.js"></script>
 <script type="text/javascript" src="/framework/framework.js"></script>
 
-<title></title>
+<title>Exposing element content as control properties</title>
 
 <script id="demo">
+var UserTile = Control.subclass({
+    name: "UserTile",
+    content: [
+        {
+            control: FlickrInterestingPhoto,
+            css: {
+                "margin-right": "0.5em",
+                "vertical-align": "middle",
+            },
+            photoSize: "s"
+        },
+        {
+            html: "<span/>",
+            id: "name"
+        }
+    ],
+    prototype: {
+        name: function( value ) {
+            if ( value === undefined ) {
+                return this.$name().html();
+            } else {
+                this.$name().html( value );
+                return this;
+            }
+        }
+    }    
+})
+
+$demo.append(
+    UserTile.create().name( "Alice" ),
+    UserTile.create().name( "Bob" ),
+    UserTile.create().name( "Carol" )
+);
 </script>
 
 <body
@@ -33,16 +66,59 @@
 
 <p class="highlight">
 <b>Core idea:</b>
+Your control can expose portions of its content so that those portions can be
+read and manipulated by external entities (e.g., the page hosting the control).
+You can do this by defining properties to create an external-facing control API.
 </p>
 <p>
+Over the lifetime of a useful control’s codebase, you may end up changing your
+control’s internal DOM structure many times. Perhaps you initially write the
+control to use a plain HTML element somewhere, then later you replace that
+element with an element or control better suited to your evolving UI.
+</p>
+<p>
+This refactoring presents a significant maintenance problem if outside entities
+(that is, any code outside the control definition) are working directly inside
+your control’s DOM. External code that expects to find a specific type of HTML
+element at a particular point in the DOM structure (“the first button inside a
+div of class ‘foo’”), can break if you move that element or change its type.
+</p>
+<p>
+To avoid these problems, it’s better for your control to present an external API
+through which outside entities can read data and manipulate control content.
+This lets you refactor the internal structure of your control, and as long as
+your external API remains the same, outside code can continue to work without
+modification.
 </p>
 
 <p>
 <b>The demo code</b> 
+is a variant of the
+<a data-control="Link" href="element-reference-functions.html">previous exercise</a>,
+in which code outside the control definition directly referenced the span
+holding the user name. This newer version extends the control’s prototype to
+define a name() property. The name() property is a getter/setter function: if no
+value argument is supplied, the function returns the contents of the name span;
+if a value is supplied, the function sets the content of the name span. The
+setter form takes care to return “this” so that name() can be chained.
 </p>
 
 <p>
-<b>Your goal:</b> 
+<b>Your goal:</b>
+Change the UserTile control to use a text box instead of a plain span to show
+the name. First change the <span data-control="Tag">span/</span> for the name
+to a text box:
+<span data-control="Tag">input type='text'/</span>.
+Then reflect this change in the definition of the name() property: instead of
+getting and setting $name().html(), the property should now get and set
+$name().val().
+</p>
+<p>
+If all goes well, your UserTile control will now show the user’s name in a text
+box. Although the control now works quite differently, because the three
+UserTile instances created by the demo access the name via the name() API, the
+code that uses the UserTile control didn’t need to be updated to continue
+working.
 </p>
 
 </body>

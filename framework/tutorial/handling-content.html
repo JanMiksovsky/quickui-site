@@ -20,9 +20,44 @@
 <script type="text/javascript" src="/controls/controls.js"></script>
 <script type="text/javascript" src="/framework/framework.js"></script>
 
-<title></title>
+<title>Defining properties that can handle a variety of content</title>
 
 <script id="demo">
+var UserTile = Control.subclass({
+    name: "UserTile",
+    content: [
+        {
+            control: FlickrInterestingPhoto,
+            css: {
+                "margin-right": "0.5em",
+                "vertical-align": "middle",
+            },
+            photoSize: "s"
+        },
+        {
+            html: "<span/>",
+            id: "name"
+        }
+    ],
+    prototype: {
+        name: function( value ) {
+            if ( value === undefined ) {
+                return this.$name().html();
+            } else {
+                this.$name().html( value );
+                return this;
+            }
+        }
+    }    
+})
+
+$demo.append(
+    UserTile.create().name([
+        "Super ",
+        BasicButton.create().content( "Button" ),
+        " Man!"
+    ])
+);
 </script>
 
 <body
@@ -33,16 +68,46 @@
 
 <p class="highlight">
 <b>Core idea:</b>
+Control properties whose values are stored in DOM elements can use the content()
+function to handle arbitrary content, including arrays.
 </p>
 <p>
+A control property that stores its value as the content of a DOM element makes a
+control quite flexible. You can design a control with the assumption that a
+given element is going to only contain, say, a string. But another designer may
+want to put more complex content in that control: perhaps a DOM subtree
+containing multiple elements, or perhaps another control (which itself may
+contain more controls).
+</p>
+<p>
+The QuickUI framework provides a jQuery plugin called content() that can be
+applied to any element or control. This is similar to the jQuery contents()
+function (with an “s”), with two improvements. First, QuickUI’s content()
+function (without the “s”) can be invoked as a setter to set content. Second,
+this setter form can accept an array of elements. This ability is particularly
+useful when defining a control class concisely in JSON. For reference, the JSON 
+in the last few exercises have all shown the default “content:” of a new class
+being set to an array.
+</p>
+<p>
+In general, the content() function can return and accept a wide variety of 
+values: plain text strings; HTML strings; jQuery objects, including QuickUI
+controls; or an array containing any of those types.
 </p>
 
 <p>
 <b>The demo code</b> 
+tries to create a Greet control whose name span will contain a Button. As
+written, the code throws an exception because this array is eventually passed to
+the html() of the name span, and html() doesn’t support arrays.
 </p>
 
 <p>
-<b>Your goal:</b> 
+<b>Your goal:</b>
+Rewrite the name() property so that its getter and setter form both invoke the
+QuickUI content() function, instead of the standard jQuery html() function, on 
+the result of calling $name(). You should end up seeing a UserTile whose name
+property shows both text and a button.
 </p>
 
 </body>

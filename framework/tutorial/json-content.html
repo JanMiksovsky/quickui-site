@@ -20,9 +20,30 @@
 <script type="text/javascript" src="/controls/controls.js"></script>
 <script type="text/javascript" src="/framework/framework.js"></script>
 
-<title></title>
+<title>Setting a control’s default content with JSON</title>
 
 <script id="demo">
+var Message = Control.subclass({
+    name: "Message",
+    content: [
+        {
+            html: "<h2>Compose message:</h2>",
+            css: { color: "Green" }
+        },
+        {
+            control: AutoSizeTextBox
+        },
+        "<br/>",
+        {
+            control: BasicButton,
+            content: "Send"
+        }
+    ]
+});
+
+$demo.append(
+    Message.create()
+);
 </script>
 
 <body
@@ -33,16 +54,78 @@
 
 <p class="highlight">
 <b>Core idea:</b>
+When defining a class, you can use JSON to populate the default content of a new
+control. A simple JSON format allows you to create plain text, HTML elements, or
+QuickUI controls. The UI created in JSON will be passed to the control’s
+content() property setter (or any other property you indicate). This makes
+defining content quite concise, and makes it easier to visualize the result of 
+creating a control instance.
 </p>
 <p>
+The content of most controls will obviously vary from instance to instance – if
+you have six radio buttons on a page, they probably have different labels. But
+in most cases at least some portion of a control’s content is consistent and can 
+be determined at design time. Modern JavaScript web applications often build
+their entire UI in jQuery calls, but such procedural code can be hard for other
+people (or even you, later) to wade through. Using a standard JSON format to
+capture the consistent structure of a control’s UI can make things easier to 
+read and maintain than raw procedural code.
+</p>
+<p>
+The demo code creates a simple UI for a message composition feature. The code
+illustrates the various means of using JSON to define the control class’ UI. A
+control’s content() property, and other properties that accept a DOM subtree, 
+can be filled out by adding a key to the JSON dictionary and giving this key a
+value that’s either a string or an array. If it’s a string, it’s passed directly 
+to the corresponding control property. So a dictionary entry like content:
+“Hello” will invoke content(“Hello”) when a new control is created.
+</p>
+<p>
+If the key value is an array (as here, in the value for “content:”), each item
+of the array should take one of the following forms:
+</p>
+<ol>
+    <li>
+        A string. This can be plain text or HTML. This will be added to the DOM
+        as is. For example, the “<br/>” item in the demo is plain HTML.
+    </li>
+    <li>
+        A nested dictionary containing an “html:” key. The value of this key
+        should be HTML specifying a single element (which itself can contain
+        subelements). This will be turned into a DOM element by jQuery. Any 
+        additional keys in the nested dictionary will be taken as jQuery setters
+        that should be invoked on the resulting DOM element. E.g., the demo code 
+        creates an h2 element, and then invokes the jQuery css() function to set
+        its color.
+    </li>
+    <li>
+        A nested dictionary containing a “control:” key. The value of this key
+        should be the string name of a QuickUI control class (with quotes:
+        “BasicButton”), or a JavaScript identifier referring to a QuickUI
+        control class (without quotes: BasicButton). The AutoSizeTextBox and
+        BasicButton items below demonstrate this form. As with the above form,
+        additional keys in the nested dictionary will invoke property setters.
+        So after the BasicButton is created, the value “Send” will be passed to
+        its content() setter.
+    </li>
+</ol>
+
+<p>
+The JSON format is recursive, allowing controls be created within controls, etc.
 </p>
 
 <p>
-<b>The demo code</b> 
+<b>The demo code</b>
+creates the user interface for a simple message composer.
+The JSON passed to subclass() creates some HTML elements and controls.
 </p>
 
 <p>
 <b>Your goal:</b> 
+Change the minimum size of the AutoSizeTextBox by adding an item after the line
+“control: AutoSizeTextBox”. The new line should pass a value of, say, 5 to the
+control’s minimumLines property. With this in place, the text box will start out
+five lines tall, then grow as necessary when the user types.
 </p>
 
 </body>

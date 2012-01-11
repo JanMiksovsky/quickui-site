@@ -20,9 +20,36 @@
 <script type="text/javascript" src="/controls/controls.js"></script>
 <script type="text/javascript" src="/framework/framework.js"></script>
 
-<title></title>
+<title>Using functions to reference elements within a control</title>
 
 <script id="demo">
+var UserTile = Control.subclass({
+    name: "UserTile",
+    content: [
+        {
+            control: FlickrInterestingPhoto,
+            css: {
+                "margin-right": "0.5em",
+                "vertical-align": "middle",
+            },
+            photoSize: "s"
+        },
+        {
+            html: "<span id='name'/>"
+        }
+    ]
+})
+
+$demo.append(
+    UserTile.create(),
+    UserTile.create(),
+    UserTile.create()
+);
+
+var $tiles = $demo.children().control();
+$tiles.eq(0).find( "#name" ).text( "Alice" );
+$tiles.eq(1).find( "#name" ).text( "Bob" );
+$tiles.eq(2).find( "#name" ).text( "Carol" );
 </script>
 
 <body
@@ -33,16 +60,68 @@
 
 <p class="highlight">
 <b>Core idea:</b>
+Your control code needs a quick and reliable way to manipulate the HTML
+sub-elements or sub-controls a control contains. To this end, QuickUI can
+automatically generate element reference functions for any element whose ID is
+specified in the JSON. An element reference function always returns the
+indicated element, even if another element with the same ID has been added to 
+the DOM. This avoids a large class of name collisions, simplifying the
+integration of controls from multiple authors.
 </p>
 <p>
+To have a control access a contained element, one could give that element a
+unique ID or DOM class name, then use a jQuery selector to find that elements on 
+demand. However, by nature, controls often host other controls whose
+construction may be unknown and outside your control. Those controls may
+themselves contain elements whose IDs or class names conflict with the ones you
+have chosen. Such naming collisions can cause controls to break when combined in
+new ways, defeating the goal of
+<a data-control="Link" href="context-independent.html">having controls be context independent</a>.
+</p>
+<p>
+To address this problem, QuickUI gives you a reliable way to refer to elements
+within a control. In the JSON which defines your control class’s initial DOM,
+assign an ID to any HTML element or sub-control by including an “id:” key in the 
+nested dictionary for that element or sub-control. This will have two effects. 
+First, the element will have its DOM ID set to “foo” (and can therefore be 
+selected or styled with “#foo” as usual). Second, and more importantly, a
+function called $foo() will automatically be generated for your control class.
+</p>
+<p>
+The instant the QuickUI framework creates that #foo element at runtime, it will
+store a reference to it in the control’s per-instance data. Invoking $foo() on
+that control will return the control’s copy of the #foo element. This runtime
+lookup is done by reference, not by searching by ID, so it works even when other 
+elements with the same ID have been added within the control’s subtree.
 </p>
 
 <p>
 <b>The demo code</b> 
+creates a simple user tile class such as might be found on a social networking
+site. A tile includes a photo – for demo purposes, this will be a random photo –
+and a span to hold the user’s name. The code then creates three user tile
+controls, and searches through these for the spans that have ID “#name”. It
+directly manipulates these spans to give each tile a different user name.
+</p>
+<p>
+This works – for now. But what if the author of FlickrInterestingPhoto decides
+to give that control a sub-element with id #name? The attempt to search for name
+spans by ID would inadvertently pick up unintended elements inside
+FlickrInterestingPhoto. It’s better to avoid the potential for a naming
+collision.
 </p>
 
 <p>
 <b>Your goal:</b> 
+Rewrite this code to use an element reference function to reliably manipulate
+the name span. First, remove the id='name' attribute from the “html:” line and
+turn that into an id: "name" item on a subsequent line in the same nested
+dictionary. This will make the ID visible to the subclass() call. The indicated 
+ID will be set on the element, but moreover, a new $name() function will be
+created that always returns the indicated element.
+</p>
+<p>
+With that in place, replace the find("#name") calls with calls to $name().
 </p>
 
 </body>

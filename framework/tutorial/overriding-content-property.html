@@ -20,29 +20,95 @@
 <script type="text/javascript" src="/controls/controls.js"></script>
 <script type="text/javascript" src="/framework/framework.js"></script>
 
-<title></title>
+<title>Defining your control’s content property</title>
 
 <script id="demo">
+var UserTile = BasicButton.subclass({
+    name: "UserTile",
+    generic: true,
+    content: [
+        {
+            control: FlickrInterestingPhoto,
+            css: {
+                "margin-right": "0.5em",
+                "vertical-align": "middle",
+            },
+            photoSize: "s"
+        },
+        {
+            html: "<span/>",
+            id: "name"
+        }
+    ],
+    prototype: {
+        name: Control.chain( "$name", "content" )
+    }
+})
+
+$demo.append(
+    ListBox.create()
+        .itemClass( UserTile )
+        .items([
+            "Alice",
+            "Bob",
+            "Carol",
+            "David",
+            "Ellen"
+        ])
+);
+
 </script>
 
 <body
     data-create-controls="true"
     data-control="TutorialPage"
-    data-nextPage="subclassing-other-classes.html"
+    data-nextPage="initialize.html"
 >
 
 <p class="highlight">
 <b>Core idea:</b>
+Your control class can define a property called content() to expose the primary
+information which it presents.
 </p>
 <p>
+Throughout these exercises, the demos have set the content() property of various
+control classes. As
+<a data-control="Link" href="content.html">discussed earlier</a>,
+having a consistent name for this property makes it easier to work with new
+controls, and also allows the creation of
+<a data-control="Link" href="meta-controls.html">meta-controls</a>.
+</p>
+<p>
+If you create a new control class that exposes its primary content as a
+property, it’s good practice to name this property content(). This content()
+property will override the standard implementation of content() defined by the
+base Control class.
 </p>
 
 <p>
 <b>The demo code</b> 
+uses the ListBox meta-control to create a UserTile instance for each text string
+passed its items() property. The controls become the items in the list box. 
+However, the tiles aren’t currently showing a picture. The problem is that the
+ListBox control is setting the content() on the tile controls. This is
+overwriting the default content defined by the JSON, so the user’s string name
+ends up replacing the photo and span elements.
 </p>
 
 <p>
 <b>Your goal:</b> 
+Update the UserTile class to have a standard content() property by renaming the
+“name:” property declaration to say “content:”. This property will override the
+base implementation of content(). Now when the ListBox creates a UserTile for
+each item, it sets the text within the name span, leaving intact the photo and
+the span itself. All the standard list box behavior, including selection and
+keyboard navigation, now work with a UserTile representation.
+</p>
+<p>
+Since most meta-controls work with the content() property, you can quickly
+change this UI by changing the ListBox to a ListComboBox. The combo box’s
+AutoComplete behavior will work against the UserTile content() property,
+producing the expected typing behavior.
 </p>
 
 </body>

@@ -28,8 +28,8 @@
             <Link href="/framework/tutorial/defining-properties.html">Exposing properties</Link>
             <Link href="/framework/tutorial/handling-content.html">Properties handling content</Link>
             <Link href="/framework/tutorial/control-chain-helper.html">Concise property definition</Link>
-            <Link href="/framework/tutorial/overriding-content-property.html">Custom content properties</Link>
             <Link href="/framework/tutorial/subclassing-other-classes.html">Subclassing other classes</Link>
+            <Link href="/framework/tutorial/overriding-content-property.html">Custom content properties</Link>
             <Link href="/framework/tutorial/initialize.html">Initialization</Link>
             <Link href="/framework/tutorial/control-property-helper.html">Property storage</Link>
             
