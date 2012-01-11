@@ -8,34 +8,34 @@
             <Link href="/framework/tutorial/">Introduction</Link>
             
             <h2>Using controls</h2>
-            <Link href="/framework/tutorial/contextIndependent.html">Context independence</Link>
-            <Link href="/framework/tutorial/definedByClasses.html">Control classes</Link>
-            <Link href="/framework/tutorial/inheritFromJQuery.html">Inheriting from jQuery</Link>
+            <Link href="/framework/tutorial/context-independent.html">Context independence</Link>
+            <Link href="/framework/tutorial/defined-by-classes.html">Control classes</Link>
+            <Link href="/framework/tutorial/inherit-from-jQuery.html">Inheriting from jQuery</Link>
             <Link href="/framework/tutorial/content.html">Control content</Link>
             <Link href="/framework/tutorial/properties.html">Control properties</Link>
             <Link href="/framework/tutorial/casting.html">Casting jQuery objects</Link>
-            <Link href="/framework/tutorial/controlsFromElements.html">Using existing elements</Link>
-            <Link href="/framework/tutorial/cssClasses.html">CSS class names</Link>
-            <Link href="/framework/tutorial/manipulatingArrays.html">Control arrays</Link>
-            <Link href="/framework/tutorial/eventHandlers.html">Handling events</Link>
-            <Link href="/framework/tutorial/metaControls.html">Meta-controls</Link>
+            <Link href="/framework/tutorial/controls-from-elements.html">Using existing elements</Link>
+            <Link href="/framework/tutorial/css-classes.html">CSS class names</Link>
+            <Link href="/framework/tutorial/manipulating-arrays.html">Control arrays</Link>
+            <Link href="/framework/tutorial/event-handlers.html">Handling events</Link>
+            <Link href="/framework/tutorial/meta-controls.html">Meta-controls</Link>
 
             <h2>Creating control classes</h2>
-            <Link href="/framework/tutorial/creatingControlClass.html">Creating a new class</Link>
-            <Link href="/framework/tutorial/">Setting default content</Link>
-            <Link href="/framework/tutorial/">Adding functionality</Link>
-            <Link href="/framework/tutorial/">Referencing elements</Link>
-            <Link href="/framework/tutorial/">Exposing properties</Link>
-            <Link href="/framework/tutorial/">Properties handling content</Link>
-            <Link href="/framework/tutorial/">Concise property definition</Link>
-            <Link href="/framework/tutorial/">Custom content properties</Link>
-            <Link href="/framework/tutorial/">Subclassing other classes</Link>
-            <Link href="/framework/tutorial/">Initialization</Link>
-            <Link href="/framework/tutorial/">Property storage</Link>
+            <Link href="/framework/tutorial/creating-control-class.html">Creating a new class</Link>
+            <Link href="/framework/tutorial/json-content.html">Setting default content</Link>
+            <Link href="/framework/tutorial/extending-control-prototype.html">Adding functionality</Link>
+            <Link href="/framework/tutorial/element-reference-functions.html">Referencing elements</Link>
+            <Link href="/framework/tutorial/defining-properties.html">Exposing properties</Link>
+            <Link href="/framework/tutorial/handling-content.html">Properties handling content</Link>
+            <Link href="/framework/tutorial/control-chain-helper.html">Concise property definition</Link>
+            <Link href="/framework/tutorial/overriding-content-property.html">Custom content properties</Link>
+            <Link href="/framework/tutorial/subclassing-other-classes.html">Subclassing other classes</Link>
+            <Link href="/framework/tutorial/initialize.html">Initialization</Link>
+            <Link href="/framework/tutorial/control-property-helper.html">Property storage</Link>
             
             <h2>Advanced topics</h2>
             <Link href="/framework/tutorial/rehydration.html">Controls in static HTML</Link>
-            <Link href="/framework/tutorial/">Waiting to be in the DOM</Link>
+            <Link href="/framework/tutorial/inDocument.html">Waiting to be in the DOM</Link>
             
         </navigationLinks>
     
