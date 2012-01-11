@@ -1,6 +1,12 @@
 <Control name="Navigator">
 
 <style>
+h2 {
+    color: #D7C5B4;
+    font-size: 10pt;
+    margin: 1.5em 6px 0 6px;
+}
+
 .Link {
     display: block;
     margin: 3px;
