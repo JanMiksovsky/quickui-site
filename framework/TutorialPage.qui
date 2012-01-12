@@ -10,6 +10,7 @@
             <h2>Using controls</h2>
             <Link href="/framework/tutorial/context-independent.html">Context independence</Link>
             <Link href="/framework/tutorial/defined-by-classes.html">Control classes</Link>
+            <Link href="/framework/tutorial/controls-are-composable.html">Controls are composable</Link>
             <Link href="/framework/tutorial/inherit-from-jQuery.html">Inheriting from jQuery</Link>
             <Link href="/framework/tutorial/content.html">Control content</Link>
             <Link href="/framework/tutorial/properties.html">Control properties</Link>
