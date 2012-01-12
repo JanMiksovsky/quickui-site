@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+<link rel="stylesheet" type="text/css" href="/framework/framework.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/ace.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/mode-javascript.js"></script>
+<script type="text/javascript" src="/lib/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="/framework/framework.js"></script>
+
+<title>Controls are composable</title>
+
+<script id="demo">
+$demo.append(
+    DateComboBox.create(),
+    DateTextBox.create()
+        .css( "display", "block" ),
+    CalendarMonthNavigator.create(),
+    MonthName.create(),
+    DaysOfWeek.create()
+);
+</script>
+
+<body
+    data-create-controls="true"
+    data-control="TutorialPage"
+    data-nextPage="inherit-from-jQuery.html"
+>
+
+<p class="highlight">
+<b>Core idea:</b>
+You can easily combine controls to create a user interface.
+</p>
+<p>
+It’s rare to find a user interface that’s best implemented as a single,
+monolithic chunk of code. Rather, a typical user interface can usually be
+decomposed into pieces, which can themselves be decomposed, and so on. The 
+smaller the components, the more fundamental and general in nature they tend to
+be.
+</p>
+<p>
+Because QuickUI controls are generally designed to be
+<a data-control="Link" href="context-independent.html">context independent</a>,
+it’s possible to recombine controls in new ways and still have the 
+constituent parts work correctly. For example, the controls in the
+<a data-control="Link" href="/catalog">QuickUI Catalog</a>
+all have a specific role to play, and are designed to be incorporated in novel
+ways to create a user interface.
+</p>
+
+<p>
+<b>The demo code</b> 
+creates one of the QuickUI Catalog controls,
+<a data-control="CatalogLink">DateComboBox</a>,
+which is designed to let users pick a single date by typing or navigating a
+dropdown month calendar. DateComboBox is in its own right, but is not delievered
+as a monolithic piece of functionality. Rather, it’s composed of other Catalog
+controls that can each be used independently or combined in new ways.
+</p>
+<p>
+Below the DateComboBox you see some of its component parts. These aren’t wired
+together yet, but simply demonstrate some of the pieces you can build with
+to construct your own user interface elements.
+</p>
+<ul>
+    <li>
+        <a data-control="CatalogLink">DateTextBox</a>
+        (which ensures that its contents are a valid date in short date format).
+        This is used for a DateComboBox’s text input portion.
+    </li>
+    <li>
+        <a data-control="CatalogLink">CalendarMonthNavigator</a>,
+        an inline calendar that lets a user navigate by month to select a date.
+        This is used for a DateComboBox’s dropdown.
+    </li>
+    <li>
+        <a data-control="CatalogLink">MonthName</a>,
+        which shows the name of the month for a given date.
+    </li>
+    <li>
+        <a data-control="CatalogLink">DaysOfWeek</a>,
+        which can show the names of the days of the week in a variety of formats.
+    </li>
+</ul>
+<p>
+By default these components support standard U.S. English date formats, but they
+are all localizable through the
+<a data-control="Link" href="https://github.com/jquery/globalize">Globalize</a>
+library.
+</p>
+
+<p>
+<b>Your goal:</b> 
+Add a <a data-control="CatalogLink">CalendarMonth</a>
+control to the end of the demo. This is the main component of a
+CalendarMonthNavigator, which in turn is the main component of a DateComboBox.
+Subsequent exercises will explain how
+you can begin giving controls the behavior they’d need to work together. By
+visually arranging and wiring together these components, it would be possible to
+build your own date picker control or some other date-related user interface. 
+</p>
+
+</body>
+
+</html>
