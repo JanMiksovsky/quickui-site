@@ -20,32 +20,25 @@
 <script type="text/javascript" src="/controls/controls.js"></script>
 <script type="text/javascript" src="/framework/framework.js"></script>
 
-<title>Controls are defined as regular JavaScript classes</title>
+<title>Controls are defined with JavaScript classes</title>
 
 <script id="demo">
-var $comboBox = ColorSwatchComboBox.create()
-    .content( "Orange" )
-    .items([
-        "Blue",
-        "Green",
-        "Orange",
-        "Red"
-    ]);
-$comboBox.test = function( className ) {
-    var classFn = window[ className ];
-    var isInstance = ( classFn && this instanceof classFn );
-    var message = "I am " +
-        ( isInstance ? "" : " not" ) +
-        " an instance of " + className + ".";
-    return $( "<p/>" ).text( message) ;
-}
-
 $demo.append(
-    $comboBox,
-    $comboBox.test( "ColorSwatchComboBox" ),
-    $comboBox.test( "ListComboBox" ),
-    $comboBox.test( "ComboBox" ),
-    $comboBox.test( "BasicButton" )
+    HasPopup.create()
+        .content( "I'm a simple control with a popup")
+        .popup( "Here's a popup" )
+        .openOnClick( true ),
+    "<br/>",
+    ComboBox.create()
+        .content( "I'm a combo box" )
+        .popup( "A UI for selecting choices goes here" ),
+    "<br/>",
+    ListComboBox.create()
+        .content( "I have a dropdown list")
+        .items([ "Blue", "Green", "Orange", "Red" ]),
+    "<br/>",
+    ColorSwatchComboBox.create()
+        .content( "I specialize in colors" )
 );
 </script>
 
@@ -56,39 +49,59 @@ $demo.append(
 >
 
 <p class="highlight">
-<b>Core idea:</b> QuickUI controls are defined with regular JavaScript classes.
+<b>Core idea:</b>
+QuickUI controls are defined with regular JavaScript classes. You can factor
+your UI so that each control class has a specific responsibility, simplifying
+development and maintenance.
 </p>
 <p>
 As a JavaScript developer, you already use JavaScript’s native class support to
-define reusable behavior. QuickUI control classes are simply JavaScript classes.
-There are several ways to create an instance of a control class, but the
-simplest is to invoke the create() method shown earlier. This function produces
-an instance of the given control class.
+define reusable behavior. QuickUI control classes are simply JavaScript classes. 
+There are several ways to instantiate of a control class. The simplest is to
+invoke its create() method, which returns a control instance that you can then
+add to the DOM.
 </p>
 <p>
 You can do anything to a control class or control instance that you can normally
 do in JavaScript. You can extend the class’s behavior by extending its
-prototype, you can test whether a control instance is a member of a given class
-with the JavaScript “instanceof” keyword, and so on.
+prototype; you can test whether a control instance is a member of a given class
+with the JavaScript “instanceof” keyword; and so on.
+</p>
+<p>
+As with any object-oriented system, each control class has a specific
+responsibility. This is called separation of concerns: each class overlaps the
+functionality of other classes as little as possible. A class can inherit from
+another class, creating something more optimized for a more specialized task.
 </p>
 
 <p>
-<b>The demo code</b> creates an instance of the ColorSwatchComboBox control
-class by calling the class' create() method. This class provides a reasonably
-complex user interface element that lets a user type a CSS color name or pick
-one from a list of choices. The class inherits much of its behavior from
-superclasses called ListComboBox and ComboBox.
+<b>The demo code</b> 
+creates several instances of a related control classes. The
+<a data-control="CatalogLink">HasPopup</a>
+class is extremely rudimentary, and simply pops up an element when clicked on.
+The HasPopup class forms the basis for a more specialized subclass called
+<a data-control="CatalogLink">ComboBox</a>,
+which adds a text input element and a dropdown button that invokes the popup.
+ComboBox is further specialized to create
+<a data-control="CatalogLink">ListComboBox</a>,
+which can show a set of items as a dropdown list; it also adds AutoComplete.
+Finally, <a data-control="CatalogLink">ColorSwatchComboBox</a>
+is a specialized ListComboBox which adds a small color swatch to each list item.
 </p>
 <p>
-The demo code also adds a function to the control object that tests for
-membership of a class with a given name. This function is invoked several times
-to show that a ColorSwatchComboBox control is also an instance of some of its
-parent classes, but is not an instance of the BasicButton class.
+Each of these classes has a specific role to play. They each inherit all the
+functionality of their parent classes; for example, a ColorSwatchComboBox can 
+do everything a ListComboBox can, only more specialized to work with colors.
 </p>
 
 <p>
-<b>Your goal:</b> Add a test to convince yourself that a ColorSwatchComboBox is
-also an instance of the Control class.
+<b>Your goal:</b> Override the default set of colors shown by the
+ColorSwatchComboBox by setting its items() property. That class inherits its
+items() property from ListComboBox. Looking at how the items() property is set
+on the ListComboBox, add a similar call to set the items() of the
+ColorSwatchComboBox. This can be any array of CSS color names. The combo box
+will show a dropdown list of color swatches for each named color, and will
+AutoComplete against these names as well.
 </p>
 
 </body>
