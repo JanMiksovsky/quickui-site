@@ -5,11 +5,10 @@
     <div id="runner">
         <div>
             <div>
-                <span class="label">Edit JavaScript here</span>
+                <span id="CodeEditor_heading" class="label">Edit JavaScript here</span>
             </div>
             <div class="label">
                 <SiteButton id="buttonRun">&#9654; Run</SiteButton>
-                <!-- to see result: -->
             </div>
         </div>
         <div>
@@ -79,13 +78,20 @@
 <script>
 CodeEditor.prototype.extend({
     
+    // True if code should be run whenever it changes.
+    autoRun: Control.property.bool( null, true ),
+    
     code: Control.chain( "$CodeEditor_code", "content", function() {
-        if ( this.inDocument() ) {
+        if ( this.inDocument() && this.autoRun() ) {
             this.run();
+        } else {
+            this.$result().content( "(Click Run to see result.)" );
         }
     }),
     
     error: Control.chain( "$CodeEditor_error", "content" ),
+    
+    heading: Control.chain( "$CodeEditor_heading", "content" ),
     
     initialize: function() {
         
@@ -98,11 +104,12 @@ CodeEditor.prototype.extend({
             .keydown( function( event ) {
                 self._keydown( event );
             })
-            .inDocument( function( $control ) {
-                $control.run();
-                $control.$CodeEditor_code().focus();
+            .inDocument( function() {
+                if ( this.autoRun() ) {
+                    this.run();
+                }
+                this.$CodeEditor_code().focus();
             });
-        
     },
     
     result: Control.chain( "$result", "content" ),

@@ -1,0 +1,108 @@
+<!-- A page in the QuickUI Catalog. -->
+
+<Control name="CatalogPage2">
+
+<prototype>
+    <SitePage area="Catalog">
+        <navigationLinks>
+            <CatalogNavigationLinks/>
+        </navigationLinks>
+        <content>
+            
+            <div id="CatalogPage2_summary" />
+
+            <CodeEditor id="editor" heading="Live demo" />
+            
+            <h2>Class hierarchy</h2>
+            <ControlClassHierarchy id="controlClassHierarchy"/>
+
+            <div id="sectionContent">
+                <h2>Notes</h2>
+                <div id="CatalogPage2_content" />
+            </div>
+
+            <p>
+                View the <Link id="linkSourceCodeControl"/> on GitHub.
+            </p>
+
+        </content>
+    </SitePage>
+</prototype>
+
+<style>
+#editor {
+    margin-top: 1em;
+}
+
+#demoMarkup, #demoJavaScript, #sectionContent {
+    display: none;
+}
+</style>
+
+<script>
+CatalogPage2.prototype.extend({
+    
+    autoFocus: Control.property.bool( null, true ),
+    
+    autoRun: Control.chain( "$editor", "autoRun" ),
+    
+    summary: Control.chain( "$CatalogPage2_summary", "content" ),
+    
+    initialize: function() {
+        this._super();
+        this.inDocument( function( $control ) {
+            /*
+            if ( $control.autoFocus() ) {
+                // Give the input to first text box or text area in the demo. 
+                $control.$editor()
+                    .find( "input[type='text']" )
+                    .add( "textarea" )
+                    .eq(0)
+                    .focus();
+            }
+            */
+        });
+        
+        var code = $.trim( $( "script#demo" ).html() );
+        this.$editor().code( code );
+    },
+    
+    content: Control.chain( "$CatalogPage2_content", "content", function( content ) {
+        this.$sectionContent().toggle( content != null );
+    }),
+
+    demoClass: Control.property[ "class" ]( function( demoClass ) {
+         this.$CatalogPage2_demo().transmute( demoClass );
+    }),
+
+    title: function( title ) {
+        var result = this._super( title );
+        if ( title !== undefined ) {
+            
+            // Grab control class name from title, use it to populate
+            // the fields with standard values.
+            var className = title;
+            
+            /*
+            if ( !this.demo() || this.demo().length === 0 ) {
+                // As a default demo, instantiate the control.
+                this.$CatalogPage2_demo().transmute( className );
+            }
+            */
+           
+            this.$controlClassHierarchy().controlClass( className );
+
+            var sourceUrlTemplate = "https://github.com/JanMiksovsky/quickui-catalog/blob/master/quickui.catalog/{0}.qui";
+            var sourceUrl = sourceUrlTemplate.replace( /\{0\}/g, className );
+            var sourceLinkText = "full source for " + className;
+            this.$linkSourceCodeControl()
+                .text( sourceLinkText )
+                .href( sourceUrl );
+        }
+        return result;
+    }
+    
+});
+</script>
+
+</Control>

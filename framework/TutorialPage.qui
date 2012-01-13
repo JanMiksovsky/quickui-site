@@ -96,14 +96,6 @@ TutorialPage.prototype.extend({
         this.$editor().code( code );
     },
     
-    javascriptFile: Control.property( function( path ) {
-        var self = this;
-        $.get( path )
-            .success( function( data) {
-                self.$editor().code( data );
-            });
-    }),
-    
     nextPage: Control.property( function( nextPage) {
         this.$buttonNext().css( "display", nextPage ? "inline-block": "none" );
     })
