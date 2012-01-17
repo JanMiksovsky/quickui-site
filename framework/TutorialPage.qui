@@ -53,7 +53,8 @@
 #SitePage_content {
     max-width: inherit;
 }
-h1, p, ol, ul {
+
+h1, h2, p, ol, ul {
     max-width: 800px;
 }
 

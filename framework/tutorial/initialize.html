@@ -31,7 +31,7 @@ var MessageButton = BasicButton.subclass({
             this._super();
             this.click( function() {
                 var content = ""; // TODO: get control content
-                alert( content + " to you, too." );
+                TransientMessage.showMessage( content + " to you, too." );
             });
         }
     }
@@ -92,8 +92,10 @@ the control’s own methods or properties. You can do this in one of two ways:
 
 <p>
 <b>The demo code</b> 
-creates a button class that displays an alert when clicked. As written, the
-alert message is incomplete.
+creates a button class that displays a message when clicked. The message is
+rendered using the <a data-control="CatalogLink">TransientMessage</a> control,
+which briefly shows the message before fading it away. As written, the
+message itself is incomplete.
 </p>
 
 <p>
