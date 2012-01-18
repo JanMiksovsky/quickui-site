@@ -118,7 +118,7 @@ CatalogPage.prototype.extend({
                 "<" + className + "/>"
             );
             this.$sampleCodeJavaScript().content(
-                "$( element ).control( " + className + " );"
+                className + ".create();"
             );
             
             this.$controlClassHierarchy().controlClass( className );
