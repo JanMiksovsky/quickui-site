@@ -1,4 +1,4 @@
-<Control name="FeatureSubclassingDemo">
+<Control className="FeatureSubclassingDemo">
     
 <content>
     <OrangeButton id="buttonShow">Show dialog</OrangeButton>

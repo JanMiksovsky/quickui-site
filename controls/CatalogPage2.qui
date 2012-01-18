@@ -1,6 +1,6 @@
 <!-- A page in the QuickUI Catalog. -->
 
-<Control name="CatalogPage2">
+<Control className="CatalogPage2">
 
 <prototype>
     <SitePage area="Catalog">

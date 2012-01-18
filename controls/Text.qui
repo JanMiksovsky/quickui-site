@@ -12,7 +12,7 @@ If the control has a proportionally-spaced font, the pre tag will end up with th
 instead of the default pre styling.
 -->
 
-<Control name="Text">
+<Control className="Text">
 
 <script>
 Text.prototype.extend({

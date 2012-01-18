@@ -1,4 +1,4 @@
-<Control name="Greet">
+<Control className="Greet">
     
     Hello, <i><span id="Greet_content"/></i><span id="Greet_punctuation">.</span>
 

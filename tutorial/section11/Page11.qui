@@ -1,4 +1,4 @@
-<Control name="Page11">
+<Control className="Page11">
 <prototype>
 <TutorialPage title="More on styling">
 

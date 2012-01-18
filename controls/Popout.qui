@@ -1,4 +1,4 @@
-<Control name="Popout">
+<Control className="Popout">
 
 <style>
 {

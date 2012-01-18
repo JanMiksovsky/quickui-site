@@ -1,4 +1,4 @@
-﻿<Control name="PropertiesPage">
+﻿<Control className="PropertiesPage">
 
 <prototype>
 <SitePage area="Features" title="Defining a control’s content">

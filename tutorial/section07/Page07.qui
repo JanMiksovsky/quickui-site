@@ -1,4 +1,4 @@
-<Control name="Page07">
+<Control className="Page07">
 <prototype>
 <TutorialPage title="Compact property definition using property bindings">
 

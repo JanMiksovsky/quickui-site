@@ -1,4 +1,4 @@
-<Control name="CodeEditor">
+<Control className="CodeEditor">
 
 <content>
     

@@ -1,4 +1,4 @@
-<Control name="Page05">
+<Control className="Page05">
 <prototype>
 <TutorialPage title="Defining control properties">
 

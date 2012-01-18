@@ -4,7 +4,7 @@ The code is colorized via the SourceCode control, and a link to the original
 file is provided.
 -->
 
-<Control name="SourceFileContents">
+<Control className="SourceFileContents">
 
 <content>
     <SourceCode id="SourceFileContents_content" />

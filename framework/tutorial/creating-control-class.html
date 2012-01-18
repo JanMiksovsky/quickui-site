@@ -24,7 +24,7 @@
 
 <script id="demo">
 var Greet = Control.subclass({
-    name: "Greet",
+    className: "Greet",
     content: "" // TODO
 });
 
@@ -60,7 +60,7 @@ your new class will also inherit all of jQuery’s abilities.
 </p>
 <p>
 The JSON dictionary can contain keys reserved by the QuickUI framework. For
-example, the value of the reserved “name:” key will define the name for the new
+example, the value of the reserved “className:” key will define the name for the new
 control class, which will be applied as a CSS class to all controls created by 
 the class; see <a data-control="Link" href="cssClasses.html">CSS class names</a>.
 The JSON dictionary can also contain other keys. Any entry of the form foo:
@@ -75,7 +75,7 @@ the name that you will reference directly in your JavaScript code.
 <p>
 <b>The demo code</b> 
 creates a new control class called Greet. This will be a subclass of the base
-Control class. The reserved “name:” key in the JSON dictionary sets the class’
+Control class. The reserved “className:” key in the JSON dictionary sets the class’
 name to “Greet”. The result of the subclass() call is stored in a JavaScript
 variable with the identifier Greet.
 </p>

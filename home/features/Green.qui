@@ -1,4 +1,4 @@
-<Control name="Green">
+<Control className="Green">
 
 <div class="message">I’m green</div>
 

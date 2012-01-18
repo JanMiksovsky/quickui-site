@@ -1,4 +1,4 @@
-<Control name="Sample">
+<Control className="Sample">
 
 <content>
     <h1>QuickUI sample</h1>

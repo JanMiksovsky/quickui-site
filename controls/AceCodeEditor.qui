@@ -3,7 +3,7 @@ Ace code editor wrapper.
 Must set an ID on a control instance for this to work!
 -->
 
-<Control name="AceCodeEditor">
+<Control className="AceCodeEditor">
 
 <script>
 AceCodeEditor.prototype.extend({

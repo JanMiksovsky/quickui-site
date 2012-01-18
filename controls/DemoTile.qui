@@ -1,4 +1,4 @@
-<Control name="DemoTile">
+<Control className="DemoTile">
 
 <content>
     <div id="classNameContainer">

@@ -1,4 +1,4 @@
-<Control name="NavigationBar">
+<Control className="NavigationBar">
 
 <content>
     <Link href="/">Home</Link>

@@ -1,4 +1,4 @@
-<Control name="Page14">
+<Control className="Page14">
 <prototype>
 <TutorialPage title="Subclassing controls">
 

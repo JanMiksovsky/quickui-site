@@ -1,4 +1,4 @@
-<Control name="CodeOutput">
+<Control className="CodeOutput">
 
 <content>
     <div id="CodeOutput_content"/>

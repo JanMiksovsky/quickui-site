@@ -1,4 +1,4 @@
-<Control name="FeaturePropertiesDemo">
+<Control className="FeaturePropertiesDemo">
     
 <content>
     <Recipe name="Lasagna" rating="3">

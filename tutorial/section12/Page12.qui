@@ -1,4 +1,4 @@
-<Control name="Page12">
+<Control className="Page12">
 <prototype>
 <TutorialPage title="Defining interactivity">
 

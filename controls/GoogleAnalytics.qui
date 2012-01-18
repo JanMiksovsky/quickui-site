@@ -1,6 +1,6 @@
 <!-- Google Analytics tracking code -->
 
-<Control name="GoogleAnalytics">
+<Control className="GoogleAnalytics">
 <script>
 GoogleAnalytics.prototype.extend({
     

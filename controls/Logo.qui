@@ -1,4 +1,4 @@
-<Control name="Logo">
+<Control className="Logo">
 
 <content>
         <Link href="/" id="logotype">

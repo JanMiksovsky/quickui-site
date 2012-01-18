@@ -1,4 +1,4 @@
-<Control name="Blog">
+<Control className="Blog">
 
 <style>
 </style>

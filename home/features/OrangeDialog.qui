@@ -1,6 +1,6 @@
 <!-- Sample dialog template -->
 
-<Control name="OrangeDialog">
+<Control className="OrangeDialog">
 
 <prototype>
     <Dialog>

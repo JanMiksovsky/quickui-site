@@ -1,3 +1,3 @@
-<Control name="Greet2">
+<Control className="Greet2">
     Hello <i>world!</i>
 </Control>

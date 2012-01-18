@@ -1,4 +1,4 @@
-<Control name="Counters">
+<Control className="Counters">
 
 <content>
     <Counter/>

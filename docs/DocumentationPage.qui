@@ -1,4 +1,4 @@
-<Control name="DocumentationPage">
+<Control className="DocumentationPage">
 
 <prototype>
     <SitePage area="Docs">

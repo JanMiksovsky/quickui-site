@@ -1,4 +1,4 @@
-<Control name="YouTubeVideo">
+<Control className="YouTubeVideo">
 
 <content>
     <iframe

@@ -1,4 +1,4 @@
-<Control name="CatalogNavigationLinks">
+<Control className="CatalogNavigationLinks">
 
 <content>
     <Link href="/catalog/">Index</Link>

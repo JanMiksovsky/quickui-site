@@ -1,3 +1,3 @@
-<Control name="FeatureMarkupAndCSSDemo">
+<Control className="FeatureMarkupAndCSSDemo">
 Quick markup has <Tag>style</Tag> and <Tag>script</Tag> elements, just like HTML.
 </Control>

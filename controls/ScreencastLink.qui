@@ -1,4 +1,4 @@
-<Control name="ScreencastLink">
+<Control className="ScreencastLink">
     
 <content>
     <img id="iconPlay" src="/resources/play.png"/>

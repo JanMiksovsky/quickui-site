@@ -1,4 +1,4 @@
-<Control name="Gradient">
+<Control className="Gradient">
 
 <script>
 Gradient.prototype.extend({

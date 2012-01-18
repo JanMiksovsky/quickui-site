@@ -1,4 +1,4 @@
-<Control name="VersionedFileLink">
+<Control className="VersionedFileLink">
 
 <prototype>
     <Link/>

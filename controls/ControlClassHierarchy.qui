@@ -1,4 +1,4 @@
-<Control name="ControlClassHierarchy">
+<Control className="ControlClassHierarchy">
 
 <content>
     <List id="classList" itemClass="CatalogLink"/>

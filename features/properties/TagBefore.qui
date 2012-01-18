@@ -1,4 +1,4 @@
-<Control name="TagBefore">
+<Control className="TagBefore">
 
 <content>&lt;tag-name-goes-here&gt;</content>
 

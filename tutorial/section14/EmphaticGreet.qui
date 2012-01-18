@@ -1,4 +1,4 @@
-<Control name="EmphaticGreet">
+<Control className="EmphaticGreet">
 
 <prototype>
     <Greet punctuation="!" />

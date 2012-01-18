@@ -1,4 +1,4 @@
-<Control name="ScreencastsPage">
+<Control className="ScreencastsPage">
 
 <prototype>
     

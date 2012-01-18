@@ -1,4 +1,4 @@
-<Control name="Page04">
+<Control className="Page04">
 <prototype>
 <TutorialPage title="Referencing control elements">
 

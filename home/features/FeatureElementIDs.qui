@@ -1,4 +1,4 @@
-<Control name="FeatureElementIDs">
+<Control className="FeatureElementIDs">
 <prototype>
 <Feature demoClass="Counters">
 

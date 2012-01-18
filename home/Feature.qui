@@ -1,4 +1,4 @@
-<Control name="Feature">
+<Control className="Feature">
 
 <content>
     <div class="table">

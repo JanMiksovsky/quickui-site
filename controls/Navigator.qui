@@ -1,4 +1,4 @@
-<Control name="Navigator">
+<Control className="Navigator">
 
 <style>
 h2 {

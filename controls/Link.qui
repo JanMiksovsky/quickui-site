@@ -1,6 +1,6 @@
 <!-- Wraps an anchor tag -->
 
-<Control name="Link" tag="a">
+<Control className="Link" tag="a">
 
 <style>
 {

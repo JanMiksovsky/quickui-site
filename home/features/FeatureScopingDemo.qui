@@ -1,4 +1,4 @@
-<Control name="FeatureScopingDemo">
+<Control className="FeatureScopingDemo">
 
 <content>
     <Red/>

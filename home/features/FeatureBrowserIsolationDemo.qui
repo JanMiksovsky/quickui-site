@@ -1,4 +1,4 @@
-<Control name="FeatureBrowserIsolationDemo">
+<Control className="FeatureBrowserIsolationDemo">
 
 <content>
     <Gradient start="#808080" end="#f0f0f0"/>

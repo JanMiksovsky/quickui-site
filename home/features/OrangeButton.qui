@@ -1,4 +1,4 @@
-<Control name="OrangeButton">
+<Control className="OrangeButton">
 
 <prototype>
     <SpriteButton

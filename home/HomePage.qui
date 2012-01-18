@@ -1,4 +1,4 @@
-<Control name="HomePage">
+<Control className="HomePage">
 
 <prototype>
 <SitePage area="Home" title="QuickUI web control framework">

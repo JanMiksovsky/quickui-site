@@ -1,6 +1,6 @@
 <!-- Wrap a Share button from addthis.com -->
 
-<Control name="AddThis">
+<Control className="AddThis">
 
 <content>
     <!-- AddThis Button BEGIN -->

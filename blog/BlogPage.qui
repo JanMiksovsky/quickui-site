@@ -1,4 +1,4 @@
-<Control name="BlogPage">
+<Control className="BlogPage">
 
 <content>
     <Blog url="http://feeds.feedburner.com/flowstate?format=xml"/>

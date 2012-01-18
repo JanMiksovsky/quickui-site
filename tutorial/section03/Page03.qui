@@ -1,4 +1,4 @@
-<Control name="Page03">
+<Control className="Page03">
 <prototype>
 <TutorialPage title="Composing QuickUI controls">
 

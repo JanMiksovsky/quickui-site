@@ -1,4 +1,4 @@
-<Control name="CatalogIndexListPage">
+<Control className="CatalogIndexListPage">
 
 <prototype>
 <SitePage title="QuickUI Catalog" area="Catalog">

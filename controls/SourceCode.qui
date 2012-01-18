@@ -5,7 +5,7 @@ found at http://softwaremaniacs.org/soft/highlight/en/. The highlight.js
 script must be loaded for code to be colorized.
 -->
 
-<Control name="SourceCode" tag="pre">
+<Control className="SourceCode" tag="pre">
 
 <style>
 {

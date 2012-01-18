@@ -1,4 +1,4 @@
-<Control name="GetStartedModule">
+<Control className="GetStartedModule">
 
 <content>
     <h2>Get started</h2>
