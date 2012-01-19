@@ -22,7 +22,7 @@
 <script type="text/javascript" src="/controls/controls.js"></script>
 <script type="text/javascript" src="/framework/framework.js"></script>
 
-<title></title>
+<title>Using jQuery UI controls with QuickUI</title>
 
 <script id="demo">
 var ColorSlider = Control.subclass({
@@ -62,8 +62,9 @@ $( ".ColorSlider" ).on( "slide slidechange", function() {
     $demo.css( "background", color );
 });
 
-$red.value( 255 );
-$green.value( 128 );
+$red.value( 215 );
+$green.value( 197 );
+$blue.value( 180 )
 </script>
 
 <body
@@ -74,16 +75,33 @@ $green.value( 128 );
 
 <p class="highlight">
 <b>Core idea:</b>
+QuickUI controls and jQuery widgets can coexist on a page. A QuickUI control
+can host a jQuery widget, and vice versa.
 </p>
 <p>
 </p>
 
 <p>
-<b>The demo code</b> 
+<b>The demo code</b>
+creates a QuickUI control called ColorSlider that hosts some content (shown
+as the control's label) and a
+<a data-control="Link" href="http://jqueryui.com/demos/slider/">jQuery UI slider</a>.
+The slider is created by adding a div to the control, then applying the
+jQuery slider() plugin to it, which does the work of creating the slider elements.
+The slider() plugin is invoked by including a “slider:” key after the “html:”
+key, and passing any plugin options (like the maximum and minimum values shown
+here) as a nested dictionary.
+</p>
+<p>
+The demo creates three instances of the ColorSlider class, and sets the
+demo’s background color to the RGB value indicated by the sliders.
 </p>
 
 <p>
-<b>Your goal:</b> 
+<b>Your goal:</b>
+Change the slider behavior so that the slider’s thumb moves in steps of
+16. You can do this by setting the “step:” key in the nested dictionary that
+creates the slider, and passing a value of 16.
 </p>
 
 </body>
