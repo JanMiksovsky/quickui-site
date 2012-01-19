@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+<link rel="stylesheet" type="text/css" href="/framework/framework.css" />
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/ace.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/mode-javascript.js"></script>
+<script type="text/javascript" src="/lib/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="/framework/framework.js"></script>
+
+<title></title>
+
+<script id="demo">
+var ColorSlider = Control.subclass({
+    className: "ColorSlider",
+    content: [
+        {
+            html: "<span/>",
+            id: "content"
+        },
+        {
+            html: "<div/>",
+            id: "slider",
+            slider: {
+                min: 0,
+                max: 255
+            }
+        }
+    ],
+    css: { padding: "1em" },
+    prototype: {
+        content: Control.chain( "$content", "content" ),
+        value: Control.chain( "$slider", "slider/value" )
+    }
+});
+
+var $red = ColorSlider.create().content( "Red" );
+var $green = ColorSlider.create().content( "Green" );
+var $blue = ColorSlider.create().content( "Blue" );
+
+$demo.append( $red, $green, $blue );
+
+$( ".ColorSlider" ).on( "slide slidechange", function() {
+    var red = $red.value();
+    var green = $green.value()
+    var blue = $blue.value();
+    var color = "rgb(" + red + "," + green + "," + blue +")";
+    $demo.css( "background", color );
+});
+
+$red.value( 255 );
+$green.value( 128 );
+</script>
+
+<body
+    data-create-controls="true"
+    data-control="TutorialPage"
+    data-nextPage=""
+>
+
+<p class="highlight">
+<b>Core idea:</b>
+</p>
+<p>
+</p>
+
+<p>
+<b>The demo code</b> 
+</p>
+
+<p>
+<b>Your goal:</b> 
+</p>
+
+</body>
+
+</html>
