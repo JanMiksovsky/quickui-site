@@ -1,6 +1,6 @@
 <Control className="Page06">
 <prototype>
-<TutorialPage title="Setting control properties">
+<MarkupAreaPage title="Setting control properties">
 
 <h2>Setting a property through markup</h2>
 <p>
@@ -95,8 +95,8 @@ $(".Greet")                 // Get all Greet elements on the page.
     .content( "Angela" );   // Set the content of all of them at once.
 </pre>
 
-<Link href="/tutorial/section07">Next ></Link>
+<Link href="/markup/tutorial/section07">Next ></Link>
 
-</TutorialPage>
+</MarkupAreaPage>
 </prototype>
 </Control>

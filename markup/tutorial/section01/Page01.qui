@@ -1,6 +1,6 @@
 <Control className="Page01">
 <prototype>
-<TutorialPage title="Hello, world">
+<MarkupAreaPage title="Hello, world">
 
 <p>
     This tutorial walks quickly through the construction of a simple QuickUI control,
@@ -153,8 +153,8 @@ As with any user interface framework, we’ve had to jump through a number of ho
 to produce a trivial result, but now we’ve laid the foundation for more complex results.
 </p>
 
-<Link href="/tutorial/section02">Next ></Link>
+<Link href="/markup/tutorial/section02">Next ></Link>
 
-</TutorialPage>
+</MarkupAreaPage>
 </prototype>
 </Control>

@@ -65,7 +65,7 @@ of a QuickUI control running on this page.
 <h2 class="section">Next steps</h2>
 
 <p>
-The <Link href="/tutorial">tutorial</Link>
+The <Link href="/markup/tutorial">tutorial</Link>
 walks through the development of a simple control step-by-step.
 You can see some sample and ready-to-use QuickUI controls in the
 <Link href="/catalog">Catalog</Link>.

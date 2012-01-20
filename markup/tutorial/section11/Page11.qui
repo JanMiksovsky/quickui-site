@@ -1,6 +1,6 @@
 <Control className="Page11">
 <prototype>
-<TutorialPage title="More on styling">
+<MarkupAreaPage title="More on styling">
 
 <h2>Styling the top level of a control</h2>
 
@@ -80,8 +80,8 @@ The control might support different appearances by exposing properties specifica
 to alter its appearance, which preserves both flexibility and maintainability.
 </p>
 
-<Link href="/tutorial/section12">Next ></Link>
+<Link href="/markup/tutorial/section12">Next ></Link>
 
-</TutorialPage>
+</MarkupAreaPage>
 </prototype>
 </Control>

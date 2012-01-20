@@ -1,6 +1,6 @@
 <Control className="Page13">
 <prototype>
-<TutorialPage title="Controlling behavior">
+<MarkupAreaPage title="Controlling behavior">
 
 <h2>Defining a property that governs behavior</h2>
 
@@ -62,8 +62,8 @@ but now clicking “Carol” will not.
     <Sample/>
 </CodeOutput>
 
-<Link href="/tutorial/section14">Next ></Link>
+<Link href="/markup/tutorial/section14">Next ></Link>
 
-</TutorialPage>
+</MarkupAreaPage>
 </prototype>
 </Control>

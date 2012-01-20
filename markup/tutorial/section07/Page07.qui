@@ -1,6 +1,6 @@
 <Control className="Page07">
 <prototype>
-<TutorialPage title="Compact property definition using property bindings">
+<MarkupAreaPage title="Compact property definition using property bindings">
 
 <h2>Declaring a property using a chain of jQuery calls</h2>
 <p>
@@ -121,8 +121,8 @@ $(".Greet")                 // Get all Greet elements on the page.
     .punctuation( "!" );    // Set the punctunation of all of them.
 </pre>
 
-<Link href="/tutorial/section08">Next ></Link>
+<Link href="/markup/tutorial/section08">Next ></Link>
 
-</TutorialPage>
+</MarkupAreaPage>
 </prototype>
 </Control>

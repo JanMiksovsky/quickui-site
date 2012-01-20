@@ -1,6 +1,6 @@
 <Control className="Page10">
 <prototype>
-<TutorialPage title="Styling controls">
+<MarkupAreaPage title="Styling controls">
 
 <h2>Styling a control element</h2>
 <p>
@@ -98,8 +98,8 @@ so the CSS will apply to both. However, in such cases it is generally desired to
 apply the same formatting to both, so the end result is usually acceptable.)
 </p>
 
-<Link href="/tutorial/section11">Next ></Link>
+<Link href="/markup/tutorial/section11">Next ></Link>
 
-</TutorialPage>
+</MarkupAreaPage>
 </prototype>
 </Control>

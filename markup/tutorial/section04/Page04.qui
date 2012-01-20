@@ -1,6 +1,6 @@
 <Control className="Page04">
 <prototype>
-<TutorialPage title="Referencing control elements">
+<MarkupAreaPage title="Referencing control elements">
 
 <p>
 Even the fixed HTML content we’ve been dealing with thus far has some utility, but controls
@@ -114,8 +114,8 @@ to examine the DOM at run time, it’ll be clear what role the <Tag>span</Tag> i
 and which class put that element there.
 </p>
 
-<Link href="/tutorial/section05">Next ></Link>
+<Link href="/markup/tutorial/section05">Next ></Link>
 
-</TutorialPage>
+</MarkupAreaPage>
 </prototype>
 </Control>

@@ -1,6 +1,6 @@
 <Control className="Page08">
 <prototype>
-<TutorialPage title="Markup within properties">
+<MarkupAreaPage title="Markup within properties">
 
 <p>
 The control property values we’ve used so far have only been strings: “Alice”, “!”, etc.
@@ -118,8 +118,8 @@ to a very simple template. We then worked that italic presentation into just one
 of the Greet control where we felt we really wanted it.
 </p>
 
-<Link href="/tutorial/section09">Next ></Link>
+<Link href="/markup/tutorial/section09">Next ></Link>
 
-</TutorialPage>
+</MarkupAreaPage>
 </prototype>
 </Control>

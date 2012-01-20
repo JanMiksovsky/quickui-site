@@ -1,6 +1,6 @@
 <Control className="Page05">
 <prototype>
-<TutorialPage title="Defining control properties">
+<MarkupAreaPage title="Defining control properties">
 
 <p>
 Now that we can obtain a reference to the <Tag>span</Tag> element within our Greet control,
@@ -97,8 +97,8 @@ in a minute, that the property called “content” has a specific meaning to th
 that is useful in setting control content.
 </p>
 
-<Link href="/tutorial/section06">Next ></Link>
+<Link href="/markup/tutorial/section06">Next ></Link>
 
-</TutorialPage>
+</MarkupAreaPage>
 </prototype>
 </Control>

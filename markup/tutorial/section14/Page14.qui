@@ -1,6 +1,6 @@
 <Control className="Page14">
 <prototype>
-<TutorialPage title="Subclassing controls">
+<MarkupAreaPage title="Subclassing controls">
 
 <p>
 If a particular control class instance — with properties filled out a particular way,
@@ -86,6 +86,6 @@ technologies: HTML, CSS, and JavaScript.
 
 <AddThis/>
 
-</TutorialPage>
+</MarkupAreaPage>
 </prototype>
 </Control>

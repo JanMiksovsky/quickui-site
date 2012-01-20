@@ -1,9 +1,9 @@
 <Control className="Page09">
 <prototype>
-<TutorialPage title="Control content">
+<MarkupAreaPage title="Control content">
 
 <p>
-The previous section on the <Link href="/tutorial/section08">
+The previous section on the <Link href="/markup/tutorial/section08">
 markup with properties</Link> described how we could implicitly set the content
 of a control instance by placing elements inside a control’s tag.
 It turns out we can do the same thing to the top level <Tag>Control</Tag> tag
@@ -65,8 +65,8 @@ first, as its almost always the first thing one wants to read to understand what
 a control does and how it will look at run-time.
 </p>
 
-<Link href="/tutorial/section10">Next ></Link>
+<Link href="/markup/tutorial/section10">Next ></Link>
 
-</TutorialPage>
+</MarkupAreaPage>
 </prototype>
 </Control>

@@ -1,6 +1,6 @@
 <Control className="Page12">
 <prototype>
-<TutorialPage title="Defining interactivity">
+<MarkupAreaPage title="Defining interactivity">
 
 <p>
 Earlier we saw how additional properties could be defined in the <Tag>script</Tag> tag.
@@ -51,8 +51,8 @@ user interface controls well, we could do that without needing to rewrite contro
 Sample that host the Greet control.
 </p>
 
-<Link href="/tutorial/section13">Next ></Link>
+<Link href="/markup/tutorial/section13">Next ></Link>
 
-</TutorialPage>
+</MarkupAreaPage>
 </prototype>
 </Control>

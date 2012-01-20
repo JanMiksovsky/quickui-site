@@ -1,6 +1,6 @@
 <Control className="Page03">
 <prototype>
-<TutorialPage title="Composing QuickUI controls">
+<MarkupAreaPage title="Composing QuickUI controls">
 
 <h2>Assembling more complex controls</h2>
 <p>
@@ -77,8 +77,8 @@ independent copy of the contents defined for the Greet class earlier:
 &lt;/body&gt;
 </pre>
 
-<Link href="/tutorial/section04">Next ></Link>
+<Link href="/markup/tutorial/section04">Next ></Link>
 
-</TutorialPage>
+</MarkupAreaPage>
 </prototype>
 </Control>
