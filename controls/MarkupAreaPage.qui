@@ -3,6 +3,11 @@
 <prototype>
     <SitePage area="Markup">
         <navigationLinks>
+            
+            <h2>Markup tools</h2>
+            <Link href="/downloads/">Download</Link>
+            
+            <h2>Markup tutorial</h2>
             <Link href="/markup/tutorial/section01/">Hello, world</Link>
             <Link href="/markup/tutorial/section02/">How QuickUI works</Link>
             <Link href="/markup/tutorial/section03/">Composing controls</Link>
@@ -17,6 +22,7 @@
             <Link href="/markup/tutorial/section12/">Defining interactivity</Link>
             <Link href="/markup/tutorial/section13/">Controlling behavior</Link>
             <Link href="/markup/tutorial/section14/">Subclassing controls</Link>
+            
         </navigationLinks>
     </SitePage>
 </prototype>

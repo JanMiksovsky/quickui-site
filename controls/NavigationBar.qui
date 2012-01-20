@@ -2,7 +2,7 @@
 
 <content>
     <Link href="/">Home</Link>
-    <Link href="/downloads">Download</Link>
+    <Link href="/tutorial">Tutorial</Link>
     <Link href="/docs">Docs</Link>
     <Link href="/catalog">Catalog</Link>
     <Link href="/markup/tutorial/section01">Markup</Link>
