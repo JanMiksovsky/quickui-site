@@ -4,6 +4,8 @@
     <SitePage area="Markup">
         <navigationLinks>
             
+            <Link href="/markup/">Introduction</Link>
+            
             <h2>Markup tools</h2>
             <Link href="/downloads/">Download</Link>
             

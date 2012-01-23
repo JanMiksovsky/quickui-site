@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+<link rel="stylesheet" type="text/css" href="docs.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/lib/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="docs.js"></script>
+
+<title>QuickUI Markup</title>
+
+<style>
+#table {
+    display: table;
+}
+#table > * {
+    display: table-row;
+}
+#table > * > * {
+    display: table-cell;
+    padding-bottom: .5em;
+}
+#table > * > *:first-child {
+    white-space: nowrap;
+}
+#table > * > *:not(:last-child) {
+    padding-right: 1em;
+}
+</style>
+
+</head>
+
+<body data-create-controls="true" data-control="MarkupAreaPage">
+
+<p>
+QuickUI markup is a simple HTML-like file format that allows you to package the
+markup, CSS, and JavaScript for a control into a single file.
+</p>
+<p> 
+The use of this markup format is optional. Its primary benefits are that it:
+</p>
+<ul>
+    <li>Reduces the numbers of files you need to manage.</li>
+    <li>
+        Keeps related markup, CSS, and JavaScript close together —
+        just as with a traditional HTML document.
+    </li>
+    <li>May feel more familiar to web designers comfortable working in HTML.</li>
+</ul>
+
+<div id="table">
+    <div>
+        <div><a data-control="Link" href="/downloads/">Download the QuickUI markup compiler</a></div>
+        <div>
+            The QuickUI compiler is a client-side tool to convert QuickUI markup
+            files into regular JavaScript and CSS files. 
+        </div>
+    </div>
+    <div>
+        <div><a data-control="Link" href="/markup/tutorial/section01/">QuickUI markup tutorial</a></div>
+        <div>
+            Walks through the creation of a simple control using QuickUI markup.
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

@@ -14,7 +14,7 @@ var Page01 = MarkupAreaPage.subclass({
     title: "Hello, world",
     content: [
         " ",
-        "<p>\n    This tutorial walks quickly through the construction of a simple QuickUI control,\n    touching on the framework’s fundamental capabilities.\n</p>",
+        "<p>\n    This tutorial walks quickly through the construction of a simple control\n    in QuickUI markup.\n</p>",
         " ",
         "<h2>Setting up</h2>",
         " ",
@@ -25,7 +25,7 @@ var Page01 = MarkupAreaPage.subclass({
                 {
                     control: "Link",
                     href: "/downloads",
-                    content: "download QuickUI"
+                    content: "download the QuickUI compiler"
                 },
                 " and then follow along yourself, or you can read through this first to get a feel for what it’s like to develop in QuickUI. "
             ]

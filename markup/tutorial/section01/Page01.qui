@@ -3,15 +3,15 @@
 <MarkupAreaPage title="Hello, world">
 
 <p>
-    This tutorial walks quickly through the construction of a simple QuickUI control,
-    touching on the framework’s fundamental capabilities.
+    This tutorial walks quickly through the construction of a simple control
+    in QuickUI markup.
 </p>
 
 <h2>Setting up</h2>
 
 <p>    
     You can
-    <Link href="/downloads">download QuickUI</Link> and then follow
+    <Link href="/downloads">download the QuickUI compiler</Link> and then follow
     along yourself, or you can read through this first to get a feel for what it’s like
     to develop in QuickUI.
 </p>

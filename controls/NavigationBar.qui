@@ -5,7 +5,7 @@
     <Link href="/tutorial">Tutorial</Link>
     <Link href="/docs">Docs</Link>
     <Link href="/catalog">Catalog</Link>
-    <Link href="/markup/tutorial/section01">Markup</Link>
+    <Link href="/markup/">Markup</Link>
     <Link href="/screencasts">Screencasts</Link>
     <Link href="http://discussions.zoho.com/quickui">Discuss</Link>
     <Link href="https://github.com/JanMiksovsky/quickui">Contribute</Link>
