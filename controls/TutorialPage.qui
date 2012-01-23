@@ -35,6 +35,7 @@
             <Link href="/tutorial/control-property-helper.html">Property storage</Link>
             
             <h2>Advanced topics</h2>
+            <Link href="/tutorial/jQuery-UI.html">QuickUI + jQuery UI</Link>
             <Link href="/tutorial/rehydration.html">Controls in static HTML</Link>
             <Link href="/tutorial/inDocument.html">Waiting to be in the DOM</Link>
             

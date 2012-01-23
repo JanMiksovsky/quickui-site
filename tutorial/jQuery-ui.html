@@ -5,6 +5,7 @@
 
 <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
 
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" />
 <link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
 <link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
 <link rel="stylesheet" type="text/css" href="/controls/controls.css" />
@@ -68,22 +69,38 @@ $blue.value( 180 )
 <body
     data-create-controls="true"
     data-control="TutorialPage"
-    data-nextPage=""
+    data-nextPage="rehydration.html"
 >
 
 <p class="highlight">
 <b>Core idea:</b>
-QuickUI controls and jQuery widgets can coexist on a page. A QuickUI control
-can host a jQuery widget, and vice versa.
+QuickUI controls and
+<a data-control="Link" href="http://jqueryui.com">jQuery UI</a>
+widgets can coexist on a page. A QuickUI control can host a jQuery widget, and
+vice versa.
 </p>
 <p>
+The QuickUI and jQuery UI frameworks are both built on top of the underlying
+jQuery library, although they present different models for creating UI components.
+Both frameworks can be used together on a page, and the components for each
+framework (controls in QuickUI, widgets in jQuery UI) can host components
+from the other.
+</p>
+<p>
+If you are already using a jQuery UI widget, you can easily incorporate it
+into a QuickUI control by invoking the widget in the control class’ JSON.
 </p>
 
 <p>
 <b>The demo code</b>
-creates a QuickUI control called ColorSlider that hosts some content (shown
-as the control's label) and a
-<a data-control="Link" href="http://jqueryui.com/demos/slider/">jQuery UI slider</a>.
+creates a QuickUI control called ColorSlider which implements a labeled
+slider control that can return a value between 0 and 255 (the limits of a CSS
+RGB color). The class uses a
+<a data-control="Link" href="http://jqueryui.com/demos/slider/">jQuery UI slider</a>
+to implement the slider portion. To this slider, the ColorSlider class adds
+a content property whose value will be rendered as the slider’s label.
+</p>
+<p>
 The slider is created by adding a div to the control, then applying the
 jQuery slider() plugin to it, which does the work of creating the slider elements.
 The slider() plugin is invoked by including a “slider:” key after the “html:”
