@@ -1,4 +1,4 @@
-<Control className="Navigator">
+<Control className="NavigationLinks">
 
 <style>
 h2 {
@@ -19,12 +19,12 @@ h2 {
 </style>
 
 <script>
-Navigator.prototype.extend({
+NavigationLinks.prototype.extend({
 
     // Highlight the link for the page we're on.
     highlightCurrentPage: function() {
         var pageHref = window.location.href;
-        this.find( ".Link" ).cast().eachControl( function( index, $control ) {
+        this.find( ".Link" ).eachControl( function( index, $control ) {
             var linkHref = $control.href();
             var pageHrefRight = pageHref.substring( pageHref.length - linkHref.length )
             $control.toggleClass( "highlight", pageHrefRight === linkHref );
