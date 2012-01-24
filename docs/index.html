@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+<link rel="stylesheet" type="text/css" href="docs.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/release/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="docs.js"></script>
+
+<title>QuickUI Framework Documentation</title>
+
+<style>
+#table {
+    display: table;
+}
+#table > * {
+    display: table-row;
+}
+#table > * > * {
+    display: table-cell;
+    padding-bottom: .5em;
+}
+#table > * > *:first-child {
+    white-space: nowrap;
+}
+#table > * > *:not(:last-child) {
+    padding-right: 1em;
+}
+</style>
+
+</head>
+
+<body data-create-controls="true" data-control="DocumentationPage">
+
+<p>
+QuickUI makes it easy to create new user interface components, called
+“controls”, which can be easily reused and shared. The core part of QuickUI is a
+framework that builds on top of the popular jQuery library. All aspects of
+jQuery, as well as a range of facilities designed specifically for creating and
+using controls, are available to controls built with QuickUI.
+</p>
+<p>
+Control users and authors can create controls using just the QuickUI framework
+using traditional web development tools that edit JavaScript, CSS, and HTML.
+For additional efficiency, developers can choose to use the optional QuickUI
+markup language, designed specifically to permit highly legible and maintainable
+control source code.
+</p>
+
+<div id="table">
+    <div>
+        <div><a data-control="Link" href="principles.html">Core principles</a></div>
+        <div>
+            The set of design principles at the core of QuickUI that enable
+            reusable, extensible control classes.
+        </div>
+    </div>
+    <div>
+        <div><a data-control="Link" href="framework.html">Framework overview</a></div>
+        <div>
+            A summary of the features in the QuickUI framework
+            intended for people familiar with JavaScript.
+        </div>
+    </div>
+    <div>
+        <div><a data-control="Link" href="controlPlugin.html">$.control() plugin</a></div>
+        <div>
+            The main jQuery plugin for creating or accessing a QuickUI control
+            from a plain jQuery instance.
+        </div>
+    </div>
+    <div>
+        <div><a data-control="Link" href="controlClass.html">Control class</a></div>
+        <div>
+            The base Control class from which all QuickUI control classes inherit.
+            This is a subclass of jQuery, so all controls also inherit the standard
+            jQuery methods.
+        </div>
+    </div>
+    <div>
+        <div><a data-control="Link" href="controlGuidelines.html">Guidelines</a></div>
+        <div>
+            Guidelines for creating control classes that can be readily understood
+            and reused by other developers.
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
