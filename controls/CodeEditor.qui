@@ -13,7 +13,6 @@
         </div>
         <div>
             <div id="codePane">
-                <!-- <textarea id="CodeEditor_code" spellcheck="false" /> -->
                 <AceCodeEditor id="CodeEditor_code"/>
             </div>
             <div id="result"/>
@@ -125,6 +124,7 @@ CodeEditor.prototype.extend({
             eval( code );
         }
         catch ( error ) {
+            console.log( "Error: " + error.toString() );
             this.error( error.toString() );
         }
     },
