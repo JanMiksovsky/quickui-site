@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/ace.js"></script>
+<script type="text/javascript" src="/thirdParty/ace/mode-javascript.js"></script>
+<script type="text/javascript" src="/release/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+
+<title>Using QuickUI in your own projects</title>
+
+<script id="demo">
+</script>
+
+<body
+    data-create-controls="true"
+    data-control="TutorialPage"
+    data-editorVisible="false"
+>
+
+<p class="highlight">
+<b>Core idea:</b>
+You can reference the QuickUI runtime and catalog files hosted on the QuickUI site,
+or host those files yourself.
+</p>
+
+<p>
+If you want to use QuickUI in your own web project, you’ll need to include a
+reference to a recent version of the jQuery library, as well as the core
+quickui.js runtime. For convenience, you can reference the latest public copy of
+quickui.js hosted on this site:
+</p>
+
+<pre>
+&lt;script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js">&lt;/script>
+&lt;script type="text/javascript" src="http://quickui.org/release/quickui.js">&lt;/script>
+</pre>
+
+<p>
+If you want to use the QuickUI Catalog controls shown in this tutorial, you’ll
+also need to reference the catalog's CSS and JS files:
+</p>
+
+<pre>
+&lt;link rel="stylesheet" type="text/css" href="http://quickui.org/release/quickui.catalog.css"/>
+&lt;script type="text/javascript" src="http://quickui.org/release/quickui.catalog.js">&lt;/script>
+</pre>
+
+<p>
+You can also download these files from this site and host them on your own site.
+You may also want to clone the
+<a data-control="Link" href="https://github.com/JanMiksovsky/quickui">QuickUI repository</a>
+on GitHub.
+</p>
+
+<p>
+This concludes the QuickUI tutorial. Thanks for making it all the way through!
+</p>
+
+<h2>More reading:</h2>
+<ul>
+    <li>
+        Browse the <a data-control="Link" href="/catalog/">QuickUI Catalog</a> of controls.
+    </li>
+    <li>
+        Take a look at the <a data-control="Link" href="/docs/">framework documentation</a>.
+    </li>
+</ul>
+
+</body>
+
+</html>

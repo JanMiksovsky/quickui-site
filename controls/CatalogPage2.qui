@@ -34,7 +34,7 @@
     max-width: inherit;
 }
 
-h1, h2, p, ol, ul {
+h1, h2, p, ol, ul, pre {
     max-width: 800px;
 }
 

@@ -39,6 +39,9 @@
             <Link href="/tutorial/rehydration.html">Controls in static HTML</Link>
             <Link href="/tutorial/inDocument.html">Waiting to be in the DOM</Link>
             
+            <h2>Conclusion</h2>
+            <Link href="/tutorial/using-QuickUI.html">QuickUI in your projects</Link>
+            
         </navigationLinks>
     
         <div id="TutorialPage_content"/>
@@ -55,7 +58,7 @@
     max-width: inherit;
 }
 
-h1, h2, p, ol, ul {
+h1, h2, p, ol, ul, pre {
     max-width: 800px;
 }
 
@@ -100,7 +103,9 @@ TutorialPage.prototype.extend({
     
     nextPage: Control.property( function( nextPage) {
         this.$buttonNext().css( "display", nextPage ? "inline-block": "none" );
-    })
+    }),
+    
+    editorVisible: Control.chain( "$editor", "visibility" )
 
 });
 
