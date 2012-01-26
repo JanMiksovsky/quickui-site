@@ -6,7 +6,10 @@
     <Link href="/docs">Docs</Link>
     <Link href="/catalog">Catalog</Link>
     <Link href="/markup/">Markup</Link>
+    <!-- Hide markup-based screencasts until they can be re-done for JS.
     <Link href="/screencasts">Screencasts</Link>
+    -->
+    <Link href="http://blog.quickui.org">Blog</Link>
     <Link href="http://discussions.zoho.com/quickui">Discuss</Link>
     <Link href="https://github.com/JanMiksovsky/quickui">Contribute</Link>
 </content>
