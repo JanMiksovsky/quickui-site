@@ -13,7 +13,7 @@
         </div>
         <div>
             <div id="codePane">
-                <AceCodeEditor id="CodeEditor_code"/>
+                <div id="CodeEditor_code"/>
             </div>
             <div id="result"/>
         </div>
@@ -109,6 +109,16 @@ CodeEditor.prototype.extend({
                 }
                 this.$CodeEditor_code().focus();
             });
+         
+        /* As of 1/27/2012, ACE doesn't run in IE8. */
+        if ( $.browser.msie && parseInt( $.browser.version ) < 9 ) {
+            this.$CodeEditor.code().content(
+                "(Open this page in a newer version of Internet Explorer to see a live demo.)"
+            );
+            this.autoRun( false );
+        } else {
+            this.$CodeEditor_code().control( AceCodeEditor );
+        }
     },
     
     result: Control.chain( "$result", "content" ),
