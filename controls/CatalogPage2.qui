@@ -58,21 +58,7 @@ CatalogPage2.prototype.extend({
     
     initialize: function() {
         this._super();
-        this.inDocument( function( $control ) {
-            /*
-            if ( $control.autoFocus() ) {
-                // Give the input to first text box or text area in the demo. 
-                $control.$editor()
-                    .find( "input[type='text']" )
-                    .add( "textarea" )
-                    .eq(0)
-                    .focus();
-            }
-            */
-        });
-        
-        var code = $.trim( $( "script#demo" ).html() );
-        this.$editor().code( code );
+        this.$editor().code( this._demo() );
     },
     
     content: Control.chain( "$CatalogPage2_content", "content", function( content ) {
@@ -108,20 +94,20 @@ CatalogPage2.prototype.extend({
                 .href( sourceUrl );
         }
         return result;
-    }
+    },
     
+    // Return the code from the page's script tag.
+    _demo: function() {
+        var code = $.trim( $( "script#demo" ).html() );
+        if ( code.length > 0 ) {
+            // Remove the first and last lines: the demo function wrapper.
+            lines = code.split( "\n" );
+            lines = lines.slice( 1, lines.length - 2 );
+            code = $.trim( lines.join( "\n" ) );
+        }
+        return code;
+    }    
 });
-
-/*
- * The demo scripts depend upon an element being defined called
- * "$demo". Since the demo script will actually execute when the page is
- * loaded, we define a dummy $demo element which the demo script can
- * manipulate. This will have no effect, so the script won't throw an
- * exception. Later, when the script is run, a closure will define a
- * separate identifier called $demo that will point at the demo element which
- * the script can safely modify.
- */
-var $demo = $();
 </script>
 
 </Control>

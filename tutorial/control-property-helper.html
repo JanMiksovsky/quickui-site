@@ -21,6 +21,8 @@
 <title>Properties that store values</title>
 
 <script id="demo">
+function demo() {
+
 var MessageButton = BasicButton.subclass({
     className: "MessageButton",
     generic: true,
@@ -29,7 +31,9 @@ var MessageButton = BasicButton.subclass({
             this._super();
             var self = this;
             this.click( function() {
-                alert( self.message() );
+                TransientMessage.showMessage(
+                    self.message()
+                );
             });
         },
         message: Control.property()
@@ -42,6 +46,8 @@ $demo.append(
     MessageButton.create()
         .content( "Goodbye" )
 );
+    
+}
 </script>
 
 <body

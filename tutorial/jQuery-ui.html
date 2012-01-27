@@ -24,6 +24,8 @@
 <title>Using jQuery UI controls with QuickUI</title>
 
 <script id="demo">
+function demo() {
+
 var ColorSlider = Control.subclass({
     className: "ColorSlider",
     content: [
@@ -64,6 +66,8 @@ $( ".ColorSlider" ).on( "slide slidechange", function() {
 $red.value( 215 );
 $green.value( 197 );
 $blue.value( 180 )
+    
+}
 </script>
 
 <body

@@ -21,6 +21,8 @@
 <title>Using functions to reference elements within a control</title>
 
 <script id="demo">
+function demo() {
+
 var UserTile = Control.subclass({
     className: "UserTile",
     content: [
@@ -48,6 +50,8 @@ var $tiles = $demo.children().control();
 $tiles.eq(0).find( "#name" ).text( "Alice" );
 $tiles.eq(1).find( "#name" ).text( "Bob" );
 $tiles.eq(2).find( "#name" ).text( "Carol" );
+
+}
 </script>
 
 <body

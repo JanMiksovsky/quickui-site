@@ -21,6 +21,8 @@
 <title>Executing code when a control is added to the document</title>
 
 <script id="demo">
+function demo() {
+
 var Square = Control.subclass({
     className: "Square",
     content: "I'm a square",
@@ -38,6 +40,8 @@ var Square = Control.subclass({
 $demo.append(
     Square.create()
 );
+    
+}
 </script>
 
 <body

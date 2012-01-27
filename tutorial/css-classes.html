@@ -21,12 +21,16 @@
 <title>Reference controls with CSS class names</title>
 
 <script id="demo">
+function demo() {
+
 $demo.append(
     BasicButton.create().content( "Hello" ),
     ColorSwatchButton.create().content( "Purple" )
 );
 
 $demo.find( ".BasicButton" ).css( "background", "lightyellow" );
+    
+}
 </script>
 
 <body

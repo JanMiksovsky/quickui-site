@@ -21,6 +21,8 @@
 <title>Initializing a control</title>
 
 <script id="demo">
+function demo() {
+
 var MessageButton = BasicButton.subclass({
     className: "MessageButton",
     generic: true,
@@ -39,6 +41,8 @@ $demo.append(
     MessageButton.create().content( "Hello" ),
     MessageButton.create().content( "Goodbye" )
 );
+    
+}
 </script>
 
 <body

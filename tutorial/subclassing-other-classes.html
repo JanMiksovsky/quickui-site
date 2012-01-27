@@ -21,6 +21,8 @@
 <title>Subclassing parent classes other than Control</title>
 
 <script id="demo">
+function demo() {
+
 var CountryComboBox = ListComboBox.subclass({
     className: "CountryComboBox",
     generic: true,
@@ -41,6 +43,8 @@ $demo.append(
     "<div>To:</div>",
     CountryComboBox.create()
 );
+    
+}
 </script>
 
 <body

@@ -21,6 +21,8 @@
 <title>Setting a control’s default content with JSON</title>
 
 <script id="demo">
+function demo() {
+
 var Message = Control.subclass({
     className: "Message",
     content: [
@@ -42,6 +44,8 @@ var Message = Control.subclass({
 $demo.append(
     Message.create()
 );
+    
+}
 </script>
 
 <body

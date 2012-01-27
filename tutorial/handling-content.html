@@ -21,6 +21,8 @@
 <title>Defining properties that can handle a variety of content</title>
 
 <script id="demo">
+function demo() {
+
 var UserTile = Control.subclass({
     className: "UserTile",
     content: [
@@ -47,7 +49,7 @@ var UserTile = Control.subclass({
             }
         }
     }    
-})
+});
 
 $demo.append(
     UserTile.create().name([
@@ -56,6 +58,8 @@ $demo.append(
         " Man!"
     ])
 );
+    
+}
 </script>
 
 <body

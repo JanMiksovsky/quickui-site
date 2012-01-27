@@ -21,6 +21,8 @@
 <title>Adding functionality to a control class’ prototype</title>
 
 <script id="demo">
+function demo() {
+
 var UserTile = Control.subclass({
     className: "UserTile",
     content: [
@@ -49,6 +51,8 @@ $demo.append(
     UserTile.create().highlight(),
     UserTile.create()
 );
+    
+}
 </script>
 
 <body

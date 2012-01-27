@@ -21,6 +21,8 @@
 <title>Casting a DOM element reference to a control class instance</title>
 
 <script id="demo">
+function demo() {
+
 $demo.append(
     BasicButton.create().content( "Hello" )
 );
@@ -29,6 +31,8 @@ var $button = $demo.find( "div" );
 var content = $button.content();
 
 $demo.append( content );
+    
+}
 </script>
 
 <body

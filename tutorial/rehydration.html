@@ -21,6 +21,8 @@
 <title>Create controls from static HTML for searchability</title>
 
 <script id="demo">
+function demo() {
+
 $demo.html(
     "<div data-control='CollapsibleWithHeadingButton'>" +
         "<div data-property='heading'>A <i>rich</i> heading</div>" +
@@ -30,6 +32,8 @@ $demo.html(
    "</div>"
 );
 Control( $demo ).rehydrate();
+    
+}
 </script>
 
 <body

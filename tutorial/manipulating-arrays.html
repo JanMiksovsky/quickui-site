@@ -21,6 +21,8 @@
 <title>Controls can be manipulated as an array</title>
 
 <script id="demo">
+function demo() {
+
 var $textBox = TextBox.create()
     .on( "change keyup", function() {
         var $buttons = $demo.find( ".BasicButton" ).control();
@@ -37,6 +39,8 @@ $demo.append(
 );
 
 $textBox.content( "Hello" );
+    
+}
 </script>
 
 <body
