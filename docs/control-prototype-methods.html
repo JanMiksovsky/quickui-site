@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+<link rel="stylesheet" type="text/css" href="docs.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/release/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="docs.js"></script>
+
+<title>Control instance methods</title>
+
+</head>
+
+<body data-create-controls="true" data-control="DocumentationPage">
+
+<p>
+These functions are available on all control <i>instances</i>.
+Since Control is is a subclass of jQuery, all jQuery
+members are available on Control as well.
+</p>
+<p>
+These methods all follow jQuery plugin conventions. They are all chainable,
+and if desired they can be applied to an array of multiple controls at once.
+</p>
+
+<h2>applyClass( classes [, value] )</h2>
+<p>
+Gets or sets whether the given CSS class(es) are applied to the controls. This
+combines the functions of $.hasClass (when called as a getter) and $.toggleClass
+(when called as a setter). This applyClass() function is useful in the context
+of a chain() binding, allowing the control to expose a boolean getter/setter
+the governs the application of a given CSS class.
+</p>
+
+<pre>
+&lt;Control name="MyControl"&gt;
+
+&lt;content&gt;
+    ...
+&lt;/content&gt;
+
+&lt;style&gt;
+.disabled {
+    color: gray;
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+MyControl.prototype.extend({
+    // Expose a boolean disabled() property that causes the "disabled"
+    // CSS class to be applied or removed.
+    disabled: Control.chain("applyClass/disabled")
+});
+&lt;/script&gt;
+
+&lt;/Control&gt;
+</pre>
+
+<h2>cast()</h2>
+<p>
+Given a jQuery array of elements of potentially differing control classes,
+this returns the array cast to the most specific class which all the elements
+have in common. This is typically done prior to invoking a function, to ensure
+that the same implementation of the function is invoked on all the elements. 
+</p>
+
+<h2>content( [value] )</h2>
+<p>
+Gets or sets the content of the elements. This is a helper function that performs
+two main tasks.
+</p>
+<p>
+First, it provides a single entry point to manipulate the content
+of a regular HTML element (via $.html) or an input element like a text box (via $.val).
+This makes it easier to change control elements from standard HTML input elements to
+QuickUI controls in their own right (or change them back) without having to rewrite
+much code.
+</p>
+<p>
+Second, this function normalizes the content to a canonical form. For example, if the
+content of an element is set to a string value, then when it is read back, it will
+be returned as a single string. (In comparison, reading text nodes via $.content
+will return an array.)  
+</p>
+<p>
+The JavaScript generated for a control's markup makes use of the content() function
+to render a control. In particular, if a QuickUI control tag contains HTML
+or subcontrols, those elements will be passed into the content() function to render
+the control. Control classes often override content() to identify where their primary
+content should go.
+</p>
+
+<h2>eachControl( fn )</h2>
+<p>
+This is similar to $.each(), and loops over the array of elements in a jQuery object,
+invoking a callback function for each element. Unlike $.each(), the callback function
+is supplied with the current element cast to the control's specific class (if the element
+is a control) or null (if the element is not a control). The array can contain controls
+of differing classes, in which case any methods applied to the control could end up
+invoking different implementations according to each control's class.
+</p>
+
+<pre>
+var foo = Foo.create();         // instance of a control class
+var bar = Bar.create();         // instance of a different class
+var $c = $().add(foo).add(bar); // put them into a single array
+$c.eachControl(function(index, $control) {
+    $control.content("Hello");  // invokes Foo.content() or Bar.content() as appropriate.
+});
+</pre>
+
+<h2>inDocument( callback )</h2>
+<p>
+If the control is already in the current document (web page), the callback is
+executed immediately. Otherwise, the callback will be queued up for execution
+if and when the control is later added to the document. This can be useful
+in situations where the control depends on knowing its own styling, as CSS is
+only applied to controls in the document. The inDocument() callback is typically
+requested inside an initialize() handler.
+</p>
+<p>
+Inside callback, "this" refers to the control which has (just) been added to
+the document.
+</p>
+
+<pre>
+initialize: function() {
+    this.inDocument( function() {
+        // Make the control as tall as it is wide.
+        this.height( this.width() + "px" );
+    });
+}
+</pre>
+
+<h2>initialize()</h2>
+<p>
+This initialize() method is invoked when a new control is instantiated, and is typically
+used for wiring up event handlers, perform any initial calculations, etc.
+</p>
+<ul>
+    <li>
+        The initialize() call is made immediately after the control is instantiated.
+    </li>
+    <li>
+        The initialize() method of any children is invoked <i>before</i> the
+        initialize() method is invoked on the parent.
+    </li>
+    <li>
+        If the control was created from scratch (i.e., not by wrapping an element
+        already in the DOM), the initialize() call will happen before the control
+        is in the DOM. Among other things, the control will not yet have a defined
+        height and width. If it's necessary for the control to perform work once
+        its in the DOM, it can either rely on a higher-level parent to tell it
+        when this has happened, or it can listen for an event like DOMNodeInserted.
+    </li>
+</ul>
+
+<h2>properties( properties )</h2>
+<p>
+Sets the given properties on the control(s).
+</p>
+
+<pre>
+var userTile = UserTile.create();
+userTile.properties({
+    name: "Rachel Garcia",
+    picture: "picture1.png"
+});
+</pre>
+
+<p>
+Note that the $.control() plugin also allows the creation of a new control and
+the setting of properties in a single step, so the above could also be written:
+</p>
+
+<pre>
+var userTile = $("&lt;div/&gt;").control(UserTile, {
+    name: "Rachel Garcia",
+    picture: "picture1.png"
+});
+</pre>
+
+<h2>propertyVector( propertyName, values )</h2>
+<p>
+Gets or sets the given property on multiple elements at once. If called
+as a getter, an array of the property's current values is returned.
+If called as a setter, that property of each element will be set to
+the corresponding defined member of the values array. (Array values
+which are undefined will not be set.)
+</p>
+
+<pre>
+// Set the content property of the first three Foo instances on the page
+// to the strings "One", "Two", and "Three", respectively.
+$(".Foo")           // Find all Foo instances
+    .control()      // Cast the result to class Foo
+    .multiProperty("content", [ "One", "Two", "Three" ]);
+</pre>
+
+<h2>_super( [arguments] )</h2>
+<p>
+Within a control method, this invokes the method of the same name on the
+control's superclass. This is useful when extending (as opposed to completely
+overriding) a superclass' behavior
+</p>
+
+<h2>transmute( controlClass, preserveContent, preserveClasses )</h2>
+<p>
+Converts the control(s) to the indicated class. If preserveContent is true (the default
+is false), the existing contents of the control will be extracted and then set again
+on the control via the new class' content() property.
+</p>
+<p>
+If preserveClasses is true (the default is false), then the existing classes on the
+old control will be preserved on the element's "class" attribute. This can be useful to
+leave a trace of the transmutation for debugging purposes.
+</p>
+
+<h2>visibility( [value] )</h2>
+<p>
+Gets or sets whether the given control(s) are visible. This combines the functions
+of $.is(":visible") when called as a getter, and $.toggle() when called as a setter.
+</p>
+
+</body>
+
+</html>
