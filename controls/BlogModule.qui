@@ -1,0 +1,28 @@
+<Control className="BlogModule">
+
+<content>
+    <Blog
+        apiKey="ABQIAAAAduw93ooM51B8Jdy2C9HxvhSBC_FVBxnf9EUyrmx06S6ZVKWCwhRUIdI-JHlMvEGhOu9DbYTG8OA89Q"
+        count="5"
+        feed="http://blog.quickui.org/feed/"
+    />
+</content>
+
+<style>
+a {
+    display: block;
+    margin: 3px;
+    padding: 3px;
+}
+
+.BlogPost #BlogPost_postTitle {
+    font-size: inherit;
+    font-weight: normal;
+}
+
+.BlogPost #BlogPost_content {
+    display: none;
+}
+</style>
+
+</Control>
