@@ -166,11 +166,20 @@ used for wiring up event handlers, perform any initial calculations, etc.
     </li>
 </ul>
 
+<h2>json( json )</h2>
+<p>
+Sets properties on the control using
+<a data-control="Link" href="control-JSON.html">Control JSON</a>.
+This is similar to the properties()
+function, in that both take a property dictionary and apply it to a control,
+but json() evaluates the values in that dictionary, whereas properties() uses the
+values exactly as is.
+</p>
+
 <h2>properties( properties )</h2>
 <p>
 Sets the given properties on the control(s).
 </p>
-
 <pre>
 var userTile = UserTile.create();
 userTile.properties({
@@ -180,10 +189,19 @@ userTile.properties({
 </pre>
 
 <p>
+The keys of the supplied property dictionary are invoked as setters. The
+above code is equivalent to:
+</p>
+<pre>
+var userTile = UserTile.create()
+    .name( "Rachel Garcia" )
+    .picture( "picture1.png" );
+</pre>
+
+<p>
 Note that the $.control() plugin also allows the creation of a new control and
 the setting of properties in a single step, so the above could also be written:
 </p>
-
 <pre>
 var userTile = $("&lt;div/&gt;").control(UserTile, {
     name: "Rachel Garcia",

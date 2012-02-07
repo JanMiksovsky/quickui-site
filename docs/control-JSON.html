@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+<link rel="stylesheet" type="text/css" href="docs.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/release/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="docs.js"></script>
+
+<title>Control JSON</title>
+
+</head>
+
+<body data-create-controls="true" data-control="DocumentationPage">
+
+<p>
+You create new QuickUI control classes by applying the
+<a data-control="Link" href="/docs/control-class-methods.html#subclass">subclass()</a>
+method to the base class you wish to inherit from. The subclass() function
+accepts a single parameter as a JSON dictionary. The page here defines the
+format and use of that JSON parameter.
+</p>
+
+<p>
+The Control JSON format allows you to concisely define two things: 1) a few
+fields governing your class' definition, and 2) the default property
+values for a new instance of the class. For example, in the following code:
+</p>
+
+<pre>
+var OkButton = BasicButton.subclass({
+    className: "OkButton",
+    content: "OK"
+});
+</pre>
+
+<p>
+The key "className:" is a reserved key that defines the name of the new class.
+The key "content:" is used to set the default value of a new instance's 
+content() property to the text "OK".
+</p>
+
+<h2>Reserved JSON keys</h2>
+<p>
+There are only a handful of reserved keys at the top level of a Control JSON
+object:
+</p>
+<ul>
+    <li>
+        <b>className:</b> defines the string name for the new class. This is
+        applied as a DOM element class name to new control instances, allowing
+        them to be styled with CSS. This name is also useful for debugging.
+    </li>
+    <li>
+        <b>prototype:</b> defines any members that should be added to the
+        new class' prototype. This is where you will typically define new
+        control properties and other methods.
+    </li>
+    <li>
+        <b>tag:</b> defines the HTML element type which will be used as the
+        root for new control instances. By default, this is a
+        <span data-control="Tag">div</span>, but you can set it to another
+        type if you wish.
+    </li>
+</ul>
+
+<h2>Defining default property values for a new control instance</h2>
+<p>
+All keys at the top level of a Control JSON object are interpreted as the names
+of control properties. The values corresponding to these keys will be passed
+to the corresponding property setters. This system allows you define the default
+values which your new class will assign to control instances it creates.
+</p>
+<p>
+For example, using the OkButton class definition above, the content() property
+for a new OkButton instance will be set, by default, to the string "OK". 
+</p>
+<pre>
+var button = OkButton.create();
+var s = button.content(); // "OK"
+</pre>
+
+<p>
+Default values defined in the JSON passed to subclass() are actually set by
+invoking properties on the <i>base</i> class. The above definition for
+OkButton sets the default value by calling the content() property defined
+by its base class BasicButton. This allows a class to set its own default
+content, while simultaneously allowing the class to define a custom content()
+property whose definition overrides its base class' implementation.
+For an example of how that might work, see the tutorial exercise on
+<a data-control="Link" href="/tutorial/overriding-content-property.html">Defining your control's content property</a>.
+</p>
+
+<h2>Control JSON value types</h2>
+<p>
+The values in a Control JSON object can take one of the following forms:
+</p>
+<ul>
+    <li>
+        String, integer, or other fundamental JavaScript type. Such a value
+        will be used as is.
+    </li>
+    <li>
+        An array of Control JSON objects. Each item in the array will be
+        processed in turn.
+    </li>
+    <li>
+        A Control JSON object starting with an "html:" key or "control:" key.
+        This will be processed as discussed below.
+    </li>
+</ul>
+
+<h2>Creating a jQuery object from a Control JSON object</h2>
+<p>
+    
+</p>
+<pre>
+{
+    html: "&lt;div/&gt;",
+    height: "250px",
+    width: "300px"
+}
+</pre>
+
+<pre>
+$( "&lt;div/&gt; ")
+    .height( "250px" )
+    .width( "300px" );
+</pre>
+
+<p>
+To experiment with the Control JSON format, try one of the Tutorial pages,
+such as the one which covers
+<a data-control="Link" href="/tutorial/creating-control-class.html">how to create a control class</a>.
+</p>
+
+</body>
+
+</html>

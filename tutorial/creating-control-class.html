@@ -52,7 +52,9 @@ various class properties. The result of this call will be your new control
 class: a JavaScript class that you can instantiate as part of a user interface.
 </p>
 <p>
-Control.subclass() does its core work via a jQuery method called
+The
+<a data-control="Link" href="/docs/control-class-methods.html#subclass">Control.subclass()</a>
+method does its core work via a jQuery method called
 <a data-control="Link" href="http://api.jquery.com/jQuery.sub/">sub()</a>,
 which
 implements a standard JavaScript prototype-based inheritance scheme. Your class
@@ -61,8 +63,11 @@ will inherit a large set of standard behavior from the base Control class. Since
 your new class will also inherit all of jQuery’s abilities.
 </p>
 <p>
-The JSON dictionary can contain keys reserved by the QuickUI framework. For
-example, the value of the reserved “className:” key will define the name for the new
+The subclass() call expects a single parameter as a JSON dictionary in
+<a data-control="Link" href="/docs/control-JSON.html">Control JSON</a> format.
+Briefly, this format lets you define, in a declarative, data-driven way, the
+initial content of a control, as well as some basic details for your new class.
+For example, you will typically supply a “className:” key to define the name for the new
 control class, which will be applied as a CSS class to all controls created by 
 the class; see <a data-control="Link" href="cssClasses.html">CSS class names</a>.
 The JSON dictionary can also contain other keys. Any entry of the form foo:

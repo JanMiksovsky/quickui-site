@@ -30,7 +30,7 @@ and creating new control classes. Since Control is is a subclass of jQuery, all 
 class members are available on Control as well.
 </p>
 
-<h2>Control.chain( functionName1, functionName2, ..., functionNameN [, sideEffect] )</h2>
+<h2><a id="chain">Control.chain( functionName1, functionName2, ..., functionNameN [, sideEffect] )</a></h2>
 <p>
 Given an array of functions, repeatedly invoke them as a chain.
 </p>
@@ -65,7 +65,7 @@ string-valued parameter that will be passed in. So chain("css/display")
 creates a curried setter/getter function equivalent to css("display", value).
 </p>
 
-<h2>Control.create( [properties] )</h2>
+<h2><a id="create">Control.create( [properties] )</a></h2>
 <p>
 Returns a single instance of the given control class. The instance is detached
 from the DOM and must be added, e.g., via $.append(), to be visible to the user.
@@ -77,7 +77,7 @@ it is returned.
 var $c = MyControl.create( { content: "Hello" });
 </pre>
 
-<h2>Control.createAt( $elements [, properties] )</h2>
+<h2><a id="createAt">Control.createAt( $elements [, properties] )</a></h2>
 Create instances of the control class on the existing elements in the jQuery
 object passed in. Any existing content of those elements will be first extracted,
 then later passed back to the new controls by invoking their content() property.
@@ -85,13 +85,7 @@ This effectively lets the control class wrap the existing elements. Finally,
 if the optional properties parameter is supplied, the indicated properties are
 set on the control instances.
 
-<h2>Control.isControl( $elements )</h2>
-<p>
-Returns true if the indicated elements represent instantiated controls, or false
-if they are plain DOM elements.    
-</p>
-
-<h2>Control.iterator ( fn )</h2>
+<h2><a id="iterator">Control.iterator ( fn )</a></h2>
 <p>
 Controls are subclasses of the jQuery class, so its generally expected that a
 control's methods should be able to copy with being applied to an array of 
@@ -128,7 +122,7 @@ then the function is assumed to be a property getter, and that result is
 return immediately. Otherwise, "this" is returned to permit chaining.
 </p>
 
-<h2>Control.property( [sideEffectFn] [, defaultValue] )</h2>
+<h2><a id="property">Control.property( [sideEffectFn] [, defaultValue] )</a></h2>
 <p>
 Generates a getter/setter function that can be used to store arbitrary data on a
 control instance. This is shorthand for storing data via $.data(), but eliminates
@@ -150,7 +144,7 @@ single argument and will be invoked whenever the property is set. A default valu
 for the property can also be supplied. 
 </p>
 
-<h2>Control.property.bool( [sideEffectFn] [, defaultValue] )</h2>
+<h2><a id="bool">Control.property.bool( [sideEffectFn] [, defaultValue] )</a></h2>
 <p>
 Like Control.property(), but attemps to parse its value as a boolean.
 This is useful for defining boolean-valued properties that can be set in QuickUI
@@ -166,14 +160,21 @@ MyControl.prototype.extend({
 &lt;MyControl selected="true"/&gt;
 </pre>
 
-<h2>Control.property.date( [sideEffectFn] [, defaultValue] )</h2>
+<h2><a id="date">Control.property.date( [sideEffectFn] [, defaultValue] )</a></h2>
 <p>
 Like Control.property(), but parses its value as a date.    
 </p>
 
-<h2>Control.property.integer( [sideEffectFn] [, defaultValue] )</h2>
+<h2><a id="integer">Control.property.integer( [sideEffectFn] [, defaultValue] )</a></h2>
 <p>
 Like Control.property(), but parses its value as an integer.    
+</p>
+
+<h2><a id="subclass">Control.subclass( json )</a></h2>
+<p>
+Creates and returns a new control class. This will be a subclass of whichever
+existing class subclass() was applied to. The properties of the new class
+are specified in <a data-control="Link" href="control-JSON.html">Control JSON</a>. 
 </p>
 
 </body>

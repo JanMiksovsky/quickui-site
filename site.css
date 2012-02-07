@@ -22,13 +22,13 @@ h2 {
     margin-top: 1.5em;
 }
 
-a {
+a[href] {
     border-bottom: 1px dotted #2d7ab0;
     color: #2d7ab0;
     text-decoration: none;
 }
 
-a:hover {
+a[href]:hover {
     border-bottom: 1px solid #d7761b;
     color: #d7761b;
 }

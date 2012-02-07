@@ -32,6 +32,7 @@ AceCodeEditor.prototype.extend({
             $control._editor( editor );
             var session = editor.getSession();
             session.setUseSoftTabs( true );
+            editor.setShowPrintMargin( false );
             editor.renderer.setShowGutter( false );
             editor.renderer.setHScrollBarAlwaysVisible( false );
             var JavaScriptMode = require( "ace/mode/javascript" ).Mode;
