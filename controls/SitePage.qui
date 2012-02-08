@@ -49,12 +49,15 @@
     padding: 1.5em;
     vertical-align: top;
 }
+#tableMain > * > *:first-child {
+    padding-right: 3em;
+}
 
 #topRow {
-    background-image: url(/resources/water.jpg);
-    background-repeat: no-repeat;
-    background-color: #2d7ab0;
-    border-bottom: 1px solid #391c01;
+    background: #2d7ab0;
+    background: -moz-linear-gradient(top, #2d7ab0 90%, white);
+    background: -ms-linear-gradient(top, #2d7ab0 90%, white);
+    background: -webkit-linear-gradient(top, #2d7ab0 90%, white);
     color: white;
 }
 
@@ -67,7 +70,6 @@
 }
 
 #leftNavigation {
-    background-color: #391c01;
     height: 100%;
     width: 1px; /* Browser will (should) actually make wide enough for content */
 }
@@ -90,11 +92,11 @@
 
 #leftNavigation a {
     border: none !important;
-    color: white !important;
+    color: #444 !important;
 }
 
 #leftNavigation a:hover {
-    background-color: #928274;
+    background-color: #eee;
 }
 
 #SitePage_content {

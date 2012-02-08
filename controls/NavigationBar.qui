@@ -21,7 +21,7 @@
     padding: 0.25em 0.5em;
 }
 .Link.highlight {
-    background-color: #2D7AB0;
+    background-color: #358dcc;
 }
 .Link:hover {
     background-color: #47aaf0;
