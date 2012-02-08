@@ -14,7 +14,7 @@
             
             <div>
                 <div id="leftNavigation">
-                    <h1/> <!-- Won't actually appear, just used for space -->
+                    <h1>&#160;</h1> <!-- Won't actually appear, just used for space -->
                     <NavigationLinks id="SitePage_navigationLinks"/>
                     <div id="SitePage_sidebar" />
                 </div>
@@ -84,19 +84,6 @@
     font-size: smaller;
     font-variant: small-caps;
     letter-spacing: 2px;
-}
-
-#leftNavigation {
-    color: white;
-}
-
-#leftNavigation a {
-    border: none !important;
-    color: #444 !important;
-}
-
-#leftNavigation a:hover {
-    background-color: #eee;
 }
 
 #SitePage_content {

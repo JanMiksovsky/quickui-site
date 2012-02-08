@@ -7,14 +7,24 @@ h2 {
     margin: 1.5em 6px 0 6px;
 }
 
-.Link {
+a {
+    border: none !important;
+    color: #444 !important;
     display: block;
     margin: 3px;
     padding: 3px;
 }
 
-.Link.highlight {
+a:hover {
+    background-color: #eee;
+}
+
+a.highlight {
     font-weight: bold;
+}
+
+.NavigationLinks:hover a {
+    color: black !important;
 }
 </style>
 

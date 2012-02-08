@@ -16,16 +16,31 @@
 
 <title>QuickUI web control framework</title>
 
+<style>
+h1 {
+    margin-bottom: 1.5em;
+}
+
+#SitePage_title {
+    display: none;
+}
+</style>
+
+<script>
+$( function() {
+    $( "#buttonTutorial" ).click( function() {
+        window.location = "/tutorial/";
+    });
+});
+</script>
+
 </head>
 
 <body data-create-controls="true" data-control="SitePage" data-area="Home">
 
 <div data-property="navigationLinks">
     
-    <h2>Get started</h2>
-    <a data-control="Link" href="/tutorial/">Try the interactive tutorial</a>
-    
-    <h2>Recent framework news</h2>
+    <h2 style="margin-top: 0;">Recent framework news</h2>
     <div
         data-control="BlogHeadlines"
         data-feed="http://blog.quickui.org/feed/"
@@ -43,9 +58,10 @@
     
 </div>
 
+<h1>Create a great UI with a extensible system of web components</h1>
+
 <p>
-QuickUI (Quick User Interface) is a framework that simplifies the design,
-development, and maintenance of web-based user interfaces.
+<div data-control="SampleSpriteButton" id="buttonTutorial">Interactive Tutorial</div>
 </p>
 
 <h2>Designed to meet the needs of:</h2>
