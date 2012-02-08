@@ -1,12 +1,11 @@
-<Control className="BlogModule">
+<Control className="BlogHeadlines">
 
-<content>
+<prototype>
     <Blog
         apiKey="ABQIAAAAduw93ooM51B8Jdy2C9HxvhSBC_FVBxnf9EUyrmx06S6ZVKWCwhRUIdI-JHlMvEGhOu9DbYTG8OA89Q"
         count="5"
-        feed="http://blog.quickui.org/feed/"
     />
-</content>
+</prototype>
 
 <style>
 a {
