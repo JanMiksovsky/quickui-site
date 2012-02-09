@@ -117,13 +117,24 @@ The values in a Control JSON object can take one of the following forms:
     </li>
     <li>
         A Control JSON object starting with an "html:" key or "control:" key.
-        This will be processed as discussed below.
+        This will result in the creation of a plain jQuery object or a control,
+        respectively. See below. 
     </li>
 </ul>
 
-<h2>Creating a jQuery object from a Control JSON object</h2>
 <p>
-    
+The first two forms are fairly straightforward, but the third requires more
+explanation. Suppose that you are creating a control, and somewhere within it
+you want to create a div using the following jQuery code: 
+</p>
+<pre>
+$( "&lt;div/&gt; ")
+    .height( "250px" )
+    .width( "300px" );
+</pre>
+<p>
+The above procedural JavaScript can be represented declaratively as data in Control
+JSON as follows:
 </p>
 <pre>
 {
@@ -132,12 +143,56 @@ The values in a Control JSON object can take one of the following forms:
     width: "300px"
 }
 </pre>
+<p>
+The first "html:" key indicates that you want to create a new jQuery object
+using the specified HTML. The "height:" and "width:" keys which follow
+indicate that you want to apply the height() and width() setters as a chain.
+</p>
 
+<p>
+Similarly, a "control:" key can be used to instantiate a QuickUI control:
+</p>
 <pre>
-$( "&lt;div/&gt; ")
-    .height( "250px" )
-    .width( "300px" );
+{
+    control: Collapsible,
+    heading: "Today's photo",
+    content: {
+        control: FlickrInterestingPhoto,
+        photoSize: "m"
+    }
+}
 </pre>
+<p>
+This JSON creates a
+<a data-control="CatalogLink">FlickrInterestingPhoto</a>
+control nested within a
+<a data-control="CatalogLink">Collapsible</a>
+control. It also sets the Collapsible's heading() property, and the photo's
+photoSize() property.
+</p>
+
+<h2>Advantages of using JSON to define a control's appearance</h2>
+<p>
+The data-driven approach to using JSON to generate UI arguably has an
+interesting advantage over the equivalent procedural JavaScript code:
+</p>
+<ul>
+    <li>
+        The JSON doesn't allow for fancy coding tricks or idioms.
+        Reading someone <i>else's</i> jQuery code can be challenging; there's a
+        good chance they will populate the DOM by some means other than what
+        you yourself would have written.
+        While you're more restricted in what you can create in JSON, in the long
+        run using declarative data to create UI can be easier to read and maintain.
+    </li>
+    <li>
+        The JSON directly reflects the structure of the DOM it will create.
+    </li>
+    <li>
+        JSON is more parsable, and generally tool-able, than arbitrary
+        JavaScript.
+    </li>
+</ul>
 
 <p>
 To experiment with the Control JSON format, try one of the Tutorial pages,
