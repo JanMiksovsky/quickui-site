@@ -25,11 +25,11 @@
 <body data-create-controls="true" data-control="DocumentationPage">
 
 <p>
-You create new QuickUI control classes by applying the
-<a data-control="Link" href="/docs/control-class-methods.html#subclass">subclass()</a>
-method to the base class you wish to inherit from. The subclass() function
-accepts a single parameter as a JSON dictionary. The page here defines the
-format and use of that JSON parameter.
+This page describes the Control JSON format which is used to by the
+<a data-control="Link" href="/docs/control-class-methods.html#subclass">Control.subclass()</a>
+method to define a new class' property values. Control JSON is effectively a
+JavaScript analogue to HTML markup — both allow you to define the content of
+a user interface.
 </p>
 
 <p>
@@ -109,22 +109,30 @@ The values in a Control JSON object can take one of the following forms:
 <ul>
     <li>
         String, integer, or other fundamental JavaScript type. Such a value
-        will be used as is.
+        will be used as is. Setting a control's content() property to a string
+        representing HTML will typically place the correspoding HTML elements
+        into the DOM.
     </li>
     <li>
         An array of Control JSON objects. Each item in the array will be
         processed in turn.
     </li>
     <li>
-        A Control JSON object starting with an "html:" key or "control:" key.
-        This will result in the creation of a plain jQuery object or a control,
-        respectively. See below. 
+        A Control JSON object starting with an "html:" key.
+        This will result in the creation of a plain jQuery object.
+    </li>
+    <li>
+        A Control JSON object starting with a "control:" key. This will
+        create an instance of a QuickUI control of the designated class.
     </li>
 </ul>
 
 <p>
-The first two forms are fairly straightforward, but the third requires more
-explanation. Suppose that you are creating a control, and somewhere within it
+The latter two value types are described in more detail below.
+</p>
+
+<h2>Creating jQuery objects with the "html:" key</h2>
+Suppose that you are creating a control, and somewhere within it
 you want to create a div using the following jQuery code: 
 </p>
 <pre>
@@ -149,8 +157,9 @@ using the specified HTML. The "height:" and "width:" keys which follow
 indicate that you want to apply the height() and width() setters as a chain.
 </p>
 
+<h2>Creating QuickUI control instances with the "control:" key</h2>
 <p>
-Similarly, a "control:" key can be used to instantiate a QuickUI control:
+Similarly, a "control:" key can be used to instantiate QuickUI controls:
 </p>
 <pre>
 {
@@ -171,28 +180,50 @@ control. It also sets the Collapsible's heading() property, and the photo's
 photoSize() property.
 </p>
 
+<h2>Setting IDs on DOM elements and controls</h2>
+<p>
+If a Control JSON object starting with "html:" or "control:" also contains an
+"id:" key, the resulting element or control will have the indicated string
+value applied as a DOM ID. As a secondary effect, the control <i>class</i> being
+defined (<i>not</i> the control instance being created) will have an element
+reference function generated for it. This function will permit quick access
+to the indicated element at runtime.
+</p>
+<p>
+See
+<a data-control="Link" href="http://quickui/tutorial/element-reference-functions.html">Using functions to reference elements within a control</a>
+for more discussion and an interactive example.
+</p>
+
 <h2>Advantages of using JSON to define a control's appearance</h2>
 <p>
-The data-driven approach to using JSON to generate UI arguably has an
-interesting advantage over the equivalent procedural JavaScript code:
+The data-driven approach to using JSON to generate UI arguably has
+advantages over the equivalent procedural JavaScript code:
 </p>
 <ul>
     <li>
         The JSON doesn't allow for fancy coding tricks or idioms.
+        Such techniques can result in compact, efficient code, but at a loss
+        of legibility.
         Reading someone <i>else's</i> jQuery code can be challenging; there's a
         good chance they will populate the DOM by some means other than what
-        you yourself would have written.
-        While you're more restricted in what you can create in JSON, in the long
-        run using declarative data to create UI can be easier to read and maintain.
+        you yourself would have written. Control JSON, in contrast, requires
+        you to create a UI declaratively, with static data. In the long run,
+        this approach tends to produce UI code which is easier to read and maintain.
     </li>
     <li>
-        The JSON directly reflects the structure of the DOM it will create.
+        The Control JSON directly reflects the structure of the DOM it will create.
+        With old-school HTML, it's easy to visualize the structure of the DOM
+        the markup will produce at runtime. Similarly, the hierarchical nature
+        of JSON makes it easy to visualize the resulting UI.
     </li>
     <li>
-        JSON is more parsable, and generally tool-able, than arbitrary
-        JavaScript.
+        JSON is more parsable tool-able than arbitrary JavaScript. This enables
+        tools which generate or transform UI code.
     </li>
 </ul>
+
+<br/>
 
 <p>
 To experiment with the Control JSON format, try one of the Tutorial pages,
