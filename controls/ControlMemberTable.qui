@@ -1,0 +1,38 @@
+<!-- Shows the documented members for a control class. -->
+ 
+<Control className="ControlMemberTable">
+
+<prototype>
+    <ArrayTable/>
+</prototype>
+
+<style>
+> * > * {
+    padding-right: 1em;
+    padding-bottom: 0.5em;
+}    
+</style>
+
+<script>
+ControlMemberTable.prototype.extend({
+    
+    controlClass: Control.property[ "class" ]( function( classFn ) {
+        var className = classFn.className;
+        var documentation = controlDocumentation[ className ];
+        var docArray = $.map( documentation, function( memberDocumentation, memberName ) {
+            return [ [ memberName, memberDocumentation ] ];
+        });
+        this.content( docArray );
+    }),
+    
+    initialize: function() {
+        // TODO: Remove this bit, which is just for testing purposes...
+        if ( !this.controlClass() ) {
+            this.controlClass( AdPlaceholder );
+        }
+    }
+    
+});
+</script>
+
+</Control>
