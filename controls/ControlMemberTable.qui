@@ -3,14 +3,17 @@
 <Control className="ControlMemberTable">
 
 <prototype>
-    <ArrayTable/>
+    <DictionaryTable/>
 </prototype>
 
 <style>
 > * > * {
     padding-right: 1em;
     padding-bottom: 0.5em;
-}    
+}
+> * > *:first-child {
+    font-weight: bold;
+}
 </style>
 
 <script>
@@ -19,10 +22,7 @@ ControlMemberTable.prototype.extend({
     controlClass: Control.property[ "class" ]( function( classFn ) {
         var className = classFn.className;
         var documentation = controlDocumentation[ className ];
-        var docArray = $.map( documentation, function( memberDocumentation, memberName ) {
-            return [ [ memberName, memberDocumentation ] ];
-        });
-        this.content( docArray );
+        this.content( documentation );
     }),
     
     initialize: function() {
