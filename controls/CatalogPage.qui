@@ -36,6 +36,9 @@
             
             <h2>Class hierarchy</h2>
             <ControlClassHierarchy id="controlClassHierarchy"/>
+            
+            <h2>Class members</h2>
+            <ControlMemberTable id="controlMemberTable"/>
 
             <div id="sectionContent">
                 <h2>Notes</h2>
@@ -122,6 +125,7 @@ CatalogPage.prototype.extend({
             );
             
             this.$controlClassHierarchy().controlClass( className );
+            this.$controlMemberTable().controlClass( className );
 
             var sourceUrlTemplate = "https://github.com/JanMiksovsky/quickui-catalog/blob/master/quickui.catalog/{0}.qui";
             var sourceUrl = sourceUrlTemplate.replace( /\{0\}/g, className );

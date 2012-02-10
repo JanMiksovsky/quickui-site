@@ -32,17 +32,7 @@ ControlMemberTable.prototype.extend({
     controlClass: Control.property[ "class" ]( function( classFn ) {
         var className = classFn.className;
         var documentation = controlDocumentation[ className ];
-        var formattedDocumentation = {};
-        $.each( documentation, function( memberName, memberDescription ) {
-            
-            // Add break tags wherever there are consecutive line breaks.
-            var formattedDescription = memberDescription.replace( /\n\n/g, "<br/>\n" );
-            
-            // Add break tags wherever line breaks are followed by whitespace.
-            formattedDescription = formattedDescription.replace( /\n\s+/g, "<br/>" );
-            
-            formattedDocumentation[ memberName ] = formattedDescription;
-        });
+        var formattedDocumentation = this._formatDocumentation( documentation );
         this.content( formattedDocumentation );
     }),
     
@@ -51,9 +41,32 @@ ControlMemberTable.prototype.extend({
         if ( !this.controlClass() ) {
             this.controlClass( AdPlaceholder );
         }
+    },
+    
+    _formatDocumentation: function( documentation ) {
+        var formattedDocumentation = {};
+        if ( documentation ) {
+            $.each( documentation, function( memberName, memberDescription ) {
+                
+                // Add break tags wherever there are consecutive line breaks.
+                var formattedDescription = memberDescription.replace( /\n\n/g, "<br/>\n" );
+                
+                // Add break tags wherever line breaks are followed by whitespace.
+                formattedDescription = formattedDescription.replace( /\n\s+/g, "<br/>" );
+                
+                formattedDocumentation[ memberName ] = formattedDescription;
+            });
+        }
+        return formattedDocumentation;
     }
     
 });
+
+/*
+ * Placeholder declaration that will keep things from failing if
+ * the control documentation isn't loaded.
+ */
+var controlDocumentation = {};
 </script>
 
 </Control>
