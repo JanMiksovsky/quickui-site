@@ -7,9 +7,19 @@
 </prototype>
 
 <style>
+{
+    border-collapse: collapse;
+}
+
+> * {
+    border-top: 1px dotted #D7C5B4;
+}
+> *:first-child {
+    border: none;
+}
+
 > * > * {
-    padding-right: 1em;
-    padding-bottom: 0.5em;
+    padding: 0.5em 1em 0.5em 0;
 }
 > * > *:first-child {
     font-weight: bold;
@@ -22,7 +32,18 @@ ControlMemberTable.prototype.extend({
     controlClass: Control.property[ "class" ]( function( classFn ) {
         var className = classFn.className;
         var documentation = controlDocumentation[ className ];
-        this.content( documentation );
+        var formattedDocumentation = {};
+        $.each( documentation, function( memberName, memberDescription ) {
+            
+            // Add break tags wherever there are consecutive line breaks.
+            var formattedDescription = memberDescription.replace( /\n\n/g, "<br/>\n" );
+            
+            // Add break tags wherever line breaks are followed by whitespace.
+            formattedDescription = formattedDescription.replace( /\n\s+/g, "<br/>" );
+            
+            formattedDocumentation[ memberName ] = formattedDescription;
+        });
+        this.content( formattedDocumentation );
     }),
     
     initialize: function() {
