@@ -49,7 +49,7 @@ ControlMemberTable.prototype.extend({
             $.each( documentation, function( memberName, memberDescription ) {
                 
                 // Add break tags wherever there are consecutive line breaks.
-                var formattedDescription = memberDescription.replace( /\n\n/g, "<br/>\n" );
+                var formattedDescription = memberDescription.replace( /\n\n/g, "<br/><br/>" );
                 
                 // Add break tags wherever line breaks are followed by whitespace.
                 formattedDescription = formattedDescription.replace( /\n\s+/g, "<br/>" );
