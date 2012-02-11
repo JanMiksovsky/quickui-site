@@ -30,25 +30,55 @@
 <script>
 ControlMemberTable.prototype.extend({
     
-    controlClass: Control.property[ "class" ]( function( classFn ) {
-        var className = classFn.className;
-        var documentation = controlDocumentation[ className ];
-        var formattedDocumentation = this._formatDocumentation( documentation );
-        this.content( formattedDocumentation );
+    controlClass: Control.property[ "class" ]( function( controlClass ) {
+        var documentation = this._classMemberDocumentation( controlClass );
+        this.content( documentation );
     }),
     
-    initialize: function() {
-        // TODO: Remove this bit, which is just for testing purposes...
-        if ( !this.controlClass() ) {
-            this.controlClass( AdPlaceholder );
+    /*
+     * Return the documentation for the given class, including its base classes
+     * up to (but not including) Control.
+     */
+    _classMemberDocumentation: function( controlClass, linkToDeclaringClass ) {
+        
+        var className = controlClass.className;
+        var documentation = controlDocumentation[ className ] || {};
+        documentation = this._formatDocumentation( documentation );
+        
+        if ( linkToDeclaringClass ) {
+            // Append to each member description a link to this class' catalog page.
+            for ( var member in documentation ) {
+                documentation[ member ] = [
+                    documentation[ member ],
+                    " From ",
+                    CatalogLink.create().content( className ),
+                    "."
+                ];
+            }
         }
+        
+        var baseClassName = controlClass.classHierarchy.split(" ")[1];
+        var baseClass = Control._convertToClass( baseClassName );
+        if ( baseClass && baseClass !== Control ) {
+            // Add base class documentation to the documentation for this class.
+            var baseClassDocumentation = this._classMemberDocumentation( baseClass, true );
+            for ( var member in baseClassDocumentation ) {
+                /*
+                 * Only grab base class members not already documented; we only
+                 * want the description from the most specific class.
+                 */
+                documentation[ member ] = documentation[ member ] || baseClassDocumentation[ member ];
+            }
+        }
+        
+        return documentation; 
     },
     
     _formatDocumentation: function( documentation ) {
         var formattedDocumentation = {};
         if ( documentation ) {
             $.each( documentation, function( memberName, memberDescription ) {
-                
+
                 // Add break tags wherever there are consecutive line breaks.
                 var formattedDescription = memberDescription.replace( /\n\n/g, "<br/><br/>" );
                 
