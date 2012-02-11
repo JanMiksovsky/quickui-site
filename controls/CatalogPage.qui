@@ -53,6 +53,8 @@ CatalogPage.prototype.extend({
         
         this.$controlClassHierarchy().controlClass( className );
         this.$controlMemberTable().controlClass( className );
+        var hasDocumentation = !$.isEmptyObject( $(".ControlMemberTable").control().content() );
+        this.$sectionMembers().toggle( hasDocumentation );
 
         var sourceUrlTemplate = "https://github.com/JanMiksovsky/quickui-catalog/blob/master/quickui.catalog/{0}.qui";
         var sourceUrl = sourceUrlTemplate.replace( /\{0\}/g, className );
