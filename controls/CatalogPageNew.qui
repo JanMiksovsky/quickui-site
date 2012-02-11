@@ -1,0 +1,51 @@
+<!-- A new-style Catalog page that focuses on JavaScript. -->
+
+<Control className="CatalogPageNew">
+
+<prototype>
+    <CatalogPage>
+        <examples>
+            <CodeEditor id="editor" heading="Live demo" />
+        </examples>
+    </CatalogPage>
+</prototype>
+
+<style>
+#SitePage_content {
+    max-width: inherit;
+}
+
+h1, h2, p, ol, ul, pre {
+    max-width: 800px;
+}
+
+#editor {
+    margin-top: 1em;
+}
+</style>
+
+<script>
+CatalogPageNew.prototype.extend({
+    
+    autoRun: Control.chain( "$editor", "autoRun" ),
+    
+    initialize: function() {
+        this._super();
+        this.$editor().code( this._demo() );
+    },
+    
+    // Return the code from the page's script tag.
+    _demo: function() {
+        var code = $.trim( $( "script#demo" ).html() );
+        if ( code.length > 0 ) {
+            // Remove the first and last lines: the demo function wrapper.
+            lines = code.split( "\n" );
+            lines = lines.slice( 1, lines.length - 2 );
+            code = $.trim( lines.join( "\n" ) );
+        }
+        return code;
+    }    
+});
+</script>
+
+</Control>
