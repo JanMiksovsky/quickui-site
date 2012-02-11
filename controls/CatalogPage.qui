@@ -13,7 +13,7 @@
 
             <div id="CatalogPage_examples"/>
             
-            <h2>Class hierarchy</h2>
+            <h2>Inherits from</h2>
             <ControlClassHierarchy id="controlClassHierarchy"/>
             
             <div id="sectionMembers">

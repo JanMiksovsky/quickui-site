@@ -18,6 +18,7 @@ ControlClassHierarchy.prototype.extend({
     
     controlClass: Control.property[ "class" ]( function( controlClass ) {
         var classes = controlClass.classHierarchy.split( " " );
+        classes.shift();
         this.$classList().items( classes );
     })
 

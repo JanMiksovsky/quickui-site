@@ -32,6 +32,7 @@ ControlMemberTable.prototype.extend({
     
     controlClass: Control.property[ "class" ]( function( controlClass ) {
         var documentation = this._classMemberDocumentation( controlClass );
+        documentation = this._sortDictionary( documentation );
         this.content( documentation );
     }),
     
@@ -89,6 +90,27 @@ ControlMemberTable.prototype.extend({
             });
         }
         return formattedDocumentation;
+    },
+    
+    /*
+     * Return a copy of the given dictionary with its items sorted by keys.
+     */
+    _sortDictionary: function( dictionary ) {
+        
+        var keys = [];
+        for ( var key in dictionary ) {
+            keys.push( key );
+        }
+        
+        var sortedKeys = keys.sort();
+        
+        var result = {};
+        for ( var i in sortedKeys ) {
+            var key = sortedKeys[ i ];
+            result[ key ] = dictionary[ key ];
+        }
+        
+        return result;
     }
     
 });
