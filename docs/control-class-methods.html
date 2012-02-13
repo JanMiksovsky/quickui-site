@@ -160,6 +160,21 @@ MyControl.prototype.extend({
 &lt;MyControl selected="true"/&gt;
 </pre>
 
+<h2><a id="date">Control.property[ "class" ]( [sideEffectFn] [, defaultValue] )</a></h2>
+<p>
+Like Control.property(), but stores a control class reference. The class can
+be specified in several formats:    
+</p>
+<ul>
+    <li><b>String</b>: the name of a global class.</li>
+    <li><b>function</b>: a class function itself.</li>
+    <li>
+        <b>Plain JavaScript object</b> in
+        <a data-control="Link" href="control-JSON.html">Control JSON</a> format.
+        Creates an anonmyous class using the given JSON.
+    </li>
+</ul>
+
 <h2><a id="date">Control.property.date( [sideEffectFn] [, defaultValue] )</a></h2>
 <p>
 Like Control.property(), but parses its value as a date.    
