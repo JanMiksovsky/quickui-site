@@ -9,32 +9,40 @@
         </navigationLinks>
         <content>
             
-            <div id="CatalogPage_summary" />
+            <div id="CatalogPage_summary" class="section"/>
 
             <div id="CatalogPage_examples"/>
             
-            <h2>Inherits from</h2>
-            <ControlClassHierarchy id="controlClassHierarchy"/>
+            <div id="sectionInherits" class="section">
+                <h2>Inherits from</h2>
+                <ControlClassHierarchy id="controlClassHierarchy"/>
+            </div>
             
-            <div id="sectionMembers">
+            <div id="sectionMembers" class="section">
                 <h2>Class members</h2>
                 <ControlMemberTable id="controlMemberTable"/>
             </div>
 
-            <div id="sectionContent">
+            <div id="sectionContent" class="section">
                 <h2>Notes</h2>
                 <div id="CatalogPage_content" />
             </div>
 
-            <p>
-                View the <Link id="linkSourceCodeControl"/> on GitHub.
-            </p>
+            <div id="sectionSource" class="section">
+                <p>
+                    View the <Link id="linkSourceCodeControl"/> on GitHub.
+                </p>
+            </div>
 
         </content>
     </SitePage>
 </prototype>
 
 <style>
+.section {
+    max-width: 800px;
+}
+
 #sectionContent {
     display: none;
 }

@@ -15,10 +15,6 @@
     max-width: inherit;
 }
 
-h1, h2, p, ol, ul, pre {
-    max-width: 800px;
-}
-
 #editor {
     margin-top: 1em;
 }
