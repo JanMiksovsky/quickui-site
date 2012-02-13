@@ -49,7 +49,7 @@ CatalogPageOld.prototype.extend({
     controlClass: function( controlClass ) {
         var result = this._super( controlClass );
         if ( controlClass !== undefined ) {
-            var className = Control._convertToClass( controlClass ).className;
+            var className = Control.getClass( controlClass ).className;
 
             if ( !this.demo() || this.demo().length === 0 ) {
                 // As a default demo, instantiate the control.

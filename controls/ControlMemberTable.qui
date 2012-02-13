@@ -59,7 +59,7 @@ ControlMemberTable.prototype.extend({
         }
         
         var baseClassName = controlClass.classHierarchy.split(" ")[1];
-        var baseClass = Control._convertToClass( baseClassName );
+        var baseClass = Control.getClass( baseClassName );
         if ( baseClass && baseClass !== Control ) {
             // Add base class documentation to the documentation for this class.
             var baseClassDocumentation = this._classMemberDocumentation( baseClass, true );
