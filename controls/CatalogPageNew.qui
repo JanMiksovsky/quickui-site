@@ -16,6 +16,7 @@
 }
 
 #editor {
+    display: none;
     margin-top: 1em;
 }
 </style>
@@ -27,7 +28,12 @@ CatalogPageNew.prototype.extend({
     
     initialize: function() {
         this._super();
-        this.$editor().code( this._demo() );
+        var demo = this._demo();
+        if ( demo && demo.length > 0 ) {
+            this.$editor()
+                .code( demo )
+                .show();
+        }
     },
     
     // Return the code from the page's script tag.
