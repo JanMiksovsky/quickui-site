@@ -16,7 +16,6 @@
 }
 
 #editor {
-    display: none;
     margin-top: 1em;
 }
 </style>
@@ -30,9 +29,9 @@ CatalogPageNew.prototype.extend({
         this._super();
         var demo = this._demo();
         if ( demo && demo.length > 0 ) {
-            this.$editor()
-                .code( demo )
-                .show();
+            this.$editor().code( demo );
+        } else {
+            this.$editor().hide();
         }
     },
     
