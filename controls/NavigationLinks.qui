@@ -19,7 +19,7 @@ a:hover {
     background-color: #eee;
 }
 
-a.highlight {
+.Link.current {
     font-weight: bold;
 }
 
@@ -27,21 +27,5 @@ a.highlight {
     color: black !important;
 }
 </style>
-
-<script>
-NavigationLinks.prototype.extend({
-
-    // Highlight the link for the page we're on.
-    highlightCurrentPage: function() {
-        var pageHref = window.location.href;
-        this.find( ".Link" ).eachControl( function( index, $control ) {
-            var linkHref = $control.href();
-            var pageHrefRight = pageHref.substring( pageHref.length - linkHref.length )
-            $control.toggleClass( "highlight", pageHrefRight === linkHref );
-        });
-    }
-    
-});
-</script>
 
 </Control>

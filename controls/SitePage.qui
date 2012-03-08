@@ -105,7 +105,6 @@ SitePage.prototype.extend({
     initialize: function() {
         
         this._super();
-        this.$SitePage_navigationLinks().highlightCurrentPage();
         
         if ( this.$SitePage_title().content().length === 0
             && this.title().length > 0 ) {
