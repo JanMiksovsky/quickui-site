@@ -1,58 +1,37 @@
 <Control className="SitePage">
 
 <prototype>
-    <Page>
-    
-        <GoogleAnalytics profileId="UA-11520232-1" />
-        
-        <div id="tableMain">
-        
-            <div id="topRow">
-                <Logo id="logo"/>
-                <NavigationBar id="navigationBar"/>
-            </div>
-            
-            <div>
-                <div id="leftNavigation">
-                    <h1>&#160;</h1> <!-- Won't actually appear, just used for space -->
-                    <NavigationLinks id="SitePage_navigationLinks"/>
-                </div>
-                <div id="pageCanvas">
-                    <h1 id="SitePage_title" />
-                    <div id="SitePage_content" />
-                </div>
-            </div>
-            
-        </div>
-    </Page>
+    <PageWithQuadrants>
+        <topLeft>
+            <Logo id="logo"/>
+        </topLeft>
+        <topRight>
+            <NavigationBar id="navigationBar"/>
+        </topRight>
+        <bottomLeft>
+            <h1>&#160;</h1> <!-- Won't actually appear, just used for space -->
+            <NavigationLinks id="SitePage_navigationLinks"/>
+        </bottomLeft>
+        <bottomRight>
+            <h1 id="SitePage_title" />
+            <div id="SitePage_content" />
+            <GoogleAnalytics profileId="UA-11520232-1" />
+        </bottomRight>
+    </PageWithQuadrants>
 </prototype>
 
 <style>
-{
-    margin: 0;
-    width: 100%;
-}
-
-#tableMain {
-    border-collapse: collapse;
-    display: table;
-    height: 100%;
-    position: absolute;
-    width: 100%;
-}
-#tableMain > * {
-    display: table-row;
-}
-#tableMain > * > * {
-    display: table-cell;
+.cell {
     padding: 1.5em;
-    vertical-align: top;
 }
-#tableMain > * > *:first-child {
+.cell.top {
+    vertical-align: bottom;
+}
+.cell.left {
     padding-right: 3em;
 }
 
-#topRow {
+.row.top {
     background: #2d7ab0;
     background: -moz-linear-gradient(top, #2d7ab0 90%, white);
     background: -ms-linear-gradient(top, #2d7ab0 90%, white);
@@ -60,29 +39,13 @@
     color: white;
 }
 
-#logo {
-    vertical-align: bottom;
-}
-
-#navigationBar {
-    vertical-align: bottom;
-}
-
-#leftNavigation {
-    height: 100%;
+.cell.bottom.left {
     width: 1px; /* Browser will (should) actually make wide enough for content */
 }
 
-#pageCanvas {
+.cell.bottom.right {
     font-size: 11pt;
     padding-left: 2em;
-}
-
-#SitePage_area {
-    font-family: Tahoma, Arial, Helvetica, sans-serif;
-    font-size: smaller;
-    font-variant: small-caps;
-    letter-spacing: 2px;
 }
 
 #SitePage_content {
