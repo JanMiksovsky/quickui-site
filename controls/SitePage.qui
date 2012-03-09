@@ -3,10 +3,10 @@
 <prototype>
     <PageWithQuadrants>
         <topLeft>
-            <Logo id="logo"/>
+            <Logo/>
         </topLeft>
         <topRight>
-            <NavigationBar id="navigationBar"/>
+            <NavigationBar/>
         </topRight>
         <bottomLeft>
             <h1>&#160;</h1> <!-- Won't actually appear, just used for space -->
@@ -65,9 +65,7 @@ SitePage.prototype.extend({
     navigationLinks: Control.chain("$SitePage_navigationLinks", "content"),
     
     initialize: function() {
-        
         this._super();
-        
         if ( this.$SitePage_title().content().length === 0
             && this.title().length > 0 ) {
             // Extract default page heading from dehydrated document title.
