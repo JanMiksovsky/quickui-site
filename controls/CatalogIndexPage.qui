@@ -1,7 +1,7 @@
 <Control className="CatalogIndexPage">
     
 <prototype>
-    <SitePage title="QuickUI Catalog" area="Catalog">
+    <SitePage title="QuickUI Catalog">
         
         <navigationLinks>
             <CatalogNavigationLinks/>

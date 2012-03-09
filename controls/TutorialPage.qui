@@ -1,7 +1,7 @@
 <Control className="TutorialPage">
 
 <prototype>
-    <SitePage area="Tutorial">
+    <SitePage>
         
         <navigationLinks>
 
