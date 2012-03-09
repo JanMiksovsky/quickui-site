@@ -16,7 +16,6 @@
                 <div id="leftNavigation">
                     <h1>&#160;</h1> <!-- Won't actually appear, just used for space -->
                     <NavigationLinks id="SitePage_navigationLinks"/>
-                    <div id="SitePage_sidebar" />
                 </div>
                 <div id="pageCanvas">
                     <h1 id="SitePage_title" />
@@ -100,7 +99,6 @@ SitePage.prototype.extend({
     
     content: Control.chain("$SitePage_content", "content"),
     navigationLinks: Control.chain("$SitePage_navigationLinks", "content"),
-    sidebar: Control.chain("$SitePage_sidebar", "content"),
     
     initialize: function() {
         
