@@ -1,29 +1,29 @@
 <Control className="NavigationBar">
 
 <content>
-    <AreaLink href="/">Home</AreaLink>
-    <AreaLink href="/tutorial/">Tutorial</AreaLink>
-    <AreaLink href="/docs/">Docs</AreaLink>
-    <AreaLink href="/catalog/">Catalog</AreaLink>
-    <AreaLink href="/markup/">Markup</AreaLink>
+    <Link href="/">Home</Link>
+    <Link linksToArea="true" href="/tutorial/">Tutorial</Link>
+    <Link linksToArea="true" href="/docs/">Docs</Link>
+    <Link linksToArea="true" href="/catalog/">Catalog</Link>
+    <Link linksToArea="true" href="/markup/">Markup</Link>
     <!-- Hide markup-based screencasts until they can be re-done for JS.
-    <AreaLink href="/screencasts">Screencasts</AreaLink>
+    <Link href="/screencasts">Screencasts</Link>
     -->
-    <AreaLink href="http://blog.quickui.org">Blog</AreaLink>
-    <AreaLink href="http://discussions.zoho.com/quickui">Discuss</AreaLink>
-    <AreaLink href="https://github.com/JanMiksovsky/quickui">Contribute</AreaLink>
+    <Link href="http://blog.quickui.org">Blog</Link>
+    <Link href="http://discussions.zoho.com/quickui">Discuss</Link>
+    <Link href="https://github.com/JanMiksovsky/quickui">Contribute</Link>
 </content>
 
 <style>
-.AreaLink {
+.Link {
     font-size: 12pt;
     margin-right: 0.5em;
     padding: 0.25em 0.5em;
 }
-.AreaLink.current {
+.Link.current {
     background-color: #358dcc;
 }
-.AreaLink:hover {
+.Link:hover {
     background-color: #47aaf0;
 }
 
