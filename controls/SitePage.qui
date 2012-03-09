@@ -60,8 +60,6 @@
 <script>
 SitePage.prototype.extend({
     
-    area: Control.property(),
-    
     content: Control.chain("$SitePage_content", "content"),
     
     navigationLinks: Control.chain("$SitePage_navigationLinks", "content"),

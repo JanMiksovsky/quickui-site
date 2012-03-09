@@ -3,7 +3,7 @@
 <Control className="CatalogPage">
 
 <prototype>
-    <SitePage area="Catalog">
+    <SitePage>
         <navigationLinks>
             <CatalogNavigationLinks/>
         </navigationLinks>

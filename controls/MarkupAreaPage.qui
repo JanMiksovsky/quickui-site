@@ -1,7 +1,7 @@
 <Control className="MarkupAreaPage">
 
 <prototype>
-    <SitePage area="Markup">
+    <SitePage>
         <navigationLinks>
             
             <Link href="/markup/">Introduction</Link>
