@@ -2,7 +2,7 @@
 
 <prototype>
     
-    <SitePage area="Screencasts" title="QuickUI Screencasts">
+    <SitePage title="QuickUI Screencasts">
 
         <YouTubeVideo videoId="LF8agaCt0v4"/>
         <YouTubeVideo videoId="uZSlmav9_w8"/>
