@@ -1,29 +1,29 @@
 <Control className="NavigationBar">
 
 <content>
-    <Link href="/">Home</Link>
-    <Link href="/tutorial">Tutorial</Link>
-    <Link href="/docs">Docs</Link>
-    <Link href="/catalog">Catalog</Link>
-    <Link href="/markup/">Markup</Link>
+    <AreaLink href="/">Home</AreaLink>
+    <AreaLink href="/tutorial/">Tutorial</AreaLink>
+    <AreaLink href="/docs/">Docs</AreaLink>
+    <AreaLink href="/catalog/">Catalog</AreaLink>
+    <AreaLink href="/markup/">Markup</AreaLink>
     <!-- Hide markup-based screencasts until they can be re-done for JS.
-    <Link href="/screencasts">Screencasts</Link>
+    <AreaLink href="/screencasts">Screencasts</AreaLink>
     -->
-    <Link href="http://blog.quickui.org">Blog</Link>
-    <Link href="http://discussions.zoho.com/quickui">Discuss</Link>
-    <Link href="https://github.com/JanMiksovsky/quickui">Contribute</Link>
+    <AreaLink href="http://blog.quickui.org">Blog</AreaLink>
+    <AreaLink href="http://discussions.zoho.com/quickui">Discuss</AreaLink>
+    <AreaLink href="https://github.com/JanMiksovsky/quickui">Contribute</AreaLink>
 </content>
 
 <style>
-.Link {
+.AreaLink {
     font-size: 12pt;
     margin-right: 0.5em;
     padding: 0.25em 0.5em;
 }
-.Link.highlight {
+.AreaLink.current {
     background-color: #358dcc;
 }
-.Link:hover {
+.AreaLink:hover {
     background-color: #47aaf0;
 }
 
@@ -32,21 +32,5 @@ a {
     color: white !important;
 }
 </style>
-
-<script>
-NavigationBar.prototype.extend({
-
-    highlightCurrentArea: function() {
-        // Highlight the link for the area we're in.
-        var area = this.page() && this.page().area();
-        if (area != null) {
-            this.find(".Link").eachControl(function() {
-                this.toggleClass("highlight", this.content() === area);
-            });
-        }
-    }
-    
-});
-</script>
 
 </Control>

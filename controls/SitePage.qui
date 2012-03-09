@@ -60,7 +60,10 @@
 <script>
 SitePage.prototype.extend({
     
+    area: Control.property(),
+    
     content: Control.chain("$SitePage_content", "content"),
+    
     navigationLinks: Control.chain("$SitePage_navigationLinks", "content"),
     
     initialize: function() {
@@ -73,10 +76,6 @@ SitePage.prototype.extend({
             this.title( this.title() );
         }
     },
-    
-    area: Control.property( function( area ) {
-        this.$navigationBar().highlightCurrentArea();
-    }),
     
     title: function(value) {
         if (value === undefined)
