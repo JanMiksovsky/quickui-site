@@ -75,6 +75,15 @@ have in common. This is typically done prior to invoking a function, to ensure
 that the same implementation of the function is invoked on all the elements. 
 </p>
 
+<h2><a id="checkForSizeChange">checkForSizeChange()</a></h2>
+<p>
+This method checks to see if the control's size has changed since it was last
+checked. (The check always succeeds the first time this is called.) If the
+control's size has in fact changed, the control raises the
+<a data-control="Link" href="control-events.html#sizeChanged">sizeChanged</a>
+event.
+</p>
+
 <h2>content( [value] )</h2>
 <p>
 Gets or sets the content of the elements. This is a helper function that performs

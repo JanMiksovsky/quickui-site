@@ -8,6 +8,7 @@
             <!-- <Link href="framework.html">Framework overview</Link> -->
             <Link href="control-plugin.html">$.control() plugin</Link>
             <Link href="control-class-methods.html">Control class methods</Link>
+            <Link href="control-events.html">Control events</Link>
             <Link href="control-prototype-methods.html">Control instance methods</Link>
             <Link href="control-JSON.html">Control JSON</Link>
             <Link href="control-guidelines.html">Guidelines</Link>

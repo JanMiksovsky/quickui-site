@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+<link rel="stylesheet" type="text/css" href="docs.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/release/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="docs.js"></script>
+
+<title>Control events</title>
+
+</head>
+
+<body data-create-controls="true" data-control="DocumentationPage">
+
+<p>
+This page describes some events raised by the QuickUI runtime or commonly
+used in QuickUI controls.
+</p>
+
+<h2><a id="layout">layout</a></h2>
+<p>
+Controls can bind to the layout event if they want to perform custom layout.
+This event will be triggered whenever a change in window size results in a
+change in the control's size. If the control's layout may need to update when
+a child changes size, the control should also bind to the sizeChanged event.
+</p>
+<p>
+When binding a handler to this event, an initial invocation of the handler will
+be made. The initial invocation will happen immediately if the control is
+already in the DOM; otherwise, the initial invocation will happen once the
+control is added to the DOM.
+</p>
+<p>
+The event will not be triggered for any control not in the DOM.
+</p>
+
+<h2><a id="sizeChanged">sizeChanged</a></h2>
+<p>
+A control can raise this event if it wants to cooperatively notify its
+containers that its size has changed. Rather than triggering this directly, it's
+best to call a control's
+<a data-control="Link" href="control-prototype-methods.html#checkForSizeChange">checkForSizeChange()</a>
+method. That method will only
+trigger the event if the control's size has, in fact, changed since it was
+last checked. 
+</p>
+<p>
+This event is not used by the QuickUI framework runtime, but is commonly used
+by QuickUI controls.
+</p>
+</body>
+
+</html>
