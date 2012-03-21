@@ -34,6 +34,12 @@
 </prototype>
 
 <style>
+/* Ensure demos with popups can pop them over the rest of the page */
+#CatalogPageOld_demo {
+    position: relative;
+    z-index: 1;
+}
+
 #demoMarkup, #demoJavaScript {
     display: none;
 }

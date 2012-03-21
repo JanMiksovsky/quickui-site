@@ -66,6 +66,9 @@
 
 #result {
     vertical-align: top;
+    position: relative;
+    /* Ensure demos with popups can pop them over the editor */
+    z-index: 1;
 }
 
 /* Space out demo elements */
