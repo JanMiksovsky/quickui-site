@@ -68,11 +68,18 @@ creates a curried setter/getter function equivalent to css("display", value).
 Returns a single instance of the given control class. The instance is detached
 from the DOM and must be added, e.g., via $.append(), to be visible to the user.
 Optional properties passed in as a parameter will be set on the control before
-it is returned. 
+it is returned. If a plain string is passed as the properties, it will be used
+to set the control's content() property. 
 </p>
 <pre>
 // Create an instance of the MyControl class, and set its content.
-var $c = MyControl.create( { content: "Hello" });
+var $c = MyControl.create({ content: "Hello" });
+
+// Shorthand for the above
+var $c = MyControl.create( "Hello" );
+
+// Both of the above are equivalent to:
+var $c = MyControl.create().content( "Hello" );
 </pre>
 
 <h2><a id="createAt">Control.createAt( $elements [, properties] )</a></h2>
