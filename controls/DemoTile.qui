@@ -43,6 +43,10 @@
     width: 300px;
 }
 
+.DemoTile:hover {
+    position: relative;
+    z-index: 1; /* Make sure overlay for demo popups can cover up other tiles */
+}
 .DemoTile:hover #className {
     border-bottom: 1px dotted #391c01;
 }
