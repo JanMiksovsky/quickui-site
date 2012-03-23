@@ -16,7 +16,7 @@
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    padding: 0 25px 25px 0;
+    padding: 0 15px 25px 0;
     width: 300px;
 }
 
