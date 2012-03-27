@@ -24,7 +24,7 @@
 function demo() {
 
 $demo.append(
-    HasPopup.create()
+    PopupSource.create()
         .content( "I'm a simple control with a popup")
         .popup( "Here's a popup" )
         .openOnClick( true ),
@@ -79,9 +79,9 @@ another class, creating something more optimized for a more specialized task.
 <p>
 <b>The demo code</b> 
 creates several instances of a related control classes. The
-<a data-control="CatalogLink">HasPopup</a>
+<a data-control="CatalogLink">PopupSource</a>
 class is extremely rudimentary, and simply pops up an element when clicked on.
-The HasPopup class forms the basis for a more specialized subclass called
+The PopupSource class forms the basis for a more specialized subclass called
 <a data-control="CatalogLink">ComboBox</a>,
 which adds a text input element and a dropdown button that invokes the popup.
 ComboBox is further specialized to create
