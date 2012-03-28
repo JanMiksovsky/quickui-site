@@ -30,6 +30,9 @@
 .cell.left {
     padding-right: 3em;
 }
+.cell.right {
+    padding-left: 2em;
+}
 
 .row.top {
     background: #2d7ab0;
@@ -45,7 +48,6 @@
 
 .cell.bottom.right {
     font-size: 11pt;
-    padding-left: 2em;
 }
 
 #SitePage_content {

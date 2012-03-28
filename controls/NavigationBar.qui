@@ -1,6 +1,7 @@
 <Control className="NavigationBar">
 
 <content>
+
     <Link href="/">Home</Link>
     <Link linksToArea="true" href="/tutorial/">Tutorial</Link>
     <Link linksToArea="true" href="/docs/">Docs</Link>
@@ -10,14 +11,32 @@
     <Link href="/screencasts">Screencasts</Link>
     -->
     <Link href="http://blog.quickui.org">Blog</Link>
+    <!-- Hide for now, since this isn't getting any use.
     <Link href="http://discussions.zoho.com/quickui">Discuss</Link>
+    -->
     <Link href="https://github.com/JanMiksovsky/quickui">Contribute</Link>
+
+    <SearchBox id="searchBox"/>
+
 </content>
 
 <style>
-.Link {
+{
     font-size: 12pt;
-    margin-right: 0.5em;
+    max-width: 800px;
+}
+
+> * {
+    margin: 0 0.25em;
+}
+> *:first-child {
+    margin-left: 0;
+}
+> *:last-child {
+    margin-right: 0;
+}
+
+.Link {
     padding: 0.25em 0.5em;
 }
 .Link.current {
@@ -30,6 +49,13 @@
 a {
     border: none !important;
     color: white !important;
+}
+
+#searchBox {
+    float: right;
+    font-size: smaller;
+    position: relative;
+    top: -0.2em;    /* HACK to vertically align w.r.t links, should revisit. */  
 }
 </style>
 
