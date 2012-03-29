@@ -13,7 +13,7 @@
 
             <div id="CatalogPage_examples"/>
             
-            <div id="sectionInherits" class="section">
+            <div id="sectionBaseClasses" class="section">
                 <h2>Inherits from</h2>
                 <ControlClassHierarchy id="controlClassHierarchy"/>
             </div>
@@ -60,6 +60,9 @@ CatalogPage.prototype.extend({
         var className = controlClass.className;
         
         this.$controlClassHierarchy().controlClass( className );
+        var baseClasses = this.$controlClassHierarchy().baseClasses();
+        this.$sectionBaseClasses().toggle( baseClasses && baseClasses.length > 0 );
+        
         this.$controlMemberTable().controlClass( className );
         var hasDocumentation = !$.isEmptyObject( $(".ControlMemberTable").control().content() );
         this.$sectionMembers().toggle( hasDocumentation );

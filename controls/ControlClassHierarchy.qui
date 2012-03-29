@@ -1,7 +1,7 @@
 <Control className="ControlClassHierarchy">
 
 <content>
-    <List id="classList" itemClass="CatalogLink"/>
+    <List id="ControlClassHierarchy_baseClasses" itemClass="CatalogLink"/>
 </content>
 
 <style>
@@ -16,10 +16,12 @@
 <script>
 ControlClassHierarchy.prototype.extend({
     
+    baseClasses: Control.chain( "$ControlClassHierarchy_baseClasses", "items" ),
+    
     controlClass: Control.property[ "class" ]( function( controlClass ) {
-        var classes = controlClass.classHierarchy.split( " " );
-        classes.shift();
-        this.$classList().items( classes );
+        var baseClasses = controlClass.classHierarchy.split( " " );
+        baseClasses.shift();    // Remove the current class itself.
+        this.baseClasses( baseClasses );
     })
 
 });
