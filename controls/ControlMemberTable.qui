@@ -107,8 +107,8 @@ ControlMemberTable.prototype.extend({
         var sortedKeys = keys.sort();
         
         var result = {};
-        for ( var i in sortedKeys ) {
-            var key = sortedKeys[ i ];
+        for ( var i = 0, length = sortedKeys.length; i < length; i++ ) {
+            var key = sortedKeys[i];
             result[ key ] = dictionary[ key ];
         }
         
