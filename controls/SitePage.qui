@@ -28,7 +28,7 @@
     vertical-align: bottom;
 }
 .cell.left {
-    padding-right: 3em;
+    padding-right: 2em;
 }
 .cell.right {
     padding-left: 2em;
@@ -44,10 +44,6 @@
 
 .cell.bottom.left {
     width: 1px; /* Browser will (should) actually make wide enough for content */
-}
-
-.cell.bottom.right {
-    font-size: 11pt;
 }
 
 #SitePage_content {

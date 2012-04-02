@@ -19,10 +19,11 @@ file is provided.
 }
 
 #linkContainer {
-    top: 5px;
+    font-size: 13px;
     position: absolute;
     right: 8px;
     text-align: right;
+    top: 5px;
     width: 100%;
 }
 

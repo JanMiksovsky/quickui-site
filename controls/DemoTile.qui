@@ -5,9 +5,9 @@
         <CatalogLink id="className"/>
     </div>
     <p id="description"/>
-    <div id="demoContainer">
+    <Demo id="demoContainer">
         <div id="demo"/>
-    </div>
+    </Demo>
 </content>
 
 <style>
@@ -29,7 +29,8 @@
     border: none;
     color: #391c01;
     font-size: 12pt;
-    font-weight: bold;
+    font-family: "Avenir Next LT W01 Bold", Helvetica, Arial, sans-serif;
+    font-weight: normal;
 }
 
 #description {
