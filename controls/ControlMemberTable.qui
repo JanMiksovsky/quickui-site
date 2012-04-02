@@ -23,7 +23,8 @@
 }
 > * > *:first-child {
     color: #928274;
-    font-weight: bold;
+    font-family: "Avenir Next LT W01 Bold", Helvetica, Arial, sans-serif;
+    font-weight: normal;
 }
 </style>
 
@@ -59,16 +60,18 @@ ControlMemberTable.prototype.extend({
         }
         
         var baseClassName = controlClass.classHierarchy.split(" ")[1];
-        var baseClass = Control.getClass( baseClassName );
-        if ( baseClass && baseClass !== Control ) {
-            // Add base class documentation to the documentation for this class.
-            var baseClassDocumentation = this._classMemberDocumentation( baseClass, true );
-            for ( var member in baseClassDocumentation ) {
-                /*
-                 * Only grab base class members not already documented; we only
-                 * want the description from the most specific class.
-                 */
-                documentation[ member ] = documentation[ member ] || baseClassDocumentation[ member ];
+        if ( baseClassName ) {
+            var baseClass = Control.getClass( baseClassName );
+            if ( baseClass && baseClass !== Control ) {
+                // Add base class documentation to the documentation for this class.
+                var baseClassDocumentation = this._classMemberDocumentation( baseClass, true );
+                for ( var member in baseClassDocumentation ) {
+                    /*
+                     * Only grab base class members not already documented; we only
+                     * want the description from the most specific class.
+                     */
+                    documentation[ member ] = documentation[ member ] || baseClassDocumentation[ member ];
+                }
             }
         }
         
@@ -105,8 +108,8 @@ ControlMemberTable.prototype.extend({
         var sortedKeys = keys.sort();
         
         var result = {};
-        for ( var i in sortedKeys ) {
-            var key = sortedKeys[ i ];
+        for ( var i = 0, length = sortedKeys.length; i < length; i++ ) {
+            var key = sortedKeys[i];
             result[ key ] = dictionary[ key ];
         }
         

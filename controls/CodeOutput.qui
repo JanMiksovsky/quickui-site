@@ -1,7 +1,7 @@
 <Control className="CodeOutput">
 
 <content>
-    <div id="CodeOutput_content"/>
+    <Demo id="CodeOutput_content"/>
     <!-- <div id="_label">(live control)</div> -->
 </content>
 
@@ -10,13 +10,11 @@
 #CodeOutput_content {
     border-top: 1px dotted #d7c5b4;
     border-bottom: 1px dotted #d7c5b4;
-    font-family: Times, serif;
     margin: 0 20px;
     padding: 10px;
 }
 
 h1 {
-    font-family: Times, serif !important;
     margin-top: 0;
 }
 

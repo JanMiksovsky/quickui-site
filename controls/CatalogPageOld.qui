@@ -7,7 +7,9 @@
         <examples>
 
             <h2>Live demo</h2>
-            <div id="CatalogPageOld_demo" />
+            <Demo>
+                <div id="CatalogPageOld_demo"/>
+            </Demo>
             
             <div id="sampleMarkup">
                 <h2>Sample QuickUI markup to instantiate this control</h2>

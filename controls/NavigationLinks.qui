@@ -1,9 +1,13 @@
 <Control className="NavigationLinks">
 
 <style>
+{
+    font-size: 13px;
+}
+
 h2 {
     color: #928274;
-    font-size: 10pt;
+    font-size: 14px;
     margin: 1.5em 6px 0 6px;
 }
 
@@ -20,7 +24,8 @@ a:hover {
 }
 
 .Link.current {
-    font-weight: bold;
+    font-family: "Avenir Next LT W01 Bold", Helvetica, Arial, sans-serif;
+    font-weight: normal;
 }
 
 .NavigationLinks:hover a {

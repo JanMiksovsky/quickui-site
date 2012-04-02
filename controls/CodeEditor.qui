@@ -15,7 +15,7 @@
             <div id="codePane">
                 <AceCodeEditor id="CodeEditor_code"/>
             </div>
-            <div id="result"/>
+            <Demo id="result"/>
         </div>
     </div>
     
@@ -40,7 +40,8 @@
 .label {
     color: #928274;
     font-size: larger;
-    font-weight: bold;
+    font-family: "Avenir Next LT W01 Bold", Helvetica, Arial, sans-serif;
+    font-weight: normal;
     padding-bottom: 0.5em;
 }
 
