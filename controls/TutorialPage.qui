@@ -21,7 +21,7 @@
             <Link href="/tutorial/event-handlers.html">Handling events</Link>
             <Link href="/tutorial/meta-controls.html">Meta-controls</Link>
 
-            <h2>Creating control classes</h2>
+            <h2>Designing controls</h2>
             <Link href="/tutorial/creating-control-class.html">Creating a new class</Link>
             <Link href="/tutorial/json-content.html">Setting default content</Link>
             <Link href="/tutorial/extending-control-prototype.html">Adding functionality</Link>
