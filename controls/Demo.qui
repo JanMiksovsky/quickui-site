@@ -7,7 +7,7 @@ This turns off any styling applied to the quickui.org site.
 <Control className="Demo">
 
 <style>
-body, input, b, strong, i, em, h1, h2, h3, div, p, * {
+.Demo, .Demo input {
     font-family: Helvetica, Arial, sans-serif;
 }
 
