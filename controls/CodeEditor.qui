@@ -121,6 +121,8 @@ CodeEditor.prototype.extend({
         
         this.error( null );
         
+        this.trigger( "run" );
+        
         var $demo = $( "<div id='demo'/>" );
         this.$result().html( $demo );
         var code = this.code();

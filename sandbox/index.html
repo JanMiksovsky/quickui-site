@@ -27,10 +27,48 @@
 }
 </style>
 
+<script>
+$( function() {
+    var $editor = $( "#codeEditor" ).control(); 
+    var defaultCode = getCookie( "code" ) || "$demo.append(\n\n);";
+    $editor
+        .code( defaultCode )
+        .on( "run", function() {
+            code = $editor.code();
+            setCookie( "code", code );
+        });
+});
+
+function getCookie( key ) {
+    var cookies = document.cookie.split( ";" );
+    for ( var i = 0; i < cookies.length; i++ )
+    {
+        var cookie = cookies[ i ];
+        var parts = cookie.split( "=" );
+        var cookieKey = parts[0].replace( /^\s+|\s+$/g, "" );
+        var cookieValue = parts[1];
+        if ( cookieKey === key ) {
+            return unescape( cookieValue );
+        }
+    }
+}
+
+function setCookie( name, value, days ) {
+    var cookieValue = escape( value );
+    if ( days ) {
+        var date = new Date();
+        date.setDate( date.getDate() + days );
+        cookieValue += "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + cookieValue;
+}
+
+</script>
+
 </head>
 
 <body data-create-controls="true" data-control="Page" data-fill="true">
-    <div data-control="CodeEditor"/>
+    <div id="codeEditor" data-control="CodeEditor"/>
 </body>
 
 </html>
