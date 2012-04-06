@@ -35,7 +35,7 @@ $( function() {
         .code( defaultCode )
         .on( "run", function() {
             code = $editor.code();
-            setCookie( "code", code );
+            setCookie( "code", code, 365 );
         });
 });
 
