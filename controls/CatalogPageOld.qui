@@ -96,10 +96,10 @@ CatalogPageOld.prototype.extend({
     
     initialize: function() {
         this._super();
-        this.inDocument( function( $control ) {
-            if ( $control.autoFocus() ) {
+        this.inDocument( function() {
+            if ( this.autoFocus() ) {
                 // Give the input to first text box or text area in the demo. 
-                $control.$CatalogPageOld_demo()
+                this.$CatalogPageOld_demo()
                     .find( "input[type='text']" )
                     .add( "textarea" )
                     .eq(0)

@@ -53,10 +53,10 @@ SourceCode.prototype.extend({
         this
             .genericIfClassIs( SourceCode )
             .addClass( "language-html" )
-            .inDocument( function( $control ) {
-                if ( $control._needsRefresh() ) {
-                    $control._refresh();
-                    $control._needsRefresh( false );
+            .inDocument( function() {
+                if ( this._needsRefresh() ) {
+                    this._refresh();
+                    this._needsRefresh( false );
                 }
             });
     },

@@ -25,11 +25,11 @@ AceCodeEditor.prototype.extend({
     },
     
     initialize: function() {
-        this.inDocument( function( $control ) {
-            var content = $control.content();
-            var id = $control.prop( "id" );
+        this.inDocument( function() {
+            var content = this.content();
+            var id = this.prop( "id" );
             var editor = ace.edit( id );
-            $control._editor( editor );
+            this._editor( editor );
             var session = editor.getSession();
             session.setUseSoftTabs( true );
             editor.setShowPrintMargin( false );
@@ -37,7 +37,7 @@ AceCodeEditor.prototype.extend({
             editor.renderer.setHScrollBarAlwaysVisible( false );
             var JavaScriptMode = require( "ace/mode/javascript" ).Mode;
             session.setMode( new JavaScriptMode() );
-            $control.content( content );
+            this.content( content );
         });
     },
     
