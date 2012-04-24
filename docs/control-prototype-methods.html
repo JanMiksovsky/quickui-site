@@ -158,7 +158,14 @@ used for wiring up event handlers, perform any initial calculations, etc.
 </p>
 <ul>
     <li>
-        The initialize() call is made immediately after the control is instantiated.
+        The initialize() call is made immediately after the control is instantiated
+        and <i>after</i> initial property values have been set by the control's host,
+        e.g., in the properties parameter supplied to create().
+    </li>
+    <li>
+        The initialize() function is an implied iterator. If an array of controls is
+        being instantiated at once, each will have its initialize() method called
+        separately, with "this" inside each call corresponding to the given control.
     </li>
     <li>
         The initialize() method of any children is invoked <i>before</i> the
