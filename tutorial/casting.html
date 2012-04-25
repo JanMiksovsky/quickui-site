@@ -28,7 +28,7 @@ $demo.append(
     BasicButton.create().content( "Hello" )
 );
 
-var $button = $demo.find( "div" );
+var $button = $demo.find( "button" );
 var content = $button.content();
 
 $demo.append( content );
@@ -75,7 +75,8 @@ null.)
 
 <p>
 <b>The demo code</b> doesn’t work initially. It uses jQuery’s find() function to
-retrieve a reference to the div at the root of the button. (This div is 
+retrieve a reference to the button element which is the root of the BasicButton.
+(This button element is 
 created implicitly by the BasicButton.create() call.) That result of the 
 find() will be of type jQuery. Since there’s no jQuery function called
 content(), the call to $element.content() fails.
