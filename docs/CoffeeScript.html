@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css" href="http://fast.fonts.com/cssapi/72bd3277-b253-4903-97d8-6a9d18744569.css" />
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Inconsolata" />
+
+<link rel="stylesheet" type="text/css" href="/plugins/quickui.rehydrate.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script> -->
+<script type="text/javascript" src="http://localhost/projects/lib/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="/release/quickui.js"></script>
+<script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+
+<title>CoffeeScript</title>
+
+</head>
+
+<body data-create-controls="true" data-control="DocumentationPage">
+
+<p>
+QuickUI is designed to work well with the
+<a href="http://jashkenas.github.com/coffee-script">*** CHECK LINK *** CoffeeScript</a>
+language, a preprocessor for JavaScript that allows for more concise source code
+in many situations. In the case of QuickUI-based interfaces, CoffeeScript can
+let you create your user interface in less code.
+</p>
+
+<h2>Create controls in CoffeeScript</h2>
+<p>
+Since processed CoffeeScript is just JavaScript, all the QuickUI
+<a href="control-prototype-methods.html">methods</a>,
+<a href="events.html">events</a>, etc., work as normal in CoffeeScript.
+For example, in CoffeeScript, you can create controls with the
+<a href="control-class-methods.html#create">Control.create()</a> method,
+although the CoffeeScript form can be less verbose than the equivalent
+JavaScript.
+</p>
+
+<p>
+For example, CoffeeScript allows for concise declaration of a JavaScript
+dictionaries. The Control.create() method allows you to pass in such a
+dictionary of properties; these properties will be passed to setters on the
+control. For example, one of the  QuickUI tutorial <a href="/tutorial">*** examples ***</a>
+shows the construction of a <a data-control="CatalogLink">CollapsibleWithHeadingButton</a>
+control with JavaScript similar to the following:
+</p>
+
+<pre>
+$( "body" ).append(
+    CollapsibleWithHeadingButton.create()
+        .heading( "News story" )
+        .content([
+            FlickrInterestingPhoto.create()
+                .photoSize( "t" )
+                .css({
+                    float: "left"
+                }),
+            LoremIpsum.create()
+        ])
+);
+</pre>
+
+<pre>
+$( "body" ).append(
+    CollapsibleWithHeadingButton.create({
+        heading: "News story",
+        content: [
+            FlickrInterestingPhoto.create({
+                photoSize: "t",
+                css: {
+                    float: "left"
+                },
+            }),
+            LoremIpsum.create()
+        ]
+    })
+);
+</pre>
+
+<p>
+In the CoffeeScript version, most of the parenthesis, and all of the commas
+and curly braces, can be dropped:
+</p>
+
+<pre>
+$( "body" ).append CollapsibleWithHeadingButton.create
+  heading: "News story"
+  content: [
+    FlickrInterestingPhoto.create
+      photoSize: "t"
+      css:
+        float: "left"
+    LoremIpsum.create()
+  ]
+</pre>
+
+<h2>Creating QuickUI control classes in CoffeeScript</h2>
+<p>
+When creating QuickUI control classes in plain JavaScript, the Control.subclass()
+method is used to create a subclass of an existing base class. (For more
+information, see the *** tutorial on creating classes *** in JavaScript.)
+CoffeeScript makes this process easier and more concise through its built-in
+"class" keyword. The only extra bit unique to creating QuickUI control classes
+is a required a one-line boilerplate constructor:
+</body>
+
+<pre>
+class MyClass extends Control
+  constructor: -> return @coffee arguments
+</pre>
+
+<p>
+The "constructor" declaration ensures that the new class can be instantiated
+like any other jQuery subclass.
+</p>
+
+<pre>
+# Button class showing an icon to the left of the button label.
+class window.IconButton extends BasicButton
+  constructor: -> return @coffee arguments
+  inherited:
+    content:
+      "<img src='http://quickui.org/quickui-demos/resources/'>",  # *** CHECK SRC
+      { html: "span", id: "IconButton_content" }
+  content: Control.chain "$IconButton_content", "content"
+</pre>
+
+</html>
