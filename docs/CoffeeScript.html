@@ -26,10 +26,10 @@
 
 <p>
 QuickUI is designed to work well with the
-<a href="http://jashkenas.github.com/coffee-script">*** CHECK LINK *** CoffeeScript</a>
-language, a preprocessor for JavaScript that allows for more concise source code
-in many situations. In the case of QuickUI-based interfaces, CoffeeScript can
-let you create your user interface in less code.
+<a href="http://jashkenas.github.com/coffee-script">CoffeeScript</a>
+language, a preprocessor for JavaScript that permits more concise source code
+in many situations. You can use CoffeeScript to create your user interface in
+QuickUI using less code.
 </p>
 
 <h2>Create controls in CoffeeScript</h2>
@@ -39,35 +39,20 @@ Since processed CoffeeScript is just JavaScript, all the QuickUI
 <a href="events.html">events</a>, etc., work as normal in CoffeeScript.
 For example, in CoffeeScript, you can create controls with the
 <a href="control-class-methods.html#create">Control.create()</a> method,
-although the CoffeeScript form can be less verbose than the equivalent
+and the CoffeeScript form will typically be less verbose than the equivalent
 JavaScript.
 </p>
 
 <p>
-For example, CoffeeScript allows for concise declaration of a JavaScript
+Among other things, CoffeeScript allows for concise declaration of a JavaScript
 dictionaries. The Control.create() method allows you to pass in such a
 dictionary of properties; these properties will be passed to setters on the
-control. For example, one of the  QuickUI tutorial <a href="/tutorial">*** examples ***</a>
-shows the construction of a <a data-control="CatalogLink">CollapsibleWithHeadingButton</a>
-control with JavaScript similar to the following:
+control. For example, the following JavaScript passes a JavaScript dictionary
+to the create() call to instantiate several QuickUI controls in a small news module:
 </p>
 
 <pre>
-$( "body" ).append(
-    CollapsibleWithHeadingButton.create()
-        .heading( "News story" )
-        .content([
-            FlickrInterestingPhoto.create()
-                .photoSize( "t" )
-                .css({
-                    float: "left"
-                }),
-            LoremIpsum.create()
-        ])
-);
-</pre>
-
-<pre>
+// Plain JavaScript version
 $( "body" ).append(
     CollapsibleWithHeadingButton.create({
         heading: "News story",
@@ -85,18 +70,30 @@ $( "body" ).append(
 </pre>
 
 <p>
+This produces the following output:
+</p>
+
+<blockquote>
+    <div data-control="CollapsibleWithHeadingButton" data-heading="News story">
+        <img data-control="FlickrInterestingPhoto" data-photoSize="t" style="float: left; margin-right: 1em;"/>
+        <div data-control="LoremIpsum"></div>
+    </div>
+</blockquote>
+
+<p>
 In the CoffeeScript version, most of the parenthesis, and all of the commas
-and curly braces, can be dropped:
+and curly braces, can be dropped. This results in functionally equivalent source
+code that is significantly more compact:
 </p>
 
 <pre>
+# CoffeeScript version
 $( "body" ).append CollapsibleWithHeadingButton.create
   heading: "News story"
   content: [
     FlickrInterestingPhoto.create
       photoSize: "t"
-      css:
-        float: "left"
+      css: float: "left"
     LoremIpsum.create()
   ]
 </pre>
@@ -105,31 +102,107 @@ $( "body" ).append CollapsibleWithHeadingButton.create
 <p>
 When creating QuickUI control classes in plain JavaScript, the Control.subclass()
 method is used to create a subclass of an existing base class. (For more
-information, see the *** tutorial on creating classes *** in JavaScript.)
+information, see the 
+<a href="http://quickui/tutorial/creating-control-class.html">tutorial on creating classes</a> 
+in JavaScript.)
 CoffeeScript makes this process easier and more concise through its built-in
-"class" keyword. The only extra bit unique to creating QuickUI control classes
-is a required a one-line boilerplate constructor:
-</body>
-
-<pre>
-class MyClass extends Control
-  constructor: -> return @coffee arguments
-</pre>
+"class" keyword.
+</p>
 
 <p>
-The "constructor" declaration ensures that the new class can be instantiated
-like any other jQuery subclass.
+You can generally create a QuickUI control class in CoffeeScript just like any
+other class:
+</p>
+
+<ol>
+
+<li>
+<p>Use any existing QuickUI control class after the "extends" keyword to indicate
+which control class you want to subclass. If you want to create a control from
+scratch, subclass the Control class:
+</p>
+<pre>
+class MyClass extends Control
+</pre>
+</li>
+
+<li>
+<p>
+Include the following one-line boilerplate constructor:
+</p>   
+<pre>
+  constructor: -> return @coffee arguments
+</pre>
+<p>
+This constructor declaration ensures the new class can be instantiated like any
+other jQuery subclass. As with other QuickUI classes, all initialization work
+should be performed in the controls initialize() method.
+</p>
+</li>
+
+<li>
+<p>
+Define an "inherits:" key to establish which property setters in the
+<i>superclass</i> the control would like to set when rendering. E.g.:
+</p>
+<pre>
+class MyPage extends Page
+  inherits:
+    title: "Welcome to My Page"
+</pre>
+<p>
+When a MyPage control is rendered, this will pass the given string to the
+Page.title() property setter (which will display the string in the page's
+browser title).
+</p>
+</li>
+
+</ol>
+
+<p>
+As an example, here is the CoffeeScript source code for a simple button class
+that shows an icon to the left of the button's label: 
 </p>
 
 <pre>
-# Button class showing an icon to the left of the button label.
+# Define button class
 class window.IconButton extends BasicButton
   constructor: -> return @coffee arguments
   inherited:
-    content:
-      "<img src='http://quickui.org/quickui-demos/resources/'>",  # *** CHECK SRC
-      { html: "span", id: "IconButton_content" }
+    content: [
+      "&lt;img src='http://quickui.org/demos/resources/document_alt_stroke_12x16.png'/>"
+      html: "span", id: "IconButton_content"
+    ]
   content: Control.chain "$IconButton_content", "content"
+
+# Create some buttons
+$( "body" ).append [
+  IconButton "Document 1"
+  IconButton "Document 2"
+]
 </pre>
+
+<p>
+This produces the following output:
+</p>
+
+<blockquote>
+    <div data-control="BasicButton">
+        <img src='http://quickui.org/demos/resources/document_alt_stroke_12x16.png'/>
+        <span>Document 1</span>
+    </div>
+    <div data-control="BasicButton">
+        <img src='http://quickui.org/demos/resources/document_alt_stroke_12x16.png'/>
+        <span>Document 2</span>
+    </div>
+</blockquote>
+
+<p>
+Note that the control defines two "content:" members. The first (inside the
+"inherits:" key) invokes the BasicButton superclass' content() property when
+the control is rendered. This effectively populates the contents of the button.
+The second use of "content:" defines the IconButton class' own content() property
+such that its gets/sets whatever is in the span with ID "IconButton_content".
+</p>
 
 </html>
