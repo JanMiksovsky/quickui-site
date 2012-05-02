@@ -11,6 +11,7 @@
             <Link href="control-events.html">Control events</Link>
             <Link href="control-prototype-methods.html">Control instance methods</Link>
             <Link href="control-JSON.html">Control JSON</Link>
+            <Link href="CoffeeScript.html">CoffeeScript</Link>
             <Link href="control-guidelines.html">Guidelines</Link>
         </navigationLinks>
     </SitePage>
