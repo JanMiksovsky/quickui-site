@@ -10,9 +10,8 @@ class window.IconButton extends BasicButton
   genericSupport: true
   
 # Create some buttons
-$ ->
-  $( "#demo" ).append(
-    IconButton.create "Document 1"
-    " "
-    IconButton.create "Document 2"
-  )
+$ -> $( "#demo" ).append(
+  IconButton.create "Document 1"
+  " "
+  IconButton.create "Document 2"
+)
