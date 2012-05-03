@@ -145,14 +145,17 @@ JSON as follows:
 </p>
 <pre>
 {
-    html: "&lt;div/&gt;",
+    html: "div",
     height: "250px",
     width: "300px"
 }
 </pre>
 <p>
 The first "html:" key indicates that you want to create a new jQuery object
-using the specified HTML. The "height:" and "width:" keys which follow
+using the specified HTML. (In normal jQuery, a single tag like "div" selects
+divs, rather than creating a div; the longer "&lt;div>" is required. As a
+convenience, Control JSON permits the use of the shorter "div".)  
+The "height:" and "width:" keys which follow
 indicate that you want to apply the height() and width() setters as a chain.
 </p>
 
