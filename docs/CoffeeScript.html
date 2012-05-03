@@ -11,12 +11,13 @@
 <link rel="stylesheet" type="text/css" href="/controls/controls.css" />
 <link rel="stylesheet" type="text/css" href="/site.css" />
 
-<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script> -->
-<script type="text/javascript" src="http://localhost/projects/lib/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="/release/quickui.js"></script>
 <script type="text/javascript" src="/plugins/quickui.rehydrate.js"></script>
+<script type="text/javascript" src="/plugins/quickui.coffee.js"></script>
 <script type="text/javascript" src="/release/quickui.catalog.js"></script>
 <script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="snippets/snippets.js"></script>
 
 <title>CoffeeScript</title>
 
@@ -106,12 +107,18 @@ information, see the
 <a href="http://quickui/tutorial/creating-control-class.html">tutorial on creating classes</a> 
 in JavaScript.)
 CoffeeScript makes this process easier and more concise through its built-in
-"class" keyword.
+"class" keyword. For the time being, support for creating control classes in
+CoffeeScript requires a plugin called quickui.coffee.js. (This will eventually
+be folded into the core quickui.js runtime.)
 </p>
 
+<pre>
+&lt;script type="text/javascript" src="http://quickui.org/plugins/quickui.coffee.js"></script>
+</pre>
+
 <p>
-You can generally create a QuickUI control class in CoffeeScript just like any
-other class:
+With the CoffeeScript plugin loaded, you can create a QuickUI control class in
+CoffeeScript just like any other CoffeeScript class. Follow these steps:
 </p>
 
 <ol>
@@ -122,32 +129,37 @@ which control class you want to subclass. If you want to create a control from
 scratch, subclass the Control class:
 </p>
 <pre>
-class MyClass extends Control
+class window.MyClass extends Control
 </pre>
+<p>
+The "window." ensures the class is available for instantiation within other
+QuickUI controls (whether CoffeeScript-based or not).
+</p>
 </li>
 
 <li>
 <p>
 Include the following one-line boilerplate constructor:
-</p>   
+</p>
 <pre>
-  constructor: -> return @coffee arguments
+  constructor: -> return Control.coffee()
 </pre>
 <p>
 This constructor declaration ensures the new class can be instantiated like any
 other jQuery subclass. As with other QuickUI classes, all initialization work
-should be performed in the controls initialize() method.
+should be performed in the controls initialize() method rather than the 
+constructor.
 </p>
 </li>
 
 <li>
 <p>
-Define an "inherits:" key to establish which property setters in the
+Define an "inherited:" key to establish which property setters in the
 <i>superclass</i> the control would like to set when rendering. E.g.:
 </p>
 <pre>
 class MyPage extends Page
-  inherits:
+  inherited:
     title: "Welcome to My Page"
 </pre>
 <p>
@@ -160,49 +172,26 @@ browser title).
 </ol>
 
 <p>
-As an example, here is the CoffeeScript source code for a simple button class
-that shows an icon to the left of the button's label: 
+As an example, here is the CoffeeScript source code for a simple IconButton class
+that shows an icon to the left of the button's label:
 </p>
 
-<pre>
-# Define button class
-class window.IconButton extends BasicButton
-  constructor: -> return @coffee arguments
-  inherited:
-    content: [
-      "&lt;img src='http://quickui.org/demos/resources/document_alt_stroke_12x16.png'/>"
-      html: "span", id: "IconButton_content"
-    ]
-  content: Control.chain "$IconButton_content", "content"
-
-# Create some buttons
-$( "body" ).append [
-  IconButton "Document 1"
-  IconButton "Document 2"
-]
-</pre>
+<div data-control="SourceFileContents" data-path="snippets/IconButton.coffee"></div>
 
 <p>
 This produces the following output:
 </p>
 
-<blockquote>
-    <div data-control="BasicButton">
-        <img src='http://quickui.org/demos/resources/document_alt_stroke_12x16.png'/>
-        <span>Document 1</span>
-    </div>
-    <div data-control="BasicButton">
-        <img src='http://quickui.org/demos/resources/document_alt_stroke_12x16.png'/>
-        <span>Document 2</span>
-    </div>
+<blockquote id="demo">
 </blockquote>
 
 <p>
-Note that the control defines two "content:" members. The first (inside the
-"inherits:" key) invokes the BasicButton superclass' content() property when
+Note that the IconButton control defines two "content:" members. The first (inside the
+"inherited:" key) invokes the BasicButton superclass' content() property when
 the control is rendered. This effectively populates the contents of the button.
 The second use of "content:" defines the IconButton class' own content() property
-such that its gets/sets whatever is in the span with ID "IconButton_content".
+as a chain of jQuery functions that gets or sets whatever is inside the span with
+ID "IconButton_content".
 </p>
 
 </html>
