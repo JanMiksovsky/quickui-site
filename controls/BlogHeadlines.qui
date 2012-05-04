@@ -1,10 +1,7 @@
 <Control className="BlogHeadlines">
 
 <prototype>
-    <Blog
-        apiKey="ABQIAAAAduw93ooM51B8Jdy2C9HxvhSBC_FVBxnf9EUyrmx06S6ZVKWCwhRUIdI-JHlMvEGhOu9DbYTG8OA89Q"
-        count="5"
-    />
+    <Blog count="5" />
 </prototype>
 
 <style>
