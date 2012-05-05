@@ -130,7 +130,6 @@ CodeEditor.prototype.extend({
             eval( code );
         }
         catch ( error ) {
-            console.log( "Error: " + error.toString() );
             this.error( error.toString() );
         }
     },
