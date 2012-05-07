@@ -123,9 +123,10 @@ MyControl.prototype.extend({
 </pre>
 
 <p>
-If the wrapped function returns a defined value (i.e., not "undefined"),
-then the function is assumed to be a property getter, and that result is
-return immediately. Otherwise, "this" is returned to permit chaining.
+If the wrapped function returns nothing or returns "this", the function is
+assumed to be a method that will be applied to all functions in the object.
+Otherwise, the function is assumed to be a property getter, and that result is
+returned immediately.
 </p>
 
 <h2><a id="property">Control.property( [sideEffectFn] [, defaultValue] )</a></h2>
