@@ -25,8 +25,8 @@
 function demo() {
 
 $demo.append(
-    BasicButton.create().content( "Hello" ),
-    BasicButton.create().content( "World" )
+    BasicButton.create( "Hello" ),
+    BasicButton.create( "World" )
 );
     
 }
@@ -58,8 +58,8 @@ the optional <Link href="/catalog">QuickUI Catalog</Link> of common controls.
 <b>The demo code</b> on this particular page creates two instances of a QuickUI control
 class called BasicButton. Each call to BasicButton’s create() method returns an
 instance of that class: an independent, self-contained copy of all the elements
-the control needs to function. Each instance is subsequently modified to set its
-content (label) to a string value.
+the control needs to function. The string passed to create() is used to set the
+new control's content, i.e., its label.
 </p>
 <p>
 The two buttons are then handed to the jQuery append() function, which adds them
