@@ -15,7 +15,7 @@
             
             <div id="sectionBaseClasses" class="section">
                 <h2>Inherits from</h2>
-                <ControlClassHierarchy id="controlClassHierarchy"/>
+                <describeClassHierarchy id="describeClassHierarchy"/>
             </div>
             
             <div id="sectionMembers" class="section">
@@ -55,15 +55,15 @@ CatalogPage.prototype.extend({
         this.$sectionContent().toggle( content != null );
     }),
     
-    controlClass: Control.property[ "class" ]( function( controlClass ) {
+    describeClass: Control.property[ "class" ]( function( describeClass ) {
 
-        var className = controlClass.className;
+        var className = describeClass.className;
         
-        this.$controlClassHierarchy().controlClass( className );
-        var baseClasses = this.$controlClassHierarchy().baseClasses();
+        this.$describeClassHierarchy().describeClass( className );
+        var baseClasses = this.$describeClassHierarchy().baseClasses();
         this.$sectionBaseClasses().toggle( baseClasses && baseClasses.length > 0 );
         
-        this.$controlMemberTable().controlClass( className );
+        this.$controlMemberTable().describeClass( className );
         var hasDocumentation = !$.isEmptyObject( $(".ControlMemberTable").control().content() );
         this.$sectionMembers().toggle( hasDocumentation );
 
@@ -84,7 +84,7 @@ CatalogPage.prototype.extend({
         if ( title !== undefined ) {
             // Grab control class name from the title, use it to populate
             // the fields with standard values.
-            this.controlClass( title );
+            this.describeClass( title );
         }
         return result;
     }

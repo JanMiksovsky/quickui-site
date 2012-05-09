@@ -54,10 +54,10 @@ CatalogPageOld.prototype.extend({
 
     demo: Control.chain( "$CatalogPageOld_demo", "content" ),
     
-    controlClass: function( controlClass ) {
-        var result = this._super( controlClass );
-        if ( controlClass !== undefined ) {
-            var className = Control.getClass( controlClass ).className;
+    describeClass: function( describeClass ) {
+        var result = this._super( describeClass );
+        if ( describeClass !== undefined ) {
+            var className = Control.getClass( describeClass ).className;
 
             if ( !this.demo() || this.demo().length === 0 ) {
                 // As a default demo, instantiate the control.

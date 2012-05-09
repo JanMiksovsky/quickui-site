@@ -31,8 +31,8 @@
 <script>
 ControlMemberTable.prototype.extend({
     
-    controlClass: Control.property[ "class" ]( function( controlClass ) {
-        var documentation = this._classMemberDocumentation( controlClass );
+    describeClass: Control.property[ "class" ]( function( describeClass ) {
+        var documentation = this._classMemberDocumentation( describeClass );
         documentation = this._sortDictionary( documentation );
         this.content( documentation );
     }),
@@ -41,9 +41,9 @@ ControlMemberTable.prototype.extend({
      * Return the documentation for the given class, including its base classes
      * up to (but not including) Control.
      */
-    _classMemberDocumentation: function( controlClass, linkToDeclaringClass ) {
+    _classMemberDocumentation: function( describeClass, linkToDeclaringClass ) {
         
-        var className = controlClass.className;
+        var className = describeClass.className;
         var documentation = controlDocumentation[ className ] || {};
         documentation = this._formatDocumentation( documentation );
         
@@ -59,7 +59,7 @@ ControlMemberTable.prototype.extend({
             }
         }
         
-        var baseClassName = controlClass.classHierarchy.split(" ")[1];
+        var baseClassName = describeClass.classHierarchy.split(" ")[1];
         if ( baseClassName ) {
             var baseClass = Control.getClass( baseClassName );
             if ( baseClass && baseClass !== Control ) {
