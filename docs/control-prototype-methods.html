@@ -108,6 +108,39 @@ the control. Control classes often override content() to identify where their pr
 content should go.
 </p>
 
+<h2>controlClass()</h2>
+<p>
+Returns the actual control class of the first element in the array. (Cf. cast(),
+which looks for the common class of all elements in the array, and returns the
+array as an instance of that common class.) Note that the actual control class
+of an element may differ from the class of the Control (jQuery) subclass used
+to access it:
+</p>
+
+<pre>
+var $e = Control "&lt;button>"  // $e is an instanceof Control
+$e.control( BasicButton )       // Turns the element into a BasicButton 
+$e.className()                  // Returns "Control"
+$e.controlClass()               // Returns the BasicButton class
+</pre>
+
+<h2>each( [arguments] )</h2>
+<p>
+This is an overload of the standard jQuery $.each() function. If any arguments
+are supplied, this simply invokes the standard $.each() implementation. If no
+arguments are supplied, this returns an array, each member of which is a
+individual jQuery object holding the corresponding element. (That is, it returns
+an array of arrays.) This result can then be easily iterated over in a for loop,
+without having to create a callback function, as is the case with eachControl().
+</p>
+
+<pre>
+var buttons = $( ".BasicButton" ).control().each();
+for ( var i = 0; i < buttons.length; i++ ) {
+    buttons[i].hide();  // Or any other jQuery or Control manipulation.
+}
+</pre>
+
 <h2>eachControl( fn )</h2>
 <p>
 This is similar to $.each(), and loops over the array of elements in a jQuery object,
@@ -119,11 +152,11 @@ invoking different implementations according to each control's class.
 </p>
 
 <pre>
-var foo = Foo.create();         // instance of a control class
-var bar = Bar.create();         // instance of a different class
-var $c = $().add(foo).add(bar); // put them into a single array
-$c.eachControl(function(index, $control) {
-    $control.content("Hello");  // invokes Foo.content() or Bar.content() as appropriate.
+// Loop over all BasicButtons on the page (including subclasses of BasicButton).
+var $buttons = Control( ".BasicButton" );
+$buttons.eachControl( function( index, $button ) {
+    // Invoke each button's content() setter, which may vary by button class.
+    $button.content("Hello");
 });
 </pre>
 
@@ -247,7 +280,7 @@ control's superclass. This is useful when extending (as opposed to completely
 overriding) a superclass' behavior
 </p>
 
-<h2>transmute( controlClass, preserveContent, preserveClasses )</h2>
+<h2>transmute( newClass, preserveContent, preserveClasses )</h2>
 <p>
 Converts the control(s) to the indicated class. If preserveContent is true (the default
 is false), the existing contents of the control will be extracted and then set again
