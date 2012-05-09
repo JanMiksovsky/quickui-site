@@ -124,23 +124,6 @@ $e.className()                  // Returns "Control"
 $e.controlClass()               // Returns the BasicButton class
 </pre>
 
-<h2>each( [arguments] )</h2>
-<p>
-This is an overload of the standard jQuery $.each() function. If any arguments
-are supplied, this simply invokes the standard $.each() implementation. If no
-arguments are supplied, this returns an array, each member of which is a
-individual jQuery object holding the corresponding element. (That is, it returns
-an array of arrays.) This result can then be easily iterated over in a for loop,
-without having to create a callback function, as is the case with eachControl().
-</p>
-
-<pre>
-var buttons = $( ".BasicButton" ).control().each();
-for ( var i = 0; i < buttons.length; i++ ) {
-    buttons[i].hide();  // Or any other jQuery or Control manipulation.
-}
-</pre>
-
 <h2>eachControl( fn )</h2>
 <p>
 This is similar to $.each(), and loops over the array of elements in a jQuery object,
@@ -271,6 +254,32 @@ which are undefined will not be set.)
 $(".Foo")           // Find all Foo instances
     .control()      // Cast the result to class Foo
     .multiProperty("content", [ "One", "Two", "Three" ]);
+</pre>
+
+<h2>segments()</h2>
+<p>
+This returns an array, each member of which is a
+individual control object holding the corresponding element. (That is, it returns
+an array of arrays.) This result can then be easily iterated over in a for loop,
+without having to create a callback function, as is the case with eachControl().
+</p>
+
+<pre>
+var buttons = $( ".BasicButton" ).control().segments();
+for ( var i = 0; i &lt; buttons.length; i++ ) {
+    buttons[i].hide();  // Or any other jQuery or Control manipulation.
+}
+</pre>
+
+<p>
+In CoffeeScript, the result of segments() can be directly iterated over in
+a for loop:
+</p>
+
+<pre>
+# CoffeeScript "for" loop iterating over segments.
+for button in $( ".BasicButton" ).control().segments()
+  button.hide()
 </pre>
 
 <h2>_super( [arguments] )</h2>
