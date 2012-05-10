@@ -2,20 +2,20 @@
 
 module.exports = function(grunt) {
 
-    grunt.loadTasks( "../../../quickui/plugins/grunt" );
+    grunt.loadTasks( "../quickui/grunt" );
 
     // Project configuration.
     grunt.initConfig({
         coffee: {
-            controls: {
-                src: "*.coffee",
-                dest: "snippets.js"
+            snippets: {
+                src: "docs/snippets/*.coffee",
+                dest: "docs/snippets/snippets.js"
             }
         },
         watch: {
             coffee: {
-                files: "<config:coffee.controls.src>",
-                tasks: "coffee"
+                files: "<config:coffee.snippets.src>",
+                tasks: "coffee:snippets"
             }
         }
     });
