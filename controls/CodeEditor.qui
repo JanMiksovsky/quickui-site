@@ -13,7 +13,8 @@
         </div>
         <div>
             <div ref="codePane">
-                <AceCodeEditor ref="CodeEditor_code"/>
+                <!-- CodeEditor needs an ID on the control to work. -->
+                <AceCodeEditor id="editor" ref="CodeEditor_code"/>
             </div>
             <Demo ref="result"/>
         </div>
