@@ -25,32 +25,32 @@
 <script id="demo">
 function demo() {
 
-var ColorSlider = Control.subclass({
+var ColorSlider = Control.sub({
     className: "ColorSlider",
-    content: [
-        {
-            html: "<span/>",
-            id: "content"
-        },
-        {
-            html: "<div/>",
-            id: "slider",
-            slider: {
-                min: 0,
-                max: 255
+    inherited: {
+        content: [
+            {
+                html: "<span/>",
+                ref: "content"
+            },
+            {
+                html: "<div/>",
+                ref: "slider",
+                slider: {
+                    min: 0,
+                    max: 255
+                }
             }
-        }
-    ],
-    css: { padding: "1em" },
-    prototype: {
-        content: Control.chain( "$content", "content" ),
-        value: Control.chain( "$slider", "slider/value" )
-    }
+        ],
+        css: { padding: "1em" }
+    },
+    content: Control.chain( "$content", "content" ),
+    value: Control.chain( "$slider", "slider/value" )
 });
 
-var $red = ColorSlider.create().content( "Red" );
-var $green = ColorSlider.create().content( "Green" );
-var $blue = ColorSlider.create().content( "Blue" );
+var $red = ColorSlider.create( "Red" );
+var $green = ColorSlider.create( "Green" );
+var $blue = ColorSlider.create( "Blue" );
 
 $demo.append( $red, $green, $blue );
 

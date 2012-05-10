@@ -23,9 +23,11 @@
 <script id="demo">
 function demo() {
 
-var Greet = Control.subclass({
+var Greet = Control.sub({
     className: "Greet",
-    content: "" // TODO
+    inherited: {
+        content: "" // TODO
+    }
 });
 
 $demo.append(
@@ -47,13 +49,13 @@ $demo.append(
 <b>Core idea:</b>
 QuickUI makes it easy for you to package up content, styling, and behavior as a
 reusable control class. You can do this by calling the function
-Control.subclass(), passing in a JSON dictionary defining default values for
+Control.sub(), passing in a JSON dictionary defining default values for
 various class properties. The result of this call will be your new control
 class: a JavaScript class that you can instantiate as part of a user interface.
 </p>
 <p>
 The
-<a data-control="Link" href="/docs/control-class-methods.html#subclass">Control.subclass()</a>
+<a data-control="Link" href="/docs/control-class-methods.html#subclass">Control.sub()</a>
 method does its core work via a jQuery method called
 <a data-control="Link" href="http://api.jquery.com/jQuery.sub/">sub()</a>,
 which
@@ -95,7 +97,7 @@ content, the three controls don’t appear to be visible.
 <p>
 <b>Your goal:</b>
 Add default content to Greet controls by adding a “content:” key to the
-dictionary passed to Control.subclass(), and give this key a string value like 
+dictionary passed to Control.sub(), and give this key a string value like 
 “Hello, world!”
 </p>
 <p>

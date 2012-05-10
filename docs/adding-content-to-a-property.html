@@ -21,21 +21,21 @@
 <script>
 function demo() {
 
-var StarButton = SampleSpriteButton.subclass({
+var StarButton = SampleSpriteButton.sub({
     className: "Bar",
-    content: [
-        "<span>&#x2605; </span>",
-        {
-            html: "<span/>",
-            id: "StarButton_content"
-        }
-    ],
-    css: {
-        "white-space": "nowrap"
+    inherited: {
+        content: [
+            "<span>&#x2605; </span>",
+            {
+                html: "<span/>",
+                ref: "StarButton_content"
+            }
+        ],
+        css: {
+            "white-space": "nowrap"
+        },
     },
-    prototype: {
-        content: Control.chain( "$StarButton_content", "content" )
-    }
+    content: Control.chain( "$StarButton_content", "content" )
 })
 
 $demo.append(

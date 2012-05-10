@@ -23,33 +23,33 @@
 <script id="demo">
 function demo() {
 
-var UserTile = Control.subclass({
+var UserTile = Control.sub({
     className: "UserTile",
-    content: [
-        {
-            control: FlickrInterestingPhoto,
-            css: {
-                "margin-right": "0.5em",
-                "vertical-align": "middle",
+    inherited: {
+        content: [
+            {
+                control: FlickrInterestingPhoto,
+                css: {
+                    "margin-right": "0.5em",
+                    "vertical-align": "middle",
+                },
+                photoSize: "s"
             },
-            photoSize: "s"
-        },
-        {
-            html: "<span/>",
-            id: "name"
-        }
-    ],
-    prototype: {
-        name: function( value ) {
-            if ( value === undefined ) {
-                return this.$name().content();
-            } else {
-                this.$name().content( value );
-                return this;
+            {
+                html: "<span/>",
+                ref: "name"
             }
+        ]
+    },
+    name: function( value ) {
+        if ( value === undefined ) {
+            return this.$name().content();
+        } else {
+            this.$name().content( value );
+            return this;
         }
     }
-})
+});
 
 $demo.append(
     UserTile.create().name( "Alice" ),

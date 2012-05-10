@@ -23,21 +23,23 @@
 <script id="demo">
 function demo() {
 
-var UserTile = Control.subclass({
+var UserTile = Control.sub({
     className: "UserTile",
-    content: [
-        {
-            control: FlickrInterestingPhoto,
-            css: {
-                "margin-right": "0.5em",
-                "vertical-align": "middle",
+    inherited: {
+        content: [
+            {
+                control: FlickrInterestingPhoto,
+                css: {
+                    "margin-right": "0.5em",
+                    "vertical-align": "middle",
+                },
+                photoSize: "s"
             },
-            photoSize: "s"
-        },
-        {
-            html: "<span id='name'/>"
-        }
-    ]
+            {
+                html: "<span id='name'/>"
+            }
+        ]
+    }
 })
 
 $demo.append(
@@ -83,7 +85,7 @@ new ways, defeating the goal of
 <p>
 To address this problem, QuickUI gives you a reliable way to refer to elements
 within a control. In the JSON which defines your control class’s initial DOM,
-assign an ID to any HTML element or sub-control by including an “id:” key in the 
+assign an ID to any HTML element or sub-control by including an “ref:” key in the 
 nested dictionary for that element or sub-control. This will have two effects. 
 First, the element will have its DOM ID set to “foo” (and can therefore be 
 selected or styled with “#foo” as usual). Second, and more importantly, a
@@ -117,7 +119,7 @@ collision.
 <b>Your goal:</b> 
 Rewrite this code to use an element reference function to reliably manipulate
 the name span. First, remove the id='name' attribute from the “html:” line and
-turn that into an id: "name" item on a subsequent line in the same nested
+turn that into an ref: "name" item on a subsequent line in the same nested
 dictionary. This will make the ID visible to the subclass() call. The indicated 
 ID will be set on the element, but moreover, a new $name() function will be
 created that always returns the indicated element.

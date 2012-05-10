@@ -24,9 +24,9 @@
 function demo() {
 
 $demo.append(
-    BasicButton.create().content( "Orange" ),
-    ColorSwatchButton.create().content( "Orange" ),
-    ColorSwatchComboBox.create().content( "Orange" ),
+    BasicButton.create( "Orange" ),
+    ColorSwatchButton.create( "Orange" ),
+    ColorSwatchComboBox.create( "Orange" ),
     Repeater.create()
         .repeatClass( ColorSwatchButton )
         .count( 3 )

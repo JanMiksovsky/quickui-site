@@ -24,7 +24,7 @@
 
 <p>
 This page describes the Control JSON format which is used to by the
-<a data-control="Link" href="/docs/control-class-methods.html#subclass">Control.subclass()</a>
+<a data-control="Link" href="/docs/control-class-methods.html#subclass">Control.sub()</a>
 method to define a new class' property values. Control JSON is effectively a
 JavaScript analogue to HTML markup — both allow you to define the content of
 a user interface.
@@ -37,7 +37,7 @@ values for a new instance of the class. For example, in the following code:
 </p>
 
 <pre>
-var OkButton = BasicButton.subclass({
+var OkButton = BasicButton.sub({
     className: "OkButton",
     content: "OK"
 });
@@ -184,7 +184,7 @@ photoSize() property.
 <h2>Setting IDs on DOM elements and controls</h2>
 <p>
 If a Control JSON object starting with "html:" or "control:" also contains an
-"id:" key, the resulting element or control will have the indicated string
+"ref:" key, the resulting element or control will have the indicated string
 value applied as a DOM ID. As a secondary effect, the control <i>class</i> being
 defined (<i>not</i> the control instance being created) will have an element
 reference function generated for it. This function will permit quick access

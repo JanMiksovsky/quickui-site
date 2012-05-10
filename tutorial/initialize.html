@@ -23,23 +23,21 @@
 <script id="demo">
 function demo() {
 
-var MessageButton = BasicButton.subclass({
+var MessageButton = BasicButton.sub({
     className: "MessageButton",
     generic: true,
-    prototype: {
-        initialize: function() {
-            this._super();
-            this.click( function() {
-                var content = ""; // TODO: get control content
-                TransientMessage.showMessage( content + " to you, too." );
-            });
-        }
+    initialize: function() {
+        this._super();
+        this.click( function() {
+            var content = ""; // TODO: get control content
+            TransientMessage.showMessage( content + " to you, too." );
+        });
     }
 });
 
 $demo.append(
-    MessageButton.create().content( "Hello" ),
-    MessageButton.create().content( "Goodbye" )
+    MessageButton.create( "Hello" ),
+    MessageButton.create( "Goodbye" )
 );
     
 }

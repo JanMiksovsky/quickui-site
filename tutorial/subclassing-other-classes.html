@@ -23,18 +23,20 @@
 <script id="demo">
 function demo() {
 
-var CountryComboBox = ListComboBox.subclass({
+var CountryComboBox = ListComboBox.sub({
     className: "CountryComboBox",
     generic: true,
-    items: [
-        "Australia",
-        "Chile",
-        "Germany",
-        "Japan",
-        "Kenya",
-        "United States",
-        "Vietnam"
-    ]
+    inherited: {
+        items: [
+            "Australia",
+            "Chile",
+            "Germany",
+            "Japan",
+            "Kenya",
+            "United States",
+            "Vietnam"
+        ]
+    }
 });
 
 $demo.append(
@@ -56,8 +58,8 @@ $demo.append(
 <p class="highlight">
 <b>Core idea:</b>
 Generally speaking, QuickUI control classes are designed to be subclassable. You
-can subclass a control class Foo by invoking Foo.subclass(). Default values in
-the JSON passed to Foo.subclass() will invoke property setters defined by Foo to
+can subclass a control class Foo by invoking Foo.sub(). Default values in
+the JSON passed to Foo.sub() will invoke property setters defined by Foo to
 set default values for new control instances.
 </p>
 <p>
@@ -67,11 +69,11 @@ point, but in many cases you will find it helpful to build on top of a
 foundation more optimized to your needs. For example, many of the classes in the
 <a data-control="Link" href="/catalog">QuickUI Catalog</a>
 are meant to be subclassed to address common UI situations. Rather than calling
-Control.subclass(), you invoke subclass() on the specific class you want to
+Control.sub(), you invoke sub() on the specific class you want to
 derive from.
 </p>
 <p>
-The JSON values you pass to subclass() will invoke property setters on the
+The JSON values you pass to sub() will invoke property setters on the
 indicated superclass. E.g., if you derive from class Foo and have JSON with
 content: “Hello”, that will invoke Foo.prototype.content(“Hello”) on any new
 instance of Foo.
@@ -101,7 +103,7 @@ each instance ends up with the indicated list of countries.
 Your goal: Make your own country the default value for CountryComboBox controls.
 ListComboBox defines its content() property to be the text in the text box
 portion of the combo box. You can set the default content for CountryComboBox 
-controls by adding a “content:” key to the dictionary passed to subclass().
+controls by adding a “content:” key to the dictionary passed to sub().
 </p>
 
 </body>

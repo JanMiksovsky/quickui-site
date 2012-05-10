@@ -23,26 +23,25 @@
 <script id="demo">
 function demo() {
 
-var UserTile = Control.subclass({
+var UserTile = Control.sub({
     className: "UserTile",
-    content: [
-        {
-            control: FlickrInterestingPhoto,
-            css: {
-                "margin-right": "0.5em",
-                "vertical-align": "middle",
+    inherited: {
+        content: [
+            {
+                control: FlickrInterestingPhoto,
+                css: {
+                    "margin-right": "0.5em",
+                    "vertical-align": "middle",
+                },
+                photoSize: "s"
             },
-            photoSize: "s"
-        },
-        {
-            html: "<span>User tile</span>"
-
-        }
-    ],
-    prototype: {
-        highlight: function() {
-            return this; // TODO
-        }
+            {
+                html: "<span>User tile</span>"
+            }
+        ]
+    },
+    highlight: function() {
+        return this; // TODO
     }
 })
 

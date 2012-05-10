@@ -23,17 +23,17 @@
 <script id="demo">
 function demo() {
 
-var Square = Control.subclass({
+var Square = Control.sub({
     className: "Square",
-    content: "I'm a square",
-    css: {
-        border: "1px solid gray",
-        display: "inline-block"
-    },
-    prototype: {
-        initialize: function() {
-            this.height( this.width() + "px" );
+    inherited: {
+        content: "I'm a square",
+        css: {
+            border: "1px solid gray",
+            display: "inline-block"
         }
+    },
+    initialize: function() {
+        this.height( this.width() + "px" );
     }
 });
 

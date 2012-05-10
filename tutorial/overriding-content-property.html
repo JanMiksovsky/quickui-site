@@ -23,27 +23,27 @@
 <script id="demo">
 function demo() {
 
-var UserTile = BasicButton.subclass({
+var UserTile = BasicButton.sub({
     className: "UserTile",
     generic: true,
-    content: [
-        {
-            control: FlickrInterestingPhoto,
-            css: {
-                "margin-right": "0.5em",
-                "vertical-align": "middle",
+    inherited: {
+        content: [
+            {
+                control: FlickrInterestingPhoto,
+                css: {
+                    "margin-right": "0.5em",
+                    "vertical-align": "middle",
+                },
+                photoSize: "s"
             },
-            photoSize: "s"
-        },
-        {
-            html: "<span/>",
-            id: "name"
-        }
-    ],
-    prototype: {
-        name: Control.chain( "$name", "content" )
-    }
-})
+            {
+                html: "<span/>",
+                ref: "name"
+            }
+        ],
+    },
+    name: Control.chain( "$name", "content" )
+});
 
 $demo.append(
     ListBox.create()

@@ -23,21 +23,19 @@
 <script id="demo">
 function demo() {
 
-var MessageButton = BasicButton.subclass({
+var MessageButton = BasicButton.sub({
     className: "MessageButton",
     generic: true,
-    prototype: {
-        initialize: function() {
-            this._super();
-            var self = this;
-            this.click( function() {
-                TransientMessage.showMessage(
-                    self.message()
-                );
-            });
-        },
-        message: Control.property()
-    }
+    initialize: function() {
+        this._super();
+        var self = this;
+        this.click( function() {
+            TransientMessage.showMessage(
+                self.message()
+            );
+        });
+    },
+    message: Control.property()
 });
 
 $demo.append(

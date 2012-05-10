@@ -23,22 +23,24 @@
 <script id="demo">
 function demo() {
 
-var Message = Control.subclass({
+var Message = Control.sub({
     className: "Message",
-    content: [
-        {
-            html: "<h2>Compose message:</h2>",
-            css: { color: "Green" }
-        },
-        {
-            control: AutoSizeTextBox
-        },
-        "<br/>",
-        {
-            control: BasicButton,
-            content: "Send"
-        }
-    ]
+    inherited: {
+        content: [
+            {
+                html: "<h2>Compose message:</h2>",
+                css: { color: "Green" }
+            },
+            {
+                control: AutoSizeTextBox
+            },
+            "<br/>",
+            {
+                control: BasicButton,
+                content: "Send"
+            }
+        ]
+    }
 });
 
 $demo.append(
