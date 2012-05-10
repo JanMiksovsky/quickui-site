@@ -11,11 +11,11 @@
 </prototype>
 
 <style>
-#SitePage_content {
+.SitePage_content {
     max-width: inherit;
 }
 
-#editor {
+.editor {
     margin-top: 1em;
 }
 </style>

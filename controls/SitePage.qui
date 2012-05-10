@@ -46,7 +46,7 @@
     width: 1px; /* Browser will (should) actually make wide enough for content */
 }
 
-#SitePage_content {
+.SitePage_content {
     max-width: 800px;
 }
 

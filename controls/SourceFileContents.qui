@@ -18,7 +18,7 @@ file is provided.
     position: relative;
 }
 
-#linkContainer {
+.linkContainer {
     font-size: 13px;
     position: absolute;
     right: 8px;
@@ -27,7 +27,7 @@ file is provided.
     width: 100%;
 }
 
-a#link {
+a.link {
     border: none !important;
 }
 </style>

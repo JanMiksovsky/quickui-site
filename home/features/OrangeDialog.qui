@@ -27,7 +27,7 @@ h1 {
     font-size: 14pt;
 }
 
-#OrangeDialog_buttons {
+.OrangeDialog_buttons {
     margin-top: 10px;
 }
 </style>

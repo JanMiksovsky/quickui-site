@@ -7,7 +7,7 @@
 </content>
 
 <style>
-#listControls {
+.listControls {
     margin-top: 15px;
 }
 </style>

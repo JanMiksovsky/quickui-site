@@ -10,7 +10,7 @@
     display: inline;
 }
 
-#iconPlay {
+.iconPlay {
     border: none;
     cursor: pointer;
     text-decoration: none;

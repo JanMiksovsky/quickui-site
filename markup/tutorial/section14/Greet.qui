@@ -11,7 +11,7 @@
     font-size: 11pt;
 }
 
-#Greet_content.enabled {
+.Greet_content.enabled {
     cursor: pointer;
 }
 </style>

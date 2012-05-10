@@ -18,7 +18,7 @@
 </prototype>
 
 <style>
-#linkIndex {
+.linkIndex {
     margin-bottom: 15px;
 }
 </style>

@@ -58,11 +58,11 @@ pre {
     padding: 0;
 }
 
-#Feature_name {
+.Feature_name {
     margin-top: .5em;
 }
 
-#Feature_content {
+.Feature_content {
     font-size: 10pt;
     margin-bottom: 1em;
 }

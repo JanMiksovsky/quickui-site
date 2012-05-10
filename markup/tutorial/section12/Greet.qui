@@ -10,7 +10,7 @@
     font-size: 11pt;
 }
 
-#Greet_content {
+.Greet_content {
     cursor: pointer;
 }
 </style>

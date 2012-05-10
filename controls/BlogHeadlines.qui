@@ -11,12 +11,12 @@ a {
     padding: 3px;
 }
 
-.BlogPost #BlogPost_postTitle {
+.BlogPost .BlogPost_postTitle {
     font-size: inherit;
     font-weight: normal;
 }
 
-.BlogPost #BlogPost_content {
+.BlogPost .BlogPost_content {
     display: none;
 }
 </style>

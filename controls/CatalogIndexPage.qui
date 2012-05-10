@@ -18,15 +18,15 @@
 </prototype>
 
 <style>
-#SitePage_content {
+.SitePage_content {
     max-width: inherit;
 }
 
-#intro {
+.intro {
     margin-bottom: 25px;
 }
 
-#tileList {
+.tileList {
     border-collapse: separate;
 }
 

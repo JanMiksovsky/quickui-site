@@ -24,14 +24,14 @@
 </content>
 
 <style>
-#runner {
+.runner {
     display: table;
     width: 100%;
 }
-#runner > * {
+.runner > * {
     display: table-row;
 }
-#runner > * > * {
+.runner > * > * {
     box-sizing: border-box;
     display: table-cell;
     width: 50%;
@@ -45,15 +45,15 @@
     padding-bottom: 0.5em;
 }
 
-#buttonRun {
+.buttonRun {
     margin: 0;
 }
 
-#codePane {
+.codePane {
     padding-right: 1em;
 }
 
-#CodeEditor_code {
+.CodeEditor_code {
     /* Inconsolata from Google Web Fonts */
     border: 1px solid lightgray;
     font-family: Inconsolata, Monaco, Courier, Courier New, monospace;
@@ -65,7 +65,7 @@
     width: 100%;
 }
 
-#result {
+.result {
     vertical-align: top;
     position: relative;
     /* Ensure demos with popups can pop them over the editor */
@@ -73,7 +73,7 @@
 }
 
 /* Space out demo elements */
-#demo > * {
+.demo > * {
     margin: 0 0.25em 0.25em 0;
 }
 </style>

@@ -20,12 +20,12 @@
     width: 300px;
 }
 
-#classNameContainer {
+.classNameContainer {
     border-top: 2px solid #928274;
     padding-top: 0.5em;
 }
 
-#className {
+.className {
     border: none;
     color: #391c01;
     font-size: 12pt;
@@ -33,12 +33,12 @@
     font-weight: normal;
 }
 
-#description {
+.description {
     color: #444;
     font-size: 90%;
 }
 
-#demoContainer {
+.demoContainer {
     max-height: 250px;
     overflow: hidden;
     width: 300px;
@@ -48,10 +48,10 @@
     position: relative;
     z-index: 1; /* Make sure overlay for demo popups can cover up other tiles */
 }
-.DemoTile:hover #className {
+.DemoTile:hover .className {
     border-bottom: 1px dotted #391c01;
 }
-.DemoTile:hover #className:hover {
+.DemoTile:hover .className:hover {
     border-bottom-style: solid;
 }
 </style>

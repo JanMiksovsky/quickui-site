@@ -10,7 +10,7 @@
 </content>
 
 <style>
-#bob {
+.bob {
     color: darkred;
     font-weight: bold;
 }

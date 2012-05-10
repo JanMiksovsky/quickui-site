@@ -65,7 +65,7 @@ tag contents extracted from Greet.qui — along with a small but important trans
 <SourceFileContents path="build/Greet.css" />
 
 <p>
-The original CSS rule for #Greet_content has been prepended with a reference to the
+The original CSS rule for .Greet_content has been prepended with a reference to the
 element class “.Greet”. The result of this transformation is that the CSS rules in
 Greet.css will only apply to DOM elements with the class “Greet”.
 </p>

@@ -54,7 +54,7 @@
 </prototype>
 
 <style>
-#SitePage_content {
+.SitePage_content {
     max-width: inherit;
 }
 
@@ -62,11 +62,11 @@ h1, h2, p, ol, ul, pre {
     max-width: 800px;
 }
 
-#editor {
+.editor {
     margin: 1em 0;
 }
 
-#buttonNext {
+.buttonNext {
     display: none;
 }
 

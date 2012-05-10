@@ -53,7 +53,7 @@ a {
     color: white !important;
 }
 
-#searchBox {
+.searchBox {
     float: right;
     font-size: smaller;
     position: relative;

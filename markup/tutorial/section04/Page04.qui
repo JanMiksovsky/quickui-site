@@ -102,7 +102,7 @@ you quickly and safely retrieve that element.
 
 <p>
 It is still possible to obtain a reference to the <Tag>span</Tag>, for
-example with jQuery functions like find("#Greet_content"), and there are some cases where that can
+example with jQuery functions like find(".Greet_content"), and there are some cases where that can
 still be useful. The primary disadvantage of such a run-time search is that the
 search isn’t guaranteed to find the right element on the right control instance.
 </p>
