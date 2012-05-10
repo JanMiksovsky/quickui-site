@@ -1,8 +1,8 @@
 <Control className="SearchBox">
 
 <content>
-    <input id="terms" type="text"/>
-    <OrangeButton id="buttonSearch">Search</OrangeButton>
+    <input ref="terms" type="text"/>
+    <OrangeButton ref="buttonSearch">Search</OrangeButton>
 </content>
 
 <script>

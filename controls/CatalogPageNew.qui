@@ -5,7 +5,7 @@
 <prototype>
     <CatalogPage>
         <examples>
-            <CodeEditor id="editor" heading="Live demo" />
+            <CodeEditor ref="editor" heading="Live demo" />
         </examples>
     </CatalogPage>
 </prototype>

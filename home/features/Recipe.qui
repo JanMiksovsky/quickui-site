@@ -2,10 +2,10 @@
 
 <content>
     <div>
-        Name: <span id="Recipe_name"/>
-        <span id="Recipe_rating"/>
+        Name: <span ref="Recipe_name"/>
+        <span ref="Recipe_rating"/>
     </div>
-    <div id="Recipe_content"/>
+    <div ref="Recipe_content"/>
 </content>
 
 <script>

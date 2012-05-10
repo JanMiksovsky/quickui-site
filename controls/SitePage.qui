@@ -10,11 +10,11 @@
         </topRight>
         <bottomLeft>
             <h1>&#160;</h1> <!-- Won't actually appear, just used for space -->
-            <NavigationLinks id="SitePage_navigationLinks"/>
+            <NavigationLinks ref="SitePage_navigationLinks"/>
         </bottomLeft>
         <bottomRight>
-            <h1 id="SitePage_title" />
-            <div id="SitePage_content" />
+            <h1 ref="SitePage_title" />
+            <div ref="SitePage_content" />
             <GoogleAnalytics profileId="UA-11520232-1" />
         </bottomRight>
     </PageWithQuadrants>

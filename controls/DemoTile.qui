@@ -1,12 +1,12 @@
 <Control className="DemoTile">
 
 <content>
-    <div id="classNameContainer">
-        <CatalogLink id="className"/>
+    <div ref="classNameContainer">
+        <CatalogLink ref="className"/>
     </div>
-    <p id="description"/>
-    <Demo id="demoContainer">
-        <div id="demo"/>
+    <p ref="description"/>
+    <Demo ref="demoContainer">
+        <div ref="demo"/>
     </Demo>
 </content>
 

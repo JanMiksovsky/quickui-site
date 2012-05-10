@@ -4,9 +4,9 @@
 
 <prototype>
     <Dialog>
-        <h1 id="OrangeDialog_title"/>
-        <div id="OrangeDialog_content"/>
-        <div id="OrangeDialog_buttons"/>
+        <h1 ref="OrangeDialog_title"/>
+        <div ref="OrangeDialog_content"/>
+        <div ref="OrangeDialog_buttons"/>
     </Dialog>
 </prototype>
 

@@ -1,7 +1,7 @@
 <Control className="Counter">
 
 <content>
-You’ve clicked this <span id="count">0</span> times.
+You’ve clicked this <span ref="count">0</span> times.
 </content>
 
 <style>

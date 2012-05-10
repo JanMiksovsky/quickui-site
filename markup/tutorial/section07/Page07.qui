@@ -44,7 +44,7 @@ definitions above are equivalent.
 Using chain reduces the amount of code required to define control properties,
 and correspondingly reduces the chances for bugs. It also allows someone else reading the
 code to clearly see the intent of the property declaration. In the example above,
-the developer wishes to expose the HTML content an element called with id="Greet_content"
+the developer wishes to expose the HTML content an element called with ref="Greet_content"
 via a getter/setter function called content().
 </p>
 

@@ -1,8 +1,8 @@
 <Control className="ScreencastLink">
     
 <content>
-    <img id="iconPlay" src="/resources/play.png"/>
-    <Link id="ScreencastLink_content"/>
+    <img ref="iconPlay" src="/resources/play.png"/>
+    <Link ref="ScreencastLink_content"/>
 </content>
 
 <style>

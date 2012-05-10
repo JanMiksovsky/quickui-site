@@ -2,24 +2,24 @@
 
 <content>
     
-    <div id="runner">
+    <div ref="runner">
         <div>
             <div>
-                <span id="CodeEditor_heading" class="label">Edit JavaScript here</span>
+                <span ref="CodeEditor_heading" class="label">Edit JavaScript here</span>
             </div>
             <div class="label">
-                <SiteButton id="buttonRun">&#9654; Run</SiteButton>
+                <SiteButton ref="buttonRun">&#9654; Run</SiteButton>
             </div>
         </div>
         <div>
-            <div id="codePane">
-                <AceCodeEditor id="CodeEditor_code"/>
+            <div ref="codePane">
+                <AceCodeEditor ref="CodeEditor_code"/>
             </div>
-            <Demo id="result"/>
+            <Demo ref="result"/>
         </div>
     </div>
     
-    <div id="CodeEditor_error"/>
+    <div ref="CodeEditor_error"/>
     
 </content>
 

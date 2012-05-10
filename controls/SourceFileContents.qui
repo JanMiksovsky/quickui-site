@@ -7,9 +7,9 @@ file is provided.
 <Control className="SourceFileContents">
 
 <content>
-    <SourceCode id="SourceFileContents_content" />
-    <div id="linkContainer">
-        <a id="link">→ <span id="linkText"/></a>
+    <SourceCode ref="SourceFileContents_content" />
+    <div ref="linkContainer">
+        <a ref="link">→ <span ref="linkText"/></a>
     </div>
 </content>
 

@@ -1,7 +1,7 @@
 <Control className="FeatureSubclassingDemo">
     
 <content>
-    <OrangeButton id="buttonShow">Show dialog</OrangeButton>
+    <OrangeButton ref="buttonShow">Show dialog</OrangeButton>
 </content>
 
 <script>

@@ -4,7 +4,7 @@ class window.IconButton extends BasicButton
   inherited:
     content: [
       "<img src='http://quickui.org/demos/resources/document_alt_stroke_12x16.png'/> "
-      { html: "span", id: "IconButton_content" }
+      { html: "span", ref: "IconButton_content" }
     ]
   content: Control.chain "$IconButton_content", "content"
   genericSupport: true

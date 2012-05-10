@@ -16,7 +16,7 @@
     -->
     <Link href="https://github.com/JanMiksovsky/quickui">Contribute</Link>
 
-    <SearchBox id="searchBox"/>
+    <SearchBox ref="searchBox"/>
 
 </content>
 

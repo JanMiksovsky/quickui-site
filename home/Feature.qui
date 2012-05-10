@@ -4,15 +4,15 @@
     <div class="table">
         <div class="row">
             <div class="cell">
-                <h2 id="Feature_name"/>
-                <SourceCode id="Feature_markup"/>
+                <h2 ref="Feature_name"/>
+                <SourceCode ref="Feature_markup"/>
             </div>
             <div class="cell">
-                <div id="Feature_content"/>
+                <div ref="Feature_content"/>
                 <div class="label">Sample usage</div>
-                <SourceCode id="Feature_example"/>
+                <SourceCode ref="Feature_example"/>
                 <div class="label separator">Live demo</div>
-                <div id="Feature_result"/>
+                <div ref="Feature_result"/>
             </div>
         </div>
     </div>

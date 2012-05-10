@@ -1,8 +1,8 @@
 <Control className="CodeOutput">
 
 <content>
-    <Demo id="CodeOutput_content"/>
-    <!-- <div id="_label">(live control)</div> -->
+    <Demo ref="CodeOutput_content"/>
+    <!-- <div ref="_label">(live control)</div> -->
 </content>
 
 <style>

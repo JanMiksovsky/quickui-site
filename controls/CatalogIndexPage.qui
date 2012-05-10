@@ -7,12 +7,12 @@
             <CatalogNavigationLinks/>
         </navigationLinks>
         
-        <p id="intro">
+        <p ref="intro">
             These are open, ready-to-use controls, including base
             classes and samples. <Link href="usingCatalog.html">How to use these</Link>
         </p>
 
-        <List id="tileList" itemClass="DemoTile" mapFunction="controlRecord"/>
+        <List ref="tileList" itemClass="DemoTile" mapFunction="controlRecord"/>
         
     </SitePage>
 </prototype>

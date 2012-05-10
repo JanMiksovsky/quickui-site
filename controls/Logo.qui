@@ -1,10 +1,10 @@
 <Control className="Logo">
 
 <content>
-        <Link href="/" id="logotype">
+        <Link href="/" ref="logotype">
             <span class="bracket">&lt;</span>QuickUI<span class="bracket">&gt;</span>
         </Link>
-        <div id="tagline">Web control framework</div>
+        <div ref="tagline">Web control framework</div>
 </content>
 
 <style>

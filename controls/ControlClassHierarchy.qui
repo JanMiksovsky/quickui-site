@@ -1,7 +1,7 @@
 <Control className="describeClassHierarchy">
 
 <content>
-    <List id="describeClassHierarchy_baseClasses" itemClass="CatalogLink"/>
+    <List ref="describeClassHierarchy_baseClasses" itemClass="CatalogLink"/>
 </content>
 
 <style>

@@ -96,7 +96,7 @@ with references to the three corresponding spans inside those controls.
 <p>
 The QuickUI compiler and framework allow you to use DOM IDs to easily bridge the
 two different namespaces of DOM elements and JavaScript functions. If you create
-an element with id="foo", you'll end up with a function called $foo() that lets
+an element with ref="foo", you'll end up with a function called $foo() that lets
 you quickly and safely retrieve that element. 
 </p>
 

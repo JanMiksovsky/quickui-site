@@ -44,11 +44,11 @@
             
         </navigationLinks>
     
-        <div id="TutorialPage_content"/>
+        <div ref="TutorialPage_content"/>
     
-        <CodeEditor id="editor"/>
+        <CodeEditor ref="editor"/>
         
-        <SiteButton id="buttonNext">Next »</SiteButton>
+        <SiteButton ref="buttonNext">Next »</SiteButton>
         
     </SitePage>
 </prototype>

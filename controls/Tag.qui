@@ -1,6 +1,6 @@
 <Control className="Tag" tag="span">
 
-<content>&lt;<span id="Tag_content" />&gt;</content>
+<content>&lt;<span ref="Tag_content" />&gt;</content>
 
 <style>
 {

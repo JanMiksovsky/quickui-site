@@ -2,7 +2,7 @@
     
 <content>
     Hello,
-    <span id="Greet_content" class="enabled"/><span id="Greet_punctuation">.</span>
+    <span ref="Greet_content" class="enabled"/><span ref="Greet_punctuation">.</span>
 </content>
 
 <style>

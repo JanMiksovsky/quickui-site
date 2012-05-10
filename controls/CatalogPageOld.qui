@@ -8,27 +8,27 @@
 
             <h2>Live demo</h2>
             <Demo>
-                <div id="CatalogPageOld_demo"/>
+                <div ref="CatalogPageOld_demo"/>
             </Demo>
             
-            <div id="sampleMarkup">
+            <div ref="sampleMarkup">
                 <h2>Sample QuickUI markup to instantiate this control</h2>
-                <SourceCode id="sampleCodeMarkup"/>
+                <SourceCode ref="sampleCodeMarkup"/>
             </div>
 
-            <div id="demoMarkup">
+            <div ref="demoMarkup">
                 <h2>QuickUI Markup for the demo above</h2>
-                <SourceFileContents id="demoFileMarkup"/>
+                <SourceFileContents ref="demoFileMarkup"/>
             </div>
             
-            <div id="sampleJavaScript">
+            <div ref="sampleJavaScript">
                 <h2>Sample JavaScript to instantiate this control</h2>
-                <SourceCode id="sampleCodeJavaScript"/>
+                <SourceCode ref="sampleCodeJavaScript"/>
             </div>
             
-            <div id="demoJavaScript">
+            <div ref="demoJavaScript">
                 <h2>JavaScript for the demo above</h2>
-                <SourceFileContents id="demoFileJavaScript"/>
+                <SourceFileContents ref="demoFileJavaScript"/>
             </div>
             
         </examples>

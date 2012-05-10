@@ -3,7 +3,7 @@
 <content>
     <h1>QuickUI sample</h1>
     <Greet content="Alice" />
-    <Greet id="bob" content="Bob" punctuation="!" />
+    <Greet ref="bob" content="Bob" punctuation="!" />
     <Greet punctuation="?">
         <i>Carol</i>
     </Greet>

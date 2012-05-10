@@ -1,6 +1,6 @@
 <Control className="Greet">
     
-    Hello, <i><span id="Greet_content"/></i><span id="Greet_punctuation">.</span>
+    Hello, <i><span ref="Greet_content"/></i><span ref="Greet_punctuation">.</span>
 
 <script>
 Greet.prototype.extend({
