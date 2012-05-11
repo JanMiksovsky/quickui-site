@@ -7,15 +7,15 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         coffee: {
-            snippets: {
-                src: "docs/snippets/*.coffee",
-                dest: "docs/snippets/snippets.js"
+            samples: {
+                src: "docs/samples/*.coffee",
+                dest: "docs/samples/samples.js"
             }
         },
         watch: {
             coffee: {
-                files: "<config:coffee.snippets.src>",
-                tasks: "coffee:snippets"
+                files: "<config:coffee.samples.src>",
+                tasks: "coffee:samples"
             }
         }
     });

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css" href="http://fast.fonts.com/cssapi/72bd3277-b253-4903-97d8-6a9d18744569.css" />
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Inconsolata" />
+
+<link rel="stylesheet" type="text/css" href="/release/quickui-pre.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script> -->
+<script type="text/javascript" src="http://localhost/projects/lib/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="/release/quickui-pre.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="./samples/samples.js"></script>
+
+<title>CoffeeScript</title>
+
+<style>
+/* Make sample "pages" small for this article. */
+body .Page {
+    height: 250px;
+    width: 300px;
+}
+
+/* Show the boundaries of elements in sample pages. */
+body .Page, body .Page * {
+    border: 1px solid #aaa;
+    box-sizing: border-box;
+}
+</style>
+
+</head>
+
+<body data-create-controls="true" data-control="DocumentationPage">
+
+<p>TODO: Use hosted jQuery.js</p>
+
+<div data-control="SourceFileContents" data-path="samples/_SiteTemplate.coffee"></div>
+<div data-control="SiteTemplate">Content</div>
+
+<div data-control="SourceFileContents" data-path="samples/ProductTemplate.coffee"></div>
+<div data-control="ProductTemplate" data-top="Top">Content</div>
+</div>
+
+</html>
