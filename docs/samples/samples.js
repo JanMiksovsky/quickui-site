@@ -3,36 +3,6 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
-  window.SiteTemplate = (function(_super) {
-
-    __extends(SiteTemplate, _super);
-
-    SiteTemplate.name = 'SiteTemplate';
-
-    function SiteTemplate() {
-      return Control.coffee();
-    }
-
-    SiteTemplate.prototype.inherited = {
-      content: [
-        {
-          html: "div",
-          ref: "Page_top"
-        }, {
-          html: "div",
-          ref: "Page_content"
-        }
-      ]
-    };
-
-    SiteTemplate.prototype.content = Control.chain("$Page_content", "content");
-
-    SiteTemplate.prototype.top = Control.chain("$Page_top", "content");
-
-    return SiteTemplate;
-
-  })(Page);
-
   window.IconButton = (function(_super) {
 
     __extends(IconButton, _super);
@@ -62,6 +32,36 @@
     return $("#demo").append(IconButton.create("Document 1"), " ", IconButton.create("Document 2"));
   });
 
+  window.SiteTemplate = (function(_super) {
+
+    __extends(SiteTemplate, _super);
+
+    SiteTemplate.name = 'SiteTemplate';
+
+    function SiteTemplate() {
+      return Control.coffee();
+    }
+
+    SiteTemplate.prototype.inherited = {
+      content: [
+        {
+          html: "h1",
+          ref: "Page_top"
+        }, {
+          html: "div",
+          ref: "Page_content"
+        }
+      ]
+    };
+
+    SiteTemplate.prototype.content = Control.chain("$Page_content", "content");
+
+    SiteTemplate.prototype.top = Control.chain("$Page_top", "content");
+
+    return SiteTemplate;
+
+  })(Page);
+
   window.ProductTemplate = (function(_super) {
 
     __extends(ProductTemplate, _super);
@@ -73,12 +73,51 @@
     }
 
     ProductTemplate.prototype.inherited = {
-      top: "Top",
-      content: "Content"
+      top: [
+        "Products > ", {
+          html: "span",
+          ref: "ProductTemplate_description"
+        }
+      ],
+      content: [
+        {
+          control: BasicButton,
+          content: "Buy Now",
+          css: {
+            float: "right"
+          }
+        }, {
+          html: "div",
+          ref: "ProductTemplate_content"
+        }
+      ]
     };
+
+    ProductTemplate.prototype.content = Control.chain("$ProductTemplate_content", "content");
+
+    ProductTemplate.prototype.description = Control.chain("$ProductTemplate_description", "content");
 
     return ProductTemplate;
 
   })(SiteTemplate);
+
+  window.SampleProductPage = (function(_super) {
+
+    __extends(SampleProductPage, _super);
+
+    SampleProductPage.name = 'SampleProductPage';
+
+    function SampleProductPage() {
+      return Control.coffee();
+    }
+
+    SampleProductPage.prototype.inherited = {
+      description: "Widget",
+      content: "This is a general-purpose widget to satisfy any need."
+    };
+
+    return SampleProductPage;
+
+  })(ProductTemplate);
 
 }).call(this);

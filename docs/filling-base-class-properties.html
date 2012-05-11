@@ -11,8 +11,7 @@
 <link rel="stylesheet" type="text/css" href="/controls/controls.css" />
 <link rel="stylesheet" type="text/css" href="/site.css" />
 
-<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script> -->
-<script type="text/javascript" src="http://localhost/projects/lib/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="/release/quickui-pre.js"></script>
 <script type="text/javascript" src="/release/quickui.catalog.js"></script>
 <script type="text/javascript" src="/controls/controls.js"></script>
@@ -23,14 +22,27 @@
 <style>
 /* Make sample "pages" small for this article. */
 body .Page {
+    border: 1px solid #aaa;
+    box-sizing: border-box;
     height: 250px;
     width: 300px;
 }
 
-/* Show the boundaries of elements in sample pages. */
-body .Page, body .Page * {
-    border: 1px solid #aaa;
-    box-sizing: border-box;
+body .Page h1 {
+    font-size: 16px;
+    margin: 0;
+}
+
+/*
+ * Space out elements, show some backgrounds.
+ */
+
+.Page_top,
+.Page_content {
+    padding: .5em;
+}
+.Page_top {
+    background: #eee;
 }
 </style>
 
@@ -38,13 +50,29 @@ body .Page, body .Page * {
 
 <body data-create-controls="true" data-control="DocumentationPage">
 
-<p>TODO: Use hosted jQuery.js</p>
+<h2>Starting with a base class</h2>
+<p>A plain Page:</p>
+<div data-control="Page">(Content)</div>
 
-<div data-control="SourceFileContents" data-path="samples/_SiteTemplate.coffee"></div>
-<div data-control="SiteTemplate">Content</div>
+<h2>Creating a site-wide page template</h2>
+<div data-control="SourceFileContents" data-path="samples/SiteTemplate.coffee"></div>
+<div data-control="SiteTemplate" data-top="(Top)">(Content)</div>
 
+<h2>Creating a more specific template for a specific site area</h2>
 <div data-control="SourceFileContents" data-path="samples/ProductTemplate.coffee"></div>
-<div data-control="ProductTemplate" data-top="Top">Content</div>
-</div>
+<div data-control="ProductTemplate" data-description="(Description)">(Content)</div>
+
+<h2>Using the template for a specific page</h2>
+<div data-control="SourceFileContents" data-path="samples/SampleProductPage.coffee"></div>
+<div data-control="SampleProductPage"></div>
+
+<h2>Using the template in vanilla HTML to improve searchability</h2>
+<pre>
+&lt;div data-control="ProductTemplate" data-description="Widget">
+    This is a general-purpose widget to satisfy any need.
+&lt;/div>
+</pre>
+
+</body>
 
 </html>

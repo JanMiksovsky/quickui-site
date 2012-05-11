@@ -4,7 +4,7 @@ class window.SiteTemplate extends Page
   
   inherited:
     content: [
-      { html: "div", ref: "Page_top" }
+      { html: "h1", ref: "Page_top" }
       { html: "div", ref: "Page_content" }
     ]
     

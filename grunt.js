@@ -8,7 +8,12 @@ module.exports = function(grunt) {
     grunt.initConfig({
         coffee: {
             samples: {
-                src: "docs/samples/*.coffee",
+                src: [
+                    "docs/samples/IconButton.coffee",
+                    "docs/samples/SiteTemplate.coffee",
+                    "docs/samples/ProductTemplate.coffee",
+                    "docs/samples/SampleProductPage.coffee"
+                ],
                 dest: "docs/samples/samples.js"
             }
         },
