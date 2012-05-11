@@ -5,7 +5,7 @@ found at http://softwaremaniacs.org/soft/highlight/en/. The highlight.js
 script must be loaded for code to be colorized.
 -->
 
-<Control className="SourceCode" tag="pre">
+<Control className="SourceCode" tag="pre" genericSupport="true">
 
 <style>
 {
@@ -51,7 +51,6 @@ SourceCode.prototype.extend({
     initialize: function() {
         this._super();
         this
-            .genericIfClassIs( SourceCode )
             .addClass( "language-html" )
             .inDocument( function() {
                 if ( this._needsRefresh() ) {

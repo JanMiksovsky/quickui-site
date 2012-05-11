@@ -57,7 +57,7 @@ CatalogPageOld.prototype.extend({
     describeClass: function( describeClass ) {
         var result = this._super( describeClass );
         if ( describeClass !== undefined ) {
-            var className = Control.getClass( describeClass ).className;
+            var className = Control.getClass( describeClass ).prototype.className;
 
             if ( !this.demo() || this.demo().length === 0 ) {
                 // As a default demo, instantiate the control.

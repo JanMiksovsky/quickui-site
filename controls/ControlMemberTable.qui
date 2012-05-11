@@ -59,19 +59,16 @@ ControlMemberTable.prototype.extend({
             }
         }
         
-        var baseClassName = describeClass.classHierarchy.split(" ")[1];
-        if ( baseClassName ) {
-            var baseClass = Control.getClass( baseClassName );
-            if ( baseClass && baseClass !== Control ) {
-                // Add base class documentation to the documentation for this class.
-                var baseClassDocumentation = this._classMemberDocumentation( baseClass, true );
-                for ( var member in baseClassDocumentation ) {
-                    /*
-                     * Only grab base class members not already documented; we only
-                     * want the description from the most specific class.
-                     */
-                    documentation[ member ] = documentation[ member ] || baseClassDocumentation[ member ];
-                }
+        superclass = describeClass.superclass;
+        if ( superclass && superclass !== Control ) {
+            // Add base class documentation to the documentation for this class.
+            var baseClassDocumentation = this._classMemberDocumentation( superclass, true );
+            for ( var member in baseClassDocumentation ) {
+                /*
+                 * Only grab base class members not already documented; we only
+                 * want the description from the most specific class.
+                 */
+                documentation[ member ] = documentation[ member ] || baseClassDocumentation[ member ];
             }
         }
         

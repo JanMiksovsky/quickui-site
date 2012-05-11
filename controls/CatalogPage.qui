@@ -15,7 +15,7 @@
             
             <div ref="sectionBaseClasses" class="section">
                 <h2>Inherits from</h2>
-                <describeClassHierarchy ref="describeClassHierarchy"/>
+                <ControlClassHierarchy ref="ControlClassHierarchy"/>
             </div>
             
             <div ref="sectionMembers" class="section">
@@ -57,10 +57,10 @@ CatalogPage.prototype.extend({
     
     describeClass: Control.property[ "class" ]( function( describeClass ) {
 
-        var className = describeClass.className;
+        var className = describeClass.prototype.className;
         
-        this.$describeClassHierarchy().describeClass( className );
-        var baseClasses = this.$describeClassHierarchy().baseClasses();
+        this.$ControlClassHierarchy().describeClass( className );
+        var baseClasses = this.$ControlClassHierarchy().baseClasses();
         this.$sectionBaseClasses().toggle( baseClasses && baseClasses.length > 0 );
         
         this.$controlMemberTable().describeClass( className );
