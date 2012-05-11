@@ -198,9 +198,9 @@ Greet.prototype.extend({
     </li>
     <li> 
         Base classes can provide a bare-bones UI (so that, e.g., control elements
-        are visible and legible) by application of a generic class. This class should
-        be applied in the control's initialize() method by invoking this.genericIfClassIs()
-        method.
+        are visible and legible) by application of a generic CSS class. This
+        class will automatically be applied if the class prototype's
+        genericSupport member is true.
     </li>
     <li>
         When necessary, a control subclass can define style rules that adjust the appearance of

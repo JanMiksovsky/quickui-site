@@ -325,13 +325,12 @@ styling for the control so that it can be used without requiring any styling.
 </li>
 <li>
 For this purpose, QuickUI defines a notion of a “generic” style. A control shows
-its generic style by default.
+its generic style by default if its class defines a genericSupport member with
+the value true.
 </li>
 <li>
-A control host can explicit turn off the generic style.
-</li>
-<li>
-If a control is subclassed, the generic style is automatically surpressed.
+A control host can explicit turn off the generic style on a control instance by
+invoking generic( false ) on that instance.
 </li>
 </ul>
 

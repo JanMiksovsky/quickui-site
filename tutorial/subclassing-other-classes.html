@@ -25,7 +25,6 @@ function demo() {
 
 var CountryComboBox = ListComboBox.sub({
     className: "CountryComboBox",
-    generic: true,
     inherited: {
         items: [
             "Australia",
@@ -81,18 +80,16 @@ instance of Foo.
 <p>
 One note: Many control classes sport a “generic” appearance that provides a
 minimally interesting visual appearance. A class’ generic appearance is
-automatically turned off when creating a subclass. If you want your subclass to 
-show the generic appearance, set “generic: true” in the JSON.
+automatically turned off when creating a subclass. If you don't want your
+subclass to show the generic appearance, set “genericSupport: false” in the JSON.
 </p>
 
 <p>
 <b>The demo code</b>
 creates a new subclass of the catalog control
 <a data-control="CatalogLink">ListComboBox</a>,
-which is auseful starting point for creating new classes of combo box controls.
-The subclass requests the generic ListComboBox appearance by setting generic:
-true, which will ensure that CountryComboBox controls have a simple but usable
-visual presentation. The code then sets the items() property, which ListComboBox 
+which is a useful starting point for creating new classes of combo box controls.
+The code sets the items() property, which ListComboBox 
 uses to determine which items should appear in the control’s dropdown list. The
 demo then creates two instances of the new CountryComboBox class to show that 
 each instance ends up with the indicated list of countries.
