@@ -7,7 +7,6 @@ class window.IconButton extends BasicButton
       { html: "span", ref: "IconButton_content" }
     ]
   content: Control.chain "$IconButton_content", "content"
-  generic: true
   
 # Create some buttons
 $ -> $( "#demo" ).append(
