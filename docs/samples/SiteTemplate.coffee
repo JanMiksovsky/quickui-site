@@ -4,10 +4,10 @@ class window.SiteTemplate extends Page
   
   inherited:
     content: [
-      { html: "h1", ref: "Page_top" }
+      { html: "h1", ref: "Page_heading" }
       { html: "div", ref: "Page_content" }
     ]
     
   content: Control.chain "$Page_content", "content"
-  top: Control.chain "$Page_top", "content"
+  heading: Control.chain "$Page_heading", "content"
   

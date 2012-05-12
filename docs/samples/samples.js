@@ -46,7 +46,7 @@
       content: [
         {
           html: "h1",
-          ref: "Page_top"
+          ref: "Page_heading"
         }, {
           html: "div",
           ref: "Page_content"
@@ -56,7 +56,7 @@
 
     SiteTemplate.prototype.content = Control.chain("$Page_content", "content");
 
-    SiteTemplate.prototype.top = Control.chain("$Page_top", "content");
+    SiteTemplate.prototype.heading = Control.chain("$Page_heading", "content");
 
     return SiteTemplate;
 
@@ -73,10 +73,10 @@
     }
 
     ProductTemplate.prototype.inherited = {
-      top: [
+      heading: [
         "Products > ", {
           html: "span",
-          ref: "ProductTemplate_description"
+          ref: "ProductTemplate_heading"
         }
       ],
       content: [
@@ -95,7 +95,7 @@
 
     ProductTemplate.prototype.content = Control.chain("$ProductTemplate_content", "content");
 
-    ProductTemplate.prototype.description = Control.chain("$ProductTemplate_description", "content");
+    ProductTemplate.prototype.heading = Control.chain("$ProductTemplate_heading", "content");
 
     return ProductTemplate;
 
@@ -112,7 +112,7 @@
     }
 
     SampleProductPage.prototype.inherited = {
-      description: "Widget",
+      heading: "Widget",
       content: "This is a general-purpose widget to satisfy any need."
     };
 

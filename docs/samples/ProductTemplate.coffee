@@ -3,9 +3,9 @@ class window.ProductTemplate extends SiteTemplate
   constructor: -> return Control.coffee()
   
   inherited:
-    top: [
+    heading: [
       "Products > "
-      { html: "span", ref: "ProductTemplate_description" }
+      { html: "span", ref: "ProductTemplate_heading" }
     ]
     content: [
       { control: BasicButton, content: "Buy Now", css: float: "right" }
@@ -13,4 +13,4 @@ class window.ProductTemplate extends SiteTemplate
     ]
     
   content: Control.chain "$ProductTemplate_content", "content"
-  description: Control.chain "$ProductTemplate_description", "content"
+  heading: Control.chain "$ProductTemplate_heading", "content"
