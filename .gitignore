@@ -5,7 +5,7 @@ build
 quicommon/quicommon.*
 blog/blog.*
 controls/controls.*
-docs/snippets/snippets.*
+docs/samples/samples.*
 downloads/downloads.*
 features/features.*
 framework/framework.*
