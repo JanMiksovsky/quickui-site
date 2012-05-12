@@ -86,9 +86,6 @@ TutorialPage.prototype.extend({
     content: Control.chain( "$TutorialPage_content", "content" ),
     
     initialize: function() {
-        
-        this._super();
-        
         var self = this;
         this.$buttonNext().click( function() {
             var nextPage = self.nextPage();

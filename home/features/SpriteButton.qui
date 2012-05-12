@@ -65,7 +65,6 @@ SpriteButton.prototype.extend({
     image: Control.chain("$sprites", "image"),
 
     initialize: function() {
-        this._super();
         var self = this;
         this.$SpriteButton_content()
             .blur(function() { self.blur(); })

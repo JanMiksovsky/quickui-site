@@ -49,7 +49,6 @@ SourceCode.prototype.extend({
     _needsRefresh: Control.property.bool(),
     
     initialize: function() {
-        this._super();
         this
             .addClass( "language-html" )
             .inDocument( function() {

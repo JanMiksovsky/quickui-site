@@ -63,7 +63,6 @@ SitePage.prototype.extend({
     navigationLinks: Control.chain("$SitePage_navigationLinks", "content"),
     
     initialize: function() {
-        this._super();
         if ( this.$SitePage_title().content().length === 0
             && this.title().length > 0 ) {
             // Extract default page heading from dehydrated document title.

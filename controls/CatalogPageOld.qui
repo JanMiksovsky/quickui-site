@@ -95,7 +95,6 @@ CatalogPageOld.prototype.extend({
     ),
     
     initialize: function() {
-        this._super();
         this.inDocument( function() {
             if ( this.autoFocus() ) {
                 // Give the input to first text box or text area in the demo. 

@@ -26,7 +26,6 @@ CatalogPageNew.prototype.extend({
     autoRun: Control.chain( "$editor", "autoRun" ),
     
     initialize: function() {
-        this._super();
         var demo = this._demo();
         if ( demo && demo.length > 0 ) {
             this.$editor().code( demo );
