@@ -23,57 +23,39 @@
 <body data-create-controls="true" data-control="DocumentationPage">
 
 <p>
-This page describes the Control JSON format which is used to by the
-<a data-control="Link" href="/docs/control-class-methods.html#subclass">Control.sub()</a>
-method to define a new class' property values. Control JSON is effectively a
-JavaScript analogue to HTML markup — both allow you to define the content of
-a user interface.
+The Control JSON format is used by control classes to define values they wish
+to set on parent classes when rendering new control instances. Control JSON is
+effectively a JavaScript analogue to HTML markup — both allow you to declaratively
+define the content of a user interface.
+</p>
+<p>
+Control JSON is used to process the "inherited" member set on a class' prototype.
+This is typically set by passing an object with an "inherited:" key to a call
+to
+<a data-control="Link" href="/docs/control-class-methods.html#subclass">Control.sub()</a>.
 </p>
 
 <p>
-The Control JSON format allows you to concisely define two things: 1) a few
-fields governing your class' definition, and 2) the default property
-values for a new instance of the class. For example, in the following code:
+For example, the following code defines a new subclass of the BasicButton class:
 </p>
 
 <pre>
-var OkButton = BasicButton.sub({
-    className: "OkButton",
-    content: "OK"
+var OKButton = BasicButton.sub({
+    className: "OKButton",
+    inherited: {
+        content: "OK"        
+    }
 });
 </pre>
 
 <p>
-The key "className:" is a reserved key that defines the name of the new class.
-The key "content:" is used to set the default value of a new instance's 
-content() property to the text "OK".
+The values passed to sub() will be copied to the new class' prototype. In this
+case, the name "OKButton" will be set as the className on the prototype. The
+static "inherited" value is likewise copied to the prototype. That sub-object
+will be processed as Control JSON using the rules defined here.
 </p>
 
-<h2>Reserved JSON keys</h2>
-<p>
-There are only a handful of reserved keys at the top level of a Control JSON
-object:
-</p>
-<ul>
-    <li>
-        <b>className:</b> defines the string name for the new class. This is
-        applied as a DOM element class name to new control instances, allowing
-        them to be styled with CSS. This name is also useful for debugging.
-    </li>
-    <li>
-        <b>prototype:</b> defines any members that should be added to the
-        new class' prototype. This is where you will typically define new
-        control properties and other methods.
-    </li>
-    <li>
-        <b>tag:</b> defines the HTML element type which will be used as the
-        root for new control instances. By default, this is a
-        <span data-control="Tag">div</span>, but you can set it to another
-        type if you wish.
-    </li>
-</ul>
-
-<h2>Defining default property values for a new control instance</h2>
+<h2>Control JSON keys invoke control property setters</h2>
 <p>
 All keys at the top level of a Control JSON object are interpreted as the names
 of control properties. The values corresponding to these keys will be passed
@@ -86,13 +68,13 @@ for a new OkButton instance will be set, by default, to the string "OK".
 </p>
 <pre>
 var button = OkButton.create();
-var s = button.content(); // "OK"
+var s = button.content(); // returns "OK"
 </pre>
 
 <p>
-Default values defined in the JSON passed to subclass() are actually set by
-invoking properties on the <i>base</i> class. The above definition for
-OkButton sets the default value by calling the content() property defined
+Default values defined in Control JSON are actually set by invoking property
+setters on the <i>base</i> class. The above definition for
+OKButton sets the default value by calling the content() property defined
 by its base class BasicButton. This allows a class to set its own default
 content, while simultaneously allowing the class to define a custom content()
 property whose definition overrides its base class' implementation.
@@ -107,7 +89,9 @@ The values in a Control JSON object can take one of the following forms:
 <ul>
     <li>
         String, integer, or other fundamental JavaScript type. Such a value
-        will be used as is. Setting a control's content() property to a string
+        will be used as is. (E.g., the "OK" string above will not receive
+        any further processing.) 
+        Setting a control's content() property to a string
         representing HTML will typically place the correspoding HTML elements
         into the DOM.
     </li>
@@ -181,12 +165,12 @@ control. It also sets the Collapsible's heading() property, and the photo's
 photoSize() property.
 </p>
 
-<h2>Setting IDs on DOM elements and controls</h2>
+<h2>Setting the "ref:" key on DOM elements and controls</h2>
 <p>
 If a Control JSON object starting with "html:" or "control:" also contains an
 "ref:" key, the resulting element or control will have the indicated string
-value applied as a DOM ID. As a secondary effect, the control <i>class</i> being
-defined (<i>not</i> the control instance being created) will have an element
+value applied as a CSS class. As a secondary effect, the control <i>class</i>
+being defined (<i>not</i> the control instance being created) will have an element
 reference function generated for it. This function will permit quick access
 to the indicated element at runtime.
 </p>
@@ -196,14 +180,14 @@ See
 for more discussion and an interactive example.
 </p>
 
-<h2>Advantages of using JSON to define a control's appearance</h2>
+<h2>Advantages of using Control JSON to define a control's appearance</h2>
 <p>
 The data-driven approach to using JSON to generate UI arguably has
 advantages over the equivalent procedural JavaScript code:
 </p>
 <ul>
     <li>
-        The JSON doesn't allow for fancy coding tricks or idioms.
+        The Control JSON doesn't allow for fancy coding tricks or idioms.
         Such techniques can result in compact, efficient code, but at a loss
         of legibility.
         Reading someone <i>else's</i> jQuery code can be challenging; there's a
@@ -219,8 +203,9 @@ advantages over the equivalent procedural JavaScript code:
         of JSON makes it easy to visualize the resulting UI.
     </li>
     <li>
-        JSON is more parsable tool-able than arbitrary JavaScript. This enables
-        tools which generate or transform UI code.
+        Control JSON is more parsable and tool-able than arbitrary JavaScript.
+        This enables the creation of design-time and compile-time tools that can
+        generate or transform UI code.
     </li>
 </ul>
 

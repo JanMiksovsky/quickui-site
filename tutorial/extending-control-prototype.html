@@ -35,13 +35,12 @@ var UserTile = Control.sub({
                 },
                 photoSize: "s"
             },
-            {
-                html: "<span>User tile</span>"
-            }
+            { html: "<span>User tile</span>" }
         ]
     },
     highlight: function() {
-        return this; // TODO
+        // TODO
+        return this;
     }
 })
 
@@ -68,14 +67,14 @@ prototype.
 <p>
 As in normal JavaScript, you give instances of a control class access to a new
 function by extending the class’ JavaScript prototype. There are several ways to
-do this. One efficient way is pass the subclass() call a dictionary containing a
-key called “prototype:”. The value of the “prototype:” key typically be a nested
-dictionary of functions.
+do this, but the easiest is to include functions as values in the object passed
+to Control.sub(). These functions will be copied over to the new class’
+prototype, making them
+available to all instances of the control class (as well as any
+subclasses of that class you might define later).
 </p>
 <p>
-These will be copied over to the new class’ prototype, making the functions
-available to all instances of the control class (or to instances of any
-subclasses for that class which you define later). If you select a control’s top
+    If you select a control’s top
 element out of the DOM to obtain a general jQuery object, you’ll need to
 <a data-control="Link" href="casting.html">cast that object</a>
 to the more specific class before you can invoke the class’ function.
@@ -83,8 +82,8 @@ to the more specific class before you can invoke the class’ function.
 
 <p>
 <b>The demo code</b> 
-defines a simple function that will get copied to become
-UserTile.prototype.highlight(). This highlight() function can then be invoked on
+includes a “highlight:” key with a function value. That function will be copied
+to UserTile.prototype.highlight(), where it can then be invoked on
 any UserTile instances. The demo creates three instances of the UserTile class,
 and invokes highlight() on the second instance.
 </p>

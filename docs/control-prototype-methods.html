@@ -166,7 +166,7 @@ initialize: function() {
 }
 </pre>
 
-<h2>initialize()</h2>
+<h2><a id="initialize">initialize()</a></h2>
 <p>
 This initialize() method is invoked when a new control is instantiated, and is typically
 used for wiring up event handlers, perform any initial calculations, etc.
@@ -183,8 +183,12 @@ used for wiring up event handlers, perform any initial calculations, etc.
         separately, with "this" inside each call corresponding to the given control.
     </li>
     <li>
-        The initialize() method of any children is invoked <i>before</i> the
-        initialize() method is invoked on the parent.
+        The initialize() methods of base classes are invoked before the
+        initialize() method of a subclass.
+    </li>
+    <li>
+        The initialize() method of any (inner) child conrols is invoked <i>before</i> the
+        initialize() method is invoked on the (outer) parent control.
     </li>
     <li>
         If the control was created from scratch (i.e., not by wrapping an element

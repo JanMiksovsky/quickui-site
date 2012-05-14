@@ -26,7 +26,6 @@ function demo() {
 var MessageButton = BasicButton.sub({
     className: "MessageButton",
     initialize: function() {
-        this._super();
         this.click( function() {
             var content = ""; // TODO: get control content
             TransientMessage.showMessage( content + " to you, too." );
@@ -51,7 +50,8 @@ $demo.append(
 <p class="highlight">
 <b>Core idea:</b>
 You can wire up event handlers and perform other setup tasks inside a control’s
-initialize() method.
+<a data-control="Link" href="/docs/control-prototype-methods.html#initialize">initialize()</a>
+method.
 </p>
 <p>
 The initialize() method is invoked as soon as the control is created. If the
@@ -63,10 +63,8 @@ initialize() method will execute while the control is still outside of the DOM.
 </p>
 <p>
 The initialize() method can be concisely defined by adding an “initialize:” key
-to the prototype in a class’ JSON. Inside this function, “this” will refer to
-the new control. When subclassing a class other that Control, your initialize()
-method should invoke this._super() to give its superclass(es) a chance to
-perform their own initialization.
+to the object passed to sub(). Inside initialize(), “this” will refer to
+the new control.
 </p>
 <p>
 As discussed earlier, you can wire up

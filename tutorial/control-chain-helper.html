@@ -35,10 +35,7 @@ var UserTile = Control.sub({
                 },
                 photoSize: "s"
             },
-            {
-                html: "<span/>",
-                ref: "name"
-            }
+            { html: "<span/>", ref: "name" }
         ]
     },
     name: function( value ) {
@@ -108,15 +105,20 @@ value to the last function in the chain, and will also return “this” so the
 function can be chained.
 </p>
 <p>
-An argument can be passed to a named function by following the name with a “/”.
-For example: Control.chain( “$foo”, “css/color” ) would return a function that
-gets or sets the color of the element #foo.
+An argument can be passed to a named function by following the name with a “/”:
+</p>
+
+<pre>
+        fooColor: Control.chain( "$foo", "css/color" )
+</pre>
+<p>
+returns a function that gets/sets the color of the element with ref “foo”.
 </p>
 
 <p>
 <b>The demo code</b> 
-defines the class’ name() property to get or set the content of the span with id
-“name”.
+defines the class’ name() property to get or set the content of the span with
+ref “name”.
 </p>
 
 <p>

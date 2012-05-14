@@ -55,7 +55,7 @@ class: a JavaScript class that you can instantiate as part of a user interface.
 </p>
 <p>
 The
-<a data-control="Link" href="/docs/control-class-methods.html#subclass">Control.sub()</a>
+<a data-control="Link" href="/docs/control-class-methods.html#sub">Control.sub()</a>
 method does its core work via a jQuery method called
 <a data-control="Link" href="http://api.jquery.com/jQuery.sub/">sub()</a>,
 which
@@ -65,27 +65,37 @@ will inherit a large set of standard behavior from the base Control class. Since
 your new class will also inherit all of jQuery’s abilities.
 </p>
 <p>
-The subclass() call expects a single parameter as a JSON dictionary in
+The sub() call permits a single parameter: a JavaScript object whose values
+will be copied to the new class' prototype. That is, these values will be
+available on all new instances of the class you're defining.
+For example, you will typically supply a “className:” key to define the name for
+the new control class, which will be applied as a CSS class to all controls
+created by the class (see
+<a data-control="Link" href="cssClasses.html">CSS class names</a>.) You can
+also define properties and methods which you want to make available on all
+instances of your new class.
+</p>
+<p>
+One special member of this object passed to sub() has the key “inherited:”.
+This takes the form of a JavaScript sub-object in
 <a data-control="Link" href="/docs/control-JSON.html">Control JSON</a> format.
 Briefly, this format lets you define, in a declarative, data-driven way, the
-initial content of a control, as well as some basic details for your new class.
-For example, you will typically supply a “className:” key to define the name for the new
-control class, which will be applied as a CSS class to all controls created by 
-the class; see <a data-control="Link" href="cssClasses.html">CSS class names</a>.
-The JSON dictionary can also contain other keys. Any entry of the form foo:
+initial content of a control. Any keys in that “inherited:” sub-object will
+invoke property setters on your new object. That is, an entry of the form foo:
 “bar” will cause the base class property foo() to be invoked with value “bar”.
 </p>
 <p>
-The result of calling subclass() is typically stored in a global JavaScript
+The result of calling sub() is typically stored in a global JavaScript
 variable with the same identifier as the control’s class name. It’s this form of 
 the name that you will reference directly in your JavaScript code.
 </p>
 
 <p>
-<b>The demo code</b> 
-creates a new control class called Greet. This will be a subclass of the base
-Control class. The reserved “className:” key in the JSON dictionary sets the class’
-name to “Greet”. The result of the subclass() call is stored in a JavaScript
+<b>The demo code</b> creates a new control class called Greet that will be a
+subclass of the base Control class. The “className:” key in the JavaScript
+object sets the class’ name to “Greet”. The “inherited:” key indicates that
+new instances of the Greet class should have their content() property set to
+the indicated value. The result of the sub() call is stored in a JavaScript
 variable with the identifier Greet.
 </p>
 <p>
@@ -96,9 +106,8 @@ content, the three controls don’t appear to be visible.
 
 <p>
 <b>Your goal:</b>
-Add default content to Greet controls by adding a “content:” key to the
-dictionary passed to Control.sub(), and give this key a string value like 
-“Hello, world!”
+Add default content to Greet controls by giving the “content:” key a string
+value like “Hello, world!”
 </p>
 <p>
 When Greet.create() is called, a plain instance of the base Control class is

@@ -191,11 +191,36 @@ Like Control.property(), but parses its value as a date.
 Like Control.property(), but parses its value as an integer.    
 </p>
 
-<h2><a id="property-subclass">Control.sub( json )</a></h2>
+<h2><a id="sub">Control.sub( members )</a></h2>
 <p>
 Creates and returns a new control class. This will be a subclass of whichever
-existing class subclass() was applied to. The properties of the new class
-are specified in <a data-control="Link" href="control-JSON.html">Control JSON</a>. 
+existing class sub() was applied to. For example, calling BasicButton.sub()
+creates a subclass of BasicButton.
+</p>
+<p>
+The sub() function is defined by jQuery, and uses a standard JavaScript
+prototype-based system to create a new subclass. A QuickUI-specific overload
+of sub() allows for a syntactic convenience of an optional "members" parameter.
+These members will be copied onto the prototype for the new class.
+</p>
+
+<pre>
+// Create a new subclass of Control and give it the name "MyControl".
+var MyControl = Control.sub({
+    className: "MyControl"
+});
+
+// Above code is shorthand for:
+var MyControl = Control.sub();
+MyControl.prototype.className = "MyControl";
+</pre>
+
+<p>
+When creating a QuickUI control class, one member of interest to set on the new
+class is "inherited", which should be set to a JavaScript object in
+<a data-control="Link" href="control-JSON.html">Control JSON</a> format. The
+new control class will use this information when rendering new control
+instances. 
 </p>
 
 </body>

@@ -57,9 +57,9 @@ $demo.append(
 <p class="highlight">
 <b>Core idea:</b>
 Generally speaking, QuickUI control classes are designed to be subclassable. You
-can subclass a control class Foo by invoking Foo.sub(). Default values in
-the JSON passed to Foo.sub() will invoke property setters defined by Foo to
-set default values for new control instances.
+can subclass a control class Foo by invoking Foo.sub(). Values in the Control
+JSON in the “inherited:” key passed to Foo.sub() will invoke property setters
+in Foo’s base classes.
 </p>
 <p>
 Until now, these tutorial exercises have created control classes inheriting
@@ -76,12 +76,6 @@ The JSON values you pass to sub() will invoke property setters on the
 indicated superclass. E.g., if you derive from class Foo and have JSON with
 content: “Hello”, that will invoke Foo.prototype.content(“Hello”) on any new
 instance of Foo.
-</p>
-<p>
-One note: Many control classes sport a “generic” appearance that provides a
-minimally interesting visual appearance. A class’ generic appearance is
-automatically turned off when creating a subclass. If you don't want your
-subclass to show the generic appearance, set “genericSupport: false” in the JSON.
 </p>
 
 <p>
@@ -100,7 +94,7 @@ each instance ends up with the indicated list of countries.
 Your goal: Make your own country the default value for CountryComboBox controls.
 ListComboBox defines its content() property to be the text in the text box
 portion of the combo box. You can set the default content for CountryComboBox 
-controls by adding a “content:” key to the dictionary passed to sub().
+controls by adding a “content:” key to the “inherited:” object.
 </p>
 
 </body>

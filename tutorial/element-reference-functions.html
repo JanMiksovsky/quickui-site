@@ -36,7 +36,7 @@ var UserTile = Control.sub({
                 photoSize: "s"
             },
             {
-                html: "<span id='name'/>"
+                html: "<span class='name'/>"
             }
         ]
     }
@@ -49,9 +49,9 @@ $demo.append(
 );
 
 var $tiles = $demo.children().control();
-$tiles.eq(0).find( "#name" ).text( "Alice" );
-$tiles.eq(1).find( "#name" ).text( "Bob" );
-$tiles.eq(2).find( "#name" ).text( "Carol" );
+$tiles.eq(0).find( ".name" ).text( "Alice" );
+$tiles.eq(1).find( ".name" ).text( "Bob" );
+$tiles.eq(2).find( ".name" ).text( "Carol" );
 
 }
 </script>
@@ -87,16 +87,16 @@ To address this problem, QuickUI gives you a reliable way to refer to elements
 within a control. In the JSON which defines your control class’s initial DOM,
 assign an ID to any HTML element or sub-control by including an “ref:” key in the 
 nested dictionary for that element or sub-control. This will have two effects. 
-First, the element will have its DOM ID set to “foo” (and can therefore be 
-selected or styled with “#foo” as usual). Second, and more importantly, a
+First, the element will have “foo” included its list of CSS classes (and can
+therefore be selected or styled with “.foo” as usual). Second, and more importantly, a
 function called $foo() will automatically be generated for your control class.
 </p>
 <p>
 The instant the QuickUI framework creates that #foo element at runtime, it will
 store a reference to it in the control’s per-instance data. Invoking $foo() on
 that control will return the control’s copy of the #foo element. This runtime
-lookup is done by reference, not by searching by ID, so it works even when other 
-elements with the same ID have been added within the control’s subtree.
+lookup is done by reference, <i>not</i> by searching by class, so it works even
+when other elements with the same class have been added within the control’s subtree.
 </p>
 
 <p>
@@ -104,13 +104,13 @@ elements with the same ID have been added within the control’s subtree.
 creates a simple user tile class such as might be found on a social networking
 site. A tile includes a photo – for demo purposes, this will be a random photo –
 and a span to hold the user’s name. The code then creates three user tile
-controls, and searches through these for the spans that have ID “#name”. It
+controls, and searches through these for the spans that have class “.name”. It
 directly manipulates these spans to give each tile a different user name.
 </p>
 <p>
-This works – for now. But what if the author of FlickrInterestingPhoto decides
-to give that control a sub-element with id #name? The attempt to search for name
-spans by ID would inadvertently pick up unintended elements inside
+This works — for now. But what if the author of FlickrInterestingPhoto decides
+to give that control a sub-element with class “.name”? The attempt to search for name
+spans by class would inadvertently pick up unintended elements inside
 FlickrInterestingPhoto. It’s better to avoid the potential for a naming
 collision.
 </p>
@@ -118,15 +118,18 @@ collision.
 <p>
 <b>Your goal:</b> 
 Rewrite this code to use an element reference function to reliably manipulate
-the name span. First, remove the id='name' attribute from the “html:” line and
-turn that into an ref: "name" item on a subsequent line in the same nested
-dictionary. This will make the ID visible to the subclass() call. The indicated 
-ID will be set on the element, but moreover, a new $name() function will be
-created that always returns the indicated element.
+the name span.
 </p>
-<p>
-Second, replace the find("#name") calls with calls to $name().
-</p>
+<ol>
+<li>
+Remove the class='name' attribute from the “html:” line and replace it with a ref:
+"name" declaration on the line that follows the “html:” line. This
+will generate a function called $name() that always returns the indicated element.
+</li>
+<li>
+Replace the find("#name") calls with calls to the new $name() function.   
+</li>
+</ol>
 
 </body>
 

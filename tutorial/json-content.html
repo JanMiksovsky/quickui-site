@@ -31,14 +31,9 @@ var Message = Control.sub({
                 html: "<h2>Compose message:</h2>",
                 css: { color: "Green" }
             },
-            {
-                control: AutoSizeTextBox
-            },
+            { control: AutoSizeTextBox },
             "<br/>",
-            {
-                control: BasicButton,
-                content: "Send"
-            }
+            { control: BasicButton, content: "Send" }
         ]
     }
 });
@@ -58,8 +53,9 @@ $demo.append(
 
 <p class="highlight">
 <b>Core idea:</b>
-When defining a class, you can use JSON to populate the default content of a new
-control. A simple JSON format allows you to create plain text, HTML elements, or
+When defining a class, you can use Control JSON to declaratively populate the
+default content of a new
+control. This JSON format allows you to create plain text, HTML elements, or
 QuickUI controls. The UI created in JSON will be passed to the control’s
 content() property setter (or any other property you indicate). This makes
 defining content quite concise, and makes it easier to visualize the result of 
@@ -121,7 +117,7 @@ The JSON format is recursive, allowing controls be created within controls, etc.
 <p>
 <b>The demo code</b>
 creates the user interface for a simple message composer.
-The JSON passed to subclass() creates some HTML elements and controls.
+The JSON passed to sub() creates some HTML elements and controls.
 </p>
 
 <p>
