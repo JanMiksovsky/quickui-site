@@ -44,7 +44,7 @@ body .Page h1 {
  * Space out elements, show some backgrounds.
  */
 
-.Page_top,
+.Page_heading,
 .Page_content {
     padding: .25em;
 }
@@ -67,8 +67,8 @@ A basic concept in QuickUI is that control classes
 <h2>Creating a site-wide page template</h2>
 <div data-control="SourceFileContents" data-path="samples/SiteTemplate.coffee"></div>
 <div data-control="SiteTemplate">
-    <div data-property="top">
-        <div class="placeholder">(Top)</div>
+    <div data-property="heading">
+        <div class="placeholder">(Heading)</div>
     </div>
     <div class="placeholder" style="height: 170px;">(Content)</div>
 </div>
@@ -76,8 +76,8 @@ A basic concept in QuickUI is that control classes
 <h2>Creating a more specific template for a specific site area</h2>
 <div data-control="SourceFileContents" data-path="samples/ProductTemplate.coffee"></div>
 <div data-control="ProductTemplate">
-    <div data-property="description">
-        <span class="placeholder">(Description)</span>
+    <div data-property="heading">
+        <span class="placeholder">(Heading)</span>
     </div>
     <div class="placeholder" style="height: 180px; margin-right: 80px;">(Content)</div>
 </div>
@@ -88,7 +88,7 @@ A basic concept in QuickUI is that control classes
 
 <h2>Using the template in vanilla HTML to improve searchability</h2>
 <pre>
-&lt;div data-control="ProductTemplate" data-description="Widget">
+&lt;div data-control="ProductTemplate" data-heading="Widget">
     This is a general-purpose widget to satisfy any need.
 &lt;/div>
 </pre>
