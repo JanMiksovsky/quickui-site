@@ -10,7 +10,7 @@
             <Link href="control-class-methods.html">Class methods</Link>
             <Link href="control-prototype-methods.html">Prototype methods</Link>
             <Link href="control-events.html">Events</Link>
-            <Link href="filling-base-class-properties.html">Rendering</Link>
+            <!-- <Link href="filling-base-class-properties.html">Rendering</Link> -->
             <Link href="control-JSON.html">Control JSON</Link>
             <Link href="CoffeeScript.html">CoffeeScript</Link>
             <Link href="control-guidelines.html">Guidelines</Link>
