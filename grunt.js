@@ -10,6 +10,7 @@ module.exports = function(grunt) {
             samples: {
                 src: [
                     "docs/samples/IconButton.coffee",
+                    "docs/samples/SimplePage.coffee",
                     "docs/samples/SiteTemplate.coffee",
                     "docs/samples/ProductTemplate.coffee",
                     "docs/samples/SampleProductPage.coffee"

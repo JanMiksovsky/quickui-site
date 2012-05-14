@@ -17,12 +17,13 @@
 <script type="text/javascript" src="/controls/controls.js"></script>
 <script type="text/javascript" src="./samples/samples.js"></script>
 
-<title>Filling in base class properties</title>
+<title>How QuickUI controls render themselves</title>
 
 <style>
 /* Make sample "pages" small for this article. */
 body .Page {
-    border: 1px solid #aaa;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 8px #aaa;
     box-sizing: border-box;
     height: 250px;
     padding: .5em;
@@ -55,7 +56,18 @@ body .Page h1 {
 <body data-create-controls="true" data-control="DocumentationPage">
 
 <p>
-A basic concept in QuickUI is that control classes  
+QuickUI has a simple and elegant system through which a control can render
+itself into the DOM: a new control renders itself by invoking property setters
+on its base classes. This page walks through how that system works, and why
+it allows for a great deal of flexibility and extensibility.
+</p>
+
+<p>
+At a motivating example, consider the task of creating page template for a web
+site, say, an online store selling a variety of products. This store may have
+a collection of page templates — some general, some specific — for presenting
+information about the company and its products. Let's examine how these
+templates could be implemented as controls. 
 </p>
 
 <h2>Starting with a base class</h2>
@@ -63,6 +75,15 @@ A basic concept in QuickUI is that control classes
 <div data-control="Page">
     <div class="placeholder" style="height: 100%;">(Content)</div>
 </div>
+
+<h2>Filling in content</h2>
+<div data-control="SourceFileContents" data-path="samples/SimplePage.coffee"></div>
+<p>A plain Page:</p>
+<div data-control="SimplePage"></div>
+
+<p>
+Using Control.prototype.content()
+</p>
 
 <h2>Creating a site-wide page template</h2>
 <div data-control="SourceFileContents" data-path="samples/SiteTemplate.coffee"></div>
@@ -92,6 +113,10 @@ A basic concept in QuickUI is that control classes
     This is a general-purpose widget to satisfy any need.
 &lt;/div>
 </pre>
+
+<p>
+Sealing...
+</p>
 
 </body>
 
