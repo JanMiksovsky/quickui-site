@@ -60,6 +60,8 @@ CatalogPage.prototype.extend({
         var className = describeClass.prototype.className;
         
         this.$ControlClassHierarchy().describeClass( className );
+        // Kind of weird/lazy to use the list of classes calculated by the
+        // hierarchy control; should calculate that somewhere else.
         var baseClasses = this.$ControlClassHierarchy().baseClasses();
         this.$sectionBaseClasses().toggle( baseClasses && baseClasses.length > 0 );
         

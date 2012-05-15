@@ -15,13 +15,27 @@
 
 <script>
 ControlClassHierarchy.prototype.extend({
-    
-    baseClasses: Control.chain( "$ControlClassHierarchy_baseClasses", "items" ),
+
+    baseClasses: function( classFn ) {
+        classFn = classFn || this.describeClass();
+        var superclass = classFn.superclass;
+        if ( superclass === undefined || superclass === jQuery ) {
+            return [];
+        } else {
+            var baseClasses = this.baseClasses( superclass );
+            baseClasses.unshift( superclass );
+            return baseClasses;
+        }
+    },
+
+    baseClassNames: Control.chain( "$ControlClassHierarchy_baseClasses", "items" ),
     
     describeClass: Control.property[ "class" ]( function( describeClass ) {
-        var baseClasses = describeClass.prototype.classes.split( " " );
-        baseClasses.shift();    // Remove the current class itself.
-        this.baseClasses( baseClasses );
+        var baseClasses = this.baseClasses();
+        var baseClassNames = $.map( baseClasses, function( classFn ) {
+            return classFn.prototype.className;
+        });
+        this.baseClassNames( baseClassNames );
     })
 
 });

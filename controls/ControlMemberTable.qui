@@ -43,7 +43,7 @@ ControlMemberTable.prototype.extend({
      */
     _classMemberDocumentation: function( describeClass, linkToDeclaringClass ) {
         
-        var className = describeClass.className;
+        var className = describeClass.prototype.className;
         var documentation = controlDocumentation[ className ] || {};
         documentation = this._formatDocumentation( documentation );
         
