@@ -8,25 +8,35 @@ module.exports = function(grunt) {
     grunt.initConfig({
         coffee: {
             samples: {
-                src: [
-                    "docs/samples/IconButton.coffee",
-                    "docs/samples/SimplePage.coffee",
-                    "docs/samples/SiteTemplate.coffee",
-                    "docs/samples/ProductTemplate.coffee",
-                    "docs/samples/SampleProductPage.coffee"
+                src: [ "docs/samples/*.coffee",
                 ],
-                dest: "docs/samples/samples.js"
+                dest: "docs/samples/samples.coffee.js"
+            }
+        },
+        concat: {
+            samples: {
+                src: [
+                    "docs/samples/SimplePage.js",
+                    "docs/samples/SiteTemplate.js",
+                    "docs/samples/ProductTemplate.js",
+                    "docs/samples/SampleProductPage.js"
+                ],
+                dest: "docs/samples/samples.js"                                
             }
         },
         watch: {
             coffee: {
                 files: "<config:coffee.samples.src>",
                 tasks: "coffee:samples"
+            },
+            concat: {
+                files: "<config:concat.samples.src>",
+                tasks: "concat:samples"
             }
         }
     });
 
     // Default task.
-    grunt.registerTask( "default", "coffee" );
+    grunt.registerTask( "default", "coffee concat watch" );
     
 };

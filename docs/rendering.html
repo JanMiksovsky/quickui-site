@@ -77,24 +77,67 @@ You create a new control class by subclassing an existing class, either the
 base Control class, or one that offers more specific services. In the case of
 creating page templates as controls, a useful base class is
 <a data-control="CatalogLink">Page</a>, which offers a few helpful properties
-like fill() and title().
+like fill() and title(). We can create a trivial derivation of the Page class
+like this:
+</p>
+
+<div data-control="SourceFileContents" data-path="samples/TrivialPage.js"></div>
+
+<p>
+When we create an instance of this trivial page class, we end up with a page
+whose default content is entirely empty. Accordingly, this page has nothing to
+render when its created:
 </p>
 
 <div data-control="Page">
     <div class="placeholder" style="height: 100%;">(Content)</div>
 </div>
 
-<h2>Filling in content</h2>
-<div data-control="SourceFileContents" data-path="samples/SimplePage.coffee"></div>
-<p>A plain Page:</p>
-<div data-control="SimplePage"></div>
-
 <p>
-Using Control.prototype.content()
+An app using this kind of page could, of course, programmatically add content
+at run-time by setting the page's content() property, but let's enhance the
+control class so that it knows how to render its own content.
 </p>
 
+<h2>Setting content via a property on a base class</h2>
+
+<p>
+Control classes can perform work when they are instantiated, and the most common
+work they do is to invoke property setters on their base classes. Let's create
+a simple page class that set the content() property of the Page base class:
+</p>
+
+<div data-control="SourceFileContents" data-path="samples/SimplePage.js"></div>
+
+<p>
+The above definition creates a JavaScript object (a simple dictionary) and
+stashes it for later use as a member called "inherited" on the SimplePage class'
+prototype. Whenever SimplePage is instantiated, e.g., by a call to
+SimplePage.create(), the values in this "inherited" member will be invoked as
+property setters. Here, the indicated text string will be passed to the
+content() property defined by a base class of SimplePage.
+</p>
+<p>
+As it turns out, the closest ancestor class of SimplePage that defines a
+content() property is Control. The base Control implementation of content() has
+generally the same effect of setting the innerHTML of control's top element
+via jQuery
+<a data-control="Link" href="http://api.jquery.com/html/">$.html()</a>
+function.
+Page.content(). So a new page will end up looking like:  
+</p>
+
+<p>
+At this stage, we're simply populating the DOM in a declarative fashion; we
+could have acheived the same results by invoking $.html() with the given text.
+But by defining the user interface of a page class this way, we open the door
+to  
+</p>
+
+<div data-control="SimplePage"></div>
+
 <h2>Creating a site-wide page template</h2>
-<div data-control="SourceFileContents" data-path="samples/SiteTemplate.coffee"></div>
+<div data-control="SourceFileContents" data-path="samples/SiteTemplate.js"></div>
 <div data-control="SiteTemplate">
     <div data-property="heading">
         <div class="placeholder">(Heading)</div>
@@ -102,8 +145,21 @@ Using Control.prototype.content()
     <div class="placeholder" style="height: 170px;">(Content)</div>
 </div>
 
+<h2>Using a template in vanilla HTML to improve searchability</h2>
+<pre>
+&lt;div data-control="SiteTemplate" data-heading="Home">
+    Welcome to our web site.
+&lt;/div>
+</pre>
+
+<div data-control="SiteTemplate">
+    <div data-property="heading">Home</div>
+    Welcome to our web site.
+</div>
+
+
 <h2>Creating a more specific template for a specific site area</h2>
-<div data-control="SourceFileContents" data-path="samples/ProductTemplate.coffee"></div>
+<div data-control="SourceFileContents" data-path="samples/ProductTemplate.js"></div>
 <div data-control="ProductTemplate">
     <div data-property="heading">
         <span class="placeholder">(Heading)</span>
@@ -112,12 +168,11 @@ Using Control.prototype.content()
 </div>
 
 <h2>Using the template for a specific page</h2>
-<div data-control="SourceFileContents" data-path="samples/SampleProductPage.coffee"></div>
+<div data-control="SourceFileContents" data-path="samples/SampleProductPage.js"></div>
 <div data-control="SampleProductPage"></div>
 
-<h2>Using the template in vanilla HTML to improve searchability</h2>
 <pre>
-&lt;div data-control="ProductTemplate" data-heading="Widget">
+&lt;div data-control="SiteTemplate" data-heading="Widget">
     This is a general-purpose widget to satisfy any need.
 &lt;/div>
 </pre>
