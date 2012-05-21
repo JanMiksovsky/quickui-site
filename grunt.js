@@ -16,9 +16,10 @@ module.exports = function(grunt) {
         concat: {
             samples: {
                 src: [
-                    "docs/samples/SimplePage.js",
                     "docs/samples/SiteTemplate.js",
                     "docs/samples/ProductTemplate.js",
+                    "docs/samples/HomePage.js",
+                    "docs/samples/SimplePage.js",
                     "docs/samples/SampleProductPage.js"
                 ],
                 dest: "docs/samples/samples.js"                                

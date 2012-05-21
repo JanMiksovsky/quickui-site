@@ -56,27 +56,27 @@ body .Page h1 {
 <body data-create-controls="true" data-control="DocumentationPage">
 
 <p>
-QuickUI has a simple and elegant system through which a control can render
-itself into the DOM: a new control renders itself by invoking property setters
-on its base classes. This page walks through how that system works, and why
+QuickUI has a simple and elegant system with which a control can render itself
+into the DOM: a new control invokes property setters on its base classes, each
+of which can partially fill in the DOM, until the final control is completely
+populated with elements. This page walks through how that system works, and why
 it allows for a great deal of flexibility and extensibility.
 </p>
 
 <p>
-At a motivating example, consider the task of creating page template for a web
-site, say, an online store selling a variety of products. This store may have
+At a motivating example, consider the task of creating page template for a
+simple online store selling a variety of products. This store may have
 a collection of page templates — some general, some specific — for presenting
 information about the company and its products. Let's examine how these
-templates could be implemented as controls. 
+templates and pages could be implemented as controls.
 </p>
 
 <h2>Starting with a base class</h2>
 
 <p>
-You create a new control class by subclassing an existing class, either the
-base Control class, or one that offers more specific services. In the case of
-creating page templates as controls, a useful base class is
-<a data-control="CatalogLink">Page</a>, which offers a few helpful properties
+In the case of creating a page template as a control, we could start by
+subclassing the base Control class, but there's a more specific subclass called
+<a data-control="CatalogLink">Page</a> that offers a few helpful properties
 like fill() and title(). We can create a trivial derivation of the Page class
 like this:
 </p>
@@ -94,9 +94,9 @@ render when its created:
 </div>
 
 <p>
-An app using this kind of page could, of course, programmatically add content
-at run-time by setting the page's content() property, but let's enhance the
-control class so that it knows how to render its own content.
+We can programmatically add content at run-time by setting this page's content()
+property, but let's enhance our page control so that it knows how to render its
+own content.
 </p>
 
 <h2>Setting content via a property on a base class</h2>
@@ -104,18 +104,19 @@ control class so that it knows how to render its own content.
 <p>
 Control classes can perform work when they are instantiated, and the most common
 work they do is to invoke property setters on their base classes. Let's create
-a simple page class that set the content() property of the Page base class:
+a simple page class that sets its own content() property, which it inherits
+from a base class:
 </p>
 
 <div data-control="SourceFileContents" data-path="samples/SimplePage.js"></div>
 
 <p>
-The above definition creates a JavaScript object (a simple dictionary) and
-stashes it for later use as a member called "inherited" on the SimplePage class'
-prototype. Whenever SimplePage is instantiated, e.g., by a call to
+The above definition stashes a simple JavaScript object (i.e., a dictionary)
+in a member called "inherited" on the SimplePage class' prototype.
+Whenever SimplePage is instantiated, e.g., by a call to
 SimplePage.create(), the values in this "inherited" member will be invoked as
 property setters. Here, the indicated text string will be passed to the
-content() property defined by a base class of SimplePage.
+control's content() property.
 </p>
 <p>
 As it turns out, the closest ancestor class of SimplePage that defines a
@@ -124,20 +125,44 @@ generally the same effect of setting the innerHTML of control's top element
 via jQuery
 <a data-control="Link" href="http://api.jquery.com/html/">$.html()</a>
 function.
-Page.content(). So a new page will end up looking like:  
+Page.content(). So a new instance of SimplePage will end up looking like:  
 </p>
+
+<div data-control="SimplePage"></div>
 
 <p>
 At this stage, we're simply populating the DOM in a declarative fashion; we
 could have acheived the same results by invoking $.html() with the given text.
 But by defining the user interface of a page class this way, we open the door
-to  
+to easy extensibility.
 </p>
 
-<div data-control="SimplePage"></div>
-
 <h2>Creating a site-wide page template</h2>
+<p>
+Let's use this same approach to create a simple page template that includes a
+heading area and a content area. This time, the default content will set
+via "inherited" will include two HTML elements: an
+<span data-control="Tag">h1</span> to hold the heading, and a
+<span data-control="Tag">div</span> to hold the main content. 
+</p>
+
 <div data-control="SourceFileContents" data-path="samples/SiteTemplate.js"></div>
+
+
+<p>
+The last two signficiant lines define two properties called content() and
+heading(). These use the
+<a data-control="Link" href="control-class-methods.html#chain">Control.chain()</a>
+helper function. This effectively delegates any values passed to or from
+SiteTemplate's heading() or content() property to the
+<span data-control="Tag">h1</span> or <span data-control="Tag">div</span>,
+respectively.
+</p>
+
+<p>
+The result is a page that now has two "slots" that can be filled in:
+</p>
+
 <div data-control="SiteTemplate">
     <div data-property="heading">
         <div class="placeholder">(Heading)</div>
@@ -145,41 +170,145 @@ to
     <div class="placeholder" style="height: 170px;">(Content)</div>
 </div>
 
-<h2>Using a template in vanilla HTML to improve searchability</h2>
+<p>
+Note that SiteTemplate <i>overrides</i> the base Control.content() property.
+Any value passed to SiteTemplate's content() setter will go into the
+<span data-control="Tag">div</span>. Effectively SiteTemplate has partially
+filled itself in: it renders two elements itself, therbey enforcing a certain
+page structure, then leaves the other details to outside hosts or subclasses
+of SiteTemplate. This rendering technique is very common in QuickUI controls,
+and is similar in concept to abstract classes in various programming languages. 
+</p>
+
+<h2>Using a template in vanilla HTML for good searchability</h2>
+
+<p>
+Now that we've defined a SiteTemplate, we can create an instance of that
+template in a variety of ways. One simple way is to use vanilla HTML:
+</p>
+
 <pre>
-&lt;div data-control="SiteTemplate" data-heading="Home">
+&lt;body data-create-controls="true" data-control="SiteTemplate">
+    &lt;div data-property="heading">Home Page&lt;/div>
     Welcome to our web site.
-&lt;/div>
+&lt;/body>
 </pre>
 
-<div data-control="SiteTemplate">
-    <div data-property="heading">Home</div>
-    Welcome to our web site.
-</div>
+<p>
+All this text will be indexable, and therefore searchable. When a user views
+the page, an instance of SiteTemplate is created, and the indicated heading
+and content are passed to the heading() and content() properties. In this way,
+the page is completely rendered:</p>
 
+<div data-control="HomePage"></div>
+
+<h2>Creating a page by subclassing the template</h2>
+<p>
+We could also create the exact same page above as a subclass of SiteTemplate:
+</p>
+
+<div data-control="SourceFileContents" data-path="samples/HomePage.js"></div>
+
+<p>
+This method makes the page text opaque to search engines, but maybe useful in
+applications — or portions thereof — where searchability is not important.
+</p>
 
 <h2>Creating a more specific template for a specific site area</h2>
+
+<p>
+Our new SiteTemplate control class, which we created by subclassing Page,
+is itself extensible. We can use this feature to create a more specific
+template for the Products area of our hypothetical online store. Just as we
+defined SiteTemplate to partially fill in a Page, we can define a
+ProductTemplate class to partially fill in a SiteTemplate:
+</p>
+
 <div data-control="SourceFileContents" data-path="samples/ProductTemplate.js"></div>
-<div data-control="ProductTemplate">
+
+<p>
+We once again define a content() property that overrides the base (SiteTemplate)
+implementation. We define a heading() property that overrides the
+base implementation as well. The resulting ProductTemplate renders like so:
+</p>
+
+<div data-create-controls="true" data-control="ProductTemplate">
     <div data-property="heading">
         <span class="placeholder">(Heading)</span>
     </div>
     <div class="placeholder" style="height: 180px; margin-right: 80px;">(Content)</div>
 </div>
 
-<h2>Using the template for a specific page</h2>
-<div data-control="SourceFileContents" data-path="samples/SampleProductPage.js"></div>
-<div data-control="SampleProductPage"></div>
+<h2>Using the template for a product page</h2>
+
+<p>
+Using the above template, we can create a page in our Products area via HTML…
+</p>
 
 <pre>
-&lt;div data-control="SiteTemplate" data-heading="Widget">
+&lt;body data-control="ProductTemplate">
+    &lt;div data-property="Heading">Widget&lt;div>
     This is a general-purpose widget to satisfy any need.
-&lt;/div>
+&lt;/body>
 </pre>
 
 <p>
-Sealing...
+… or in JavaScript:
 </p>
+
+<div data-control="SourceFileContents" data-path="samples/SampleProductPage.js"></div>
+
+<p>
+The result in either case will be a completely rendered product page:
+</p>
+
+<div data-control="SampleProductPage"></div>
+
+<p>
+The sample templates and pages are deliberately simplistic, but the same
+concepts can be used to acheive a user interface of arbitrary complexity.
+</p>
+
+<h2>The benefits of modularity and extensibility</h2>
+<p>
+There are a number of advantages to creating our application this way:
+</p>
+<ul>
+    <li>
+        We can define elements (and behavior) shared across pages in a single
+        place. The <span data-control="Tag">h1</span> used by SiteTemplate is
+        defined only once, so we if we want to replace that with a different
+        element, or another QuickUI control, we only need to make the change
+        in one place to see its effects in all pages using the template.
+    </li>
+    <li>
+        Each class has a very limited set of responsibilities, and so we can
+        focus each class on doing its job very well. If we identify a usability
+        improvement in the general product template (a new location for the
+        Buy Now button, say), it's very easy to identify where that work needs
+        to take place.
+    </li>
+    <li>
+        Every page in our site is inherently extensible. Some templating systems
+        assume a single level of template-ness; the result of a template is
+        static HTML that can't be further extended. With QuickUI,
+        we can create a class hierarchy that's as deep as we need. All of
+        our classes — Page, SiteTemplate, or ProductTemplate — are automatically
+        subclassable, even classes like SampleProductPage (above),
+        which initially we might assume will only have one instance.
+        If we later identify a situation where we want to create a subclass of
+        that page, we don't have to go back and make that class extensible; it's
+        already extensible.
+    </li>
+    <li>
+        Every element of our user interface has the same properties. We can use
+        the exact same model to create custom buttons, lists, menus, and so on.
+        We don't have to learn one set of techniques for pages, and a different
+        set for rows in a table, another for widgets, and so on. All user
+        interface elements, from the outermost page to the tiniest UI flourish,
+        can be modeled the same way.
+    </li>
+</ul>
 
 </body>
 

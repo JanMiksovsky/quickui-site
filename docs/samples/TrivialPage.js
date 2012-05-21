@@ -1,3 +1,1 @@
-var TrivialPage = Control.sub({
-   className: "TrivialPage" 
-});
+var TrivialPage = Page.sub();
