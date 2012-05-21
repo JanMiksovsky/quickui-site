@@ -71,7 +71,15 @@ templates could be implemented as controls.
 </p>
 
 <h2>Starting with a base class</h2>
-<p>A plain Page:</p>
+
+<p>
+You create a new control class by subclassing an existing class, either the
+base Control class, or one that offers more specific services. In the case of
+creating page templates as controls, a useful base class is
+<a data-control="CatalogLink">Page</a>, which offers a few helpful properties
+like fill() and title().
+</p>
+
 <div data-control="Page">
     <div class="placeholder" style="height: 100%;">(Content)</div>
 </div>
