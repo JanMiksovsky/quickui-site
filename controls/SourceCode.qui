@@ -9,6 +9,7 @@ script must be loaded for code to be colorized.
 
 <style>
 {
+    margin: 0;
     white-space; pre-wrap;
 }
 
