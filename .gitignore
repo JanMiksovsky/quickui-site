@@ -2,8 +2,8 @@
 .project
 
 build
-quicommon/quicommon.*
 blog/blog.*
+catalog
 controls/controls.*
 docs/samples/samples.*
 downloads/downloads.*
@@ -11,6 +11,7 @@ features/features.*
 framework/framework.*
 gallery/gallery.*
 home/home.*
+release
 screencasts/screencasts.*
 markup/tutorial/section01/section01.*
 markup/tutorial/section02/section02.*
