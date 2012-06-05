@@ -103,17 +103,7 @@ information, see the
 <a href="http://quickui/tutorial/creating-control-class.html">tutorial on creating classes</a> 
 in JavaScript.)
 CoffeeScript makes this process easier and more concise through its built-in
-"class" keyword. For the time being, support for creating control classes in
-CoffeeScript requires a plugin called quickui.coffee.js. (This will eventually
-be folded into the core quickui.js runtime.)
-</p>
-
-<pre>
-&lt;script type="text/javascript" src="http://quickui.org/plugins/quickui.coffee.js"></script>
-</pre>
-
-<p>
-With the CoffeeScript plugin loaded, you can create a QuickUI control class in
+"class" keyword. You can create a QuickUI control class in
 CoffeeScript just like any other CoffeeScript class. Follow these steps:
 </p>
 
@@ -130,21 +120,6 @@ class window.MyClass extends Control
 <p>
 The "window." ensures the class is available for instantiation within other
 QuickUI controls (whether CoffeeScript-based or not).
-</p>
-</li>
-
-<li>
-<p>
-Include the following one-line boilerplate constructor:
-</p>
-<pre>
-  constructor: -> return Control.coffee()
-</pre>
-<p>
-This constructor declaration ensures the new class can be instantiated like any
-other jQuery subclass. As with other QuickUI classes, all initialization work
-should be performed in the controls initialize() method rather than the 
-constructor.
 </p>
 </li>
 

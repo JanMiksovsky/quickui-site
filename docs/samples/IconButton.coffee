@@ -1,6 +1,5 @@
 # Define button class
 class window.IconButton extends BasicButton
-  constructor: -> return Control.coffee()
   inherited:
     content: [
       "<img src='http://quickui.org/demos/resources/document_alt_stroke_12x16.png'/> "
