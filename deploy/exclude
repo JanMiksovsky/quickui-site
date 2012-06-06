@@ -1,6 +1,9 @@
 # Exclude patterns for rsync deployment.
+.DS_Store
 .externalToolBuilders
 .git
 .gitignore
+.project
 build
+deploy
 demos

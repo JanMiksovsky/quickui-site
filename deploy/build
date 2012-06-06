@@ -29,12 +29,21 @@ versionLine=`grep "quickui:" $quickuiRuntimeBaseName.js`
 # Extract the version number from that line.
 version=`echo $versionLine | sed -e "s/.*quickui: \"\(.*\)\"/\1/"`
 
+# Unfortunately, OS/X version of cp doesn't support --update
+os=`uname`
+if [[ "$os" == "Darwin" ]]; then
+   updateParam=""
+else
+   updateParam="--update"
+fi
+
 echo Copying QuickUI runtime files
-cp --force --update $quickuiRuntimeBaseName.* $releasePath
+# cp options are: force, preserve (times), update (if available)
+cp -f -p $updateParam $quickuiRuntimeBaseName.* $releasePath
 
 echo Copying versioned runtime files for version $version
-cp --force --update $quickuiRuntimeBaseName.js $releasePath/quickui.$version.js
-cp --force --update $quickuiRuntimeBaseName.css $releasePath/quickui.$version.css
+cp -f -p $updateParam $quickuiRuntimeBaseName.js $releasePath/quickui.$version.js
+cp -f -p $updateParam $quickuiRuntimeBaseName.css $releasePath/quickui.$version.css
 
 echo Building control documentation
 catalogSource="$sitePath/../quickui-catalog"
@@ -48,7 +57,7 @@ catalogRuntime="$catalogSource/quickui.catalog"
 qb $catalogRuntime
 
 echo Copying catalog runtime files
-cp --force --update $catalogRuntime/quickui.catalog.* $releasePath
+cp -f -p $updateParam $catalogRuntime/quickui.catalog.* $releasePath
 
 echo Building catalog documentation
 qb $catalogDest
@@ -59,7 +68,7 @@ if [ ! -d "$catalogDest" ]; then
 	mkdir "$catalogDest"
 fi
 echo Copying catalog documentation
-cp --recursive --update $catalogSource/docs/* $catalogDest
+cp -f -p -r $updateParam $catalogSource/docs/* $catalogDest
 
 echo Compiling site markup
 qb $sitePath
