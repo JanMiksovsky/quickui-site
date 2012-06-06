@@ -7,16 +7,42 @@ scriptPath=$(cd ${0%/*} && echo $PWD/${0##*/})
 scriptFolder=`dirname "$scriptPath"`
 sitePath="$scriptFolder/.."
 
-quickuiPath="$sitePath/../quickui"
+releasePath="$sitePath/release"
+if [ ! -d "$releasePath" ]; then
+	echo "Creating release folder"
+    mkdir "$releasePath"
+fi
 
-grunt --config $quickuiPath/grunt.js
+echo "Building QuickUI runtime"
+quickuiSource="$sitePath/../quickui"
+grunt --color=false --config $quickuiSource/grunt.js
+
 # TODO: run unit tests
-rsync -rt $quickuiPath/src/quickui.* release/
+echo "Copying QuickUI runtime files"
+cp --force --update $quickuiSource/src/quickui.* release
 # TODO: extract version and create release/quickui.<version>.js and .css
 
-catalogPath="$sitePath/../quickui-catalog"
-grunt --config $catalogPath/grunt.js
+echo "Building control documentation"
+catalogSource="$sitePath/../quickui-catalog"
+$catalogSource/mkdocs
+
+#grunt --config $catalogPath/grunt.js
 # TODO: run unit tests
-qb $catalogPath
-rsync -rt $catalogPath/quickui.catalog/quickui.catalog.* release/
-rsync -rtv --exclude "build" --exclude ".DS_Store" $catalogPath/docs/ catalog/
+
+echo "Building catalog runtime"
+catalogRuntime="$catalogSource/quickui.catalog"
+qb $catalogRuntime
+
+echo "Copying catalog runtime files"
+cp --force --update $catalogRuntime/quickui.catalog.* release
+
+echo "Building catalog documentation"
+qb $catalogDest
+
+catalogDest="$sitePath/catalog"
+if [ ! -d "$catalogDest" ]; then
+	echo "Creating catalog documentation folder"
+	mkdir "$catalogDest"
+fi
+echo "Copying catalog documentation"
+cp --recursive --update $catalogSource/docs/* $catalogDest
