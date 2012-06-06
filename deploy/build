@@ -1,0 +1,68 @@
+#!/bin/bash
+#
+# Make the complete QuickUI site from the component projects, quickui and
+# quickui-catalog. For now, this script expects those companion projects to be
+# cloned to peer folders to this one.
+#
+
+# Get location of parent QuickUI folder relative to location of this script.
+scriptPath=$(cd ${0%/*} && echo $PWD/${0##*/})
+scriptFolder=`dirname "$scriptPath"`
+sitePath="$scriptFolder/.."
+
+releasePath="$sitePath/release"
+if [ ! -d "$releasePath" ]; then
+	echo "Creating release folder"
+    mkdir "$releasePath"
+fi
+
+echo Building QuickUI runtime
+quickuiSource="$sitePath/../quickui"
+grunt --color=false --config $quickuiSource/grunt.js
+
+# TODO: run unit tests
+
+# Extract version line from quickui.js, which looks like
+# 	quickui: "0.9.1"
+quickuiRuntimeBaseName="$quickuiSource/src/quickui"
+versionLine=`grep "quickui:" $quickuiRuntimeBaseName.js`
+# Extract the version number from that line.
+version=`echo $versionLine | sed -e "s/.*quickui: \"\(.*\)\"/\1/"`
+
+echo Copying QuickUI runtime files
+cp --force --update $quickuiRuntimeBaseName.* $releasePath
+
+echo Copying versioned runtime files for version $version
+cp --force --update $quickuiRuntimeBaseName.js $releasePath/quickui.$version.js
+cp --force --update $quickuiRuntimeBaseName.css $releasePath/quickui.$version.css
+
+echo Building control documentation
+catalogSource="$sitePath/../quickui-catalog"
+$catalogSource/mkdocs
+
+#grunt --config $catalogPath/grunt.js
+# TODO: run unit tests
+
+echo Building catalog runtime
+catalogRuntime="$catalogSource/quickui.catalog"
+qb $catalogRuntime
+
+echo Copying catalog runtime files
+cp --force --update $catalogRuntime/quickui.catalog.* $releasePath
+
+echo Building catalog documentation
+qb $catalogDest
+
+catalogDest="$sitePath/catalog"
+if [ ! -d "$catalogDest" ]; then
+	echo Creating catalog documentation folder
+	mkdir "$catalogDest"
+fi
+echo Copying catalog documentation
+cp --recursive --update $catalogSource/docs/* $catalogDest
+
+echo Compiling site markup
+qb $sitePath
+
+echo Building site
+grunt --color=false ---config $sitePath/grunt.js
