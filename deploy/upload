@@ -1,0 +1,1 @@
+rsync --recursive --times --verbose --dry-run ../release/ janm@edad.pair.com:public_html/quickui/release/

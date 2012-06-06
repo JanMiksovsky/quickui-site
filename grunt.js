@@ -38,6 +38,6 @@ module.exports = function(grunt) {
     });
 
     // Default task.
-    grunt.registerTask( "default", "coffee concat watch" );
+    grunt.registerTask( "default", "coffee concat" );
     
 };
