@@ -1,0 +1,6 @@
+# Exclude patterns for rsync deployment.
+.externalToolBuilders
+.git
+.gitignore
+build
+demos

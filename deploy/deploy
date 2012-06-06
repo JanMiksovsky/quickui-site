@@ -1,0 +1,1 @@
+rsync --delete --dry-run --exclude-from=exclude --recursive --times --verbose ../ janm@edad.pair.com:public_html/quickui/
