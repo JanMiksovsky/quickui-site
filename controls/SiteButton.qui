@@ -1,4 +1,4 @@
-<Control className="SiteButton" genericDefault="false">
+<Control className="SiteButton" generic="false">
 
 <prototype>
     <BasicButton/>
@@ -30,4 +30,4 @@
 }
 </style>
 
-</Control>
+</Control>

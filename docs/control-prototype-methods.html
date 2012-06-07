@@ -65,7 +65,7 @@ MyControl.prototype.extend({
 &lt;/Control&gt;
 </pre>
 
-<h2>cast()</h2>
+<h2><a id="cast">cast()</a></h2>
 <p>
 Given a jQuery array of elements of potentially differing control classes,
 this returns the array cast to the most specific class which all the elements
@@ -82,7 +82,7 @@ control's size has in fact changed, the control raises the
 event.
 </p>
 
-<h2>content( [value] )</h2>
+<h2><a id="content">content( [value] )</a></h2>
 <p>
 Gets or sets the content of the elements. This is a helper function that performs
 two main tasks.
@@ -108,7 +108,7 @@ the control. Control classes often override content() to identify where their pr
 content should go.
 </p>
 
-<h2>controlClass()</h2>
+<h2><a id="controlClass">controlClass()</a></h2>
 <p>
 Returns the actual control class of the first element in the array. (Cf. cast(),
 which looks for the common class of all elements in the array, and returns the
@@ -124,7 +124,7 @@ $e.className()                  // Returns "Control"
 $e.controlClass()               // Returns the BasicButton class
 </pre>
 
-<h2>eachControl( fn )</h2>
+<h2><a id="eachControl">eachControl( fn )</a></h2>
 <p>
 This is similar to $.each(), and loops over the array of elements in a jQuery object,
 invoking a callback function for each element. Unlike $.each(), the callback function
@@ -143,7 +143,29 @@ $buttons.eachControl( function( index, $button ) {
 });
 </pre>
 
-<h2>inDocument( callback )</h2>
+<h2><a id="generic">generic( value )</a></h2>
+<p>
+Gets/sets whether the CSS class "generic" is applied to the control. Controls
+can use this to indicate that they support a generic style: a style defined
+enough to let all aspects of the control be visible and usable, which at the
+same time simple and unobtrustive enough that the control doesn't look too
+out of place in a basic application. To supply a generic style, a control
+should set generic() to true in its class' definition, then define CSS rules
+that use the ".generic" specifier.
+</p>
+<p>
+Signficiantly, a control can opt <i>out</i> of the generic style defined by
+its parent class(es). To opt out, a control class can simply set generic() to
+false. This will remove the ".generic" CSS class, and thereby strip the control
+of its generic appearance. This opt-out mechanism is more robust than manually
+disabling specific CSS attributes specific by a base class. E.g.: if a
+base clas were to later enhance its generic appearance with addition CSS
+attributes, a subclass might not know that it needs to turn off those new
+attributes. Setting generic() to false, on the other hand, opts out of all
+generic styling in one step.
+</p>
+
+<h2><a id="inDocument">inDocument( callback )</a></h2>
 <p>
 If the control is already in the current document (web page), the callback is
 executed immediately. Otherwise, the callback will be queued up for execution
@@ -200,7 +222,7 @@ used for wiring up event handlers, perform any initial calculations, etc.
     </li>
 </ul>
 
-<h2>json( json )</h2>
+<h2><a id="json">json( json )</a></h2>
 <p>
 Sets properties on the control using
 <a data-control="Link" href="control-JSON.html">Control JSON</a>.
@@ -210,7 +232,7 @@ but json() evaluates the values in that dictionary, whereas properties() uses th
 values exactly as is.
 </p>
 
-<h2>properties( properties )</h2>
+<h2><a id="properties">properties( properties )</a></h2>
 <p>
 Sets the given properties on the control(s).
 </p>
@@ -243,7 +265,7 @@ var userTile = $("&lt;div/&gt;").control(UserTile, {
 });
 </pre>
 
-<h2>propertyVector( propertyName, values )</h2>
+<h2><a id="propertyVector">propertyVector( propertyName, values )</a></h2>
 <p>
 Gets or sets the given property on multiple elements at once. If called
 as a getter, an array of the property's current values is returned.
@@ -260,7 +282,7 @@ $(".Foo")           // Find all Foo instances
     .multiProperty("content", [ "One", "Two", "Three" ]);
 </pre>
 
-<h2>segments()</h2>
+<h2><a id="segments">segments()</a></h2>
 <p>
 This returns an array, each member of which is a
 individual control object holding the corresponding element. (That is, it returns
@@ -286,14 +308,14 @@ for button in $( ".BasicButton" ).control().segments()
   button.hide()
 </pre>
 
-<h2>_super( [arguments] )</h2>
+<h2><a id="_super">_super( [arguments] )</a></h2>
 <p>
 Within a control method, this invokes the method of the same name on the
 control's superclass. This is useful when extending (as opposed to completely
 overriding) a superclass' behavior
 </p>
 
-<h2>transmute( newClass, preserveContent, preserveClasses )</h2>
+<h2><a id="transmute">transmute( newClass, preserveContent, preserveClasses )</a></h2>
 <p>
 Converts the control(s) to the indicated class. If preserveContent is true (the default
 is false), the existing contents of the control will be extracted and then set again
@@ -305,7 +327,7 @@ old control will be preserved on the element's "class" attribute. This can be us
 leave a trace of the transmutation for debugging purposes.
 </p>
 
-<h2>visibility( [value] )</h2>
+<h2><a id="visibility">visibility( [value] )</a></h2>
 <p>
 Gets or sets whether the given control(s) are visible. This combines the functions
 of $.is(":visible") when called as a getter, and $.toggle() when called as a setter.
