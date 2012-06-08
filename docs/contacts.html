@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css" href="http://fast.fonts.com/cssapi/72bd3277-b253-4903-97d8-6a9d18744569.css" />
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Inconsolata" />
+
+<link rel="stylesheet" type="text/css" href="/release/quickui.css" />
+<link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/site.css" />
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/release/quickui.js"></script>
+<script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/controls/controls.js"></script>
+
+<title>Overview of the Contacts sample application</title>
+
+</head>
+
+<body data-create-controls="true" data-control="DocumentationPage">
+
+<p>
+The *** Contacts *** sample application demonstrates the use QuickUI as the user
+interface framework for a typical web application. This page provides an
+overview of the Contacts architecture. See the *** source code *** for complete
+details.
+</p>
+
+<h2>General notes on tools</h2>
+<p>
+The Contacts application shows just one possible set of tools; many other
+combinations could be used to create the same Contacts application. In addition
+to <a href="http://jquery.com/">jQuery</a>, which all QuickUI applications
+depend upon, this particular sample Contacts implementation uses the following
+tools:
+</p>
+<ul>
+<li>
+<a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a>.
+The CoffeeScript language is an extension of JavaScript that allows, in most
+cases, for more concise source code. CoffeeScript compiles to JavaScript, so
+everything that the sample does in CoffeeScript you could accomplish just as
+well (with slightly longer code) in JavaScript. QuickUI lets you
+<a href="CoffeeScript.html">define user interface components in CoffeeScript</a>
+using the language’s native “class” syntax.
+</li>
+<li>
+<a href="http://backbonejs.org/">Backbone.js</a>.
+The Backbone library provides a framework for constructing a typical Model-View-
+Controller application, separating out representation of business objects (here,
+contacts) from the user interface components used to edit them.
+</li>
+<li>
+<a href="https://github.com/jeromegn/Backbone.localStorage">Backbone Local Storage</a>.
+This Backbone plugin allows Contacts to store contact data locally.
+</li>
+<li>
+<a href="http://lesscss.org/">LESS</a>
+is a CSS extension that simplifies the creation and maintenance of styles. The
+LESS code used in Contacts borrows some utility functions and button styling
+from <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.
+</li>
+<li>
+<a href="https://github.com/cowboy/grunt">Grunt</a>
+is a JavaScript-based build system. In the case of Contacts, Grunt handles
+compiling the CoffeeScript to JavaScript and the LESS code to CSS.
+</li>
+<li>
+<a href="http://qunitjs.com/">Qunit</a>
+is a standard unit testing framework for JavaScript applications like Contacts.
+</li>
+</ul>
+
+*** SCREENSHOTS ***
+*** LINKS to specific source files ***
+
+<h2>General architecture</h2>
+<p>
+Like many modern applications, the Contacts sample application carefully
+separates its representations of the data objects being viewed and manipulated
+(the "Model") from the user interface doing that viewing and manipulation (the
+"View").
+</p>
+<p>
+Backbone applications like Contacts are often described as using a Model-View-
+Controller architecture. In the case of the Contacts application, the entity
+sitting between the View and Model behaves more like the Presenter in a Model-
+View-Presenter arrangement. (See this article on <a
+href="http://blog.nodejitsu.com/scaling-isomorphic-javascript-code">Scaling
+Isomorphic Javascript Code</a> for a good comparison  a good comparison of MVC,
+MVP, and related architectures). The main difference is that, in the Contacts
+application, the View is not itself listening to events signalling changes in
+the Model; the Presenter listens to those events, then updates the View as
+appropriate.
+</p>
+<p>
+*** more on architecture ***
+</p>
+
+<h2>Contact data models</h2>
+<p>
+The definition for the data Model classes in the Contacts application are quite
+simple:
+</p>
+<ul>
+<li>
+A <b>Contact</b> object holds the contact information for a single person. This
+defines a small set of fields to hold a person’s name, email address, postal
+address, phone number, and photo.
+</li>
+<li>
+A <b>Contacts</b> collection holds a set of Contact objects. This class extends
+the Backbone.Collection class, which does most of the work here. All the
+Contacts collection has to do is declare that it holds Contact objects (above),
+indicate that it wants to use local storage, and that contacts should be sorted
+by name.
+</li>
+</ul>
+
+<h2>ContactsPresenter</h2>
+<p>
+The ContactsPresenter class provides most of the wiring between the Contacts
+collection (described above) and the main ContactsPage user interface class
+(described below).
+</p>
+<p>
+Example: When the user presses the New button in the Toolbar user interface
+control, a custom “newContact” user interface event is raised. This bubbles up
+to the level of the ContactsPage view, where it is detected by
+ContactsPresenter. The presenter then tells the Contacts collection model to add
+a new contact. The Contacts collection will eventually raise an “add” event of
+its own, which will again be detected by the ContactsPresenter. In response, the
+presenter tells the ContactsPage view to add the new contact to the list box.
+Other view and model communication is handled similarly.
+</p>
+<p>
+*** explain about deriving from View, use of $el ***
+</p>
+<p>
+Some other notes on the presenter:
+</p>
+<ul>
+
+<li>
+<p>
+Backbone invokes the presenter’s render() function when the collection of
+contacts is initially loaded. Because the ContactListBox control (below) can
+directly render an array of contacts, the code for render() is a short but
+powerful line of code:
+</p>
+<pre># Render all the contacts.
+render: -&gt; @$el.contacts @contacts()</pre>
+<p>
+The righthand portion retrieves the <i>collection’s_</i> array of contacts. The
+portion in the middle passes this array directly to the contacts() setter on
+ContactsPage. ContactsPage is turn delegates this call to ContactListBox.
+ContactListBox will iterate over this array, creating a new ContactCard for each
+contact. In this way, the wiring responsible for getting the view to render a
+complete collection of contact models is achieved in a single line.
+</p>
+</li>
+
+<li>
+Backbone automatically keeps the Contacts collection sorted. For example, if the
+collection fetched from local storage is not sorted, Backbone will sort them
+before passing the collection to the presenter. When the user changes the name
+of a contact, the contact’s position in the list will likely have to change to
+maintain the sort order. However, it would be expensive to completely resort the
+array and rebuild the entire list in response to a change in a single Contact.
+Instead, the presenter optimizes handling of a contact rename: it removes the
+affected card from the list box, finds the new position it belongs in, and
+inserts the card back into the list box at that position.
+</li>
+
+<li>
+As noted, the presenter manages the connection between the Contacts collection
+model and the ContactsPage collection view. However, an individual Contact model
+and the corresponding individual ContactCard view have their own relationship.
+In this particular sample application, the ContactCard view has a direct
+reference to the corresponding Contact model; the view is not forced to interact
+with the model via the presenter.
+</li>
+
+<li>
+In this sample application, the presenter also has the ability to perform some
+debug operations on the collection of contacs: clearing the entire collection,
+or loading a set of sample contacts.
+</li>
+
+</ul>
+
+<h2>ContactsPage</h2>
+<p>
+The ContactsPage is a QuickUI control that acts as the top-level View in the
+Model-View-Presenter architecture. In this particular application, the
+ContactsPage represents the entire end-user visible document in the browser, but
+the View could just have easily been a control that represented only a portion
+of the overall DOM tree. Some notes on ContactsPage:
+</p>
+
+<ul>
+
+<li>
+ContactsPage derives from the standard QuickUI Catalog base class called ***
+Page, which handles some general page-level services. In this case, it uses the
+Page.title() property to set the page’s title shown in the browser, and uses
+Page.fill() to create a page that fills the entire viewport.
+</li>
+
+<li>
+Visually speaking, ContactsPage uses a *** VerticalPanel control to divide the
+available real estate into two regions: a persistent panel at the top for a
+toolbar, and a main content area that consumes the remaining space.
+Significantly, the height of the toolbar does _not_ need to be known at design
+time. At runtime, VerticalPanel will use either a CSS flexbox layout (if the
+user’s browser supports that) or a manual layout engine (on an older browser) to
+ensure the toolbar region is the appropriate height.
+</li>
+
+<li>
+Beyond that, ContactsPage doesn’t do much work. The substance of the page is
+actually implemented by ContactsListBox (described below), which visually
+represents the set of contacts as business cards. However, to avoid exposing too
+many implementation details to external entities such as the presenter,
+ContactsPage _acts_ as if it itself is managing the list of contacts. To acheive
+this, ContactsPage exposes a small set of methods that mirror a portion of the
+list box API, and delegates all those methods to the list box to do the actual
+work. In this way, the presenter can interact solely with the overall top-level
+View (i.e., ContactsPage), and doesn’t need to have direct references to any
+controls inside that view. An alternative implementation could use the
+ContactsListBox as the top-level View, which might be simpler, although the
+present arrangement is perhaps more future-proof. If, at any point in the
+future, ContactsPage needs to do its own work in response to presenter activity
+(e.g., show the number of contacts in the toolbar), it could do so without any
+changes to the presenter.
+</li>
+
+</ul>
+
+<h2>Toolbar</h2>
+<p>
+The Toolbar control takes care of populating the simple toolbar with a title and
+some buttons. The only interesting aspect of the user interface here is that a
+standard QuickUI Catalog control called *** PopupButton is used to create a
+dropdown menu of debug commands in a few lines of declarative *** Control JSON.
+</p>
+
+<h2>ContactListBox</h2>
+<p>
+*** MOVE editing/selection stuff from ContactCard to ContactListBox? ***
+</p>
+<p>
+This control is the user interface element responsible for actually representing the overall collection of contacts. ContactListBox derives from ListBox, which in turn inherits from List, a standard control for representing an array of items as controls. In this case, ContactListBox will represent its items as ContactCard controls (described below). To the standard List behavior, ListBox base class adds selection semantics and keyboard navigation:
+</p>
+
+<ul>
+
+<li>
+The user can click a card to select it.
+</li>
+
+<li>
+The user can press Up/Down (or Left/Right), Page Up/Page Down, and Home/End to
+navigate the list.
+</li>
+
+<li>
+The selected card is automatically scrolled into view, e.g., in response to
+keyboard navigation. As the list is sorted by contact name, the selected card
+can also change position if the user updates the name on a card and clicks Save.
+</li>
+
+</ul>
+
+<h2>Card</h2>
+<p>
+This class is a simple container that renders as a small business card with
+shadow effects. Most of this is achieved with styling. One set of style rules
+are only applied when the “selected” CSS class is applied, which is
+automatically done by ContactsListBox when a card becomes selected. A card
+defines styles such that a card’s visual height is normally constrained, but
+when selected the card will expand to show the card’s entire content.
+</p>
+<p>
+One aspects of its visual appearance that is managed with a standard control is
+the use of a *** Fader to fade out the card’s content in the normal state if the
+content doesn’t completely fit.
+</p>
+
+<h2>ContactCard</h2>
+<p>
+This control is the primary representation of a contact in the user interface.
+It subclasses Card (above) in order to gain that class’ visual presentation. The
+Card and ContactCard classes could easily be combined into a single class, but
+factoring this into two classes lets each class focus on a more limited set of
+responsibilities. It would also make it easier to adapt the Card class for other
+purposes.
+</p>
+
+<ul>
+
+<li>
+ContactCard has three states: normal (unselected), selected, and editing. The
+first click on a contact in the normal state will move it into the selected
+state. That job is handled by ListBox, because that need arises in many lists.
+In this app, a click on a card in the selected state will move it into the
+editing state.
+</li>
+
+<li>
+In the normal and selected states, the card shows the contact information as
+read-only fields. In the editing state, the card shows the same information in
+editable text boxes. The ContactCard hosts a *** Mode control to switch between
+these two states. Each state is represented by a class of its own:
+ContactInfoRead and ContactInfoEdit.
+</li>
+
+<li>
+If the user clicks on a specific read-only field in the normal or selected
+state, ContactCard will put the keyboard focus into the corresponding editable
+field in the editing state.
+</li>
+
+<li>
+The ContactCard class defines some keyboard shortcuts: pressing Enter in a
+single-line input field saves the card, while pressing Esc cancels any pending
+edits.
+</li>
+
+</ul>
+
+<h2>ContactInfo *** RENAME to just Info?</h2>
+<p>
+The read and edit user interface for a contact expose different controls, but the two states do share some things:
+</p>
+
+<ul>
+
+<li>
+Both states use a simple two-column layout.
+</li>
+
+<li>
+Both states expose the same external API. The main function of interest to a
+host is a contact() property, which can set or get the contact associated with
+the control. The contact() property in turn sets some more specific properties:
+name(), address(), and so on.
+</li>
+
+</ul>
+
+<p>
+To implement these shared aspects, the ContactInfo class exists to serve as a
+base class for the read state, ContactInfoRead, and the edit state,
+ContactInfoEdit.
+</p>
+<p>
+The ContactInfo class expects to be subclassed to provide a complete
+implementation; it’s similar to an _abstract_ class in many programming
+languages. Specifically, the various contact properties for name(), address(),
+etc., store their values in controls — but it’s up to a subclass to actually
+decide what type of element or control will be used. This allows the read state
+to represent the name() property with a simple div, while the edit state
+represents the same name() property with a *** ValidatingTextBox.
+</p>
+
+<h2>ContactInfoRead</h2>
+<p>
+This subclass of ContactInfo (above) is used to represent the contact in the
+read state (when the card is unselected, or selected but not yet in editing
+mode). It defines elements expected by ContactInfo that show the various contact
+properties in read only elements or controls. E.g., the postal address()
+property is shown in a PostalAddress control, which adds a link to Google Maps.
+</p>
+<p>
+Because this handles the read state, the only interactivity defined by
+ContactInfoRead is tracking whether the user has clicked a specific read-only
+field. If the user clicks the name field, for instance, the control will raise
+an fieldClick event. ContactCard uses this event to place the keyboard focus in
+the corresponding editable field in ContactInfoEdit.
+</p>
+
+<h2>ContactInfoEdit</h2>
+<p>
+This control is used to edit the information for a specific contact. This
+control entails the most domain-specific interactivity (i.e., UI details which
+wouldn’t be found in any other application), and hence has the longest source
+code of any of the controls in the application. (Even then, it’s not
+particularly long.)
+</p>
+
+<ul>
+
+<li>
+The name field uses *** ValidatingTextBox to show visual feedback indicating
+that a name is required. The ContactCard class uses the valid() state of that
+text box to determine whether to enable the Save button via the button’s
+disabled() property.
+</li>
+
+<li>
+The address field uses the *** AutoSizeTextBox class to allow the field to grow
+to contain its contents.
+</li>
+
+<li>
+The photo field is currently read-only. (Including a working photo upload
+service, etc., is beyond the scope of this sample application.)
+</li>
+
+<li>
+For simplicity, this control directly invokes save() and destroy() methods on
+the Contact model when appropriate. If it was desired to further separate the
+View from the Model here, this interaction could be mediated through the
+Presenter.
+</li>
+
+</ul>
+
+<h2>FieldLauncher</h2>
+<p>
+In the card’s read-only states, two of the card fields, email address and postal
+address, include little buttons next to them that use the field’s content to
+launch a new window: a new email message or Google Maps, respectively. This
+simple but shared behavior is encapsulated in the control class FieldLauncher.
+This is actually a good example of a situation where, in an old-school
+JavaScript application, a developer might have simply copy-and-pasted code
+rather than going through the work of factoring out the common behavior into a
+separate component. In QuickUI, creating and using a component is easy enough
+that the “activation energy” required to trigger refactoring is extremely
+low.
+</p>
+
+</body>
+
+</html>
