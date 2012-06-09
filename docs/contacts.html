@@ -29,6 +29,8 @@ overview of the Contacts architecture. See the *** source code *** for complete
 details.
 </p>
 
+*** SCREENSHOT ***
+
 <h2>General notes on tools</h2>
 <p>
 The Contacts application shows just one possible set of tools; many other
@@ -39,13 +41,14 @@ tools:
 </p>
 <ul>
 <li>
-<a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a>.
-The CoffeeScript language is an extension of JavaScript that allows, in most
-cases, for more concise source code. CoffeeScript compiles to JavaScript, so
-everything that the sample does in CoffeeScript you could accomplish just as
-well (with slightly longer code) in JavaScript. QuickUI lets you
-<a href="CoffeeScript.html">define user interface components in CoffeeScript</a>
-using the language’s native “class” syntax.
+<a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a>. The
+CoffeeScript language is an extension of JavaScript that allows, in most cases,
+for more concise source code. CoffeeScript compiles to JavaScript, so
+<i>everything that the sample does in CoffeeScript you could accomplish in plain
+JavaScript</i>. CoffeeScript is used here because it's tighter than the
+corresponding JavaScript. QuickUI lets you <a href="CoffeeScript.html">define
+user interface components in CoffeeScript</a> using the language’s native
+“class” syntax.
 </li>
 <li>
 <a href="http://backbonejs.org/">Backbone.js</a>.
@@ -74,7 +77,6 @@ is a standard unit testing framework for JavaScript applications like Contacts.
 </li>
 </ul>
 
-*** SCREENSHOTS ***
 *** LINKS to specific source files ***
 
 <h2>General architecture</h2>
@@ -136,8 +138,22 @@ its own, which will again be detected by the ContactsPresenter. In response, the
 presenter tells the ContactsPage view to add the new contact to the list box.
 Other view and model communication is handled similarly.
 </p>
+
 <p>
-*** explain about deriving from View, use of $el ***
+Backbone doesn't provide a base "Presenter" base class, but Backbone's own View
+class makes a reasonably good base class for a presenter:
+</p>
+<pre>class window.ContactsPresenter extends Backbone.View</pre>
+<p>
+The <i>real</i> View in this application is provided by QuickUI controls like
+ContactsPage. Deriving our presenter from the View base class does provide some
+nice features, however: the presenter gets references to the model (the
+Contacts collection) and to the real View (via the $el reference). In most
+Backbone applications, the $el points to a standard jQuery reference. Because
+QuickUI controls derive from jQuery, we can use $el to directly to a QuickUI
+control. Another benefit of deriving our presenter from the View class is that
+we automatically get event binding for events raised by the QuickUI controls
+which constitute the View.
 </p>
 <p>
 Some other notes on the presenter:
@@ -193,6 +209,9 @@ or loading a set of sample contacts.
 </ul>
 
 <h2>ContactsPage</h2>
+
+*** DIAGRAM of overall ContactPage, with callouts ***
+
 <p>
 The ContactsPage is a QuickUI control that acts as the top-level View in the
 Model-View-Presenter architecture. In this particular application, the
@@ -204,20 +223,22 @@ of the overall DOM tree. Some notes on ContactsPage:
 <ul>
 
 <li>
-ContactsPage derives from the standard QuickUI Catalog base class called ***
-Page, which handles some general page-level services. In this case, it uses the
-Page.title() property to set the page’s title shown in the browser, and uses
-Page.fill() to create a page that fills the entire viewport.
+ContactsPage derives from the standard QuickUI Catalog base class called <a
+data-control="CatalogLink">Page</a>, which handles some general page-level
+services. In this case, it uses the Page.title() property to set the page’s
+title shown in the browser, and uses Page.fill() to create a page that fills the
+entire viewport.
 </li>
 
 <li>
-Visually speaking, ContactsPage uses a *** VerticalPanel control to divide the
-available real estate into two regions: a persistent panel at the top for a
-toolbar, and a main content area that consumes the remaining space.
-Significantly, the height of the toolbar does _not_ need to be known at design
-time. At runtime, VerticalPanel will use either a CSS flexbox layout (if the
-user’s browser supports that) or a manual layout engine (on an older browser) to
-ensure the toolbar region is the appropriate height.
+Visually speaking, ContactsPage uses a <a data-
+control="CatalogLink">VerticalPanel</a> control to divide the available real
+estate into two regions: a persistent panel at the top for a toolbar, and a main
+content area that consumes the remaining space. Significantly, the height of the
+toolbar does _not_ need to be known at design time. At runtime, VerticalPanel
+will use either a CSS flexbox layout (if the user’s browser supports that) or a
+manual layout engine (on an older browser) to ensure the toolbar region is the
+appropriate height.
 </li>
 
 <li>
@@ -244,16 +265,38 @@ changes to the presenter.
 <p>
 The Toolbar control takes care of populating the simple toolbar with a title and
 some buttons. The only interesting aspect of the user interface here is that a
-standard QuickUI Catalog control called *** PopupButton is used to create a
-dropdown menu of debug commands in a few lines of declarative *** Control JSON.
+standard QuickUI Catalog control called
+<a data-control="CatalogLink">PopupButton</a> is used to create a
+dropdown menu of debug commands in a few lines of declarative 
+<a href="control-JSON.html">Control JSON</a>:
 </p>
+<pre>{ control: PopupButton, ref: "buttonDebug", content: "Debug", popup: [
+  { control: MenuItem, ref: "menuItemSamples", content: "Reload Sample Contacts" }
+  { control: MenuItem, ref: "menuItemEraseAll", content: "Remove All" }
+]}</pre>
 
 <h2>ContactListBox</h2>
 <p>
-*** MOVE editing/selection stuff from ContactCard to ContactListBox? ***
+This control is the user interface element responsible for actually representing
+the overall collection of contacts. ContactListBox derives from
+<a data-control="CatalogLink">ListBox</a>, which in turn inherits from
+<a data-control="CatalogLink">List</a>,
+a standard control for representing an array of items as controls. In this case,
+ContactListBox will represent its items as ContactCard controls (described
+below). All of this is extremely easy to arrange in declaring the ContactListBox
+class:
 </p>
+<pre>class window.ContactListBox extends ListBox
+  
+  inherited:
+    # Each item in the list should be represented as a ContactCard control.
+    itemClass: "ContactCard"
+    # The list item (the model) will be passed to a card's contact() property.
+    mapFunction: "contact"</pre>
+
 <p>
-This control is the user interface element responsible for actually representing the overall collection of contacts. ContactListBox derives from ListBox, which in turn inherits from List, a standard control for representing an array of items as controls. In this case, ContactListBox will represent its items as ContactCard controls (described below). To the standard List behavior, ListBox base class adds selection semantics and keyboard navigation:
+To the standard List behavior, ListBox base class adds selection semantics and
+keyboard navigation:
 </p>
 
 <ul>
@@ -280,24 +323,40 @@ can also change position if the user updates the name on a card and clicks Save.
 This class is a simple container that renders as a small business card with
 shadow effects. Most of this is achieved with styling. One set of style rules
 are only applied when the “selected” CSS class is applied, which is
-automatically done by ContactsListBox when a card becomes selected. A card
-defines styles such that a card’s visual height is normally constrained, but
-when selected the card will expand to show the card’s entire content.
+automatically applied to a card by the list box when a card becomes selected. A
+card defines styles such that a card’s visual height is normally constrained,
+but when selected the card will expand to show the card’s entire content.
 </p>
 <p>
-One aspects of its visual appearance that is managed with a standard control is
-the use of a *** Fader to fade out the card’s content in the normal state if the
-content doesn’t completely fit.
+One aspect of its visual appearance that is managed with a standard control is
+the use of a <a data-control="CatalogLink">Fader</a> to fade out the card’s
+content in the normal state if the content doesn’t completely fit.
 </p>
 
 <h2>ContactCard</h2>
+
+*** DIAGRAM of contact card, with callouts ***
+
 <p>
 This control is the primary representation of a contact in the user interface.
-It subclasses Card (above) in order to gain that class’ visual presentation. The
-Card and ContactCard classes could easily be combined into a single class, but
-factoring this into two classes lets each class focus on a more limited set of
-responsibilities. It would also make it easier to adapt the Card class for other
-purposes.
+It subclasses Card (above) in order to gain that class’ visual presentation.
+</p>
+
+<pre>class window.ContactCard extends Card
+  
+  inherited:
+    content:
+      # The Mode control shows just one child (mode) at a time.
+      control: Mode, ref: "mode", content: [
+        { control: "DetailsRead", ref: "modeRead" }
+        { control: "DetailsEdit", ref: "modeEdit" }
+      ]</pre>
+
+<p>
+The Card and ContactCard classes could easily be combined into a single class,
+but factoring this into two classes lets each class focus on a more limited set
+of responsibilities. It would also make it easier to adapt the Card class for
+other purposes.
 </p>
 
 <ul>
@@ -313,9 +372,10 @@ editing state.
 <li>
 In the normal and selected states, the card shows the contact information as
 read-only fields. In the editing state, the card shows the same information in
-editable text boxes. The ContactCard hosts a *** Mode control to switch between
-these two states. Each state is represented by a class of its own:
-ContactInfoRead and ContactInfoEdit.
+editable text boxes. The ContactCard hosts a
+<a data-control="CatalogLink">Mode</a>
+control to switch between these two states. Each state is represented by a class
+of its own: DetailsRead and DetailsEdit.
 </li>
 
 <li>
@@ -332,9 +392,10 @@ edits.
 
 </ul>
 
-<h2>ContactInfo *** RENAME to just Info?</h2>
+<h2>ContactDetails</h2>
 <p>
-The read and edit user interface for a contact expose different controls, but the two states do share some things:
+The read and edit user interface for a contact expose different controls, but
+the two states do share some things:
 </p>
 
 <ul>
@@ -353,57 +414,58 @@ name(), address(), and so on.
 </ul>
 
 <p>
-To implement these shared aspects, the ContactInfo class exists to serve as a
-base class for the read state, ContactInfoRead, and the edit state,
-ContactInfoEdit.
+To implement these shared aspects, the ContactDetails class exists to serve as a
+base class for the read state, DetailsRead, and the edit state,
+DetailsEdit.
 </p>
 <p>
-The ContactInfo class expects to be subclassed to provide a complete
+The ContactDetails class expects to be subclassed to provide a complete
 implementation; it’s similar to an _abstract_ class in many programming
 languages. Specifically, the various contact properties for name(), address(),
 etc., store their values in controls — but it’s up to a subclass to actually
 decide what type of element or control will be used. This allows the read state
 to represent the name() property with a simple div, while the edit state
-represents the same name() property with a *** ValidatingTextBox.
+represents the same name() property with a <a data-
+control="CatalogLink">ValidatingTextBox</a>.
 </p>
 
-<h2>ContactInfoRead</h2>
+<h2>DetailsRead</h2>
 <p>
-This subclass of ContactInfo (above) is used to represent the contact in the
+This subclass of ContactDetails (above) is used to represent the contact in the
 read state (when the card is unselected, or selected but not yet in editing
-mode). It defines elements expected by ContactInfo that show the various contact
-properties in read only elements or controls. E.g., the postal address()
+mode). It defines elements expected by ContactDetails that show the various
+contact properties in read only elements or controls. E.g., the postal address()
 property is shown in a PostalAddress control, which adds a link to Google Maps.
 </p>
 <p>
 Because this handles the read state, the only interactivity defined by
-ContactInfoRead is tracking whether the user has clicked a specific read-only
+DetailsRead is tracking whether the user has clicked a specific read-only
 field. If the user clicks the name field, for instance, the control will raise
 an fieldClick event. ContactCard uses this event to place the keyboard focus in
-the corresponding editable field in ContactInfoEdit.
+the corresponding editable field in DetailsEdit.
 </p>
 
-<h2>ContactInfoEdit</h2>
+<h2>DetailsEdit</h2>
 <p>
-This control is used to edit the information for a specific contact. This
-control entails the most domain-specific interactivity (i.e., UI details which
-wouldn’t be found in any other application), and hence has the longest source
-code of any of the controls in the application. (Even then, it’s not
-particularly long.)
+The other subclass of ContactDetails, DetailsEdit is used to edit the
+information for a specific contact. This control entails the most domain-
+specific interactivity (i.e., UI details which wouldn’t be found in any other
+application), and hence has the longest source code of any of the controls in
+the application. (Even then, it’s not particularly long.)
 </p>
 
 <ul>
 
 <li>
-The name field uses *** ValidatingTextBox to show visual feedback indicating
-that a name is required. The ContactCard class uses the valid() state of that
-text box to determine whether to enable the Save button via the button’s
-disabled() property.
+The name field uses <a data-control="CatalogLink">ValidatingTextBox</a> to show
+visual feedback indicating that a name is required. The ContactCard class uses
+the valid() state of that text box to determine whether to enable the Save
+button via the button’s disabled() property.
 </li>
 
 <li>
-The address field uses the *** AutoSizeTextBox class to allow the field to grow
-to contain its contents.
+The address field uses the <a data-control="CatalogLink">AutoSizeTextBox</a>
+class to allow the field to grow to contain its contents.
 </li>
 
 <li>
@@ -433,6 +495,25 @@ separate component. In QuickUI, creating and using a component is easy enough
 that the “activation energy” required to trigger refactoring is extremely
 low.
 </p>
+
+<h2>Conclusions</h2>
+<p>
+The Contacts sample application achieves a reasonably interesting visual
+appearance and degree of interactivity in a fairly small amount of code.
+</p>
+<ul>
+
+<li>
+Building on top of general-purpose base classes from the <a
+href="/catalog">QuickUI Catalog</a> means that a significant portion of the user
+interface code is actually shared. As just one metric, if one counts lines of
+source code, the shared controls represent over 60% of the user interface code
+in this application; less than 40% of the user interface appearance and behavior
+is unique.
+</li>
+<li>*** MORE ***</li>
+
+</ul>
 
 </body>
 
