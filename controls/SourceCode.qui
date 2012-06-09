@@ -15,7 +15,16 @@ script must be loaded for code to be colorized.
 
 /* Generic appearance */
 .SourceCode.generic .comment {
-    color: gray;
+    color: #08f;
+}
+
+.SourceCode.generic .keyword {
+    color: #04f;
+    font-weight: bold;
+}
+
+.SourceCode.generic .string {
+    color: green;
 }
 
 .SourceCode.generic .tag {
@@ -33,13 +42,6 @@ script must be loaded for code to be colorized.
 .SourceCode.generic .css .value {
     color: green;
 }
-
-.SourceCode.generic .javascript .keyword {
-    color: blue;
-}
-.SourceCode.generic .javascript .string {
-    color: green;
-}
 </style>
 
 <script>
@@ -51,7 +53,7 @@ SourceCode.prototype.extend({
     
     initialize: function() {
         this
-            .addClass( "language-html" )
+            //.addClass( "language-html" )
             .inDocument( function() {
                 if ( this._needsRefresh() ) {
                     this._refresh();

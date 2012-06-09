@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="/site.css" />
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/thirdParty/highlight.pack.js"></script>
 <script type="text/javascript" src="/release/quickui.js"></script>
 <script type="text/javascript" src="/release/quickui.catalog.js"></script>
 <script type="text/javascript" src="/controls/controls.js"></script>
@@ -50,7 +51,7 @@ control. For example, the following JavaScript passes a JavaScript dictionary
 to the create() call to instantiate several QuickUI controls in a small news module:
 </p>
 
-<pre>
+<pre data-control="SourceCode">
 // Plain JavaScript version
 $( "body" ).append(
     CollapsibleWithHeadingButton.create({
@@ -83,7 +84,7 @@ and curly braces, can be dropped. This results in functionally equivalent source
 code that is significantly more compact:
 </p>
 
-<pre>
+<pre data-control="SourceCode">
 # CoffeeScript version
 $( "body" ).append CollapsibleWithHeadingButton.create
   heading: "News story"
@@ -114,7 +115,7 @@ CoffeeScript just like any other CoffeeScript class. Follow these steps:
 which control class you want to subclass. If you want to create a control from
 scratch, subclass the Control class:
 </p>
-<pre>
+<pre data-control="SourceCode">
 class window.MyClass extends Control
 </pre>
 <p>
@@ -128,7 +129,7 @@ QuickUI controls (whether CoffeeScript-based or not).
 Define an "inherited:" key to establish which property setters in the
 <i>superclass</i> the control would like to set when rendering. E.g.:
 </p>
-<pre>
+<pre data-control="SourceCode">
 class MyPage extends Page
   inherited:
     title: "Welcome to My Page"
@@ -147,7 +148,7 @@ As an example, here is the CoffeeScript source code for a simple IconButton clas
 that shows an icon to the left of the button's label:
 </p>
 
-<div data-control="SourceFileContents" data-path="samples/IconButton.coffee"></div>
+<div class="coffeescript" data-control="SourceFileContents" data-path="samples/IconButton.coffee"></div>
 
 <p>
 This produces the following output:
