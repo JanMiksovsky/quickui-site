@@ -5,6 +5,7 @@ build
 blog/blog.*
 catalog
 controls/controls.*
+demos
 docs/samples/samples.*
 downloads/downloads.*
 features/features.*

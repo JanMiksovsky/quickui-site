@@ -42,8 +42,8 @@ echo Copying QuickUI runtime files
 cp -f -p $updateParam $quickuiRuntimeBaseName.* $releasePath
 
 echo Copying versioned runtime files for version $version
-cp -f -p $updateParam $quickuiRuntimeBaseName.js $releasePath/quickui.$version.js
-cp -f -p $updateParam $quickuiRuntimeBaseName.css $releasePath/quickui.$version.css
+cp -f -p $updateParam $quickuiRuntimeBaseName.js $releasePath/quickui-$version.js
+cp -f -p $updateParam $quickuiRuntimeBaseName.css $releasePath/quickui-$version.css
 
 echo Building control documentation
 catalogSource="$sitePath/../quickui-catalog"
@@ -75,3 +75,15 @@ qb $sitePath
 
 echo Building site
 grunt --color=false ---config $sitePath/grunt.js
+
+echo Building demos
+demosSource="$sitePath/../quickui-demos"
+qb $demosSource
+
+echo Copying demos
+demosPath="$sitePath/demos"
+if [ ! -d "$demosPath" ]; then
+	echo Creating demos folder
+	mkdir "$demosPath"
+fi
+cp -f -p -r $demosSource/* $demosPath
