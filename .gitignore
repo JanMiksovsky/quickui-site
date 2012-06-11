@@ -1,5 +1,6 @@
 .externalToolBuilders
 .project
+*.sublime-*
 
 build
 blog/blog.*
