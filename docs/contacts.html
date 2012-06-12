@@ -23,8 +23,10 @@
 
 <body data-create-controls="true" data-control="DocumentationPage">
 
+<a href="/demos/contacts" target="_blank">Open the Contacts application</a>
+
 <p>
-The *** Contacts *** sample application demonstrates the use QuickUI as the user
+The Contacts sample application demonstrates the use QuickUI as the user
 interface framework for a typical web application. This page provides an
 overview of the Contacts architecture. See the *** source code *** for complete
 details.
@@ -78,8 +80,6 @@ is a standard unit testing framework for JavaScript applications like Contacts.
 </li>
 </ul>
 
-*** LINKS to specific source files ***
-
 <h2>General architecture</h2>
 <p>
 Like many modern applications, the Contacts sample application carefully
@@ -88,19 +88,15 @@ separates its representations of the data objects being viewed and manipulated
 "View").
 </p>
 <p>
-Backbone applications like Contacts are often described as using a Model-View-
-Controller architecture. In the case of the Contacts application, the entity
-sitting between the View and Model behaves more like the Presenter in a Model-
-View-Presenter arrangement. (See this article on <a
-href="http://blog.nodejitsu.com/scaling-isomorphic-javascript-code">Scaling
-Isomorphic Javascript Code</a> for a good comparison  a good comparison of MVC,
-MVP, and related architectures). The main difference is that, in the Contacts
-application, the View is not itself listening to events signalling changes in
-the Model; the Presenter listens to those events, then updates the View as
-appropriate.
-</p>
-<p>
-*** more on architecture ***
+Backbone applications like Contacts are often described as using a Model-View-Controller
+architecture. In the case of the Contacts application, the entity
+sitting between the View and Model behaves more like the Presenter in a Model-View-Presenter
+arrangement. (See this article on
+<a href="http://blog.nodejitsu.com/scaling-isomorphic-javascript-code">Scaling Isomorphic Javascript Code</a>
+for a good comparison  a good comparison of MVC, MVP, and related
+architectures). The main difference is that, in the Contacts application, the
+View is not itself listening to events that indicate changes in the Model; the
+Presenter listens to those events, then updates the View as appropriate.
 </p>
 
 <h2>Contact data models</h2>
@@ -110,12 +106,13 @@ simple:
 </p>
 <ul>
 <li>
-A <b>Contact</b> object holds the contact information for a single person. This
-defines a small set of fields to hold a person’s name, email address, postal
-address, phone number, and photo.
+A <a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/models/Contact.coffee">Contact</a>
+object holds the contact information for a single person. This defines a small
+set of fields to hold a person’s name, email address, postal address, phone
+number, and photo.
 </li>
 <li>
-A <b>Contacts</b> collection holds a set of Contact objects. This class extends
+A <a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/models/Contacts.coffee">Contacts</a> collection holds a set of Contact objects. This class extends
 the Backbone.Collection class, which does most of the work here. All the
 Contacts collection has to do is declare that it holds Contact objects (above),
 indicate that it wants to use local storage, and that contacts should be sorted
@@ -123,7 +120,7 @@ by name.
 </li>
 </ul>
 
-<h2>ContactsPresenter</h2>
+<h2><a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/presenters/ContactsPresenter.coffee">ContactsPresenter</a></h2>
 <p>
 The ContactsPresenter class provides most of the wiring between the Contacts
 collection (described above) and the main ContactsPage user interface class
@@ -146,15 +143,15 @@ class makes a reasonably good base class for a presenter:
 </p>
 <pre>class window.ContactsPresenter extends Backbone.View</pre>
 <p>
-The <i>real</i> View in this application is provided by QuickUI controls like
+The real View in this application is provided by QuickUI controls like
 ContactsPage. Deriving our presenter from the View base class does provide some
-nice features, however: the presenter gets references to the model (the
-Contacts collection) and to the real View (via the $el reference). In most
-Backbone applications, the $el points to a standard jQuery reference. Because
-QuickUI controls derive from jQuery, we can use $el to directly to a QuickUI
-control. Another benefit of deriving our presenter from the View class is that
-we automatically get event binding for events raised by the QuickUI controls
-which constitute the View.
+nice features, however: the presenter gets references to the model (the Contacts
+collection) and to the real View (via the $el reference). In Backbone
+applications, the $el member points to a jQuery reference. Because QuickUI
+controls derive from jQuery, we can set $el to directly to a QuickUI control.
+Another benefit of deriving our presenter from the View class is that we
+automatically get event binding for events raised by the QuickUI controls which
+constitute the View.
 </p>
 <p>
 Some other notes on the presenter:
@@ -171,12 +168,13 @@ powerful line of code:
 <pre># Render all the contacts.
 render: -&gt; @$el.contacts @contacts()</pre>
 <p>
-The righthand portion retrieves the <i>collection’s_</i> array of contacts. The
-portion in the middle passes this array directly to the contacts() setter on
-ContactsPage. ContactsPage is turn delegates this call to ContactListBox.
-ContactListBox will iterate over this array, creating a new ContactCard for each
-contact. In this way, the wiring responsible for getting the view to render a
-complete collection of contact models is achieved in a single line.
+The righthand portion retrieves the <i>collection’s</i> array of contacts. The
+portion in the middle passes this array directly to the contacts() setter on the
+View, which is an instance of ContactsPage. ContactsPage is turn delegates this
+call to ContactListBox. ContactListBox will iterate over this array, creating a
+new ContactCard for each contact. In this way, the wiring responsible for
+getting the view to render a complete collection of contact models is achieved
+in a single line.
 </p>
 </li>
 
@@ -203,13 +201,13 @@ with the model via the presenter.
 
 <li>
 In this sample application, the presenter also has the ability to perform some
-debug operations on the collection of contacs: clearing the entire collection,
+debug operations on the collection of contacts: clearing the entire collection,
 or loading a set of sample contacts.
 </li>
 
 </ul>
 
-<h2>ContactsPage</h2>
+<h2><a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/controls/ContactsPage.coffee">ContactsPage</a></h2>
 
 *** DIAGRAM of overall ContactPage, with callouts ***
 
@@ -236,21 +234,36 @@ Visually speaking, ContactsPage uses a <a data-
 control="CatalogLink">VerticalPanel</a> control to divide the available real
 estate into two regions: a persistent panel at the top for a toolbar, and a main
 content area that consumes the remaining space. Significantly, the height of the
-toolbar does _not_ need to be known at design time. At runtime, VerticalPanel
+toolbar does <i>not</i> need to be known at design time. At runtime, VerticalPanel
 will use either a CSS flexbox layout (if the user’s browser supports that) or a
 manual layout engine (on an older browser) to ensure the toolbar region is the
 appropriate height.
 </li>
 
 <li>
+<p>
 Beyond that, ContactsPage doesn’t do much work. The substance of the page is
 actually implemented by ContactsListBox (described below), which visually
 represents the set of contacts as business cards. However, to avoid exposing too
 many implementation details to external entities such as the presenter,
-ContactsPage _acts_ as if it itself is managing the list of contacts. To acheive
+ContactsPage <i>acts</i> as if it itself is managing the list of contacts. To acheive
 this, ContactsPage exposes a small set of methods that mirror a portion of the
 list box API, and delegates all those methods to the list box to do the actual
-work. In this way, the presenter can interact solely with the overall top-level
+work. E.g., the line below exposes a contacts() property on ContactsPage that
+delegates its value to the items() property of the list box:
+</p>
+<pre>
+contacts: Control.chain "$contactListBox", "items"
+</pre>
+<p>
+Here, the
+<a href="control-class-methods.html#chain">Control.chain()</a>
+helper function is used to concisely define a getter/setter function whose
+value is retrieved from, or passed to, a property on an element within the
+control.
+</p>
+<p>
+In this way, the presenter can interact solely with the overall top-level
 View (i.e., ContactsPage), and doesn’t need to have direct references to any
 controls inside that view. An alternative implementation could use the
 ContactsListBox as the top-level View, which might be simpler, although the
@@ -258,11 +271,12 @@ present arrangement is perhaps more future-proof. If, at any point in the
 future, ContactsPage needs to do its own work in response to presenter activity
 (e.g., show the number of contacts in the toolbar), it could do so without any
 changes to the presenter.
+</p>
 </li>
 
 </ul>
 
-<h2>Toolbar</h2>
+<h2><a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/controls/Toolbar.coffee">Toolbar</a></h2>
 <p>
 The Toolbar control takes care of populating the simple toolbar with a title and
 some buttons. The only interesting aspect of the user interface here is that a
@@ -274,9 +288,15 @@ dropdown menu of debug commands in a few lines of declarative
 <pre>{ control: PopupButton, ref: "buttonDebug", content: "Debug", popup: [
   { control: MenuItem, ref: "menuItemSamples", content: "Reload Sample Contacts" }
   { control: MenuItem, ref: "menuItemEraseAll", content: "Remove All" }
+  { control: MenuSeparator }
+  { control: MenuItem, ref: "menuAbout", content: "About This Application" }
 ]}</pre>
+<p>
+The Toolbar class also defines the "+" key (and, on Windows, the Insert key) as
+a keyboard shortcut for the "New" button.
+</p>
 
-<h2>ContactListBox</h2>
+<h2><a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/controls/ContactListBox.coffee">ContactListBox</a></h2>
 <p>
 This control is the user interface element responsible for actually representing
 the overall collection of contacts. ContactListBox derives from
@@ -319,7 +339,7 @@ can also change position if the user updates the name on a card and clicks Save.
 
 </ul>
 
-<h2>Card</h2>
+<h2><a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/controls/Card.coffee">Card</a></h2>
 <p>
 This class is a simple container that renders as a small business card with
 shadow effects. Most of this is achieved with styling. One set of style rules
@@ -334,7 +354,7 @@ the use of a <a data-control="CatalogLink">Fader</a> to fade out the card’s
 content in the normal state if the content doesn’t completely fit.
 </p>
 
-<h2>ContactCard</h2>
+<h2><a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/controls/ContactCard.coffee">ContactCard</a></h2>
 
 *** DIAGRAM of contact card, with callouts ***
 
@@ -393,7 +413,7 @@ edits.
 
 </ul>
 
-<h2>ContactDetails</h2>
+<h2><a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/controls/ContactDetails.coffee">ContactDetails</a></h2>
 <p>
 The read and edit user interface for a contact expose different controls, but
 the two states do share some things:
@@ -421,7 +441,7 @@ DetailsEdit.
 </p>
 <p>
 The ContactDetails class expects to be subclassed to provide a complete
-implementation; it’s similar to an _abstract_ class in many programming
+implementation; it’s similar to an abstract class in many programming
 languages. Specifically, the various contact properties for name(), address(),
 etc., store their values in controls — but it’s up to a subclass to actually
 decide what type of element or control will be used. This allows the read state
@@ -430,7 +450,7 @@ represents the same name() property with a <a data-
 control="CatalogLink">ValidatingTextBox</a>.
 </p>
 
-<h2>DetailsRead</h2>
+<h2><a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/controls/DetailsRead.coffee">DetailsRead</a></h2>
 <p>
 This subclass of ContactDetails (above) is used to represent the contact in the
 read state (when the card is unselected, or selected but not yet in editing
@@ -446,9 +466,9 @@ an fieldClick event. ContactCard uses this event to place the keyboard focus in
 the corresponding editable field in DetailsEdit.
 </p>
 
-<h2>DetailsEdit</h2>
+<h2><a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/controls/DetailsEdit.coffee">DetailsEdit</a></h2>
 <p>
-The other subclass of ContactDetails, DetailsEdit is used to edit the
+The other subclass of ContactDetails, DetailsEdit, is used to edit the
 information for a specific contact. This control entails the most domain-
 specific interactivity (i.e., UI details which wouldn’t be found in any other
 application), and hence has the longest source code of any of the controls in
@@ -483,7 +503,7 @@ Presenter.
 
 </ul>
 
-<h2>FieldLauncher</h2>
+<h2><a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/controls/FieldLauncher.coffee">FieldLauncher</a></h2>
 <p>
 In the card’s read-only states, two of the card fields, email address and postal
 address, include little buttons next to them that use the field’s content to
@@ -497,7 +517,7 @@ that the “activation energy” required to trigger refactoring is extremely
 low.
 </p>
 
-<h2>Conclusions</h2>
+<h2>Observations</h2>
 <p>
 The Contacts sample application achieves a reasonably interesting visual
 appearance and degree of interactivity in a fairly small amount of code.
@@ -507,12 +527,29 @@ appearance and degree of interactivity in a fairly small amount of code.
 <li>
 Building on top of general-purpose base classes from the <a
 href="/catalog">QuickUI Catalog</a> means that a significant portion of the user
-interface code is actually shared. As just one metric, if one counts lines of
-source code, the shared controls represent over 60% of the user interface code
-in this application; less than 40% of the user interface appearance and behavior
-is unique.
+interface code is actually shared. Broadly speaking, over half (about 60%) of
+the code which defines the appearance and interactivity of this sample
+application is shared. Conversely, less than half of the UI code (about 40%) is
+unique to this application. This balance is consistent with other component-
+based applications created with QuickUI.
 </li>
-<li>*** MORE ***</li>
+<li>
+QuickUI controls can easily and cleanly fill the role of a View in an MVC/MVP
+application architecture. In this case, they work very well on top of a Model
+and Presenter created in Backbone.
+</li>
+<li>
+You can create QuickUI controls in CoffeeScript very concisely.
+</li>
+<li>
+Building a user interface with components like QuickUI controls makes it easy
+to iterate on the design and implementation. During the development of this
+sample Contacts application, many aspects of the design evolved. Having the
+UI packaged in modular components, with a clean separation of concerns, made it
+easy to carry out design changes: the relevant component could be identified
+quickly, and changes made to the component rarely had ramifications outside the
+local context of the control.
+</li>
 
 </ul>
 
