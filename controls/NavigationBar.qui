@@ -44,7 +44,6 @@
 .Link.current {
     background-color: #358dcc;
     font-family: "Avenir Next LT W01 Bold", Helvetica, Arial, sans-serif;    
-    font-weight: normal;
 }
 .Link:hover {
     background-color: #47aaf0;

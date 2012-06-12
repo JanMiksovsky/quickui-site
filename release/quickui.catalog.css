@@ -645,6 +645,22 @@
     margin: 0.5em 0;
 }
 
+/*** Mode ***/
+
+.Mode > .hidden {
+    display: none !important;
+}
+
+.Mode.maximize {
+    position: relative;
+}
+.Mode.maximize > .hidden {
+    display: inherit !important;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+}
+
 /*** Overlay ***/
 
 .Overlay {
@@ -984,22 +1000,6 @@
 
 .SpriteButton .SpriteButton_content {
     position: relative;
-}
-
-/*** Switch ***/
-
-.Switch > .hidden {
-    display: none !important;
-}
-
-.Switch.maximize {
-    position: relative;
-}
-.Switch.maximize > .hidden {
-    display: inherit !important;
-    position: absolute;
-    top: 0;
-    visibility: hidden;
 }
 
 /*** Tab ***/

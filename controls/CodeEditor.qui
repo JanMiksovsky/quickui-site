@@ -42,7 +42,6 @@
     color: #928274;
     font-size: larger;
     font-family: "Avenir Next LT W01 Bold", Helvetica, Arial, sans-serif;
-    font-weight: normal;
     padding-bottom: 0.5em;
 }
 

@@ -1,3 +1,66 @@
+/*
+ * quickui.org site-wide styles
+ */
+
+/*
+ * Fonts from fonts.com
+ * font-face declarations modified by hand to avoid faux bold and faux italic.
+ */
+@import url("http://fast.fonts.com/t/1.css?apiType=css&projectid=72bd3277-b253-4903-97d8-6a9d18744569");
+@font-face{
+    font-family:"AvenirNextLTW01-Regular";
+    font-style: normal;
+    font-weight: normal;
+    src:url("/resources/fonts/e9167238-3b3f-4813-a04a-a384394eed42.eot?iefix") format("eot");
+}
+@font-face{
+    font-family:"AvenirNextLTW01-Regular";
+    font-style: normal;
+    font-weight: normal;
+    src:url("/resources/fonts/e9167238-3b3f-4813-a04a-a384394eed42.eot?iefix");
+    src:url("/resources/fonts/1e9892c0-6927-4412-9874-1b82801ba47a.woff") format("woff"),url("/resources/fonts/46cf1067-688d-4aab-b0f7-bd942af6efd8.ttf") format("truetype"),url("/resources/fonts/52a192b1-bea5-4b48-879f-107f009b666f.svg#52a192b1-bea5-4b48-879f-107f009b666f") format("svg");
+}
+@font-face{
+    font-family:"AvenirNextLTW01-Italic";
+    font-style: italic;
+    font-weight: normal;
+    src:url("/resources/fonts/d1fddef1-d940-4904-8f6c-17e809462301.eot?iefix") format("eot");
+}
+@font-face{
+    font-family:"AvenirNextLTW01-Italic";
+    font-style: italic;
+    font-weight: normal;
+    src:url("/resources/fonts/d1fddef1-d940-4904-8f6c-17e809462301.eot?iefix");
+    src:url("/resources/fonts/92b66dbd-4201-4ac2-a605-4d4ffc8705cc.woff") format("woff"),url("/resources/fonts/18839597-afa8-4f0b-9abb-4a30262d0da8.ttf") format("truetype"),url("/resources/fonts/1de7e6f4-9d4d-47e7-ab23-7d5cf10ab585.svg#1de7e6f4-9d4d-47e7-ab23-7d5cf10ab585") format("svg");
+}
+@font-face{
+    font-family:"Avenir Next LT W01 Bold";
+    font-style: normal;
+    font-weight: bold;
+    src:url("/resources/fonts/dccb10af-07a2-404c-bfc7-7750e2716bc1.eot?iefix") format("eot");
+}
+@font-face{
+    font-family:"Avenir Next LT W01 Bold";
+    font-style: normal;
+    font-weight: bold;
+    src:url("/resources/fonts/dccb10af-07a2-404c-bfc7-7750e2716bc1.eot?iefix");
+    src:url("/resources/fonts/b8e906a1-f5e8-4bf1-8e80-82c646ca4d5f.woff") format("woff"),url("/resources/fonts/890bd988-5306-43ff-bd4b-922bc5ebdeb4.ttf") format("truetype"),url("/resources/fonts/ed104d8c-7f39-4e8b-90a9-4076be06b857.svg#ed104d8c-7f39-4e8b-90a9-4076be06b857") format("svg");
+}
+@font-face{
+    font-family:"AvenirNextLTW01-BoldIta";
+    font-style: italic;
+    font-weight: bold;
+    src:url("/resources/fonts/ac2d4349-4327-448f-9887-083a6a227a52.eot?iefix") format("eot");
+}
+@font-face{
+    font-family:"AvenirNextLTW01-BoldIta";
+    font-style: italic;
+    font-weight: bold;
+    src:url("/resources/fonts/ac2d4349-4327-448f-9887-083a6a227a52.eot?iefix");
+    src:url("/resources/fonts/25e83bf5-47e3-4da7-98b1-755efffb0089.woff") format("woff"),url("/resources/fonts/4112ec87-6ded-438b-83cf-aaff98f7e987.ttf") format("truetype"),url("/resources/fonts/ab1835cb-df6f-4d8d-b8ee-3075f5ba758d.svg#ab1835cb-df6f-4d8d-b8ee-3075f5ba758d") format("svg");
+}
+
+
 body, input {
     font-family: "AvenirNextLTW01-Regular", Helvetica, Arial, sans-serif;
     font-size: 15px;
@@ -9,17 +72,14 @@ body {
 
 h1, h2, h3 {
     font-family: "Avenir Next LT W01 Bold", Helvetica, Arial, sans-serif;
-    font-weight: normal;
 }
 
 i, em {
     font-family: "AvenirNextLTW01-Italic", Helvetica, Arial, sans-serif;
-    font-weight: normal;
 }
 
 b, strong {
     font-family: "Avenir Next LT W01 Bold", Helvetica, Arial, sans-serif;    
-    font-weight: normal;
 }
 
 h1 {

@@ -24,7 +24,6 @@
 > * > *:first-child {
     color: #928274;
     font-family: "Avenir Next LT W01 Bold", Helvetica, Arial, sans-serif;
-    font-weight: normal;
 }
 </style>
 

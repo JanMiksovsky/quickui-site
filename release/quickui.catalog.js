@@ -5,7 +5,6 @@ See IAB "Ad Unit Guidelines" at http://www.iab.net for dimensions and names.
 */
 var AdPlaceholder = Control.sub({
     className: "AdPlaceholder",
-    genericDefault: "true",
     inherited: {
         content: [
             " ",
@@ -27,7 +26,8 @@ var AdPlaceholder = Control.sub({
                 ]
             },
             " "
-        ]
+        ],
+        generic: "true"
     }
 });
 AdPlaceholder.prototype.extend({
@@ -324,8 +324,10 @@ AutoSizeTextBox.prototype.extend({
 /* Button base class. Handles mouse events, abstract styles. */
 var BasicButton = Control.sub({
     className: "BasicButton",
-    genericDefault: "true",
-    tag: "button"
+    tag: "button",
+    inherited: {
+        generic: "true"
+    }
 });
 BasicButton.prototype.extend({
     
@@ -547,7 +549,6 @@ $.extend(Blog.prototype, {
 
 var BlogPost = Control.sub({
     className: "BlogPost",
-    genericDefault: "true",
     inherited: {
         content: [
             " ",
@@ -561,7 +562,8 @@ var BlogPost = Control.sub({
                 ref: "BlogPost_content"
             },
             " "
-        ]
+        ],
+        generic: "true"
     }
 });
 BlogPost.prototype.extend({
@@ -636,7 +638,9 @@ BrowserSpecific.prototype.extend({
 /* A single day in a calendar */
 var CalendarDay = Control.sub({
     className: "CalendarDay",
-    genericDefault: "true"
+    inherited: {
+        generic: "true"
+    }
 });
 CalendarDay.prototype.extend({
     
@@ -746,7 +750,6 @@ CalendarDayButton.prototype.extend({
 /* A month in a calendar */
 var CalendarMonth = Control.sub({
     className: "CalendarMonth",
-    genericDefault: "true",
     inherited: {
         content: [
             " ",
@@ -774,7 +777,8 @@ var CalendarMonth = Control.sub({
                 control: "CalendarWeek"
             },
             " "
-        ]
+        ],
+        generic: "true"
     }
 });
 CalendarMonth.prototype.extend({
@@ -884,7 +888,6 @@ CalendarMonth.prototype.extend({
 /* Month calendar with headings for month name and year, plus days of week */
 var CalendarMonthWithHeadings = Control.sub({
     className: "CalendarMonthWithHeadings",
-    genericDefault: "true",
     inherited: {
         content: [
             " ",
@@ -912,7 +915,8 @@ var CalendarMonthWithHeadings = Control.sub({
                 ]
             },
             " "
-        ]
+        ],
+        generic: "true"
     }
 });
 CalendarMonthWithHeadings.prototype.extend({
@@ -1092,7 +1096,6 @@ A panel that can expand and collapse.
 */
 var Collapsible = Control.sub({
     className: "Collapsible",
-    genericDefault: "true",
     inherited: {
         content: [
             " ",
@@ -1106,7 +1109,8 @@ var Collapsible = Control.sub({
                 ref: "Collapsible_content"
             },
             " "
-        ]
+        ],
+        generic: "true"
     }
 });
 Collapsible.prototype.extend({
@@ -1381,9 +1385,9 @@ ColorSwatchTextBox.prototype.extend({
 /* Heading for a 7 day week calendar, globalized. */
 var DaysOfWeek = Control.sub({
     className: "DaysOfWeek",
-    genericDefault: "true",
     inherited: {
-        content: " <div class=\"dayOfWeek\" /> <div class=\"dayOfWeek\" /> <div class=\"dayOfWeek\" /> <div class=\"dayOfWeek\" /> <div class=\"dayOfWeek\" /> <div class=\"dayOfWeek\" /> <div class=\"dayOfWeek\" /> "
+        content: " <div class=\"dayOfWeek\" /> <div class=\"dayOfWeek\" /> <div class=\"dayOfWeek\" /> <div class=\"dayOfWeek\" /> <div class=\"dayOfWeek\" /> <div class=\"dayOfWeek\" /> <div class=\"dayOfWeek\" /> ",
+        generic: "true"
     }
 });
 DaysOfWeek.prototype.extend({
@@ -1650,7 +1654,6 @@ Fader.prototype.extend({
 /* Shows the most interesting photo on Flickr for a given day. */
 var FlickrInterestingDay = CalendarDay.sub({
     className: "FlickrInterestingDay",
-    genericDefault: "false",
     inherited: {
         content: [
             " ",
@@ -1672,7 +1675,8 @@ var FlickrInterestingDay = CalendarDay.sub({
                 ]
             },
             " "
-        ]
+        ],
+        generic: "false"
     }
 });
 FlickrInterestingDay.prototype.extend({
@@ -2195,7 +2199,6 @@ http://plugins.jquery.com/project/color-animation.
 */
 var HighlightEffects = Control.sub({
     className: "HighlightEffects",
-    genericDefault: "true",
     inherited: {
         content: [
             " ",
@@ -2204,7 +2207,8 @@ var HighlightEffects = Control.sub({
                 ref: "HighlightEffects_content"
             },
             " "
-        ]
+        ],
+        generic: "true"
     }
 });
 HighlightEffects.prototype.extend({
@@ -2346,7 +2350,6 @@ HighlightEffects.prototype.extend({
 /* A text box that shows a "hint" as to what the user should enter. */
 var HintTextBox = Control.sub({
     className: "HintTextBox",
-    genericDefault: "true",
     inherited: {
         content: [
             " ",
@@ -2360,7 +2363,8 @@ var HintTextBox = Control.sub({
                 ref: "HintTextBox_hint"
             },
             " "
-        ]
+        ],
+        generic: "true"
     }
 });
 HintTextBox.prototype.extend({
@@ -2542,7 +2546,6 @@ LabeledInput.prototype.extend({
 /* Shows content with a heading and previous/next arrows. */
 var LateralNavigator = Control.sub({
     className: "LateralNavigator",
-    genericDefault: "true",
     inherited: {
         content: [
             " ",
@@ -2593,7 +2596,8 @@ var LateralNavigator = Control.sub({
                 ref: "LateralNavigator_content"
             },
             " "
-        ]
+        ],
+        generic: "true"
     }
 });
 LateralNavigator.prototype.extend({
@@ -2803,8 +2807,7 @@ List.prototype.extend({
         // Create the control.
         var itemClass = this.itemClass();
         var $control = itemClass.create();
-        var mapFunction = this._getMapFunction();
-        mapFunction.call( $control, item );
+        this._mapAndSetup( $control, item );
 
         // Add the control to the list.
         var children = this.children();
@@ -2916,25 +2919,38 @@ List.prototype.extend({
      * created.
      */
     _createControlsForItems: function( items ) {
+
+        var itemsCount = items.length;
         var itemClass = this.itemClass();
         var mapFunction = this._getMapFunction();
-        var $existingControls = this.controls();
+
         // Create (or reuse) a control for each item.
+        var $existingControls = this.controls();
+        var existingControlsCount = $existingControls.length;
         var $control;
-        for ( var i = 0, length = items.length; i < length; i++ ) {
-            if ( i < $existingControls.length ) {
-                $control = $existingControls.eq( i );
-            } else {
-                $control = itemClass.create();
-                this.append( $control );
-            }
-            mapFunction.call( $control, items[i] );
-            this._setupControl( $control );
+        var i = 0;
+        for ( ; i < itemsCount && i < existingControlsCount; i++ ) {
+            $control = $existingControls.eq( i );
+            this._mapAndSetup( $control, items[i], mapFunction );
         }
+
+        // Create new controls for additional items.
+        var newControls = [];
+        for ( ; i < itemsCount; i++ ) {
+            $control = itemClass.create();
+            this._mapAndSetup( $control, items[i], mapFunction );
+            newControls.push( $control[0] );
+        }
+        if ( newControls.length > 0 ) {
+            this.append.apply( this, newControls );
+        }
+
+        // Remove leftover controls.
         var leftoverControls = $existingControls.slice( items.length );
         if ( leftoverControls.length > 0 ) {
             $( leftoverControls ).remove();
         }
+
         return this;
     },
     
@@ -2978,6 +2994,15 @@ List.prototype.extend({
     
     // A copy of the items the last time they were created or refreshed.
     _itemsCache: Control.property(),
+
+    // Apply the map function and let the control set itself up.
+    _mapAndSetup: function( $control, item, mapFunction ) {
+        if ( mapFunction === undefined ) {
+            mapFunction = this._getMapFunction();
+        }
+        mapFunction.call( $control, item );
+        this._setupControl( $control );
+    },
     
     /*
      * This can be extended by subclasses who want to perform per-control
@@ -3060,9 +3085,9 @@ The user can select an item with the mouse or keyboard.
 */
 var ListBox = List.sub({
     className: "ListBox",
-    genericDefault: "true",
     inherited: {
-        itemClass: "BasicButton"
+        itemClass: "BasicButton",
+        generic: "true"
     }
 });
 ListBox.prototype.extend({
@@ -3349,7 +3374,7 @@ ListBox.prototype.extend({
      * Scroll the given control into view.
      */
     _scrollToControl: function( $control ) {
-        
+
         var controlTop = $control.offset().top;
         var controlBottom = controlTop + $control.outerHeight();
 
@@ -3385,6 +3410,12 @@ ListBox.prototype.extend({
     _selectFirstControl: function() {
         if ( this.controls().length > 0 ) {
             this.selectedIndex( 0 );
+            /*
+             * The list will have already scrolled the first control into view,
+             * but if the list has top padding, the scroll won't be all the way
+             * at the top. So, as a special case, force it to the top.
+             */
+            this.scrollTop( 0 );
             return true;
         }
         return false;
@@ -3682,7 +3713,9 @@ are open. See notes in the source for the Overlay class.
 */
 var MenuBar = Control.sub({
     className: "MenuBar",
-    genericDefault: "true"
+    inherited: {
+        generic: "true"
+    }
 });
 MenuBar.prototype.extend({
     
@@ -3804,6 +3837,132 @@ var MenuItem = BasicButton.sub({
 /* A line separating the MenuItems controls in a Menu. */
 var MenuSeparator = Control.sub({
     className: "MenuSeparator"
+});
+
+/* Pick exactly one child to show at a time. */
+var Mode = Control.sub({
+    className: "Mode"
+});
+Mode.prototype.extend({
+    
+    /*
+     * The currently visible child, cast to a control (if applicable).
+     */
+    activeChild: Control.iterator( function( activeChild ) {
+        if ( activeChild === undefined ) {
+            return this.children().not( ".hidden" ).eq(0).cast( jQuery );
+        } else {
+            
+            /*
+             * Apply a "hidden" style instead of just forcing display to none.
+             * If we did that, we would have no good way to undo the hiding.
+             * A simple .toggle(true) would set display: block, which wouldn't
+             * be what we'd want for inline elements.
+             */
+            this.children().not( activeChild ).toggleClass( "hidden", true );
+
+            var activeChildIndex = this.children().index( activeChild );
+
+            // Tell the child it's now active, and show it.
+            $( activeChild )
+                .trigger( "active" )
+                .toggleClass( "hidden", false );
+            
+            this
+                // Trigger our own activeChildChanged event.
+                .trigger( "activeChildChanged", [ activeChildIndex, activeChild ] )
+            
+                // In case the new child changed our size.
+                .checkForSizeChange();
+            
+            return this;
+        }
+    }),
+    
+    /*
+     * The index of the currently visible child.
+     */
+    activeIndex: function( index ) {
+        if ( index === undefined ) {
+            return this.children().index( this.activeChild() );
+        } else {
+            return this.activeChild( this.children().eq( index ) );
+        }
+    },
+    
+    /*
+     * The array of elements that will be held; only one will be shown at a time.
+     * 
+     * If the set changes, this will attempt to preserve the one that was
+     * previously active. Otherwise, the first element is made active.
+     */
+    content: function( value ) {
+        
+        var previousChild = this.activeChild();
+        var result = this._super( value );
+        
+        if ( value !== undefined ) {
+            if ( previousChild && previousChild.parent()[0] === this[0] ) {
+                // Still have previously active child; hide other children.
+                this.activeChild( previousChild );
+            } else {
+                this.activeIndex( 0 );
+            }
+        }
+        
+        return result;
+    },
+    
+    initialize: function() {
+        
+        var self = this;
+        this.on( "layout sizeChanged", function() {
+            self._childSizeChanged();
+        });
+
+        // TODO: Call _childSizeChanged() on a window resize event too.        
+        this.inDocument( function() {
+            this._childSizeChanged();
+        });
+        
+        if ( this.activeIndex() < 0 ) {
+            // Show first child by default. 
+            this.activeIndex(0);
+        }
+        
+    },
+    
+    /*
+     * True if the control should always adjust its own height to be as tall
+     * as its tallest child, whether or not that child is currently active.
+     */
+    maximize: Control.chain( "applyClass/maximize" ),
+    
+    /*
+     * The size of a child may have changed. Make the control as tall as the
+     * tallest child.
+     */
+    _childSizeChanged: function() {
+        
+        if ( !this.maximize() ) {
+            return;
+        }
+        
+        var children = this.children();
+        if ( children.length === 0 ) {
+            return;
+        }
+        
+        var childHeights = children.map( function( index, child ) {
+            return $( child ).outerHeight( true );
+        }).get();
+        
+        var maxChildHeight = Math.max.apply( this, childHeights );
+        if ( maxChildHeight > 0 ) {
+            this.height( maxChildHeight );
+        }
+    }
+        
 });
 
 /* The name of the current month, globalized. */
@@ -4014,7 +4173,9 @@ A control that covers the entire viewport, typically to swallow clicks.
 */
 var Overlay = Control.sub({
     className: "Overlay",
-    genericDefault: "true"
+    inherited: {
+        generic: "true"
+    }
 });
 Overlay.prototype.extend({
     
@@ -4142,7 +4303,9 @@ PackedColumns.prototype.extend({
 /* General base class for pages. */
 var Page = Control.sub({
     className: "Page",
-    genericDefault: "true"
+    inherited: {
+        generic: "true"
+    }
 });
 Page.prototype.extend({
     
@@ -4317,7 +4480,6 @@ are temporarily moved to the menu, then moved back when the menu is closed.
 */
 var PanelWithOverflow = Control.sub({
     className: "PanelWithOverflow",
-    genericDefault: "true",
     inherited: {
         content: [
             " ",
@@ -4332,7 +4494,8 @@ var PanelWithOverflow = Control.sub({
                 ref: "PanelWithOverflow_content"
             },
             " "
-        ]
+        ],
+        generic: "true"
     }
 });
 PanelWithOverflow.prototype.extend({
@@ -4440,7 +4603,6 @@ in a scrolling element nested within some outer scrolling element.
 */
 var PersistentPanel = Control.sub({
     className: "PersistentPanel",
-    genericDefault: "true",
     inherited: {
         content: [
             " ",
@@ -4449,7 +4611,8 @@ var PersistentPanel = Control.sub({
                 ref: "PersistentPanel_content"
             },
             " "
-        ]
+        ],
+        generic: "true"
     }
 });
 PersistentPanel.prototype.extend({
@@ -4624,7 +4787,9 @@ Base class for popups, menus, dialogs, things that appear temporarily over other
 */
 var Popup = Control.sub({
     className: "Popup",
-    genericDefault: "true"
+    inherited: {
+        generic: "true"
+    }
 });
 Popup.prototype.extend({
     
@@ -5271,7 +5436,6 @@ Repeater.prototype.extend({
 
 var SearchBox = Control.sub({
     className: "SearchBox",
-    genericDefault: "true",
     inherited: {
         content: [
             " ",
@@ -5294,7 +5458,8 @@ var SearchBox = Control.sub({
                 ]
             },
             " "
-        ]
+        ],
+        generic: "true"
     }
 });
 SearchBox.prototype.extend({
@@ -5677,7 +5842,6 @@ Show its children as sliding pages which can be navigated by clicking buttons be
 */
 var SlidingPagesWithDots = Control.sub({
     className: "SlidingPagesWithDots",
-    genericDefault: "true",
     inherited: {
         content: [
             " ",
@@ -5699,7 +5863,8 @@ var SlidingPagesWithDots = Control.sub({
                 ]
             },
             " "
-        ]
+        ],
+        generic: "true"
     }
 });
 SlidingPagesWithDots.prototype.extend({
@@ -5806,7 +5971,6 @@ Sprite.prototype.extend({
 /* A button that uses CSS image sprites for its background. */
 var SpriteButton = BasicButton.sub({
     className: "SpriteButton",
-    genericDefault: "false",
     inherited: {
         content: [
             " ",
@@ -5825,7 +5989,8 @@ var SpriteButton = BasicButton.sub({
                 ref: "SpriteButton_content"
             },
             " "
-        ]
+        ],
+        generic: "false"
     }
 });
 SpriteButton.prototype.extend({
@@ -5850,132 +6015,6 @@ SpriteButton.prototype.extend({
     
     _sprites: Control.chain( "children", "filter/.Sprite", "cast" )
 
-});
-
-/* Pick exactly one child to show at a time. */
-var Switch = Control.sub({
-    className: "Switch"
-});
-Switch.prototype.extend({
-    
-    /*
-     * The currently visible child, cast to a control (if applicable).
-     */
-    activeChild: Control.iterator( function( activeChild ) {
-        if ( activeChild === undefined ) {
-            return this.children().not( ".hidden" ).eq(0).cast( jQuery );
-        } else {
-            
-            /*
-             * Apply a "hidden" style instead of just forcing display to none.
-             * If we did that, we would have no good way to undo the hiding.
-             * A simple .toggle(true) would set display: block, which wouldn't
-             * be what we'd want for inline elements.
-             */
-            this.children().not( activeChild ).toggleClass( "hidden", true );
-
-            var activeChildIndex = this.children().index( activeChild );
-
-            // Tell the child it's now active, and show it.
-            $( activeChild )
-                .trigger( "active" )
-                .toggleClass( "hidden", false );
-            
-            this
-                // Trigger our own activeChildChanged event.
-                .trigger( "activeChildChanged", [ activeChildIndex, activeChild ] )
-            
-                // In case the new child changed our size.
-                .checkForSizeChange();
-            
-            return this;
-        }
-    }),
-    
-    /*
-     * The index of the currently visible child.
-     */
-    activeIndex: function( index ) {
-        if ( index === undefined ) {
-            return this.children().index( this.activeChild() );
-        } else {
-            return this.activeChild( this.children().eq( index ) );
-        }
-    },
-    
-    /*
-     * The array of elements that will be held; only one will be shown at a time.
-     * 
-     * If the set changes, this will attempt to preserve the one that was
-     * previously active. Otherwise, the first element is made active.
-     */
-    content: function( value ) {
-        
-        var previousChild = this.activeChild();
-        var result = this._super( value );
-        
-        if ( value !== undefined ) {
-            if ( previousChild && previousChild.parent()[0] === this[0] ) {
-                // Still have previously active child; hide other children.
-                this.activeChild( previousChild );
-            } else {
-                this.activeIndex( 0 );
-            }
-        }
-        
-        return result;
-    },
-    
-    initialize: function() {
-        
-        var self = this;
-        this.on( "layout sizeChanged", function() {
-            self._childSizeChanged();
-        });
-
-        // TODO: Call _childSizeChanged() on a window resize event too.        
-        this.inDocument( function() {
-            this._childSizeChanged();
-        });
-        
-        if ( this.activeIndex() < 0 ) {
-            // Show first child by default. 
-            this.activeIndex(0);
-        }
-        
-    },
-    
-    /*
-     * True if the control should always adjust its own height to be as tall
-     * as its tallest child, whether or not that child is currently active.
-     */
-    maximize: Control.chain( "applyClass/maximize" ),
-    
-    /*
-     * The size of a child may have changed. Make the control as tall as the
-     * tallest child.
-     */
-    _childSizeChanged: function() {
-        
-        if ( !this.maximize() ) {
-            return;
-        }
-        
-        var children = this.children();
-        if ( children.length === 0 ) {
-            return;
-        }
-        
-        var childHeights = children.map( function( index, child ) {
-            return $( child ).outerHeight( true );
-        }).get();
-        
-        var maxChildHeight = Math.max.apply( this, childHeights );
-        if ( maxChildHeight > 0 ) {
-            this.height( maxChildHeight );
-        }
-    }
-        
 });
 
 /* A control that can be used as a tab in a TabSet. */
@@ -6014,7 +6053,6 @@ The TabSet control will resize itself to be as tall as its tallest child.
 */
 var TabSet = Control.sub({
     className: "TabSet",
-    genericDefault: "true",
     inherited: {
         content: [
             " ",
@@ -6034,7 +6072,7 @@ var TabSet = Control.sub({
                     " ",
                     " ",
                     {
-                        control: "Switch",
+                        control: "Mode",
                         ref: "TabSet_content",
                         maximize: "true"
                     },
@@ -6042,7 +6080,8 @@ var TabSet = Control.sub({
                 ]
             },
             " "
-        ]
+        ],
+        generic: "true"
     }
 });
 TabSet.prototype.extend({
@@ -6063,7 +6102,7 @@ TabSet.prototype.extend({
 
         var self = this;
         this.$tabButtons().click( function( event ) {
-            var tabButtonCssClass = "." + self.tabButtonClass().className;
+            var tabButtonCssClass = "." + self.tabButtonClass().prototype.className;
             var tabButton = $( event.target ).closest( tabButtonCssClass ).control();
             if ( tabButton ) {
                 var index = self.tabButtons().index( tabButton );
@@ -6080,11 +6119,11 @@ TabSet.prototype.extend({
         this.$TabSet_content().on({
             "activeChildChanged": function( event, index, child ) {
                 /*
-                 * Map the Switch's activeChildChanged event to a more
+                 * Map the Mode's activeChildChanged event to a more
                  * semantically specific activeTabChanged event.
                  * 
-                 * Only map active events coming from our own Switch; ignore
-                 * events coming from any Switch within a tab.
+                 * Only map active events coming from our own Mode; ignore
+                 * events coming from any Mode within a tab.
                  */
                 var tab = $( event.target ).filter( self.tabs() );
                 if ( tab.length > 0 ) {
@@ -6372,7 +6411,9 @@ A message which briefly appears on a page before automatically disappearing.
 */
 var TransientMessage = Control.sub({
     className: "TransientMessage",
-    genericDefault: "true"
+    inherited: {
+        generic: "true"
+    }
 });
 TransientMessage.prototype.extend({
 
@@ -6489,8 +6530,8 @@ For more discussion: http://miksovsky.blogs.com/flowstate/2010/09/index.html.
 */
 var ValidatingTextBox = TextBox.sub({
     className: "ValidatingTextBox",
-    genericDefault: "true",
     inherited: {
+        generic: "true"
     }
 });
 ValidatingTextBox.prototype.extend({
@@ -6788,7 +6829,6 @@ An input area with a dropdown arrow, which invokes a popup.
 */
 var ComboBox = PopupSource.sub({
     className: "ComboBox",
-    genericDefault: "true",
     inherited: {
         closeOnInsideClick: "false",
         openOnClick: "false",
@@ -6814,7 +6854,8 @@ var ComboBox = PopupSource.sub({
                 content: "▼"
             },
             " "
-        ]
+        ],
+        generic: "true"
     }
 });
 ComboBox.prototype.extend({
@@ -7422,7 +7463,6 @@ per day.
 */
 var FlickrInterestingNavigator = CalendarMonthNavigator.sub({
     className: "FlickrInterestingNavigator",
-    genericDefault: "false",
     inherited: {
         dayClass: "FlickrInterestingDay",
         dayNameFormat: "namesAbbr",
@@ -7448,7 +7488,8 @@ var FlickrInterestingNavigator = CalendarMonthNavigator.sub({
             " ",
             "<span class=\"chevron\">»</span>",
             " "
-        ]
+        ],
+        generic: "false"
     }
 });
 FlickrInterestingNavigator.prototype.extend({
@@ -7782,7 +7823,6 @@ ListComboBox.prototype.extend({
 /* A popup menu. This is typically used in a Menu bar. */
 var Menu = PopupSource.sub({
     className: "Menu",
-    genericDefault: "true",
     inherited: {
         popup: [
             " ",
@@ -7798,7 +7838,8 @@ var Menu = PopupSource.sub({
                 ref: "Menu_popup"
             },
             " "
-        ]
+        ],
+        generic: "true"
     }
 });
 Menu.prototype.extend({
@@ -7885,7 +7926,6 @@ ModalOverlay.prototype.extend({
 /* A button that produces a popup when clicked. */
 var PopupButton = PopupSource.sub({
     className: "PopupButton",
-    genericDefault: "true",
     inherited: {
         contentClass: "BasicButton",
         content: [
@@ -7900,7 +7940,8 @@ var PopupButton = PopupSource.sub({
                 ref: "indicator"
             },
             " "
-        ]
+        ],
+        generic: "true"
     }
 });
 PopupButton.prototype.extend({
