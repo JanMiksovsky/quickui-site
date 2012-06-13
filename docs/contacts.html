@@ -337,6 +337,11 @@ can also change position if the user updates the name on a card and clicks Save.
 
 </ul>
 
+<p>
+ContactListBox adds some keyboard support of its own: Enter to edit the selected
+card, Del to delete the selected card, and Escape to deselect a card.
+</p>
+
 <h2><a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/controls/Card.coffee">Card</a></h2>
 <p>
 This class is a simple container that renders as a small business card with
@@ -367,8 +372,8 @@ It subclasses Card (above) in order to gain that class’ visual presentation.
     content:
       # The Mode control shows just one child (mode) at a time.
       control: Mode, ref: "mode", content: [
-        { control: "DetailsRead", ref: "modeRead" }
-        { control: "DetailsEdit", ref: "modeEdit" }
+        { control: "DetailsReader", ref: "modeRead" }
+        { control: "DetailsEditor", ref: "modeEdit" }
       ]</pre>
 
 <p>
@@ -394,7 +399,7 @@ read-only fields. In the editing state, the card shows the same information in
 editable text boxes. The ContactCard hosts a
 <a data-control="CatalogLink">Mode</a>
 control to switch between these two states. Each state is represented by a class
-of its own: DetailsRead and DetailsEdit.
+of its own: DetailsReader and DetailsEditor.
 </li>
 
 <li>
@@ -434,8 +439,8 @@ name(), address(), and so on.
 
 <p>
 To implement these shared aspects, the ContactDetails class exists to serve as a
-base class for the read state, DetailsRead, and the edit state,
-DetailsEdit.
+base class for the read state, DetailsReader, and the edit state,
+DetailsEditor.
 </p>
 <p>
 The ContactDetails class expects to be subclassed to provide a complete
@@ -448,7 +453,7 @@ represents the same name() property with a <a data-
 control="CatalogLink">ValidatingTextBox</a>.
 </p>
 
-<h2><a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/controls/DetailsRead.coffee">DetailsRead</a></h2>
+<h2><a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/controls/DetailsReader.coffee">DetailsReader</a></h2>
 <p>
 This subclass of ContactDetails (above) is used to represent the contact in the
 read state (when the card is unselected, or selected but not yet in editing
@@ -458,15 +463,15 @@ property is shown in a PostalAddress control, which adds a link to Google Maps.
 </p>
 <p>
 Because this handles the read state, the only interactivity defined by
-DetailsRead is tracking whether the user has clicked a specific read-only
+DetailsReader is tracking whether the user has clicked a specific read-only
 field. If the user clicks the name field, for instance, the control will raise
 an fieldClick event. ContactCard uses this event to place the keyboard focus in
-the corresponding editable field in DetailsEdit.
+the corresponding editable field in DetailsEditor.
 </p>
 
-<h2><a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/controls/DetailsEdit.coffee">DetailsEdit</a></h2>
+<h2><a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/controls/DetailsEditor.coffee">DetailsEditor</a></h2>
 <p>
-The other subclass of ContactDetails, DetailsEdit, is used to edit the
+The other subclass of ContactDetails, DetailsEditor, is used to edit the
 information for a specific contact. This control entails the most domain-
 specific interactivity (i.e., UI details which wouldn’t be found in any other
 application), and hence has the longest source code of any of the controls in
