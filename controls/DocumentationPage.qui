@@ -13,6 +13,7 @@
             <Link href="rendering.html">Rendering</Link>
             <Link href="control-JSON.html">Control JSON</Link>
             <Link href="CoffeeScript.html">CoffeeScript</Link>
+            <Link href="contacts.html">Contacts sample app</Link>
             <Link href="control-guidelines.html">Guidelines</Link>
         </navigationLinks>
     </SitePage>
