@@ -396,22 +396,17 @@ editing state.
 <li>
 In the normal and selected states, the card shows the contact information as
 read-only fields. In the editing state, the card shows the same information in
-editable text boxes. The ContactCard hosts a
-<a data-control="CatalogLink">Mode</a>
-control to switch between these two states. Each state is represented by a class
-of its own: DetailsReader and DetailsEditor.
+editable text boxes. To manage this in-place editing feature, the ContactCard
+hosts an <a data-control="CatalogLink">Editable</a>
+control. The Editable class allows a control to switch between a read state and
+an edit state, and handles transitions between these states. Each state is
+represented by a class of its own: DetailsReader and DetailsEditor.
 </li>
 
 <li>
 If the user clicks on a specific read-only field in the normal or selected
 state, ContactCard will put the keyboard focus into the corresponding editable
 field in the editing state.
-</li>
-
-<li>
-The ContactCard class defines some keyboard shortcuts: pressing Enter in a
-single-line input field saves the card, while pressing Esc cancels any pending
-edits.
 </li>
 
 </ul>
@@ -504,6 +499,12 @@ View from the Model here, this interaction could be mediated through the
 Presenter.
 </li>
 
+<li>
+DetailsEditor defines some keyboard shortcuts which are only relevant during
+editing: pressing Enter in a single-line input field saves the card, while
+pressing Esc cancels any pending edits.
+</li>
+
 </ul>
 
 <h2><a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/controls/FieldLauncher.coffee">FieldLauncher</a></h2>
@@ -544,6 +545,12 @@ component classes has a much higher chance of producing reusable code than one
 in which the source is comparatively unstructured. Because each project can
 contribute something to the UI of future projects, the effect is to accelerate
 the pace of user interface development.
+</li>
+<li>
+Using a shared ListBox control lets the sample Contacts application to provide a
+degree of keyboard support for list navigation far that goes far beyond what
+comparable web applications provide for similar lists. Much of the sample app's
+keyboard support is essentially <i>free</i>.
 </li>
 <li>
 QuickUI controls can easily and cleanly fill the role of a View in an MVC/MVP
