@@ -16,7 +16,7 @@
 <script type="text/javascript" src="/release/quickui.catalog.js"></script>
 <script type="text/javascript" src="/controls/controls.js"></script>
 
-<title>Overview of the Contacts sample application</title>
+<title>A sample Contacts application</title>
 
 </head>
 
@@ -27,11 +27,12 @@
 <p>
 The Contacts sample application demonstrates the use QuickUI as the user
 interface framework for a typical web application. This page provides an
-overview of the Contacts architecture. See the *** source code *** for complete
-details.
+overview of the Contacts architecture. See the
+<a href="https://github.com/JanMiksovsky/quickui-contacts">source code repository</a>
+for complete details.
 </p>
 
-*** SCREENSHOT ***
+<a href="/demos/contacts" target="_blank" style="border: none;"><img src="images/Contacts.png"/></a>
 
 <h2>General notes on tools</h2>
 <p>
@@ -48,9 +49,9 @@ CoffeeScript language is an extension of JavaScript that allows, in most cases,
 for more concise source code. CoffeeScript compiles to JavaScript, so
 <i>everything that the sample does in CoffeeScript you could accomplish in plain
 JavaScript</i>. CoffeeScript is used here because it's tighter than the
-corresponding JavaScript. QuickUI lets you <a href="CoffeeScript.html">define
-user interface components in CoffeeScript</a> using the language’s native
-“class” syntax.
+corresponding JavaScript. QuickUI lets you concisely
+<a href="CoffeeScript.html">define user interface components in CoffeeScript</a>
+using the language’s native “class” syntax.
 </li>
 <li>
 <a href="http://backbonejs.org/">Backbone.js</a>.
@@ -208,8 +209,6 @@ or loading a set of sample contacts.
 
 <h2><a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/controls/ContactsPage.coffee">ContactsPage</a></h2>
 
-*** DIAGRAM of overall ContactPage, with callouts ***
-
 <p>
 The ContactsPage is a QuickUI control that acts as the top-level View in the
 Model-View-Presenter architecture. In this particular application, the
@@ -355,7 +354,7 @@ content in the normal state if the content doesn’t completely fit.
 
 <h2><a href="https://github.com/JanMiksovsky/quickui-contacts/blob/master/controls/ContactCard.coffee">ContactCard</a></h2>
 
-*** DIAGRAM of contact card, with callouts ***
+<img src="images/Contact Card.png"/>
 
 <p>
 This control is the primary representation of a contact in the user interface.
@@ -529,16 +528,22 @@ href="/catalog">QuickUI Catalog</a> means that a significant portion of the user
 interface code is actually shared. Broadly speaking, over half (about 60%) of
 the code which defines the appearance and interactivity of this sample
 application is shared. Conversely, less than half of the UI code (about 40%) is
-unique to this application. This balance is consistent with other component-
-based applications created with QuickUI.
+unique to this application. This balance is typical of component-based
+applications created with QuickUI.
+</li>
+<li>
+Even the controls created specifically for this application nevertheless could
+be reused in other contexts. The FieldLauncher class (above), for example, could
+likely find use in other applications. A project whose UI is well-factored into
+component classes has a much higher chance of producing reusable code than one
+in which the source is comparatively unstructured. Because each project can
+contribute something to the UI of future projects, the effect is to accelerate
+the pace of user interface development.
 </li>
 <li>
 QuickUI controls can easily and cleanly fill the role of a View in an MVC/MVP
 application architecture. In this case, they work very well on top of a Model
 and Presenter created in Backbone.
-</li>
-<li>
-You can create QuickUI controls in CoffeeScript very concisely.
 </li>
 <li>
 Building a user interface with components like QuickUI controls makes it easy
