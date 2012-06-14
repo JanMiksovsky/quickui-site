@@ -57,11 +57,20 @@ catalogRuntime="$catalogSource/quickui.catalog"
 qb $catalogRuntime
 
 echo Copying catalog runtime files
-cp -fp $updateParam $catalogRuntime/quickui.catalog.* $releasePath
+catalogRuntimeBaseName="$catalogRuntime/quickui.catalog"
+cp -fp $updateParam $catalogRuntimeBaseName.* $releasePath
+
+# Extract version line from quickui.catalog.js, same as for quickui.js (above).
+catalogVersionLine=`grep "catalog:" $catalogRuntimeBaseName.js`
+catalogVersion=`echo $catalogVersionLine | sed -e "s/.*catalog: \"\(.*\)\"/\1/"`
+
+echo Copying versioned catalog runtime for version $catalogVersion
+cp -fp $updateParam $catalogRuntimeBaseName.js $releasePath/quickui.catalog-$catalogVersion.js
+cp -fp $updateParam $catalogRuntimeBaseName.css $releasePath/quickui.catalog-$catalogVersion.css
 
 echo Copying catalog resources
 catalogResourcesSource="$catalogRuntime/resources"
-cp -fpr $catalogResourcesSource $releasePath
+cp -fpr $updateParam $catalogResourcesSource $releasePath
 
 echo Building catalog documentation
 qb $catalogDest
@@ -90,4 +99,4 @@ if [ ! -d "$demosPath" ]; then
 	echo Creating demos folder
 	mkdir "$demosPath"
 fi
-cp -fpr $demosSource/* $demosPath
+cp -fpr $updateParam $demosSource/* $demosPath
