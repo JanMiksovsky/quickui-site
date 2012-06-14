@@ -39,11 +39,11 @@ fi
 
 echo Copying QuickUI runtime files
 # cp options are: force, preserve (times), update (if available)
-cp -f -p $updateParam $quickuiRuntimeBaseName.* $releasePath
+cp -fp $updateParam $quickuiRuntimeBaseName.* $releasePath
 
 echo Copying versioned runtime files for version $version
-cp -f -p $updateParam $quickuiRuntimeBaseName.js $releasePath/quickui-$version.js
-cp -f -p $updateParam $quickuiRuntimeBaseName.css $releasePath/quickui-$version.css
+cp -fp $updateParam $quickuiRuntimeBaseName.js $releasePath/quickui-$version.js
+cp -fp $updateParam $quickuiRuntimeBaseName.css $releasePath/quickui-$version.css
 
 echo Building control documentation
 catalogSource="$sitePath/../quickui-catalog"
@@ -57,7 +57,11 @@ catalogRuntime="$catalogSource/quickui.catalog"
 qb $catalogRuntime
 
 echo Copying catalog runtime files
-cp -f -p $updateParam $catalogRuntime/quickui.catalog.* $releasePath
+cp -fp $updateParam $catalogRuntime/quickui.catalog.* $releasePath
+
+echo Copying catalog resources
+catalogResourcesSource="$catalogRuntime/resources"
+cp -fpr $catalogResourcesSource $releasePath
 
 echo Building catalog documentation
 qb $catalogDest
@@ -68,7 +72,7 @@ if [ ! -d "$catalogDest" ]; then
 	mkdir "$catalogDest"
 fi
 echo Copying catalog documentation
-cp -f -p -r $updateParam $catalogSource/docs/* $catalogDest
+cp -fpr $updateParam $catalogSource/docs/* $catalogDest
 
 echo Compiling site markup
 qb $sitePath
@@ -86,4 +90,4 @@ if [ ! -d "$demosPath" ]; then
 	echo Creating demos folder
 	mkdir "$demosPath"
 fi
-cp -f -p -r $demosSource/* $demosPath
+cp -fpr $demosSource/* $demosPath

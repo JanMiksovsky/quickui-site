@@ -401,6 +401,9 @@ hosts an <a data-control="CatalogLink">Editable</a>
 control. The Editable class allows a control to switch between a read state and
 an edit state, and handles transitions between these states. Each state is
 represented by a class of its own: DetailsReader and DetailsEditor.
+Significantly, the Editable control defers loading of the DetailsEditor mode;
+that control is only instantiated when the user actually indicates they want to 
+edit a card.
 </li>
 
 <li>
