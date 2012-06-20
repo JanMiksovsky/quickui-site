@@ -8,7 +8,7 @@
                 <span ref="CodeEditor_heading" class="label">Edit JavaScript here</span>
             </div>
             <div class="label">
-                <SiteButton ref="buttonRun">&#9654; Run</SiteButton>
+                <BasicButton ref="buttonRun" class="prominent">&#9654; Run</BasicButton>
             </div>
         </div>
         <div>

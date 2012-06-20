@@ -16,7 +16,7 @@
     <!-- Hide for now, since this isn't getting any use.
     <Link href="http://discussions.zoho.com/quickui">Discuss</Link>
     -->
-    <Link href="https://github.com/JanMiksovsky/quickui">Contribute</Link>
+    <Link href="https://github.com/JanMiksovsky/quickui">GitHub</Link>
 
     <SearchBox ref="searchBox"/>
 

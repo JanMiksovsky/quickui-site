@@ -121,3 +121,10 @@ pre {
     padding: 10px;
     white-space: pre-wrap;
 }
+
+.BasicButton.prominent {
+    font-size: 14px;
+    font-family: "Avenir Next LT W01 Bold", Helvetica, Arial, sans-serif;
+    margin-right: 10px;
+    padding: 0.4em 1em 0.5em;
+}

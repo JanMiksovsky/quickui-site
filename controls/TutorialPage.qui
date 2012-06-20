@@ -48,7 +48,7 @@
     
         <CodeEditor ref="editor"/>
         
-        <SiteButton ref="buttonNext">Next »</SiteButton>
+        <BasicButton ref="buttonNext" class="prominent">Next »</BasicButton>
         
     </SitePage>
 </prototype>

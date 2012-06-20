@@ -48,7 +48,8 @@
     z-index: 1; /* Make sure overlay for demo popups can cover up other tiles */
 }
 .DemoTile:hover .className {
-    border-bottom: 1px dotted #391c01;
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
 }
 .DemoTile:hover .className:hover {
     border-bottom-style: solid;
