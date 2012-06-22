@@ -24,10 +24,10 @@ function demo() {
 
 $demo.append(
     BasicButton.create( "Orange" ),
-    ColorSwatchButton.create( "Orange" ),
+    LabeledColorSwatch.create( "Orange" ),
     ColorSwatchComboBox.create( "Orange" ),
     Repeater.create()
-        .repeatClass( ColorSwatchButton )
+        .repeatClass( LabeledColorSwatch )
         .count( 3 )
         .content( "Orange" )
 );

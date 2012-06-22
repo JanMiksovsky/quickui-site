@@ -22,19 +22,17 @@
 <script id="demo">
 function demo() {
 
-var items = [
-    "Red",
-    "Orange",
-    "Yellow",
-    "Green",
-    "Blue"
-];
-
 $demo.append(
     List.create()
-        .items( items )
+        .items([
+            "Red",
+            "Orange",
+            "Yellow",
+            "Green",
+            "Blue"
+        ])
 );
-    
+
 }
 </script>
 
@@ -71,7 +69,7 @@ ListComboBox (for a combo box variant that includes AutoComplete).
 <p>
 You can change the control class used to render list items by setting the list’s
 itemClass() property. Try changing the list back to a plain List, then set
-itemClass(ColorSwatchButton) to render each string as a CSS color swatch. Then
+itemClass(LabeledColorSwatch) to render each string as a CSS color swatch. Then
 step through the above progression: ListBox, MultiListBox, ListComboBox, to see
 how each meta-control class now handles the list items. Each class’ behavior —
 e.g., keyboard navigation, AutoComplete — should still work.

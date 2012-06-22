@@ -24,7 +24,7 @@ function demo() {
 
 $demo.append(
     BasicButton.create( "Hello" ),
-    ColorSwatchButton.create( "Purple" )
+    LabeledColorSwatch.create( "Purple" )
 );
 
 $demo.find( ".BasicButton" ).css( "background", "lightyellow" );
@@ -68,17 +68,17 @@ all existing instances of BasicButton.
 
 <p>
 <b>The demo code</b> creates two buttons: one of the plain BasicButton class,
-and another of class ColorSwatchButton, which inherits from BasicButton. The 
+and another of class LabeledColorSwatch, which inherits from BasicButton. The 
 “class” attributes of these controls will reflect the class hierarchy of each. 
 (You can verify this in the debugger.) The first control will have
 class=“BasicButton Control”, because a BasicButton inherits from Control. The
-second control will have class=“ColorSwatchButton BasicButton Control”, because
-a ColorSwatchButton inherits from BasicButton.
+second control will have class=“LabeledColorSwatch BasicButton Control”, because
+a LabeledColorSwatch inherits from BasicButton.
 </p>
 
 <p>
 <b>Your goal:</b> Using a find() call similar to the one shown here, search for
-all ColorSwatchButton instances by class name, then set their CSS so that
+all LabeledColorSwatch instances by class name, then set their CSS so that
 “font-weight” is set to “bold”.
 </p>
 
