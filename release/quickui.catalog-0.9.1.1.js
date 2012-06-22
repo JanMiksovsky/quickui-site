@@ -485,7 +485,6 @@ BasicButton.prototype.extend({
             .removeClass( "active" )
             .isMouseButtonDown( false )
             ._renderButton();
-        console.log( "BasicButton: _trackMouseUp" );
     }
 
 });
