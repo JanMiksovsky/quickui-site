@@ -45,19 +45,15 @@ echo Copying versioned runtime files for version $version
 cp -fp $updateParam $quickuiRuntimeBaseName.js $releasePath/quickui-$version.js
 cp -fp $updateParam $quickuiRuntimeBaseName.css $releasePath/quickui-$version.css
 
-echo Building control documentation
+echo Building catalog
 catalogSource="$sitePath/../quickui-catalog"
-$catalogSource/mkdocs
+grunt --color=false --config $catalogSource/grunt.js all
 
 #grunt --config $catalogPath/grunt.js
 # TODO: run unit tests
 
-echo Building catalog runtime
-catalogRuntime="$catalogSource/quickui.catalog"
-qb $catalogRuntime
-
 echo Copying catalog runtime files
-catalogRuntimeBaseName="$catalogRuntime/quickui.catalog"
+catalogRuntimeBaseName="$catalogSource/quickui.catalog"
 cp -fp $updateParam $catalogRuntimeBaseName.* $releasePath
 
 # Extract version line from quickui.catalog.js, same as for quickui.js (above).
@@ -69,11 +65,8 @@ cp -fp $updateParam $catalogRuntimeBaseName.js $releasePath/quickui.catalog-$cat
 cp -fp $updateParam $catalogRuntimeBaseName.css $releasePath/quickui.catalog-$catalogVersion.css
 
 echo Copying catalog resources
-catalogResourcesSource="$catalogRuntime/resources"
+catalogResourcesSource="$catalogSource/resources"
 cp -fpr $updateParam $catalogResourcesSource $releasePath
-
-echo Building catalog documentation
-qb $catalogDest
 
 catalogDest="$sitePath/catalog"
 if [ ! -d "$catalogDest" ]; then
