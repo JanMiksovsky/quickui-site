@@ -6156,7 +6156,7 @@ Tabs.prototype.extend({
     /*
      * The child currently shown as the selected tab.
      */
-    selectedTab: Control.chain( "$Tabs_content", "activeChild" ),
+    selectedTab: Control.chain( "$Tabs_content", "activeElement" ),
     
     /*
      * The index of the selected tab.
@@ -7951,10 +7951,10 @@ Editable.prototype.extend( {
                     // This will create the edit control if necessary.
                     this._editContent( this._readContent() );
 
-                    this.activeChild( this.$Editable_edit() );
+                    this.activeElement( this.$Editable_edit() );
                 } else {
                     // Switch to read mode.
-                    this.activeChild( this.$Editable_read() );
+                    this.activeElement( this.$Editable_read() );
                     this.readControl().focus();
                 }
             });

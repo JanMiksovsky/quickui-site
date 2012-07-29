@@ -72,7 +72,7 @@ helper class, as is usual for jQuery subclasses created via $.sub().
   controlConstructor = function() {
     return function(selector, context) {
       var classFn;
-      if (!(this instanceof Window)) {
+      if (this instanceof jQuery) {
         classFn = this.constructor;
       } else {
         classFn = arguments.callee;
