@@ -1460,13 +1460,7 @@
 .CalendarMonthNavigator .navigator .panels {
   white-space: nowrap;
 }
-.CalendarMonthNavigator .navigator .LateralNavigator_content {
-  height: 100%;
-  left: 0;
-  position: absolute;
-  right: 0;
-}
-.CalendarMonthNavigator .navigator .LateralNavigator_content .monthHeading {
+.CalendarMonthNavigator .navigator .monthHeading {
   -webkit-box-flex: 1;
   box-flex: 1;
   line-height: 1.0;
@@ -1532,10 +1526,26 @@
   visibility: hidden;
 }
 
+.LateralNavigator {
+  /*
+  The center style currently hacks into SimpleFlexBox. Instead, SimpleFlexBox
+  should expose its own center alignment capability. Unfortunately, it's hard to
+  come up with a way to do that that works in both the constrainHeight="true"
+  and normal cases.
+  */
+
+}
 .LateralNavigator.generic .panels {
   outline: none;
   /* Keyboard feedback is nice, but distracting to mouse users */
 
+}
+.LateralNavigator.center .panels {
+  -webkit-box-align: center;
+  box-align: center;
+}
+.LateralNavigator.center .panels > * {
+  vertical-align: middle;
 }
 
 
@@ -1548,5 +1558,7 @@
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
+  display: -webkit-box;
+  display: box;
 }
 

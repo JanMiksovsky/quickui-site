@@ -434,7 +434,7 @@ helper class, as is usual for jQuery subclasses created via $.sub().
       The current version of QuickUI.
     */
 
-    quickui: "0.9.2pre"
+    quickui: "0.9.2"
   });
 
   /*

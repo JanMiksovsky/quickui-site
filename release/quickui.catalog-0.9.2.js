@@ -3,7 +3,7 @@ var _Version = Control.sub({
     className: "_Version"
 });
 _Version.prototype.extend({
-	catalog: "0.9.2pre"
+	catalog: "0.9.2"
 });
 
 /*
@@ -3718,7 +3718,10 @@ MenuBar.prototype.extend({
     _openPopups: Control.chain( "children", "filter/.PopupSource.opened", "control" ),
 
     // The overlay behind the menu bar.    
-    _overlay: Control.property()
+    _overlay: Control.property(),
+
+    // Hint for documentation tools.
+    _requiresClasses: [ "Menu", "Overlay" ]
     
 });
 
@@ -4860,7 +4863,10 @@ Popup.prototype.extend({
     },
 
     // The Overlay control behind the popup absorbing mouse clicks.
-    _overlay: Control.property()
+    _overlay: Control.property(),
+
+    // Hint for documentation tools.
+    _requiresClasses: [ "Overlay" ]
 
 });
 
@@ -6247,7 +6253,6 @@ TextBox.prototype.extend({
      * The placeholder (hint text) shown in the text box if it's empty.
      */
     placeholder: Control.chain( "prop/placeholder" )
-
     
 });
 
@@ -6861,6 +6866,9 @@ ComboBox.prototype.extend({
             }
         });
     },
+
+    // Hint for documentation tools.
+    _requiresClasses: [ "TextBox" ],
 
     /*
      * Select the text at the indicated positions in the input control.
@@ -7642,6 +7650,9 @@ Menu.prototype.extend({
     
     popup: Control.chain( "$Menu_popup", "content" ),
     
+    // Hint for documentation tools.
+    _requiresClasses: [ "MenuItem" ],
+
     /*
      * The "shield" is a thin block that can be used to obscure the boundary
      * between the content and popup so that those two elements can
@@ -8130,7 +8141,7 @@ Shows a month, allowing using to navigate months and select a date.
         {
           control: "LateralNavigator",
           ref: "navigator",
-          contentClass: "VerticalAlign",
+          align: "center",
           content: {
             control: "MonthAndYear",
             ref: "monthHeading"
@@ -8249,6 +8260,8 @@ Shows a month, allowing using to navigate months and select a date.
       }
     };
 
+    CalendarMonthNavigator.prototype._requiresClasses = ["CalendarDayButton"];
+
     return CalendarMonthNavigator;
 
   })(Control);
@@ -8348,6 +8361,7 @@ Shows a month, allowing using to navigate months and select a date.
     }
 
     LateralNavigator.prototype.inherited = {
+      "class": "center",
       content: {
         control: HorizontalPanels,
         ref: "panels",
@@ -8355,14 +8369,12 @@ Shows a month, allowing using to navigate months and select a date.
           html: "div",
           ref: "LateralNavigator_content"
         },
-        leftClass: "VerticalAlign",
         left: {
           control: BasicButton,
           ref: "LateralNavigator_previousButton",
           "class": "navigatorButton quiet",
           content: "&#9664;"
         },
-        rightClass: "VerticalAlign",
         right: {
           control: BasicButton,
           ref: "LateralNavigator_nextButton",
@@ -8372,6 +8384,11 @@ Shows a month, allowing using to navigate months and select a date.
         tabindex: -1
       },
       generic: true
+    };
+
+    LateralNavigator.prototype.align = function(align) {
+      this.toggleClass("center", align === "center");
+      return this;
     };
 
     LateralNavigator.prototype.canGoNext = function() {
@@ -8590,7 +8607,7 @@ Shows a month, allowing using to navigate months and select a date.
       return flexBox;
     };
 
-    VerticalAlign.prototype._handlingLayout = Control.property.bool();
+    VerticalAlign.prototype._handlingLayout = Control.property.bool(null, false);
 
     VerticalAlign.prototype._layout = function() {
       var availableSpace, child, childrenHeight, paddingTop, _i, _len, _ref;
