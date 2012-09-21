@@ -8,6 +8,7 @@ class window.ControlClassGraph extends GraphViz
     classNode = @_classNode graphClass
     baseClassEdges = @_baseClassEdges graphClass
     subclassEdges = @_subclassEdges graphClass
+    requiredClassEdges = @_requiredClassEdges graphClass
     dot = """
       digraph {
         rankdir=BT;
@@ -15,6 +16,7 @@ class window.ControlClassGraph extends GraphViz
         #{classNode}
         #{baseClassEdges}
         #{subclassEdges}
+        #{requiredClassEdges}
       }
     """
     @dot dot
@@ -33,6 +35,13 @@ class window.ControlClassGraph extends GraphViz
 
   _classNode: ( classFn ) ->
     "  #{classFn::className} [penwidth=2.0];\n"
+
+  _requiredClassEdges: ( classFn ) ->
+    controlInfo = new ControlInfo classFn
+    edges = ""
+    for requiredClass in controlInfo.requiredClasses()
+      edges += @_classEdge classFn, requiredClass
+    edges    
 
   _subclassEdges: ( classFn ) ->
     controlInfo = new ControlInfo classFn
