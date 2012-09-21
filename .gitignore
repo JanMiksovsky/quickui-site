@@ -6,6 +6,8 @@ build
 blog/blog.*
 catalog
 controls/controls.*
+controls/coffee/coffee.*
+controls/markup/markup.*
 demos
 docs/samples/samples.*
 downloads/downloads.*

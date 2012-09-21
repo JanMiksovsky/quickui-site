@@ -3,10 +3,17 @@
 module.exports = function(grunt) {
 
     grunt.loadTasks( "../quickui/grunt" );
+    grunt.loadNpmTasks( "grunt-less" );
+    grunt.loadTasks( "grunt" );
 
     // Project configuration.
     grunt.initConfig({
         coffee: {
+            controls: {
+                src: [ "controls/coffee/*.coffee" ],
+                dest: "controls/coffee/coffee.js"
+
+            },
             samples: {
                 src: [ "docs/samples/*.coffee",
                 ],
@@ -14,6 +21,20 @@ module.exports = function(grunt) {
             }
         },
         concat: {
+            controlsJs: {
+                src: [
+                    "controls/markup/markup.js",
+                    "controls/coffee/coffee.js"
+                ],
+                dest: "controls/controls.js"
+            },
+            controlsCss: {
+                src: [
+                    "controls/markup/markup.css",
+                    "controls/coffee/coffee.css"
+                ],
+                dest: "controls/controls.css"
+            },
             samples: {
                 src: [
                     "docs/samples/SiteTemplate.js",
@@ -23,6 +44,20 @@ module.exports = function(grunt) {
                     "docs/samples/SampleProductPage.js"
                 ],
                 dest: "docs/samples/samples.js"                                
+            }
+        },
+        less: {
+            controls: {
+                src: [ "controls/coffee/*.less" ],
+                dest: "controls/coffee/coffee.css"
+            }
+        },
+        qb: {
+            controls: {
+                path: "controls/markup"
+            },
+            markup: {
+                path: "markup"
             }
         },
         watch: {
@@ -38,6 +73,6 @@ module.exports = function(grunt) {
     });
 
     // Default task.
-    grunt.registerTask( "default", "coffee concat" );
+    grunt.registerTask( "default", "coffee less qb concat" );
     
 };
