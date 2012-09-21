@@ -6,11 +6,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks( "grunt-contrib-less" );
     grunt.loadTasks( "grunt" );
 
+    var sortDependencies = require( "../quickui/grunt/sortDependencies.js" );
+
     // Project configuration.
     grunt.initConfig({
         coffee: {
             controls: {
-                src: [ "controls/coffee/*.coffee" ],
+                src: sortDependencies.sortClassFiles( "controls/coffee/*.coffee" ),
                 dest: "controls/coffee/coffee.js"
 
             },
@@ -49,7 +51,7 @@ module.exports = function(grunt) {
         less: {
             controls: {
                 files: {
-                    "controls/coffee/coffee.css": [ "controls/coffee/*.less" ]
+                    "controls/coffee/coffee.css": sortDependencies.sortClassFiles( "controls/coffee/*.less" )
                 }
             }
         },
