@@ -3,7 +3,7 @@
 module.exports = function(grunt) {
 
     grunt.loadTasks( "../quickui/grunt" );
-    grunt.loadNpmTasks( "grunt-less" );
+    grunt.loadNpmTasks( "grunt-contrib-less" );
     grunt.loadTasks( "grunt" );
 
     // Project configuration.
@@ -48,8 +48,9 @@ module.exports = function(grunt) {
         },
         less: {
             controls: {
-                src: [ "controls/coffee/*.less" ],
-                dest: "controls/coffee/coffee.css"
+                files: {
+                    "controls/coffee/coffee.css": [ "controls/coffee/*.less" ]
+                }
             }
         },
         qb: {
