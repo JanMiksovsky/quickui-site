@@ -22,7 +22,8 @@ class window.ControlInfo
   Return any classes required by the given class.
   ###
   requiredClassNames: ->
-    return ( requiredClassName for requiredClassName in @info?.requiredClasses )
+    requiredClasses = @info?.requiredClasses ? []
+    return ( requiredClassName for requiredClassName in requiredClasses )
 
   ###
   Return any documented subclasses defined for the given class.

@@ -13,7 +13,7 @@ class window.ControlClassGraph extends GraphViz
     dot = """
       digraph {
         rankdir=BT;
-        node [shape=box;fontsize=12.0];
+        node [shape=box;fontsize=11.0];
         #{classNode}
         #{baseClassEdges}
         #{subclassEdges}
@@ -30,7 +30,9 @@ class window.ControlClassGraph extends GraphViz
     baseClassName = controlInfo.baseClassName()
     edges += @_baseClassEdge controlInfo.className, baseClassName
     if baseClassName != "Control"
-      edges += @_baseClassEdges new ControlInfo baseClassName
+      baseClassInfo = new ControlInfo baseClassName
+      edges += @_baseClassEdges baseClassInfo
+      edges += @_requiredClassEdges baseClassInfo
     edges
 
   _classNode: ( controlInfo ) ->
@@ -46,6 +48,9 @@ class window.ControlClassGraph extends GraphViz
     edges = ""
     for requiredClassName in controlInfo.requiredClassNames()
       edges += @_requiredClassEdge controlInfo.className, requiredClassName
+      requiredClassInfo = new ControlInfo requiredClassName
+      edges += @_baseClassEdges requiredClassInfo
+      edges += @_requiredClassEdges requiredClassInfo
     edges
 
   _subclassEdges: ( controlInfo ) ->
