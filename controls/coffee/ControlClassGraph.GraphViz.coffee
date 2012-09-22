@@ -5,14 +5,15 @@ Show a class graph for a control class.
 class window.ControlClassGraph extends GraphViz
 
   graphClass: Control.property.class ( graphClass ) ->
-    classNode = @_classNode graphClass
-    baseClassEdges = @_baseClassEdges graphClass
-    subclassEdges = @_subclassEdges graphClass
-    requiredClassEdges = @_requiredClassEdges graphClass
+    controlInfo = new ControlInfo graphClass::className
+    classNode = @_classNode controlInfo
+    baseClassEdges = @_baseClassEdges controlInfo
+    subclassEdges = @_subclassEdges controlInfo
+    requiredClassEdges = @_requiredClassEdges controlInfo
     dot = """
       digraph {
         rankdir=BT;
-        node [shape=box];
+        node [shape=box;fontsize=12.0];
         #{classNode}
         #{baseClassEdges}
         #{subclassEdges}
@@ -21,31 +22,34 @@ class window.ControlClassGraph extends GraphViz
     """
     @dot dot
 
-  _classEdge: ( classFn, baseClass ) ->
-    "  #{classFn::className} -> #{baseClass::className};\n"
+  _baseClassEdge: ( className, baseClassName ) ->
+    "  #{className} -> #{baseClassName};\n"
 
-  _baseClassEdges: ( classFn ) ->
+  _baseClassEdges: ( controlInfo ) ->
     edges = ""
-    if classFn isnt Control
-      baseClass = classFn.superclass
-      if baseClass?
-        edges += @_classEdge classFn, baseClass
-        edges += @_baseClassEdges baseClass
+    baseClassName = controlInfo.baseClassName()
+    edges += @_baseClassEdge controlInfo.className, baseClassName
+    if baseClassName != "Control"
+      edges += @_baseClassEdges new ControlInfo baseClassName
     edges
 
-  _classNode: ( classFn ) ->
-    "  #{classFn::className} [penwidth=2.0];\n"
+  _classNode: ( controlInfo ) ->
+    "  #{controlInfo.className} [penwidth=2.0];\n"
 
-  _requiredClassEdges: ( classFn ) ->
-    controlInfo = new ControlInfo classFn
-    edges = ""
-    for requiredClass in controlInfo.requiredClasses()
-      edges += @_classEdge classFn, requiredClass
-    edges    
+  _requiredClassEdge: ( className, requiredClassName ) ->
+    """
+      #{className} -> #{requiredClassName} [color=gray];
+      #{requiredClassName} [color=gray];
+    """
 
-  _subclassEdges: ( classFn ) ->
-    controlInfo = new ControlInfo classFn
+  _requiredClassEdges: ( controlInfo ) ->
     edges = ""
-    for subclass in controlInfo.subclasses()
-      edges += @_classEdge subclass, classFn
+    for requiredClassName in controlInfo.requiredClassNames()
+      edges += @_requiredClassEdge controlInfo.className, requiredClassName
+    edges
+
+  _subclassEdges: ( controlInfo ) ->
+    edges = ""
+    for subclassName in controlInfo.subclassNames()
+      edges += @_baseClassEdge subclassName, controlInfo.className
     edges
