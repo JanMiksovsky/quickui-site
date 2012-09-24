@@ -64,81 +64,157 @@ $( function() {
 <button data-control="SampleSpriteButton" id="buttonTutorial">Interactive Tutorial</button>
 </p>
 
-<h2>QuickUI is:</h2>
-<ul>
-    <li>
-        A conceptual model that lets you apply a solid object-oriented approach
-        to your client-side web UI code. You can define your UI in plain
-        JavaScript, CoffeeScript, or HTML.
-    </li>
-    <li>
-        A JavaScript framework that provides the glue to compose UI components
-        together, the semantics and mechanics of extensibility, helper functions
-        for constructing control APIs, tools for common control tasks, and
-        guidelines for consistency.
-    </li>
-    <li>
-        A run-time library that works in all mainstream browsers: Apple Safari,
-        Google Chrome, Microsoft Internet Explorer 8+, and Mozilla Firefox.
-    </li>
-    <li>
-        An open
-        <a data-control="Link" href="/catalog/">catalog</a>
-        of controls which can be used as is, or as the basis
-        for your own controls.
-    </li>
-</ul>
-
-<h2>Designed to meet the needs of:</h2>
-<ul>
-    <li>
-        JavaScript developers who use
-        <a data-control="Link" href="http://jquery.com">jQuery</a>,
-        the web’s most popular UI library,
-        and want a better way of organizing and maintaining their UI code.
-    </li>
-    <li>
-        Web teams that use custom controls to provide optimized user
-        interactions or a particular visual aesthetic.
-    </li>
-    <li>
-        Consultants or teams creating many small- to medium- scale applications,
-        who want to accumulate a library of reusable UI they can leverage to
-        finish future projects more efficiently.
-    </li>
-    <li>
-        Designers that need to evolve application UI quickly.
-    </li>
-    <li>
-        Small teams that can’t afford the resources to re-create common UI
-        solutions from scratch.
-    </li>
-    <li>
-        Companies who need their application user interface to deliver SEO
-        benefits.
-    </li>
-</ul>
-
 <p>
-QuickUI is completely free, and the
-<a data-control="Link" href="https://github.com/JanMiksovsky/quickui">source code</a>
-is open under the
-<a data-control="Link" href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>.
+<b>Users deserve great web apps</b> with clean, intuitive, responsive user
+interfaces that fit the task and are a joy to use. But the basic web platform
+itself makes building such interfaces hard. You, as a web designer or developer,
+have to do so much work just to recreate interface elements that look the way
+you want, respond the way users expect, and exploit the capabilities of the
+user’s device or browser to their fullest extent.
 </p>
 
-The page you are reading now, and this entire site, is built using QuickUI.
+<p>
+QuickUI is a JavaScript framework that lets you create your web app with user
+interface components called <i>controls</i>. A user interface control class
+includes all DOM elements, interactive behavior, and visual styling necessary
+for the control to function. You can define a control to implement any level of
+your app's UI: a page template, a region on the page, a special button, etc.
+With this approach, you can bring all the benefits of traditional object-
+oriented design to bear on your JavaScript UI code:
+</p>
+
+<ol>
+<li>Organize your UI code logically.</li>
+<li>Start with well-tested UI building blocks.</li>
+<li>Quickly iterate on the design of your app’s interface.</li>
+<li>Share common UI solutions with your teammates and the web at large.</li>
+</ol>
+
+<p>
+Controls are comparable to widgets in other UI frameworks — but a widget in such
+frameworks is typically a monolithic block of functionality you can neither
+disassemble, extend, or recombine. QuickUI controls are built from the ground up
+to permit that flexibility, letting you adapt controls to your needs.
+</p>
+
+<h2>What makes QuickUI different from other web frameworks?</h2>
+
+<ul>
+<li>
+<b>Composability</b>. You can put one control inside another. When other
+frameworks offer, say, a date picker, it’s a solid, immutable block; you can’t
+actually stick anything inside the date picker. Most QuickUI controls, in
+contrast, are designed you can still one control inside another whenever that
+would make sense.
+</li>
+<li>
+<b>Modularity</b>. Controls only have local effects and dependencies. When you
+add a control to a page, you don’t want to suddenly discover that the control is
+inadvertently stomping on, say, CSS styles you’re using elsewhere. Similarly, a
+component shouldn’t make lots of demands on its container; you should be able to
+stick a control anywhere and get something reasonable. In QuickUI, all controls
+are designed to be as context-independent as possible. Moreover, the QuickUI
+framework ensures that your controls have reliable access to their own elements
+— your codewon’t accidentally pick up other elements on the page.
+</li>
+<li>
+<b>Extensibility</b>. You can easily create specialized version of a control
+class by subclassing it. This is a killer feature, because it lets you build new
+components out of existing ones. QuickUI provides well-defined semantics for how
+a subclass and its parent classes can work together to populate the DOM. Most
+frameworks that let you create UI subclasses force you to wrap the elements of a
+parent class, which turns out to be a dead end. In contrast, a QuickUI subclass
+populates “slots” in its base class — and can define new slots of its own. For
+more on this approach, see
+<a data-control="Link" href="/docs/rendering.html">how controls
+render themselves</a>.
+</li>
+<li>
+<b>Opacity</b>. To ensure other developers use your control correctly, you
+simply define an external-facing API for your control class. This obviates the
+need for other developers to muck about inside your control’s DOM. This keeps a
+control’s contract with its host container clean and well-defined, making it
+possible for you to evolve your controls without breaking everyone who’s already
+using them.
+</li>
+<li>
+<b>Helpers for common UI situations</b>. QuickUI’s runtime has helper functions
+to address situations that often come up when creating reusable controls.
+</li>
+<li>
+<b>Control classes are first-class objects</b>. QuickUI permits the creation of
+meta-controls which take another control class as input. For example, you can
+tell a <a data-control="CatalogLink">ListBox</a> control which control class
+should be used to represent its individual list items, and the ListBox will
+automatically take care of creating or destroying instances of that item class
+as the set of list items changes.
+</li>
+<li>
+<b>Search engine support</b>. You want the best of both worlds: to create UI in
+JavaScript and have the UI’s text content searchable by Google and other search
+engines. QuickUI lets you reference controls in searchable HTML and then
+<a data-control="Link" href="/tutorial/rehydration.html">rehydrate</a>
+those controls in the user’s browser. If you inspect this page's
+<span data-control="Tag">body</span> tag, for example, you'll see how the site's
+page template (which is implemented as a QuickUI control) is applied on the
+client to what's otherwise plain, searchable HTML.
+</li>
+</ul>
+
+<h2>A good citizen of the open web</h2>
+
+<ul>
+<li>
+Built on top of <a data-control="Link" href="http://jquery.com">jQuery</a>,
+the web’s most popular JavaScript library.
+</li>
+<li>
+Works in all mainstream browsers: Apple Safari, Google Chrome, Microsoft
+Internet Explorer 8+, and Mozilla Firefox. QuickUI leverages the browser as much
+as possible. It uses native browser features when possible and, in older
+browsers, can serve as a “polyfill” for HTML5 features.
+</li>
+<li>
+Agnostic with regards to your back end, your data binding model, your
+workflow, and your tool pipeline.
+</li>
+<li>
+Free and open. The <a data-control="Link" href="https://github.com/JanMiksovsky/quickui">source code</a>
+is open under the
+<a data-control="Link" href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>.
+</li>
+</ul>
+
+<h2>A catalog of parts to start with</h2>
+<p>
+The optional <a data-control="Link" href="/catalog/">QuickUI Catalog</a> is
+library of ~80 UI controls. Each control tries to do just one thing really well,
+and these are intended as starting point for your own UI. Originally designed
+for full browsers, many controls work on mobile browsers as well.
+</p>
+<p>
+The page you are reading now, and this entire site, is built using QuickUI and
+controls from the QuickUI Catalog.
+</p>
 
 <h2>Get started:</h2>
 <ul>
-    <li>
-        Run through the <a data-control="Link" href="/tutorial/">interactive tutorial</a>.
-    </li>
-    <li>
-        Browse the <a data-control="Link" href="/catalog/">QuickUI Catalog</a> of controls.
-    </li>
-    <li>
-        Take a look at the <a data-control="Link" href="/docs/">framework documentation</a>.
-    </li>
+<li>
+Run through the <a data-control="Link" href="/tutorial/">interactive
+tutorial</a>.
+</li>
+<li>
+Browse the <a data-control="Link" href="/catalog/">QuickUI Catalog</a> of
+controls.
+</li>
+<li>
+Take a look at the <a data-control="Link" href="/docs/">framework
+documentation</a>.
+</li>
+<li>
+View the <a data-control="Link"
+href="https://github.com/JanMiksovsky/quickui">source code</a> on GitHub.
+</li>
 </ul>
 
 </body>
