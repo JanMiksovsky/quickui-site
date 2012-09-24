@@ -93,29 +93,32 @@ oriented design to bear on your JavaScript UI code:
 <p>
 Controls are comparable to widgets in other UI frameworks — but a widget in such
 frameworks is typically a monolithic block of functionality you can neither
-disassemble, extend, or recombine. QuickUI controls are built from the ground up
-to permit that flexibility, letting you adapt controls to your needs.
+disassemble, extend, or recombine. QuickUI controls are built for flexibility
+from the ground up, so you can adapt any control to your needs.
 </p>
 
 <h2>What makes QuickUI different from other web frameworks?</h2>
 
 <ul>
 <li>
-<b>Composability</b>. You can put one control inside another. When other
-frameworks offer, say, a date picker, it’s a solid, immutable block; you can’t
-actually stick anything inside the date picker. Most QuickUI controls, in
-contrast, are designed you can still one control inside another whenever that
-would make sense.
+<b>Composability</b>. This means you can generally put one control inside
+another. When other frameworks offer, say, a date picker, it’s a solid,
+immutable block; you can’t actually stick anything inside the date picker, so
+your ability to customize the experience is limited to those customizations the
+widget's author thought you'd want. Most QuickUI controls, in contrast, are
+designed you can place one control inside another whenever that would make
+sense.
 </li>
 <li>
-<b>Modularity</b>. Controls only have local effects and dependencies. When you
-add a control to a page, you don’t want to suddenly discover that the control is
-inadvertently stomping on, say, CSS styles you’re using elsewhere. Similarly, a
-component shouldn’t make lots of demands on its container; you should be able to
-stick a control anywhere and get something reasonable. In QuickUI, all controls
-are designed to be as context-independent as possible. Moreover, the QuickUI
-framework ensures that your controls have reliable access to their own elements
-— your codewon’t accidentally pick up other elements on the page.
+<b>Modularity</b>. Good controls should only have local effects and
+dependencies. When you add a control to a page, you don’t want to suddenly
+discover that the control is inadvertently stomping on, say, CSS styles you’re
+using elsewhere. Similarly, a control shouldn’t make lots of demands on its
+container; you should be able to stick a control anywhere and get something
+reasonable. In QuickUI, all controls are designed to be as context-independent
+as possible. Moreover, the QuickUI framework ensures that your controls have
+deterministic, reliable access to their own elements — your code won’t
+accidentally pick up other elements on the page.
 </li>
 <li>
 <b>Extensibility</b>. You can easily create specialized version of a control
@@ -130,20 +133,21 @@ more on this approach, see
 render themselves</a>.
 </li>
 <li>
-<b>Opacity</b>. To ensure other developers use your control correctly, you
-simply define an external-facing API for your control class. This obviates the
-need for other developers to muck about inside your control’s DOM. This keeps a
-control’s contract with its host container clean and well-defined, making it
-possible for you to evolve your controls without breaking everyone who’s already
-using them.
+<b>Opacity</b>. You can quickly define an external-facing API for your control
+class, obviating the need or temptation for other developers to muck about
+inside your control’s DOM. This keeps your control’s contract with its host
+container clean and well-defined, allowing you to evolve your controls without
+breaking everyone who’s already using them.
 </li>
 <li>
 <b>Helpers for common UI situations</b>. QuickUI’s runtime has helper functions
-to address situations that often come up when creating reusable controls.
+to address situations that often come up when creating reusable controls, such
+as controls that need to perform custom layout calculations when they're added
+to the DOM, or when their size changes.
 </li>
 <li>
 <b>Control classes are first-class objects</b>. QuickUI permits the creation of
-meta-controls which take another control class as input. For example, you can
+meta-controls that can take another control class as input. For example, you can
 tell a <a data-control="CatalogLink">ListBox</a> control which control class
 should be used to represent its individual list items, and the ListBox will
 automatically take care of creating or destroying instances of that item class
@@ -151,7 +155,7 @@ as the set of list items changes.
 </li>
 <li>
 <b>Search engine support</b>. You want the best of both worlds: to create UI in
-JavaScript and have the UI’s text content searchable by Google and other search
+JavaScript <i>and</i> have UI text content searchable by Google and other search
 engines. QuickUI lets you reference controls in searchable HTML and then
 <a data-control="Link" href="/tutorial/rehydration.html">rehydrate</a>
 those controls in the user’s browser. If you inspect this page's
@@ -172,7 +176,8 @@ the web’s most popular JavaScript library.
 Works in all mainstream browsers: Apple Safari, Google Chrome, Microsoft
 Internet Explorer 8+, and Mozilla Firefox. QuickUI leverages the browser as much
 as possible. It uses native browser features when possible and, in older
-browsers, can serve as a “polyfill” for HTML5 features.
+browsers, can serve as a polyfill for HTML5 features. QuickUI is planned to
+coevolve with the emerging HTML specification for web components.
 </li>
 <li>
 Agnostic with regards to your back end, your data binding model, your
