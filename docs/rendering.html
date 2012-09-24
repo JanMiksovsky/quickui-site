@@ -17,7 +17,7 @@
 <script type="text/javascript" src="/controls/controls.js"></script>
 <script type="text/javascript" src="./samples/samples.js"></script>
 
-<title>How QuickUI controls render themselves</title>
+<title>Controls render by filling in slots defined by base classes</title>
 
 <style>
 /* Make sample "pages" small for this article. */
@@ -41,6 +41,7 @@ body .Page h1 {
     border: 2px dotted #aaa;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    color: #666;
     padding: .25em;
 }
 
@@ -61,9 +62,10 @@ body .Page h1 {
 <p>
 QuickUI has a simple and elegant system with which a control can render itself
 into the DOM: a new control invokes property setters on its base classes, each
-of which can partially fill in the DOM, until the final control is completely
-populated with elements. This page walks through how that system works, and why
-it allows for a great deal of flexibility and extensibility.
+of which can partially fill in placeholder "slots" in the DOM, until the final
+control is completely populated with elements. This page walks through how that
+system works, and why it allows for a great deal of flexibility and
+extensibility.
 </p>
 
 <p>
@@ -93,7 +95,7 @@ render when its created:
 </p>
 
 <div data-control="Page">
-    <div class="placeholder" style="height: 100%;">(Content)</div>
+    <div class="placeholder" style="height: 100%;">(Content slot)</div>
 </div>
 
 <p>
@@ -127,8 +129,7 @@ content() property is Control. The base Control implementation of content() has
 generally the same effect of setting the innerHTML of control's top element
 via jQuery
 <a data-control="Link" href="http://api.jquery.com/html/">$.html()</a>
-function.
-Page.content(). So a new instance of SimplePage will end up looking like:  
+function. So a new instance of SimplePage will end up looking like:  
 </p>
 
 <div data-control="SimplePage"></div>
@@ -163,14 +164,14 @@ respectively.
 </p>
 
 <p>
-The result is a page that now has two "slots" that can be filled in:
+The result is a page that now has two slots that can be filled in:
 </p>
 
 <div data-control="SiteTemplate">
     <div data-property="heading">
-        <div class="placeholder">(Heading)</div>
+        <div class="placeholder">(Heading slot)</div>
     </div>
-    <div class="placeholder" style="height: 170px;">(Content)</div>
+    <div class="placeholder" style="height: 170px;">(Content slot)</div>
 </div>
 
 <p>
@@ -213,7 +214,7 @@ We could also create the exact same page above as a subclass of SiteTemplate:
 <div data-control="SourceFileContents" data-path="samples/HomePage.js"></div>
 
 <p>
-This method makes the page text opaque to search engines, but maybe useful in
+This method makes the page text opaque to search engines, but may be useful in
 applications — or portions thereof — where searchability is not important.
 </p>
 
@@ -237,9 +238,9 @@ base implementation as well. The resulting ProductTemplate renders like so:
 
 <div data-create-controls="true" data-control="ProductTemplate">
     <div data-property="heading">
-        <span class="placeholder">(Heading)</span>
+        <span class="placeholder">(Heading slot)</span>
     </div>
-    <div class="placeholder" style="height: 180px; margin-right: 80px;">(Content)</div>
+    <div class="placeholder" style="height: 180px; margin-right: 80px;">(Content slot)</div>
 </div>
 
 <h2>Using the template for a product page</h2>
