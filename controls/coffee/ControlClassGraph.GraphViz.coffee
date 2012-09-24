@@ -7,13 +7,14 @@ class window.ControlClassGraph extends GraphViz
   graphClass: Control.property.class ( graphClass ) ->
     controlInfo = new ControlInfo graphClass::className
     classNode = @_classNode controlInfo
-    baseClassEdges = @_baseClassEdges controlInfo, "[color=black]", "[color=black]"
+    baseClassEdges = @_baseClassEdges controlInfo, "[color=black fontcolor=black]", "[color=black]"
     subclassEdges = @_subclassEdges controlInfo
     requiredClassEdges = @_requiredClassEdges controlInfo
-    dot = "digraph{rankdir=BT;node[color=gray;shape=box;fontsize=10.0];edge[color=gray];#{classNode}#{baseClassEdges}#{subclassEdges}#{requiredClassEdges}}"
+    dot = "digraph{rankdir=BT;node[color=gray fontcolor=gray40 fontsize=10.0 shape=box];edge[arrowsize=0.75 color=gray50];#{classNode}#{baseClassEdges}#{subclassEdges}#{requiredClassEdges}}"
     @dot dot
 
   _baseClassEdge: ( className, baseClassName, nodeStyle, edgeStyle ) ->
+    edgeStyle = edgeStyle ? ""
     edge = "#{className}->#{baseClassName}#{edgeStyle};"
     if nodeStyle
       edge += "#{baseClassName}#{nodeStyle};"
@@ -30,7 +31,7 @@ class window.ControlClassGraph extends GraphViz
     edges
 
   _classNode: ( controlInfo ) ->
-    "#{controlInfo.className}[color=black;penwidth=2.0];"
+    "#{controlInfo.className}[color=black fontcolor=black penwidth=2.0];"
 
   _requiredClassEdge: ( className, requiredClassName ) ->
     "#{className}->#{requiredClassName};"

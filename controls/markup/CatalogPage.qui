@@ -16,6 +16,10 @@
             <div ref="sectionBaseClasses" class="section">
                 <h2>Class relationships</h2>
                 <!-- <ControlClassHierarchy ref="controlClassHierarchy"/> -->
+                <p>
+                    This shows the control's base classes (in black),
+                    other classes used by the control, and any subclasses.
+                </p>
                 <ControlClassGraph ref="controlClassGraph" />
             </div>
             
