@@ -1548,7 +1548,6 @@
   vertical-align: middle;
 }
 
-
 .MobileLink {
   color: inherit;
   display: block;
@@ -1611,8 +1610,6 @@
   color: inherit;
 }
 
-
-
 .VerticalAlign {
   -webkit-box-align: center;
   box-align: center;
@@ -1623,4 +1620,3 @@
   display: -webkit-box;
   display: box;
 }
-

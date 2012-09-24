@@ -3,7 +3,7 @@ var _Version = Control.sub({
     className: "_Version"
 });
 _Version.prototype.extend({
-	catalog: "0.9.2"
+	catalog: "0.9.2.1"
 });
 
 /*
@@ -3721,7 +3721,7 @@ MenuBar.prototype.extend({
     _overlay: Control.property(),
 
     // Hint for documentation tools.
-    _requiresClasses: [ "Menu", "Overlay" ]
+    _requiredClasses: [ "Menu", "Overlay" ]
     
 });
 
@@ -4123,13 +4123,22 @@ Page.prototype.extend({
      * window title bar, etc.
      */
     title: function( title ) {
-        if ( title === undefined ) {
-            return document.title;
+        if ( this[0] === document.body ) {
+            // This page is the document, mirror the document's title.
+            if ( title === undefined ) {
+                return document.title;
+            } else {
+                document.title = title;
+                return this;
+            }
         } else {
-            document.title = title;
-            return this;
+            // This page is not (yet) the document, keep a private copy of the title.
+            return this._title( title );
         }
-    }
+    },
+
+    // Private copy of the page's title.
+    _title: Control.property()
 
 });
 
@@ -4866,7 +4875,7 @@ Popup.prototype.extend({
     _overlay: Control.property(),
 
     // Hint for documentation tools.
-    _requiresClasses: [ "Overlay" ]
+    _requiredClasses: [ "Overlay" ]
 
 });
 
@@ -6868,7 +6877,7 @@ ComboBox.prototype.extend({
     },
 
     // Hint for documentation tools.
-    _requiresClasses: [ "TextBox" ],
+    _requiredClasses: [ "TextBox" ],
 
     /*
      * Select the text at the indicated positions in the input control.
@@ -6962,7 +6971,10 @@ DateComboBox.prototype.extend({
     /*
      * True if the user must enter a value in this field.
      */
-    required: Control.chain( "$ComboBox_content", "required" )
+    required: Control.chain( "$ComboBox_content", "required" ),
+
+    // Hint for documentation tools.
+    _requiredClasses: [ "DateTextBox" ]
 
 });
 
@@ -7651,7 +7663,7 @@ Menu.prototype.extend({
     popup: Control.chain( "$Menu_popup", "content" ),
     
     // Hint for documentation tools.
-    _requiresClasses: [ "MenuItem" ],
+    _requiredClasses: [ "MenuItem" ],
 
     /*
      * The "shield" is a thin block that can be used to obscure the boundary
@@ -8260,7 +8272,7 @@ Shows a month, allowing using to navigate months and select a date.
       }
     };
 
-    CalendarMonthNavigator.prototype._requiresClasses = ["CalendarDayButton"];
+    CalendarMonthNavigator.prototype._requiredClasses = ["CalendarDayButton"];
 
     return CalendarMonthNavigator;
 
@@ -8471,6 +8483,78 @@ Shows a month, allowing using to navigate months and select a date.
     return LateralNavigator;
 
   })(Control);
+
+  /*
+  A link in a mobile application, typically in a list.
+  After a tap, the link will hold a "tapFeedback" for a short duration.
+  */
+
+
+  window.MobileLink = (function(_super) {
+
+    __extends(MobileLink, _super);
+
+    function MobileLink() {
+      return MobileLink.__super__.constructor.apply(this, arguments);
+    }
+
+    MobileLink.prototype.initialize = function() {
+      var _this = this;
+      return this.click(function() {
+        _this.addClass("tapFeedback");
+        return setTimeout((function() {
+          return _this.removeClass("tapFeedback");
+        }), 250);
+      });
+    };
+
+    return MobileLink;
+
+  })(Link);
+
+  /*
+  A list of links on a mobile device.
+  
+  Note, while the items in the list will appear (and should behave) like links,
+  they don't actually have to be implemented links (e.g., as anchor tags or Link
+  controls.)
+  
+  This currently uses an iOS visual style.
+  TODO: Detect Android and use appropriate Android style.
+  */
+
+
+  window.MobileLinkList = (function(_super) {
+
+    __extends(MobileLinkList, _super);
+
+    function MobileLinkList() {
+      return MobileLinkList.__super__.constructor.apply(this, arguments);
+    }
+
+    MobileLinkList.prototype.tag = "ul";
+
+    return MobileLinkList;
+
+  })(List);
+
+  window.MobileListBox = (function(_super) {
+
+    __extends(MobileListBox, _super);
+
+    function MobileListBox() {
+      return MobileListBox.__super__.constructor.apply(this, arguments);
+    }
+
+    MobileListBox.prototype.inherited = {
+      itemClass: "MobileLink"
+    };
+
+    MobileListBox.prototype.tag = "ul";
+
+    return MobileListBox;
+
+  })(ListBox);
 
   window.MonthAndYear = (function(_super) {
 

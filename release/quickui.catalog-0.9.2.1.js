@@ -3721,7 +3721,7 @@ MenuBar.prototype.extend({
     _overlay: Control.property(),
 
     // Hint for documentation tools.
-    _requiresClasses: [ "Menu", "Overlay" ]
+    _requiredClasses: [ "Menu", "Overlay" ]
     
 });
 
@@ -4875,7 +4875,7 @@ Popup.prototype.extend({
     _overlay: Control.property(),
 
     // Hint for documentation tools.
-    _requiresClasses: [ "Overlay" ]
+    _requiredClasses: [ "Overlay" ]
 
 });
 
@@ -6877,7 +6877,7 @@ ComboBox.prototype.extend({
     },
 
     // Hint for documentation tools.
-    _requiresClasses: [ "TextBox" ],
+    _requiredClasses: [ "TextBox" ],
 
     /*
      * Select the text at the indicated positions in the input control.
@@ -6971,7 +6971,10 @@ DateComboBox.prototype.extend({
     /*
      * True if the user must enter a value in this field.
      */
-    required: Control.chain( "$ComboBox_content", "required" )
+    required: Control.chain( "$ComboBox_content", "required" ),
+
+    // Hint for documentation tools.
+    _requiredClasses: [ "DateTextBox" ]
 
 });
 
@@ -7660,7 +7663,7 @@ Menu.prototype.extend({
     popup: Control.chain( "$Menu_popup", "content" ),
     
     // Hint for documentation tools.
-    _requiresClasses: [ "MenuItem" ],
+    _requiredClasses: [ "MenuItem" ],
 
     /*
      * The "shield" is a thin block that can be used to obscure the boundary
@@ -8269,7 +8272,7 @@ Shows a month, allowing using to navigate months and select a date.
       }
     };
 
-    CalendarMonthNavigator.prototype._requiresClasses = ["CalendarDayButton"];
+    CalendarMonthNavigator.prototype._requiredClasses = ["CalendarDayButton"];
 
     return CalendarMonthNavigator;
 

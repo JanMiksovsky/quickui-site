@@ -1548,8 +1548,67 @@
   vertical-align: middle;
 }
 
+.MobileLink {
+  color: inherit;
+  display: block;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.MobileLink:active,
+.MobileLink.tapFeedback {
+  background-color: #194fdb !important;
+  color: white !important;
+}
 
+.MobileLinkList {
+  margin: 0;
+  outline: none;
+  -webkit-padding-start: 0;
+}
+.MobileLinkList > * {
+  background: url(http://quickui.org/release/resources/mobileDisclosureIndicator.png) no-repeat right center;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  padding: 0.5em;
+}
+.MobileLinkList > *:active,
+.MobileLinkList > .selected {
+  background-color: #194fdb;
+  background-image: url(http://quickui.org/release/resources/mobileDisclosureIndicatorSelected.png);
+  color: white !important;
+}
+.MobileLinkList > :last-child {
+  border-bottom: none;
+}
+.MobileLinkList li {
+  list-style: none;
+}
 
+.MobileListBox {
+  margin: 0;
+  outline: none;
+  -webkit-padding-start: 0;
+}
+.MobileListBox.generic {
+  font-weight: bold;
+}
+.MobileListBox.generic > * {
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  padding: 0.5em;
+}
+.MobileListBox.generic > .selected {
+  background: url(http://quickui.org/release/resources/mobileCheckmark.png) no-repeat right center;
+  color: #385487;
+}
+.MobileListBox.generic > :last-child {
+  border-bottom: none;
+}
+.MobileListBox li {
+  list-style: none;
+}
+.MobileListBox a {
+  color: inherit;
+}
 
 .VerticalAlign {
   -webkit-box-align: center;
@@ -1561,4 +1620,3 @@
   display: -webkit-box;
   display: box;
 }
-

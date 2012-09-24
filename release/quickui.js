@@ -65,7 +65,7 @@ helper class, as is usual for jQuery subclasses created via $.sub().
 
 
 (function() {
-  var classPropertyNameMap, coffeeClassNeedsCompatibility, controlClassData, controlConstructor, copyExcludingKeys, createElementReferenceFunction, createInitClass, createSubclass, cssClasses, elementInserted, elementInsertionInterval, evaluateControlJson, evaluateControlJsonProperties, evaluateControlJsonValue, findMethodImplementation, getCompoundPropertiesFromChildren, getPropertiesFromAttributes, inDocumentCallbacks, inDocumentListening, inDocumentListeningDeferred, initialize, isElementInDocument, isInputElement, makeCoffeeClassCompatible, mutationEvents, propertyNameMaps, rehydrateElement, removeElementFromInDocumentCallbacks, render, replaceElements, restorePropertyCase, significantContent, startInDocumentListening, stopInDocumentListening, symbolCounter, updateSavedSize,
+  var Control, classPropertyNameMap, coffeeClassNeedsCompatibility, controlClassData, controlConstructor, copyExcludingKeys, createElementReferenceFunction, createInitClass, createSubclass, cssClasses, elementInserted, elementInsertionInterval, evaluateControlJson, evaluateControlJsonProperties, evaluateControlJsonValue, findMethodImplementation, getCompoundPropertiesFromChildren, getPropertiesFromAttributes, inDocumentCallbacks, inDocumentListening, inDocumentListeningDeferred, initialize, isElementInDocument, isInputElement, makeCoffeeClassCompatible, mutationEvents, propertyNameMaps, rehydrateElement, removeElementFromInDocumentCallbacks, render, replaceElements, restorePropertyCase, significantContent, startInDocumentListening, stopInDocumentListening, symbolCounter, updateSavedSize,
     __slice = [].slice,
     __hasProp = {}.hasOwnProperty;
 
@@ -225,7 +225,11 @@ helper class, as is usual for jQuery subclasses created via $.sub().
   */
 
 
-  window.Control = createSubclass(jQuery);
+  Control = createSubclass(jQuery);
+
+  if (typeof window !== "undefined" && window !== null) {
+    window.Control = Control;
+  }
 
   /*
   Class methods
