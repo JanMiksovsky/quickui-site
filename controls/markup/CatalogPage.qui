@@ -14,8 +14,8 @@
             <div ref="CatalogPage_examples"/>
             
             <div ref="sectionBaseClasses" class="section">
-                <h2>Inherits from</h2>
-                <ControlClassHierarchy ref="controlClassHierarchy"/>
+                <h2>Class relationships</h2>
+                <!-- <ControlClassHierarchy ref="controlClassHierarchy"/> -->
                 <ControlClassGraph ref="controlClassGraph" />
             </div>
             
@@ -60,11 +60,9 @@ CatalogPage.prototype.extend({
 
         var className = describeClass.prototype.className;
         
-        this.$controlClassHierarchy().describeClass( className );
-        // Kind of weird/lazy to use the list of classes calculated by the
-        // hierarchy control; should calculate that somewhere else.
-        var baseClasses = this.$controlClassHierarchy().baseClasses();
-        this.$sectionBaseClasses().toggle( baseClasses && baseClasses.length > 0 );
+        // this.$controlClassHierarchy().describeClass( className );
+        // var baseClasses = this.$controlClassHierarchy().baseClasses();
+        // this.$sectionBaseClasses().toggle( baseClasses && baseClasses.length > 0 );
         this.$controlClassGraph().graphClass( describeClass );
         
         this.$controlMemberTable().describeClass( className );

@@ -7,42 +7,33 @@ class window.ControlClassGraph extends GraphViz
   graphClass: Control.property.class ( graphClass ) ->
     controlInfo = new ControlInfo graphClass::className
     classNode = @_classNode controlInfo
-    baseClassEdges = @_baseClassEdges controlInfo
+    baseClassEdges = @_baseClassEdges controlInfo, "[color=black]", "[color=black]"
     subclassEdges = @_subclassEdges controlInfo
     requiredClassEdges = @_requiredClassEdges controlInfo
-    dot = """
-      digraph {
-        rankdir=BT;
-        node [shape=box;fontsize=11.0];
-        #{classNode}
-        #{baseClassEdges}
-        #{subclassEdges}
-        #{requiredClassEdges}
-      }
-    """
+    dot = "digraph{rankdir=BT;node[color=gray;shape=box;fontsize=10.0];edge[color=gray];#{classNode}#{baseClassEdges}#{subclassEdges}#{requiredClassEdges}}"
     @dot dot
 
-  _baseClassEdge: ( className, baseClassName ) ->
-    "  #{className} -> #{baseClassName};\n"
+  _baseClassEdge: ( className, baseClassName, nodeStyle, edgeStyle ) ->
+    edge = "#{className}->#{baseClassName}#{edgeStyle};"
+    if nodeStyle
+      edge += "#{baseClassName}#{nodeStyle};"
+    edge
 
-  _baseClassEdges: ( controlInfo ) ->
+  _baseClassEdges: ( controlInfo, nodeStyle, edgeStyle ) ->
     edges = ""
     baseClassName = controlInfo.baseClassName()
-    edges += @_baseClassEdge controlInfo.className, baseClassName
+    edges += @_baseClassEdge controlInfo.className, baseClassName, nodeStyle, edgeStyle
     if baseClassName != "Control"
       baseClassInfo = new ControlInfo baseClassName
-      edges += @_baseClassEdges baseClassInfo
+      edges += @_baseClassEdges baseClassInfo, nodeStyle, edgeStyle
       edges += @_requiredClassEdges baseClassInfo
     edges
 
   _classNode: ( controlInfo ) ->
-    "  #{controlInfo.className} [penwidth=2.0];\n"
+    "#{controlInfo.className}[color=black;penwidth=2.0];"
 
   _requiredClassEdge: ( className, requiredClassName ) ->
-    """
-      #{className} -> #{requiredClassName} [color=gray];
-      #{requiredClassName} [color=gray];
-    """
+    "#{className}->#{requiredClassName};"
 
   _requiredClassEdges: ( controlInfo ) ->
     edges = ""
