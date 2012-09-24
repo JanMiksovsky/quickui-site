@@ -1,8 +1,0 @@
-<Control className="FeatureScopingDemo">
-
-<content>
-    <Red/>
-    <Green/>
-</content>
-
-</Control>
