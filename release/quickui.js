@@ -1258,7 +1258,7 @@ helper class, as is usual for jQuery subclasses created via $.sub().
       var backingPropertyName;
       backingPropertyName = "_property" + symbolCounter++;
       return function(value) {
-        var control, result, _i, _len, _ref;
+        var args, control, oldValue, result, sideEffectWantsOldValue, _i, _len, _ref;
         result = void 0;
         if (value === void 0) {
           result = this.data(backingPropertyName);
@@ -1268,13 +1268,21 @@ helper class, as is usual for jQuery subclasses created via $.sub().
             return result;
           }
         } else {
+          sideEffectWantsOldValue = (sideEffectFn != null ? sideEffectFn.length : void 0) > 1;
           _ref = this.segments();
           for (_i = 0, _len = _ref.length; _i < _len; _i++) {
             control = _ref[_i];
-            result = (converterFunction ? converterFunction.call(control, value) : value);
+            if (sideEffectWantsOldValue) {
+              oldValue = control.data(backingPropertyName);
+            }
+            result = converterFunction ? converterFunction.call(control, value) : value;
             control.data(backingPropertyName, result);
             if (sideEffectFn) {
-              sideEffectFn.call(control, result);
+              args = [result];
+              if (sideEffectWantsOldValue) {
+                args.push(oldValue);
+              }
+              sideEffectFn.apply(control, args);
             }
           }
           return this;

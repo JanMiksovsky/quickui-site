@@ -803,8 +803,8 @@ var CalendarMonth = Control.sub({
 });
 CalendarMonth.prototype.extend({
 
-    $days: Control.chain( "find/.CalendarDay", "control" ),
-    $weeks: Control.chain( "children", "control" ),
+    days: Control.chain( "find/.CalendarDay", "control" ),
+    weeks: Control.chain( "children", "control" ),
     
     /*
      * The control's current culture.
@@ -812,7 +812,7 @@ CalendarMonth.prototype.extend({
     culture: function( culture ) {
         var result = this._super( culture );
         if ( culture !== undefined ) {
-            this.$weeks().culture( culture );
+            this.weeks().culture( culture );
             this._refresh();
         }
         return result;
@@ -821,7 +821,7 @@ CalendarMonth.prototype.extend({
     /*
      * The class used to represent days in the month.
      */
-    dayClass: Control.chain( "$weeks", "dayClass", function() { this._refresh(); } ),
+    dayClass: Control.chain( "weeks", "dayClass", function() { this._refresh(); } ),
 
     /*
      * The date that will be included in this month (can be any day of the month).
@@ -851,15 +851,15 @@ CalendarMonth.prototype.extend({
         // TODO: Return null if date is not within this month.
         var dayOMonth = date.getDate();
         var weeksWithDate = this.map( function( index, month ) {
-            var $weeks = $( month ).control().$weeks();
+            var weeks = $( month ).control().weeks();
             var firstDayOfMonth = new Date( date.getTime() );
             firstDayOfMonth.setDate(1);
-            var offset = $weeks.daysSinceFirstDayOfWeek( firstDayOfMonth );
+            var offset = weeks.daysSinceFirstDayOfWeek( firstDayOfMonth );
             var week = Math.floor( ( date.getDate() + offset - 1 ) / 7 );
-            return $weeks[ week ];
+            return weeks[ week ];
         });
-        var $weeksWithDate = $().add( weeksWithDate ).control();
-        return $weeksWithDate;
+        var weeksWithDate = $().add( weeksWithDate ).control();
+        return weeksWithDate;
     },
     
     _refresh: function() {
@@ -875,21 +875,21 @@ CalendarMonth.prototype.extend({
         
         // Fill in the weeks.
         var month = firstDayOfMonth.getMonth();
-        this.$weeks().eachControl( function( weekRow, $week) {
+        this.weeks().eachControl( function( weekRow, $week) {
 
             $week.date( CalendarDay.addDays( firstDayOfMonth, 7 * weekRow ) );
             
             // Hide weeks completely in another month (i.e., the next month).
             // Apply "hidden" class to preserve week's original "display" property.
-            var $days = $week.$days();
-            var firstDayOfWeek = $days.eq(0).date();
-            var lastDayOfWeek = $days.eq(6).date();
+            var days = $week.days();
+            var firstDayOfWeek = days.eq(0).date();
+            var lastDayOfWeek = days.eq(6).date();
             var isWeekInMonth = ( firstDayOfWeek.getMonth() === month || lastDayOfWeek.getMonth() === month );
             $week.toggleClass( "hidden", !isWeekInMonth );
         });
         
         // Paint days inside and outside range.
-        this.$days().eachControl( function( index, $day ) {
+        this.days().eachControl( function( index, $day ) {
             var date = $day.date();
             var insideMonth = date
                 ? ( date >= firstDayOfMonth && date <= lastDayOfMonth )
@@ -941,13 +941,12 @@ var CalendarMonthWithHeadings = Control.sub({
 });
 CalendarMonthWithHeadings.prototype.extend({
     
-    $days: Control.chain( "$calendar", "$days" ),
-    
     /*
      * The control's current culture.
      */
-    culture: function( culture ) {
-        var result = this._super( culture );
+    culture: Control.iterator( function( culture ) {
+        // var result = this._super( culture );
+        var result = this.constructor.superclass.prototype.culture.call( this, culture );
         if ( culture !== undefined ) {
             this.$monthAndYear().culture( culture );
             this.$daysOfWeek().culture( culture );
@@ -958,7 +957,7 @@ CalendarMonthWithHeadings.prototype.extend({
             }
         }
         return result;
-    },
+    }),
     
     /* The date shown in the calendar */
     date: Control.chain( "$calendar", "date", function( date ) {
@@ -969,6 +968,11 @@ CalendarMonthWithHeadings.prototype.extend({
      * The class used to represent days in the month.
      */
     dayClass: Control.chain( "$calendar", "dayClass" ),
+
+    /*
+     * The controls used for the days in the calendar.
+     */
+    days: Control.chain( "$calendar", "days" ),
 
     /*
      * Returns the control currently showing the given date.
@@ -1006,7 +1010,8 @@ var CalendarWeek = Control.sub({
         content: [
             " ",
             {
-                control: "CalendarDay"
+                control: "CalendarDay",
+                "class": "firstDayOfWeek"
             },
             " ",
             {
@@ -1030,7 +1035,8 @@ var CalendarWeek = Control.sub({
             },
             " ",
             {
-                control: "CalendarDay"
+                control: "CalendarDay",
+                "class": "lastDayOfWeek"
             },
             " "
         ]
@@ -1062,19 +1068,29 @@ CalendarWeek.prototype.extend({
         var days = this.map( function( index, week ) {
             var $week = $( week ).control();
             var dayIndex = $week.daysSinceFirstDayOfWeek( date );
-            return $week.$days()[ dayIndex ];
+            return $week.days()[ dayIndex ];
         });
-        var $days = $().add( days ).control();
-        return $days;
+        var days = $().add( days ).control();
+        return days;
     },
-
-    /* The collection of day cells */
-    $days: Control.chain( "children", "control" ),
     
     /*
      * The class used to represent days in the week.
      */
-    dayClass: Control.chain( "$days", "transmute", function() { this._refresh(); } ),
+    dayClass: Control.iterator( function( dayClass ) {
+        if ( dayClass === undefined ) {
+            return this.days().constructor;
+        } else {
+            this.days().transmute( dayClass );
+            var days = this.days();
+            days.eq(0).addClass( "firstDayOfWeek" );
+            days.eq(6).addClass( "lastDayOfWeek" );       
+            this._refresh();
+        }
+    }),
+
+    /* The collection of day cells */
+    days: Control.chain( "children", "control" ),
     
     initialize: function() {
         if ( !this.date() ) {
@@ -1088,8 +1104,8 @@ CalendarWeek.prototype.extend({
         return ( date.getDay() - firstDayOfWeek + 7 ) % 7;
     },
     
-    // Return the index of the "first day of the week" in the current culture.
-    // In English, this is 0 (Sunday), but in many places its 1 (Monday).
+    // Return the index of the "first" day of the week in the current culture.
+    // In the U.S., this is 0 (Sunday), but in many places it's 1 (Monday).
     firstDayOfWeek: function() {
         var culture = this.culture();
         return culture ? culture.calendar.firstDay : 0;
@@ -1107,7 +1123,7 @@ CalendarWeek.prototype.extend({
         var dateStart = CalendarDay.addDays( date, -this.daysSinceFirstDayOfWeek( date ) );
         
         // Fill in the date range.
-        this.$days().eachControl( function( index, $day) {
+        this.days().eachControl( function( index, $day) {
             $day.date( CalendarDay.addDays( dateStart, index ) );
         });
     }
@@ -6847,6 +6863,11 @@ ComboBox.prototype.extend({
     openOnFocus: Control.property.bool( null, true ),
 
     /*
+     * The control serving as the text box portion of the combo box.
+     */
+    textBox: Control.chain( "$ComboBox_content", "control" ),
+
+    /*
      * The class of the text box portion of the combo box.
      */
     textBoxClass: Control.property[ "class" ]( function( textBoxClass ) {
@@ -6922,6 +6943,20 @@ var DateComboBox = ComboBox.sub({
 });
 DateComboBox.prototype.extend({
     
+    /*
+     * The control's current culture.
+     */
+    culture: function( culture ) {
+        var result = this._super( culture );
+        if ( culture !== undefined ) {
+            this.$navigator().culture( culture );
+            if ( $.isFunction( this.textBox().culture ) ) {
+                this.textBox().culture( culture );
+            }
+        }
+        return result;
+    },
+
     /*
      * The date indicated in the control.
      */
@@ -8265,7 +8300,7 @@ Shows a month, allowing using to navigate months and select a date.
 
     CalendarMonthNavigator.prototype._applySelection = function() {
       var dayControl;
-      this.$calendar().$days().removeClass("selected");
+      this.$calendar().days().removeClass("selected");
       if (this.showSelectedDate()) {
         dayControl = this.$calendar().dayControlForDate(this.date());
         return dayControl.addClass("selected");
@@ -8350,7 +8385,7 @@ Shows a month, allowing using to navigate months and select a date.
         today = new Date();
         nextMonth.setDate(1);
         this.nextButtonDisabled(nextMonth > today);
-        this.$calendar().$days().loadPhoto();
+        this.$calendar().days().loadPhoto();
       }
       return result;
     };
@@ -8613,6 +8648,10 @@ Shows a month, allowing using to navigate months and select a date.
     function SequenceNavigator() {
       return SequenceNavigator.__super__.constructor.apply(this, arguments);
     }
+
+    SequenceNavigator.prototype.activeIndex = Control.chain("$LateralNavigator_content", "activeIndex", function(activeIndex) {
+      return this._updateButtons();
+    });
 
     SequenceNavigator.prototype.inherited = {
       contentClass: Modes
