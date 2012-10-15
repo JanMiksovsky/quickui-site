@@ -40,6 +40,10 @@ $( function() {
 
 <div data-property="navigationLinks">
     
+    <p>
+    <button data-control="SampleSpriteButton" id="buttonTutorial">Interactive Tutorial</button>
+    </p>
+
     <h2 style="margin-top: 0;">Recent news</h2>
     <div
         data-control="BlogHeadlines"
@@ -59,10 +63,6 @@ $( function() {
 </div>
 
 <h1>Create a great user interface with extensible web components</h1>
-
-<p>
-<button data-control="SampleSpriteButton" id="buttonTutorial">Interactive Tutorial</button>
-</p>
 
 <p>
 <b>Users deserve great web apps</b> with clean, intuitive, responsive user
@@ -96,6 +96,113 @@ frameworks is typically a monolithic block of functionality you can neither
 disassemble, extend, or recombine. QuickUI controls are built for flexibility
 from the ground up, so you can adapt any control to your needs.
 </p>
+
+<h2>Remixable user interface components</h2>
+<p>
+    Every web user interface framework offers a date picker component, but
+    QuickUI packs a world of power into the one it gives you. Here's the
+    typical example:
+</p>
+<div>
+    <div data-control="DateComboBox">
+        <div data-property="dropdownButtonContent">
+            <!-- Custom icon; see notes at /catalog/DateComboBox -->
+            <img ref="calendarIcon" src="/catalog/resources/calendar_alt_fill_16x16.png"/>
+        </div>
+    </div>
+</div>
+<p>
+    (Whenever you're up for it, you can check out the docs and source for the above
+    <a data-control="CatalogLink">DateComboBox</a> component, or any of the other
+    components described here.)
+    There are actually a lot of pieces here that work together to make the
+    date picker — and every one of those pieces of functionality is given
+    to you as a component in its own right. The combo box behavior, for
+    example:
+</p>
+<div><div data-control="ComboBox"></div></div>
+<p>
+    With that, you can make lots of other kinds of combo boxes, like a
+    *** combo box for picking things from lists ***. In a date combo box,
+    the text box portion needs to actually understand how to parse and
+    represent dates, so that's offered as its own DateTextBox component:
+</p>
+<div><div data-control="DateTextBox"></div></div>
+<p>
+    And the popup portion of a date picker shows a calendar month that you
+    can navigate through:
+    *** CalendarMonthNavigator keyboard navigation ***
+</p>
+<div><div data-control="CalendarMonthNavigator"></div></div>
+<p>
+    The ability to navigate left and right between months is a general
+    user interface pattern that crops up in lots of other situations — so
+    of course that's delivered as a component as well:
+</p>
+<div><div data-control="SequenceNavigator"></div></div>
+<p>
+    In this case, you're navigate among months. The month itself is rendered
+    using a component:
+    *** CalendarMonthWithHeadings hides dates outside month by default,
+    CalendarMonthNavigator turns them back on ***
+</p>
+<div><div data-control="CalendarMonthWithHeadings"></div></div>
+<p>
+    And each piece of the month — the headings, the cells for the days, etc.,
+    are all available as components, all of which you can use.
+</p>
+<p>
+    Graph thumbnail and link to full graph. Better graph lines, legend.
+</p>
+<p>
+    There are many reasons why building user interfaces this way makes a lot
+    of sense. One is that reusable components permit heavier in investment
+    in fundamentals. Take localizing a calendar to other languages. This turns
+    out to be a complex task. It's not just a matter of changing the names
+    for the months and days of the week, you also have to consider factors
+    such as the order in which different prefer to write dates (day/month/year
+    versus month/day/year or year/month/day, and so on) as well as the fact
+    that different cultures prefer to see different days of the week as the
+    "first" day of a week (Sunday in North American, Monday in Europe,
+    Monday in Arabic cultures). Few teams can afford to invest that kind of
+    effort — but if everyone shares an implementation, it's worth it: 
+</p>
+<div><div data-control="CalendarMonthWithHeadings" id="japaneseCalendar"></div></div>
+<p>
+    (Naturally, the ability to flip between those different calendars is
+    a component too.)
+</p>
+<p>
+    Of course, everyone's needs are different. That's why all QuickUI
+    components are designed to be remixed: composed with other components,
+    extended with custom behavior, and generally adapted to the needs of
+    your app. In the case of this calendar, you can tell the calendar
+    to use a different component to render the days — and in that component,
+    you can do whatever you want. Maybe you want to show a weather forecast:
+</p>
+<!-- <div><div data-control="FlickrInterestingDay"></div></div> -->
+<!-- <div><div data-control="FlickrInterestingNavigator"></div></div> -->
+<p>
+    Or maybe you want to create a *** calendar of the most interested
+    photo of any given day ***.
+</p>
+<p>
+    And if you have more complex needs, you can easily recombine these
+    elements to create, for example, a date <i>range</i> picker that picks
+    both a start and end date in a single component:
+    *** CalendarMonthNavigator keyboard navigation ***
+</p>
+<!-- <div><div data-control="CalendarDateRangeSelector"></div></div> -->
+<p>
+    These days, your web applications need to be <i>responsive</i> and
+    adapt to the capabilities of the device and OS the user is running.
+    It's easy to create QuickUI components that go far beyond what's possible
+    with responsive CSS, and create components that use fundamentally
+    different presentations based on the context. The following date picker
+    uses a mobile OS' native date picker on a mobile device, but the date
+    combo box above on a full browser:
+</p>
+<!-- <div><div data-control="ResponsiveDatePicker"></div></div> -->
 
 <h2>What makes QuickUI different from other web frameworks?</h2>
 

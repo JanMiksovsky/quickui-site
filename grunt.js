@@ -14,7 +14,6 @@ module.exports = function(grunt) {
             controls: {
                 src: sortDependencies.sortClassFiles( "controls/coffee/*.coffee" ),
                 dest: "controls/coffee/coffee.js"
-
             },
             samples: {
                 src: [ "docs/samples/*.coffee",
