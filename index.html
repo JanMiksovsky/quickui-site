@@ -24,37 +24,6 @@
 
 <title>QuickUI web control framework</title>
 
-<style>
-h1 {
-    margin-bottom: 1.5em;
-}
-
-/* This page is one where we want the browser title different from main heading. */
-.SitePage_title {
-    display: none;
-}
-
-.browserSupport {
-    float: right;
-    margin: 0 0 1em 1em;
-}
-.browserSupport > * {
-    display: block;
-}
-
-.benefits {
-    color: #928274;
-    font-size: 24px;
-}
-.benefits b {
-    color: #391C01;
-}
-
-.inlineDemos > *:not(:last-child) {
-    margin-right: 1em;
-}
-</style>
-
 <script type="text/javascript">
 $( function() {
     var today = new Date();
@@ -73,31 +42,7 @@ $( function() {
 
 </head>
 
-<body data-create-controls="true" data-control="SitePage">
-
-<div data-property="navigationLinks">
-    
-    <p>
-    <button data-control="SampleSpriteButton" id="buttonTutorial">Interactive Tutorial</button>
-    </p>
-
-    <h2 style="margin-top: 0;">Recent news</h2>
-    <div
-        data-control="BlogHeadlines"
-        data-feed="http://blog.quickui.org/feed/"
-        data-count="3"
-    >
-    </div>
-    
-    <h2>Control of the Week</h2>
-    <div
-        data-control="BlogHeadlines"
-        data-feed="http://miksovsky.blogs.com/flowstate/controls/atom.xml"
-        data-count="1"
-    >
-    </div>
-    
-</div>
+<body data-create-controls="true" data-control="HomePage">
 
 <p class="benefits">
 <b>Accelerate</b> •
@@ -194,7 +139,7 @@ oriented design to bear on your JavaScript UI code.
     of the day on a calendar. Using the <a data-control="CatalogLink">CalendarDay</a>
     component as a starting point, create a new calendar-day-with-photo component:
 </p>
-<div><div data-control="FlickrInterestingDay"></div></div>
+<div><div data-control="FlickrInterestingDay" data-autoLoad="true"></div></div>
 <p>
     Drop the above component into the <i>exact same</i> calendar month navigator
     component shown above, and voilà:
