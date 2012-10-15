@@ -5,8 +5,10 @@
 
 <link rel="stylesheet" type="text/css" href="/release/quickui.css" />
 <link rel="stylesheet" type="text/css" href="/release/quickui.catalog.css" />
-<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
 <link rel="stylesheet" type="text/css" href="/site.css" />
+<link rel="stylesheet" type="text/css" href="/controls/controls.css" />
+<link rel="stylesheet" type="text/css" href="/demos/dateRangeCalendar/dateRangeCalendar.css" />
+<link rel="stylesheet" type="text/css" href="/demos/kanjiCalendar/kanjiCalendar.css" />
 
 <script type="text/javascript" src="/lib/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="/lib/globalize.js"></script>
@@ -17,6 +19,8 @@
 <script type="text/javascript" src="/release/quickui.js"></script>
 <script type="text/javascript" src="/release/quickui.catalog.js"></script>
 <script type="text/javascript" src="/controls/controls.js"></script>
+<script type="text/javascript" src="/demos/dateRangeCalendar/dateRangeCalendar.js"></script>
+<script type="text/javascript" src="/demos/kanjiCalendar/kanjiCalendar.js"></script>
 
 <title>QuickUI web control framework</title>
 
@@ -30,13 +34,21 @@ h1 {
     display: none;
 }
 
-#localizedCalendars >.CalendarMonthWithHeadings:not(:last-child) {
+.inlineDemos > *:not(:last-child) {
     margin-right: 1em;
 }
 </style>
 
 <script type="text/javascript">
 $( function() {
+    var today = new Date();
+    $( ".DateTextBox" ).control().date( new Date( today ) );
+    var selectionStart = new Date( today );
+    var selectionEnd = new Date( today );
+    selectionEnd.setDate( selectionEnd.getDate() + 9 );
+    $( ".DateRangeCalendar" ).control()
+        .selectionStart( selectionStart )
+        .selectionEnd( selectionEnd );
     $( "#buttonTutorial" ).click( function() {
         window.location = "/tutorial/";
     });
@@ -140,7 +152,6 @@ from the ground up, so you can adapt any control to your needs.
 <p>
     And the popup portion of a date picker shows a calendar month that you
     can navigate through:
-    *** CalendarMonthNavigator keyboard navigation ***
 </p>
 <div><div data-control="CalendarMonthNavigator"></div></div>
 <p>
@@ -177,16 +188,20 @@ from the ground up, so you can adapt any control to your needs.
 </p>
 <div><div data-control="FlickrInterestingDay"></div></div>
 <p>
-    Drop that into the <i>same</i> calendar month navigator component shown
-    above, and voilà:
+    Drop the above component into the <i>exact same</i> calendar month navigator
+    component shown above, and voilà:
 </p>
 <div><div data-control="FlickrInterestingNavigator"></div></div>
 <p>
-    And if you have more complex needs, you can easily recombine these
-    elements to create, for example, a date <i>range</i> picker that picks
-    both a start and end date in a single component:
-    *** CalendarMonthNavigator keyboard navigation ***
+    Or you could create a new day component that renders a date with both Roman
+    numerals and kanji calligraphy:
 </p>
+<div><div data-control="KanjiCalendarDay" style="display: inline-block;"></div></div>
+<p>
+    And drop that into a calendar month for a result that's not possible with
+    CSS alone:
+</p>
+<div><div data-control="KanjiCalendarMonth"></div></div>
 
 <h2>Remixable user interface components</h2>
 <p>
@@ -197,7 +212,12 @@ from the ground up, so you can adapt any control to your needs.
     to use a different component to render the days — and in that component,
     you can do whatever you want.
 </p>
-<!-- <div><div data-control="CalendarDateRangeSelector"></div></div> -->
+<p>
+    And if you have more complex needs, you can easily recombine these
+    elements to create, for example, a date <i>range</i> picker that picks
+    both a start and end date in a single component:
+</p>
+<div><div data-control="DateRangeCalendar" data-count="3"></div></div>
 
 <h2>Shared components encourage investment in fundamentals</h2>
 <p>
@@ -208,7 +228,7 @@ from the ground up, so you can adapt any control to your needs.
     only now they've been instructed to show a calendar appropriate to French,
     Japanese, Thai, or Arabic cultures:
 </p>
-<div id="localizedCalendars">
+<div class="inlineDemos">
     <div data-control="CalendarMonthWithHeadings" data-culture="fr"></div>
     <div data-control="CalendarMonthWithHeadings" data-culture="ja"></div>
     <div data-control="CalendarMonthWithHeadings" data-culture="th"></div>
@@ -218,9 +238,21 @@ from the ground up, so you can adapt any control to your needs.
     Not only do the text labels for the month or days of the week change —
     different cultures prefer to see different days of the week as the "first"
     day of a week (Sunday in North American, Monday in Europe, Monday in Arabic
-    cultures). Few teams can afford to invest that kind of effort — but if
-    everyone shares an implementation, then that kind of investment will produce
-    returns for everyone.
+    cultures). And different cultures expect to see the different parts of a
+    date rendered differently in a text box:
+</p>
+<div class="inlineDemos">
+    <div data-control="DateTextBox" data-culture="fr"></div>
+    <div data-control="DateTextBox" data-culture="ja"></div>
+    <div data-control="DateTextBox" data-culture="th"></div>
+    <div data-control="DateTextBox" data-culture="ar"></div>
+</div>
+<p>
+    Few teams can afford to invest that kind of effort — but if everyone shares
+    an implementation, then that kind of investment will produce returns for
+    everyone. Other examples of investments the component approach makes more
+    reasonable are: performance, keyboard support, general accessibility, 
+    cutting-edge CSS optimization, and device responsiveness.
 </p>
 
 <p>
