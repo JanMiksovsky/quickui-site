@@ -29,6 +29,10 @@ h1 {
 .SitePage_title {
     display: none;
 }
+
+#localizedCalendars >.CalendarMonthWithHeadings:not(:last-child) {
+    margin-right: 1em;
+}
 </style>
 
 <script type="text/javascript">
@@ -102,7 +106,7 @@ disassemble, extend, or recombine. QuickUI controls are built for flexibility
 from the ground up, so you can adapt any control to your needs.
 </p>
 
-<h2>Remixable user interface components</h2>
+<h2>A sane way to build up complex user interfaces from small building blocks</h2>
 <p>
     Every web user interface framework offers a date picker component, but
     QuickUI packs a world of power into the one it gives you. Here's the
@@ -148,8 +152,6 @@ from the ground up, so you can adapt any control to your needs.
 <p>
     In this case, you're navigate among months. The month itself is rendered
     using a component:
-    *** CalendarMonthWithHeadings hides dates outside month by default,
-    CalendarMonthNavigator turns them back on ***
 </p>
 <div><div data-control="CalendarMonthWithHeadings"></div></div>
 <p>
@@ -159,52 +161,68 @@ from the ground up, so you can adapt any control to your needs.
 <p>
     Graph thumbnail and link to full graph. Better graph lines, legend.
 </p>
+
+<h2>Waaaay beyond styling</h2>
 <p>
-    There are many reasons why building user interfaces this way makes a lot
-    of sense. One is that reusable components permit heavier in investment
-    in fundamentals. Take localizing a calendar to other languages. This turns
-    out to be a complex task. It's not just a matter of changing the names
-    for the months and days of the week, you also have to consider factors
-    such as the order in which different prefer to write dates (day/month/year
-    versus month/day/year or year/month/day, and so on) as well as the fact
-    that different cultures prefer to see different days of the week as the
-    "first" day of a week (Sunday in North American, Monday in Europe,
-    Monday in Arabic cultures). Few teams can afford to invest that kind of
-    effort — but if everyone shares an implementation, it's worth it: 
+    Previous user interface frameworks only gave you big, chunky UI widgets to
+    work with. Your ability to customize them is limited to the things the
+    widget author could image you'd want to change. And while you can 
+    customize thigns a bit, there's a limit to what's possible with CSS.
+    QuickUI lets you go way beyond that limit, with components that can
+    accept <i>other</i> components. Suppose you can have a product like, say,
+    Flickr that wants to show interesting the most
+    <a href="http://www.flickr.com/explore/interesting/">interesting</a> photo
+    of the day on a calendar. Using the <a data-control="CatalogLink">CalendarDay</a>
+    component as a starting point, create a new calendar-day-with-photo component:
 </p>
-<div>
-    <div data-control="Carousel" style="display: inline-block;">
-        <div data-control="CalendarMonthWithHeadings" data-culture="fr"></div>
-        <div data-control="CalendarMonthWithHeadings" data-culture="ja"></div>
-        <div data-control="CalendarMonthWithHeadings" data-culture="th"></div>
-        <div data-control="CalendarMonthWithHeadings" data-culture="ar"></div>
-    </div>
-</div>
+<div><div data-control="FlickrInterestingDay"></div></div>
 <p>
-    (Naturally, the ability to flip between those different calendars is
-    a component too.)
+    Drop that into the <i>same</i> calendar month navigator component shown
+    above, and voilà:
 </p>
-<p>
-    Of course, everyone's needs are different. That's why all QuickUI
-    components are designed to be remixed: composed with other components,
-    extended with custom behavior, and generally adapted to the needs of
-    your app. In the case of this calendar, you can tell the calendar
-    to use a different component to render the days — and in that component,
-    you can do whatever you want. Maybe you want to show a weather forecast:
-</p>
-<!-- <div><div data-control="FlickrInterestingDay"></div></div> -->
-<!-- <div><div data-control="FlickrInterestingNavigator"></div></div> -->
-<p>
-    Or maybe you want to create a *** calendar of the most interested
-    photo of any given day ***.
-</p>
+<div><div data-control="FlickrInterestingNavigator"></div></div>
 <p>
     And if you have more complex needs, you can easily recombine these
     elements to create, for example, a date <i>range</i> picker that picks
     both a start and end date in a single component:
     *** CalendarMonthNavigator keyboard navigation ***
 </p>
+
+<h2>Remixable user interface components</h2>
+<p>
+    Everyone's user interface needs are different. That's why all QuickUI
+    components are designed to be remixed: composed with other components,
+    extended with custom behavior, and generally adapted to the needs of
+    your app. In the case of this calendar, you can tell the calendar
+    to use a different component to render the days — and in that component,
+    you can do whatever you want.
+</p>
 <!-- <div><div data-control="CalendarDateRangeSelector"></div></div> -->
+
+<h2>Shared components encourage investment in fundamentals</h2>
+<p>
+    There are many reasons why building user interfaces this way makes a lot
+    of sense. One is that reusable components permit heavier in investment
+    in fundamentals. Take the complex chore of localizing a calendar to other
+    languages. Here are some instances of the same calendar month component,
+    only now they've been instructed to show a calendar appropriate to French,
+    Japanese, Thai, or Arabic cultures:
+</p>
+<div id="localizedCalendars">
+    <div data-control="CalendarMonthWithHeadings" data-culture="fr"></div>
+    <div data-control="CalendarMonthWithHeadings" data-culture="ja"></div>
+    <div data-control="CalendarMonthWithHeadings" data-culture="th"></div>
+    <div data-control="CalendarMonthWithHeadings" data-culture="ar"></div>
+</div>
+<p>
+    Not only do the text labels for the month or days of the week change —
+    different cultures prefer to see different days of the week as the "first"
+    day of a week (Sunday in North American, Monday in Europe, Monday in Arabic
+    cultures). Few teams can afford to invest that kind of effort — but if
+    everyone shares an implementation, then that kind of investment will produce
+    returns for everyone.
+</p>
+
 <p>
     These days, your web applications need to be <i>responsive</i> and
     adapt to the capabilities of the device and OS the user is running.
