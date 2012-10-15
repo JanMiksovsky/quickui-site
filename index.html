@@ -34,6 +34,14 @@ h1 {
     display: none;
 }
 
+.benefits {
+    color: #928274;
+    font-size: 24px;
+}
+.benefits b {
+    color: #391C01;
+}
+
 .inlineDemos > *:not(:last-child) {
     margin-right: 1em;
 }
@@ -83,46 +91,32 @@ $( function() {
     
 </div>
 
-<h1>Create a great user interface with extensible web components</h1>
-
-<p>
-<b>Users deserve great web apps</b> with clean, intuitive, responsive user
-interfaces that fit the task and are a joy to use. But the basic web platform
-itself makes building such interfaces hard. You, as a web designer or developer,
-have to do so much work just to recreate interface elements that look the way
-you want, respond the way users expect, and exploit the capabilities of the
-user’s device or browser to their fullest extent.
+<p class="benefits">
+<b>Accelerate</b> •
+<b>Organize</b> •
+<b>Iterate</b> •
+<b>Maintain</b> •
+<b>Share</b>
+your UI code
 </p>
 
 <p>
-QuickUI is a JavaScript framework that lets you create your web app with user
-interface components called <i>controls</i>. A user interface control class
-includes all DOM elements, interactive behavior, and visual styling necessary
-for the control to function. You can define a control to implement any level of
-your app's UI: a page template, a region on the page, a special button, etc.
+QuickUI is a free and open JavaScript framework that lets you create your web
+app with user interface components called <i>controls</i>. A control includes
+all the DOM elements, interactive behavior, and visual styling necessary for the
+control to function. You can define a control to implement any level of your
+app's UI: a page template, a region on the page, a special button, etc. This
+approach lets you create great web applications with clean, intuitive,
+responsive user interfaces that fit the task and are a joy to use.
+
 With this approach, you can bring all the benefits of traditional object-
-oriented design to bear on your JavaScript UI code:
+oriented design to bear on your JavaScript UI code.
 </p>
 
-<ol>
-<li>Organize your UI code logically.</li>
-<li>Start with well-tested UI building blocks.</li>
-<li>Quickly iterate on the design of your app’s interface.</li>
-<li>Share common UI solutions with your teammates and the web at large.</li>
-</ol>
-
+<h2>Build up complex user interfaces from small building blocks</h2>
 <p>
-Controls are comparable to widgets in other UI frameworks — but a widget in such
-frameworks is typically a monolithic block of functionality you can neither
-disassemble, extend, or recombine. QuickUI controls are built for flexibility
-from the ground up, so you can adapt any control to your needs.
-</p>
-
-<h2>A sane way to build up complex user interfaces from small building blocks</h2>
-<p>
-    Every web user interface framework offers a date picker component, but
-    QuickUI packs a world of power into the one it gives you. Here's the
-    typical example:
+    Every web framework offers a date picker, but QuickUI packs a world of power
+    into the one it gives you. Here's the typical example:
 </p>
 <div>
     <div data-control="DateComboBox">
@@ -133,13 +127,12 @@ from the ground up, so you can adapt any control to your needs.
     </div>
 </div>
 <p>
-    (Whenever you're up for it, you can check out the docs and source for the above
-    <a data-control="CatalogLink">DateComboBox</a> component, or any of the other
-    components described here.)
-    There are actually a lot of pieces here that work together to make the
-    date picker — and every one of those pieces of functionality is given
-    to you as a component in its own right. The combo box behavior, for
-    example:
+    (Whenever you're up for it, you can check out the docs and source for the
+    above <a data-control="CatalogLink">DateComboBox</a> component, or any of
+    the other components described here.) Under the covers, many pieces here
+    that work together to make this date picker — and every one of those pieces
+    of functionality is available to you as a component in its own right. The
+    combo box behavior, for example:
 </p>
 <div><div data-control="ComboBox"></div></div>
 <p>
@@ -265,6 +258,18 @@ from the ground up, so you can adapt any control to your needs.
     combo box above on a full browser:
 </p>
 <!-- <div><div data-control="ResponsiveDatePicker"></div></div> -->
+
+<h2>Beaucoup benefits</h2>
+<p>
+***
+</p>
+
+<ol>
+<li>Organize your UI code logically.</li>
+<li>Start with well-tested UI building blocks.</li>
+<li>Quickly iterate on the design of your app’s interface.</li>
+<li>Share common UI solutions with your teammates and the web at large.</li>
+</ol>
 
 <h2>What makes QuickUI different from other web frameworks?</h2>
 

@@ -6,9 +6,6 @@
     <Link linksToArea="true" href="/tutorial/">Tutorial</Link>
     <Link linksToArea="true" href="/docs/">Docs</Link>
     <Link linksToArea="true" href="/catalog/">Catalog</Link>
-    <!-- Hide markup area as step towards deprecating markup.
-    <Link linksToArea="true" href="/markup/">Markup</Link>
-    -->
     <!-- Hide markup-based screencasts until they can be re-done for JS.
     <Link href="/screencasts">Screencasts</Link>
     -->
@@ -16,7 +13,7 @@
     <!-- Hide for now, since this isn't getting any use.
     <Link href="http://discussions.zoho.com/quickui">Discuss</Link>
     -->
-    <Link href="https://github.com/JanMiksovsky/quickui">GitHub</Link>
+    <Link href="https://github.com/JanMiksovsky/quickui">Source Code</Link>
 
     <SearchBox ref="searchBox"/>
 
