@@ -34,6 +34,14 @@ h1 {
     display: none;
 }
 
+.browserSupport {
+    float: right;
+    margin: 0 0 1em 1em;
+}
+.browserSupport > * {
+    display: block;
+}
+
 .benefits {
     color: #928274;
     font-size: 24px;
@@ -100,6 +108,13 @@ $( function() {
 your UI code
 </p>
 
+<div class="browserSupport">
+<img src="/resources/icons/32-chrome.png" title="Google Chrome"
+/><img src="/resources/icons/32-firefox.png" title="Mozilla Firefox"
+/><img src="/resources/icons/32-ie.png" title="Microsoft Internet Explorer 8/9"
+/><img src="/resources/icons/32-safari.png" title="Apple Safari"/>
+</div>
+
 <p>
 QuickUI is a free and open JavaScript framework that lets you create your web
 app with user interface components called <i>controls</i>. A control includes
@@ -111,10 +126,6 @@ responsive user interfaces that fit the task and are a joy to use.
 
 With this approach, you can bring all the benefits of traditional object-
 oriented design to bear on your JavaScript UI code.
-</p>
-
-<p>
-<img src="/resources/icons/32-chrome.png"/><img src="/resources/icons/32-firefox.png"/><img src="/resources/icons/32-ie.png"/><img src="/resources/icons/32-safari.png"/>
 </p>
 
 <h2>Build up complex user interfaces from small building blocks</h2>
