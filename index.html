@@ -53,52 +53,82 @@ $( function() {
 your UI code
 </p>
 
-<div class="demo">
-<img src="/resources/icons/32-chrome.png" title="Google Chrome"
-/><img src="/resources/icons/32-firefox.png" title="Mozilla Firefox"
-/><img src="/resources/icons/32-ie.png" title="Microsoft Internet Explorer 8/9"
-/><img src="/resources/icons/32-safari.png" title="Apple Safari"/>
-<div>Cross-browser support</div>
-</div>
+<table class="main">
 
-<p class="main">
-QuickUI is a free and open JavaScript framework that lets you create your web
-app with user interface components called <i>controls</i>. A control includes
-all the DOM elements, interactive behavior, and visual styling necessary for the
-control to function. You can define a control to implement any level of your
-app's UI: a page template, a region on the page, a special button, etc. This
-approach lets you create great web applications with clean, intuitive,
-responsive user interfaces that fit the task and are a joy to use.
+<tr>
+<td>
+    <p>
+    QuickUI is a free and open JavaScript framework that lets you create your
+    web app with user interface components called <i>controls</i>. A control
+    includes all the DOM elements, interactive behavior, and visual styling
+    necessary for the control to function. You can define a control to implement
+    any level of your app's UI: a page template, a region on the page, a special
+    button, etc. This approach lets you create great web applications with
+    clean, intuitive, responsive user interfaces that fit the task and are a joy
+    to use.
+    </p>
+    <p>
+    With this approach, you can bring all the benefits of traditional
+    object-oriented design to bear on your JavaScript UI code.
+    </p>
+</td>
+<td>
+    <img src="/resources/icons/32-chrome.png" title="Google Chrome"
+    /><img src="/resources/icons/32-firefox.png" title="Mozilla Firefox"
+    /><img src="/resources/icons/32-ie.png" title="Microsoft Internet Explorer 8/9"
+    /><img src="/resources/icons/32-safari.png" title="Apple Safari"/>
+    <div>Cross-browser support</div>
+</td>
+</tr>
 
-With this approach, you can bring all the benefits of traditional
-object-oriented design to bear on your JavaScript UI code.
-</p>
+<tr>
+<td>
+    <h2>Build up complex user interfaces from small building blocks</h2>
+</td>
+</tr>
 
-<h2>Build up complex user interfaces from small building blocks</h2>
-<div class="demo">
+<tr>
+<td>
+    Every web framework offers a date picker, but a date picker built in QuickUI
+    packs in a world of power. You can see a typical example on the right.
+    (Whenever you're up for it, you can check out the docs and source for the
+    above <a data-control="CatalogLink">DateComboBox</a> component, or most of
+    the other components described here.)
+</td>
+<td>
     <div data-control="DateComboBox">
         <div data-property="dropdownButtonContent">
             <!-- Custom icon; see notes at /catalog/DateComboBox -->
             <img ref="calendarIcon" src="/catalog/resources/calendar_alt_fill_16x16.png"/>
         </div>
     </div>
-</div>
-<p>
-    Every web framework offers a date picker, but QuickUI's packs in a world of power.
-    Here's the typical example:
-</p>
-<p>
-    (Whenever you're up for it, you can check out the docs and source for the
-    above <a data-control="CatalogLink">DateComboBox</a> component, or any of
-    the other components described here.)
-</p>
-<p>
+    <div>A deceptively simple date picker…</div>
+</td>
+</tr>
+
+<tr>
+<td>
     It may not look like much, but under the covers, many pieces are working
     together to make this date picker function — and every one of those pieces
     is available to you as a useful component in its own right. Take the combo
     box behavior, for example:
-</p>
-<div><div data-control="ComboBox"></div></div>
+</td>
+<td>
+    <div data-control="ComboBox"></div>
+    <div>… starts from a combo box base</div>
+</td>
+</tr>
+
+<tr>
+<td>
+</td>
+<td>
+</td>
+</tr>
+
+</table>
+
+<div></div>
 <p>
     By building on top of this combo box component, you can make lots of other
     kinds of combo boxes, like a ** combo box for picking things from lists ***.
