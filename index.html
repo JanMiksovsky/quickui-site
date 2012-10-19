@@ -18,27 +18,12 @@
 <script type="text/javascript" src="/lib/globalize.culture.th.js"></script>
 <script type="text/javascript" src="/release/quickui.js"></script>
 <script type="text/javascript" src="/release/quickui.catalog.js"></script>
+<script type="text/javascript" src="/catalog/controlDocumentation.js"></script>
 <script type="text/javascript" src="/controls/controls.js"></script>
 <script type="text/javascript" src="/demos/dateRangeCalendar/dateRangeCalendar.js"></script>
 <script type="text/javascript" src="/demos/kanjiCalendar/kanjiCalendar.js"></script>
 
 <title>QuickUI web control framework</title>
-
-<script type="text/javascript">
-$( function() {
-    var today = new Date();
-    $( ".DateTextBox" ).control().date( new Date( today ) );
-    var selectionStart = new Date( today );
-    var selectionEnd = new Date( today );
-    selectionEnd.setDate( selectionEnd.getDate() + 9 );
-    $( ".DateRangeCalendar" ).control()
-        .selectionStart( selectionStart )
-        .selectionEnd( selectionEnd );
-    $( "#buttonTutorial" ).click( function() {
-        window.location = "/tutorial/";
-    });
-});
-</script>
 
 </head>
 
@@ -182,18 +167,29 @@ your UI code
 </td>
 <td>
     <div data-control="CalendarWeek"></div>
-    <div class="caption">… or just a week, day, or the headings, etc.</div>
+    <div class="caption">… or just a week, or a day, or month label, etc.</div>
 </td>
 </tr>
 
-</table>
+<tr>
+<td>
+    *** link to class graph for CalendarMonthNavigator ***
+</td>
+<td>
+    <img data-control="ControlClassGraph" data-graphClass="DateComboBox" style="width: 200px;"/>
+    <div class="caption">A well-factored control class</div>
+</td>
+</tr>
 
-<p>
-    Graph thumbnail and link to full graph. Better graph lines, legend.
-</p>
+<tr>
+<td colspan="2">
+    <h2>Waaaay beyond styling</h2>
+</td>
+</tr>
 
-<h2>Waaaay beyond styling</h2>
-<p>
+<tr>
+<td>
+    <p>
     Previous user interface frameworks only gave you big, chunky UI widgets to
     work with. Your ability to customize them is limited to the things the
     widget author could image you'd want to change. And while you can 
@@ -204,24 +200,47 @@ your UI code
     <a href="http://www.flickr.com/explore/interesting/">interesting</a> photo
     of the day on a calendar. Using the <a data-control="CatalogLink">CalendarDay</a>
     component as a starting point, create a new calendar-day-with-photo component:
-</p>
-<div><div data-control="FlickrInterestingDay" data-autoLoad="true"></div></div>
-<p>
+    </p>
+    <p>
     Drop the above component into the <i>exact same</i> calendar month navigator
     component shown above, and voilà:
-</p>
-<div><div data-control="FlickrInterestingNavigator"></div></div>
-<p>
-    Or you could create a new day component that renders a date with both Roman
-    numerals and kanji calligraphy:
-</p>
-<div><div data-control="KanjiCalendarDay" style="display: inline-block;"></div></div>
-<p>
-    And drop that into a calendar month for a result that's not possible with
-    CSS alone:
-</p>
-<div><div data-control="KanjiCalendarMonth"></div></div>
+    </p>
+</td>
+<td>
+    <div data-control="FlickrInterestingDay" data-autoLoad="true"></div>
+    <div class="caption">A new control for the days …</div>
+</td>
+</tr>
 
+<tr>
+<td colspan="2">
+    <div data-control="FlickrInterestingNavigator"></div>    
+    <div class="caption">… produces a completely different experience</div>
+</td>
+</tr>
+
+<tr>
+<td>
+    Or you could create a new day component that renders a date with both Roman
+    numerals and kanji calligraphy, and drop that into a calendar month for a
+    result that's not possible with CSS alone:
+</td>
+<td>
+    <div data-control="KanjiCalendarDay" style="display: inline-block;"></div>
+    <div class="caption">A different day control</div>
+</td>
+</tr>
+
+<tr>
+<td colspan="2">
+    *** Make narrower? ***
+    <div data-control="KanjiCalendarMonth"></div>
+    <div class="caption">… another experience — all using the same calendar code</div>
+</td>
+</tr>
+
+<tr>
+<td>
 <h2>Remixable user interface components</h2>
 <p>
     Everyone's user interface needs are different. That's why all QuickUI
@@ -235,46 +254,71 @@ your UI code
     And if you have more complex needs, you can easily recombine these
     elements to create, for example, a date <i>range</i> picker that picks
     both a start and end date in a single component:
+    *** Repeater ***
 </p>
-<div><div data-control="DateRangeCalendar" data-count="3"></div></div>
+</td>
+</tr>
 
-<h2>Shared components encourage investment in fundamentals</h2>
-<p>
+<tr>
+<td colspan="2">
+    <div data-control="DateRangeCalendar" data-count="3"></div>
+    <div class="caption">A date range component assembled from multiple calendars</div>
+</td>
+</tr>
+
+<tr>
+<td>
+    <h2>Shared components encourage investment in fundamentals</h2>
+    <p>
     There are many reasons why building user interfaces this way makes a lot
     of sense. One is that reusable components permit heavier in investment
     in fundamentals. Take the complex chore of localizing a calendar to other
     languages. Here are some instances of the same calendar month component,
     only now they've been instructed to show a calendar appropriate to French,
     Japanese, Thai, or Arabic cultures:
-</p>
-<div class="inlineDemos">
-    <div data-control="CalendarMonthWithHeadings" data-culture="fr"></div>
-    <div data-control="CalendarMonthWithHeadings" data-culture="ja"></div>
-    <div data-control="CalendarMonthWithHeadings" data-culture="th"></div>
-    <div data-control="CalendarMonthWithHeadings" data-culture="ar"></div>
-</div>
-<p>
+    </p>
+</td>
+</tr>
+
+<tr>
+<td colspan="2">
+    <div class="inlineDemos">
+        <div data-control="CalendarMonthWithHeadings" data-culture="fr"></div>
+        <div data-control="CalendarMonthWithHeadings" data-culture="ja"></div>
+        <div data-control="CalendarMonthWithHeadings" data-culture="th"></div>
+        <div data-control="CalendarMonthWithHeadings" data-culture="ar"></div>
+    </div>
+    <div class="caption">… produces a completely different experience</div>
+</td>
+</tr>
+
+<tr>
+<td>
     Not only do the text labels for the month or days of the week change —
     different cultures prefer to see different days of the week as the "first"
     day of a week (Sunday in North American, Monday in Europe, Monday in Arabic
     cultures). And different cultures expect to see the different parts of a
     date rendered differently in a text box:
-</p>
-<div class="inlineDemos">
+</td>
+<td>
     <div data-control="DateTextBox" data-culture="fr"></div>
     <div data-control="DateTextBox" data-culture="ja"></div>
     <div data-control="DateTextBox" data-culture="th"></div>
     <div data-control="DateTextBox" data-culture="ar"></div>
-</div>
-<p>
+    <div class="caption"></div>
+</td>
+</tr>
+
+<tr>
+<td>
+    <p>
     Few teams can afford to invest that kind of effort — but if everyone shares
     an implementation, then that kind of investment will produce returns for
     everyone. Other examples of investments the component approach makes more
     reasonable are: performance, keyboard support, general accessibility, 
     cutting-edge CSS optimization, and device responsiveness.
-</p>
-
-<p>
+    </p>
+    <p>
     These days, your web applications need to be <i>responsive</i> and
     adapt to the capabilities of the device and OS the user is running.
     It's easy to create QuickUI components that go far beyond what's possible
@@ -282,88 +326,94 @@ your UI code
     different presentations based on the context. The following date picker
     uses a mobile OS' native date picker on a mobile device, but the date
     combo box above on a full browser:
-</p>
-<!-- <div><div data-control="ResponsiveDatePicker"></div></div> -->
+    </p>
+    <!-- <div><div data-control="ResponsiveDatePicker"></div></div> -->
+</td>
+</tr>
 
-<h2>Beaucoup benefits</h2>
-<p>
-***
-</p>
+<tr>
+<td>
+    <h2>What makes QuickUI different from other web frameworks?</h2>
 
-<ol>
-<li>Organize your UI code logically.</li>
-<li>Start with well-tested UI building blocks.</li>
-<li>Quickly iterate on the design of your app’s interface.</li>
-<li>Share common UI solutions with your teammates and the web at large.</li>
-</ol>
+    <ul>
+    <li>
+    <b>Composability</b>. This means you can generally put one control inside
+    another. When other frameworks offer, say, a date picker, it’s a solid,
+    immutable block; you can’t actually stick anything inside the date picker, so
+    your ability to customize the experience is limited to those customizations the
+    widget's author thought you'd want. Most QuickUI controls, in contrast, are
+    designed you can place one control inside another whenever that would make
+    sense.
+    </li>
+    <li>
+    <b>Modularity</b>. Good controls should only have local effects and
+    dependencies. When you add a control to a page, you don’t want to suddenly
+    discover that the control is inadvertently stomping on, say, CSS styles you’re
+    using elsewhere. Similarly, a control shouldn’t make lots of demands on its
+    container; you should be able to stick a control anywhere and get something
+    reasonable. In QuickUI, all controls are designed to be as context-independent
+    as possible. Moreover, the QuickUI framework ensures that your controls have
+    deterministic, reliable access to their own elements — your code won’t
+    accidentally pick up other elements on the page.
+    </li>
+    <li>
+    <b>Extensibility</b>. You can easily create specialized version of a control
+    class by subclassing it. This is a killer feature, because it lets you build new
+    components out of existing ones. QuickUI provides well-defined semantics for how
+    a subclass and its parent classes can work together to populate the DOM. Most
+    frameworks that let you create UI subclasses force you to wrap the elements of a
+    parent class, which turns out to be a dead end. In contrast, a QuickUI subclass
+    populates “slots” in its base class — and can define new slots of its own. For
+    more on this approach, see
+    <a data-control="Link" href="/docs/rendering.html">how controls
+    render themselves</a>.
+    </li>
+    <li>
+    <b>Opacity</b>. You can quickly define an external-facing API for your control
+    class, obviating the need or temptation for other developers to muck about
+    inside your control’s DOM. This keeps your control’s contract with its host
+    container clean and well-defined, allowing you to evolve your controls without
+    breaking everyone who’s already using them.
+    </li>
+    <li>
+    <b>Helpers for common UI situations</b>. QuickUI’s runtime has helper functions
+    to address situations that often come up when creating reusable controls, such
+    as controls that need to perform custom layout calculations when they're added
+    to the DOM, or when their size changes.
+    </li>
+    <li>
+    <b>Control classes are first-class objects</b>. QuickUI permits the creation of
+    meta-controls that can take another control class as input. For example, you can
+    tell a <a data-control="CatalogLink">ListBox</a> control which control class
+    should be used to represent its individual list items, and the ListBox will
+    automatically take care of creating or destroying instances of that item class
+    as the set of list items changes.
+    </li>
+    <li>
+    <b>Search engine support</b>. You want the best of both worlds: to create UI in
+    JavaScript <i>and</i> have UI text content searchable by Google and other search
+    engines. QuickUI lets you reference controls in searchable HTML and then
+    <a data-control="Link" href="/tutorial/rehydration.html">rehydrate</a>
+    those controls in the user’s browser. If you inspect this page's
+    <span data-control="Tag">body</span> tag, for example, you'll see how the site's
+    page template (which is implemented as a QuickUI control) is applied on the
+    client to what's otherwise plain, searchable HTML.
+    </li>
+    </ul>
+</td>
+<td>
+    <p>Benefits:</p>
+    <ol>
+        <li>Organize your UI code logically.</li>
+        <li>Start with well-tested UI building blocks.</li>
+        <li>Quickly iterate on the design of your app’s interface.</li>
+        <li>Share common UI solutions with your teammates and the web at large.</li>
+    </ol>
+</td>
+</tr>
 
-<h2>What makes QuickUI different from other web frameworks?</h2>
-
-<ul>
-<li>
-<b>Composability</b>. This means you can generally put one control inside
-another. When other frameworks offer, say, a date picker, it’s a solid,
-immutable block; you can’t actually stick anything inside the date picker, so
-your ability to customize the experience is limited to those customizations the
-widget's author thought you'd want. Most QuickUI controls, in contrast, are
-designed you can place one control inside another whenever that would make
-sense.
-</li>
-<li>
-<b>Modularity</b>. Good controls should only have local effects and
-dependencies. When you add a control to a page, you don’t want to suddenly
-discover that the control is inadvertently stomping on, say, CSS styles you’re
-using elsewhere. Similarly, a control shouldn’t make lots of demands on its
-container; you should be able to stick a control anywhere and get something
-reasonable. In QuickUI, all controls are designed to be as context-independent
-as possible. Moreover, the QuickUI framework ensures that your controls have
-deterministic, reliable access to their own elements — your code won’t
-accidentally pick up other elements on the page.
-</li>
-<li>
-<b>Extensibility</b>. You can easily create specialized version of a control
-class by subclassing it. This is a killer feature, because it lets you build new
-components out of existing ones. QuickUI provides well-defined semantics for how
-a subclass and its parent classes can work together to populate the DOM. Most
-frameworks that let you create UI subclasses force you to wrap the elements of a
-parent class, which turns out to be a dead end. In contrast, a QuickUI subclass
-populates “slots” in its base class — and can define new slots of its own. For
-more on this approach, see
-<a data-control="Link" href="/docs/rendering.html">how controls
-render themselves</a>.
-</li>
-<li>
-<b>Opacity</b>. You can quickly define an external-facing API for your control
-class, obviating the need or temptation for other developers to muck about
-inside your control’s DOM. This keeps your control’s contract with its host
-container clean and well-defined, allowing you to evolve your controls without
-breaking everyone who’s already using them.
-</li>
-<li>
-<b>Helpers for common UI situations</b>. QuickUI’s runtime has helper functions
-to address situations that often come up when creating reusable controls, such
-as controls that need to perform custom layout calculations when they're added
-to the DOM, or when their size changes.
-</li>
-<li>
-<b>Control classes are first-class objects</b>. QuickUI permits the creation of
-meta-controls that can take another control class as input. For example, you can
-tell a <a data-control="CatalogLink">ListBox</a> control which control class
-should be used to represent its individual list items, and the ListBox will
-automatically take care of creating or destroying instances of that item class
-as the set of list items changes.
-</li>
-<li>
-<b>Search engine support</b>. You want the best of both worlds: to create UI in
-JavaScript <i>and</i> have UI text content searchable by Google and other search
-engines. QuickUI lets you reference controls in searchable HTML and then
-<a data-control="Link" href="/tutorial/rehydration.html">rehydrate</a>
-those controls in the user’s browser. If you inspect this page's
-<span data-control="Tag">body</span> tag, for example, you'll see how the site's
-page template (which is implemented as a QuickUI control) is applied on the
-client to what's otherwise plain, searchable HTML.
-</li>
-</ul>
+<tr>
+<td>
 
 <h2>A good citizen of the open web</h2>
 
@@ -421,6 +471,11 @@ View the <a data-control="Link"
 href="https://github.com/JanMiksovsky/quickui">source code</a> on GitHub.
 </li>
 </ul>
+
+</td>
+</tr>
+
+</table>
 
 </body>
 

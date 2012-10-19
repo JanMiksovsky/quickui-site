@@ -27,3 +27,17 @@ class window.HomePage extends SitePage
       #     { control: "BlogHeadlines", feed: "http://miksovsky.blogs.com/flowstate/controls/atom.xml", count: 1 }
       # ]}
     ]
+
+  initialize: ->
+
+    today = new Date()
+    $( ".DateTextBox" ).control().date new Date today
+    selectionStart = new Date today
+    selectionEnd = new Date today
+    selectionEnd.setDate selectionEnd.getDate() + 9
+    $( ".DateRangeCalendar" ).control() \
+      .selectionStart( selectionStart ) \
+      .selectionEnd( selectionEnd )
+
+    $( "#buttonTutorial" ).click =>
+      window.location = "/tutorial/"
