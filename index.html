@@ -77,7 +77,7 @@ your UI code
     /><img src="/resources/icons/32-firefox.png" title="Mozilla Firefox"
     /><img src="/resources/icons/32-ie.png" title="Microsoft Internet Explorer 8/9"
     /><img src="/resources/icons/32-safari.png" title="Apple Safari"/>
-    <div>Cross-browser support</div>
+    <div class="caption">Cross-browser support</div>
 </td>
 </tr>
 
@@ -102,7 +102,7 @@ your UI code
             <img ref="calendarIcon" src="/catalog/resources/calendar_alt_fill_16x16.png"/>
         </div>
     </div>
-    <div>A deceptively simple date picker…</div>
+    <div class="caption">A deceptively simple date picker…</div>
 </td>
 </tr>
 
@@ -115,50 +115,79 @@ your UI code
 </td>
 <td>
     <div data-control="ComboBox"></div>
-    <div>… starts from a combo box base</div>
+    <div class="caption">… starts from a combo box base</div>
 </td>
 </tr>
 
 <tr>
 <td>
-</td>
-<td>
-</td>
-</tr>
-
-</table>
-
-<div></div>
-<p>
     By building on top of this combo box component, you can make lots of other
     kinds of combo boxes, like a ** combo box for picking things from lists ***.
     In this particular case, the text box portion of a date picker needs to
     actually understand how to parse and represent dates, so that's offered as
     its own DateTextBox component.
-</p>
-<div><div data-control="DateTextBox"></div></div>
-<p>
+</td>
+<td>
+    <div data-control="DateTextBox"></div>
+    <div class="caption">… and combines a date-aware text input control</div>
+</td>
+</tr>
+
+<tr>
+<td>
     The DateTextBox doesn't have a popup — it just handles dates as text.
     Generally speaking, QuickUI components try to do just one thing really well.
     The DateTextBox above gets combined with a CalendarMonthNavigator that
     just focuses on letting you navigate through dates, one month at a time:
-</p>
-<div><div data-control="CalendarMonthNavigator"></div></div>
-<p>
+</td>
+<td>
+    <div data-control="CalendarMonthNavigator"></div>
+    <div class="caption">… with a navigable month calendar.</div>
+</td>
+</tr>
+
+<tr>
+<td>
     The ability to navigate left and right between months is a general
     user interface pattern that crops up in lots of other situations — so
     of course that's delivered as a component as well:
-</p>
-<div><div data-control="SequenceNavigator"></div></div>
-<p>
+</td>
+<td>
+    <div data-control="SequenceNavigator" style="display: inline-block;">
+        <img data-control="FlickrInterestingPhoto" data-autoLoad="true" data-photoSize="s"/>
+        <img data-control="FlickrInterestingPhoto" data-autoLoad="true" data-photoSize="s"/>
+        <img data-control="FlickrInterestingPhoto" data-autoLoad="true" data-photoSize="s"/>
+        <img data-control="FlickrInterestingPhoto" data-autoLoad="true" data-photoSize="s"/>
+        <img data-control="FlickrInterestingPhoto" data-autoLoad="true" data-photoSize="s"/>
+    </div>
+    <div class="caption">Each aspect can be used in other ways, like the navigation…</div>
+</td>
+</tr>
+
+<tr>
+<td>
     In this case, you're navigate among months. The month itself is rendered
-    using a component:
-</p>
-<div><div data-control="CalendarMonthWithHeadings"></div></div>
-<p>
+    using a component.
+</td>
+<td>
+    <div data-control="CalendarMonthWithHeadings"></div>
+    <div class="caption">… or the static month calendar</div>
+</td>
+</tr>
+
+<tr>
+<td>
     And each piece of the month — the headings, the cells for the days, etc.,
     are all available as components, all of which you can use.
-</p>
+</td>
+<td>
+    <div data-control="CalendarWeek"></div>
+    <div class="caption">… or just a week, day, or the headings, etc.</div>
+</td>
+</tr>
+
+</table>
+
 <p>
     Graph thumbnail and link to full graph. Better graph lines, legend.
 </p>
