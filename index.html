@@ -53,14 +53,15 @@ $( function() {
 your UI code
 </p>
 
-<div class="browserSupport">
+<div class="demo">
 <img src="/resources/icons/32-chrome.png" title="Google Chrome"
 /><img src="/resources/icons/32-firefox.png" title="Mozilla Firefox"
 /><img src="/resources/icons/32-ie.png" title="Microsoft Internet Explorer 8/9"
 /><img src="/resources/icons/32-safari.png" title="Apple Safari"/>
+<div>Cross-browser support</div>
 </div>
 
-<p>
+<p class="main">
 QuickUI is a free and open JavaScript framework that lets you create your web
 app with user interface components called <i>controls</i>. A control includes
 all the DOM elements, interactive behavior, and visual styling necessary for the
@@ -69,16 +70,12 @@ app's UI: a page template, a region on the page, a special button, etc. This
 approach lets you create great web applications with clean, intuitive,
 responsive user interfaces that fit the task and are a joy to use.
 
-With this approach, you can bring all the benefits of traditional object-
-oriented design to bear on your JavaScript UI code.
+With this approach, you can bring all the benefits of traditional
+object-oriented design to bear on your JavaScript UI code.
 </p>
 
 <h2>Build up complex user interfaces from small building blocks</h2>
-<p>
-    Every web framework offers a date picker, but QuickUI packs a world of power
-    into the one it gives you. Here's the typical example:
-</p>
-<div>
+<div class="demo">
     <div data-control="DateComboBox">
         <div data-property="dropdownButtonContent">
             <!-- Custom icon; see notes at /catalog/DateComboBox -->
@@ -87,24 +84,34 @@ oriented design to bear on your JavaScript UI code.
     </div>
 </div>
 <p>
+    Every web framework offers a date picker, but QuickUI's packs in a world of power.
+    Here's the typical example:
+</p>
+<p>
     (Whenever you're up for it, you can check out the docs and source for the
     above <a data-control="CatalogLink">DateComboBox</a> component, or any of
-    the other components described here.) Under the covers, many pieces here
-    that work together to make this date picker — and every one of those pieces
-    of functionality is available to you as a component in its own right. The
-    combo box behavior, for example:
+    the other components described here.)
+</p>
+<p>
+    It may not look like much, but under the covers, many pieces are working
+    together to make this date picker function — and every one of those pieces
+    is available to you as a useful component in its own right. Take the combo
+    box behavior, for example:
 </p>
 <div><div data-control="ComboBox"></div></div>
 <p>
-    With that, you can make lots of other kinds of combo boxes, like a
-    *** combo box for picking things from lists ***. In a date combo box,
-    the text box portion needs to actually understand how to parse and
-    represent dates, so that's offered as its own DateTextBox component:
+    By building on top of this combo box component, you can make lots of other
+    kinds of combo boxes, like a ** combo box for picking things from lists ***.
+    In this particular case, the text box portion of a date picker needs to
+    actually understand how to parse and represent dates, so that's offered as
+    its own DateTextBox component.
 </p>
 <div><div data-control="DateTextBox"></div></div>
 <p>
-    And the popup portion of a date picker shows a calendar month that you
-    can navigate through:
+    The DateTextBox doesn't have a popup — it just handles dates as text.
+    Generally speaking, QuickUI components try to do just one thing really well.
+    The DateTextBox above gets combined with a CalendarMonthNavigator that
+    just focuses on letting you navigate through dates, one month at a time:
 </p>
 <div><div data-control="CalendarMonthNavigator"></div></div>
 <p>
