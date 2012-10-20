@@ -43,7 +43,10 @@ ControlMemberTable.prototype.extend({
     _classMemberDocumentation: function( describeClass, linkToDeclaringClass ) {
         
         var className = describeClass.prototype.className;
-        var documentation = controlDocumentation[ className ] || {};
+        var documentation = controlDocumentation && controlDocumentation[ className ];
+        if ( documentation == null ) {
+            return null;
+        }
         documentation = this._formatDocumentation( documentation );
         
         if ( linkToDeclaringClass ) {
@@ -113,12 +116,6 @@ ControlMemberTable.prototype.extend({
     }
     
 });
-
-/*
- * Placeholder declaration that will keep things from failing if
- * the control documentation isn't loaded.
- */
-var controlDocumentation = {};
 </script>
 
 </Control>
