@@ -4,17 +4,18 @@ quickui.org home page
 
 class window.HomePage extends SitePage
 
+  ###
   inherited:
     navigationLinks: [
       
-      { html: "p", content: [
-        { control: SampleSpriteButton, ref: "buttonTutorial", content: "Interactive Tutorial" }
-      ]}
+      # { html: "p", content: [
+      #   { control: SampleSpriteButton, ref: "buttonTutorial", content: "Interactive Tutorial" }
+      # ]}
 
-      "<h2>Download</h2>"
-      { html: "div", content: [
-        { control: Link, href: "/release/quickui-0.9.2.js", content: "quickui-0.9.2.js" }
-      ]}
+      # "<h2>Download</h2>"
+      # { html: "div", content: [
+      #   { control: Link, href: "/release/quickui-0.9.2.js", content: "quickui-0.9.2.js" }
+      # ]}
 
       "<h2 style='margin-top: 0;'>Recent news</h2>"
       { html: "div", content: [
@@ -27,6 +28,7 @@ class window.HomePage extends SitePage
       #     { control: "BlogHeadlines", feed: "http://miksovsky.blogs.com/flowstate/controls/atom.xml", count: 1 }
       # ]}
     ]
+  ###
 
   initialize: ->
 

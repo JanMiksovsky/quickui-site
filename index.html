@@ -29,6 +29,24 @@
 
 <body data-create-controls="true" data-control="HomePage">
 
+<div data-property="navigationLinks">
+    <p style="margin-bottom: 0;">
+        <button data-control="SampleSpriteButton" class="buttonTutorial">Interactive Tutorial</button>
+    </p>
+    <p class="caption" style="margin-top: 0.25em;">
+        See how to use and create QuickUI controls in the online tutorial.
+    </p>
+    <p class="caption">
+        <img src="/resources/icons/32-chrome.png" title="Google Chrome"
+        /><img src="/resources/icons/32-firefox.png" title="Mozilla Firefox"
+        /><img src="/resources/icons/32-ie.png" title="Microsoft Internet Explorer 8/9"
+        /><img src="/resources/icons/32-safari.png" title="Apple Safari"/>
+        <span>Cross-browser support</span>
+    </p>
+    <h2>Recent news</h2>
+    <div data-control="BlogHeadlines" data-feed="http://blog.quickui.org/feed/" data-count="3"></div>
+</div>
+
 <p class="benefits">
 <b>Accelerate</b> •
 <b>Organize</b> •
@@ -57,12 +75,13 @@ your UI code
     object-oriented design to your JavaScript UI code.
     </p>
 </td>
-<td>
-    <img src="/resources/icons/32-chrome.png" title="Google Chrome"
-    /><img src="/resources/icons/32-firefox.png" title="Mozilla Firefox"
-    /><img src="/resources/icons/32-ie.png" title="Microsoft Internet Explorer 8/9"
-    /><img src="/resources/icons/32-safari.png" title="Apple Safari"/>
-    <div class="caption">Cross-browser support</div>
+<td class="caption">
+    <ul style="margin-top: 0;">
+        <li>Organize your UI code logically.</li>
+        <li>Start with well-tested UI building blocks.</li>
+        <li>Quickly iterate on the design of your app’s interface.</li>
+        <li>Share common UI solutions with your teammates and the web at large.</li>
+    </ul>
 </td>
 </tr>
 
@@ -115,7 +134,7 @@ your UI code
 </td>
 <td>
     <div data-control="DateTextBox"></div>
-    <div class="caption">… and combines a date-aware text input control</div>
+    <div class="caption">… and combines a date-aware text input control with …</div>
 </td>
 </tr>
 
@@ -125,23 +144,26 @@ your UI code
     Generally speaking, QuickUI components try to do just one thing really well.
     The DateTextBox above gets combined with a
     <a data-control="CatalogLink">CalendarMonthNavigator</a> that
-    just focuses on letting you navigate through dates, one month at a time:
+    just focuses on letting you navigate through dates, one month at a time.
+    Try the calendar on the right.
 </td>
 <td>
     <div data-control="CalendarMonthNavigator"></div>
-    <div class="caption">… with a navigable month calendar.</div>
+    <div class="caption">a navigable month calendar.</div>
 </td>
 </tr>
 
 <tr>
 <td>
-    The ability to navigate left and right between months is a general
+    The ability to navigate left and right (here, between months) is a general
     user interface pattern that crops up in lots of other situations — so
     of course that's delivered as a control as well. In this case, it's a
-    <a data-control="CatalogLink">SequenceNavigator</a>.
+    <a data-control="CatalogLink">LateralNavigator</a>, which is also the basis
+    of controls like <a data-control="CatalogLink">Carousel</a> for navigating
+    through sets of images.
 </td>
 <td>
-    <div data-control="SequenceNavigator" style="display: inline-block;">
+    <div data-control="Carousel" style="display: inline-block;">
         <img data-control="FlickrInterestingPhoto" data-autoLoad="true" data-photoSize="s"/>
         <img data-control="FlickrInterestingPhoto" data-autoLoad="true" data-photoSize="s"/>
         <img data-control="FlickrInterestingPhoto" data-autoLoad="true" data-photoSize="s"/>
@@ -405,13 +427,6 @@ your UI code
     </ul>
 </td>
 <td>
-    <p>Benefits:</p>
-    <ol>
-        <li>Organize your UI code logically.</li>
-        <li>Start with well-tested UI building blocks.</li>
-        <li>Quickly iterate on the design of your app’s interface.</li>
-        <li>Share common UI solutions with your teammates and the web at large.</li>
-    </ol>
 </td>
 </tr>
 
