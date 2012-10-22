@@ -76,7 +76,7 @@ your UI code
     </p>
 </td>
 <td class="caption">
-    <ul style="margin-top: 0;">
+    <ul>
         <li>Organize your UI code logically.</li>
         <li>Start with well-tested UI building blocks.</li>
         <li>Quickly iterate on the design of your app’s interface.</li>
@@ -281,14 +281,13 @@ your UI code
     And if you have more complex needs, you can easily recombine these
     elements to create, for example, a date <i>range</i> picker that picks
     both a start and end date in a single component:
-    *** Repeater ***
     </p>
-</td>
-</tr>
-
-<tr>
-<td colspan="2">
     <div data-control="DateRangeCalendar" data-count="3"></div>
+    <p>
+    The control above makes use of a meta-control called
+    <a data-control="CatalogLink">Repeater</a> that instantiates a given control
+    class however many times you want.
+    </p>
 </td>
 </tr>
 
@@ -300,8 +299,8 @@ your UI code
     of sense. One is that reusable components permit heavier in investment
     in fundamentals. Take the complex chore of localizing a calendar to other
     languages. The QuickUI date controls use the
-    <a href="https://github.com/jquery/globalize">Globalize</a> library, with
-    support for roughly 350 different cultures around the world. Here are some
+    <a href="https://github.com/jquery/globalize">Globalize</a> library, which
+    supports roughly 350 different cultures around the world. Here are some
     instances of the same calendar month control, only now they've been
     instructed to show a calendar appropriate to French, Japanese, or Thai
     cultures:
@@ -426,46 +425,30 @@ your UI code
     </li>
     </ul>
 </td>
-<td>
-</td>
 </tr>
 
 <tr>
 <td>
 
-<h2>A good citizen of the open web</h2>
-
-<ul>
-<li>
-Built on top of <a data-control="Link" href="http://jquery.com">jQuery</a>,
-the web’s most popular JavaScript library.
-</li>
-<li>
-Works in all mainstream browsers: Apple Safari, Google Chrome, Microsoft
-Internet Explorer 8+, and Mozilla Firefox. QuickUI leverages the browser as much
-as possible. It uses native browser features when possible and, in older
-browsers, can serve as a polyfill for HTML5 features. QuickUI is planned to
-coevolve with the emerging HTML specification for web components.
-</li>
-<li>
-Agnostic with regards to your back end, your data binding model, your
-workflow, and your tool pipeline.
-</li>
-<li>
-Free and open. The <a data-control="Link" href="https://github.com/JanMiksovsky/quickui">source code</a>
+<h2>Good citizen of the open web</h2>
+<p>
+QuickUI is built with <a data-control="Link" href="http://jquery.com">jQuery</a>,
+the web’s most popular JavaScript library. QuickUI works in all mainstream
+browsers: Apple Safari, Google Chrome, Microsoft Internet Explorer 8+, and
+Mozilla Firefox. The framework is agnostic with regards to your back end, your
+data binding model, your workflow, and your tool pipeline.
+QuickUI is free, and the
+<a data-control="Link" href="https://github.com/JanMiksovsky/quickui">source code</a>
 is open under the
 <a data-control="Link" href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>.
-</li>
-</ul>
+</p>
 
 <h2>A catalog of parts to start with</h2>
 <p>
-The optional <a data-control="Link" href="/catalog/">QuickUI Catalog</a> is
+The optional <a data-control="Link" href="/catalog/">QuickUI Catalog</a> is a
 library of ~80 UI controls. Each control tries to do just one thing really well,
 and these are intended as starting point for your own UI. Originally designed
 for full browsers, many controls work on mobile browsers as well.
-</p>
-<p>
 The page you are reading now, and this entire site, is built using QuickUI and
 controls from the QuickUI Catalog.
 </p>
@@ -489,7 +472,6 @@ View the <a data-control="Link"
 href="https://github.com/JanMiksovsky/quickui">source code</a> on GitHub.
 </li>
 </ul>
-
 </td>
 </tr>
 
