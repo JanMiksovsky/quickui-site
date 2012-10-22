@@ -165,22 +165,15 @@ your UI code
 
 <tr>
 <td>
+    <p>
     And each piece of the month — the headings, the cells for the days, etc.,
     are all available as components, all of which you can use.
-</td>
-<td>
-    <div data-control="CalendarWeek"></div>
-    <div class="caption">… or just a week, or a day, or month label, etc.</div>
-</td>
-</tr>
-
-<tr>
-<td>
+    </p>
     <p>
-        In all, the little date picker control turns out to be constructed from
-        twenty different control classes, each playing a clearly-defined role
-        in the date picker's final appearance and behavior. You can use each of
-        those contributing control classes on their own, or in new combinations.
+    In all, the little date picker control turns out to be constructed from
+    twenty different control classes, each playing a clearly-defined role
+    in the date picker's final appearance and behavior. You can use each of
+    those contributing control classes on their own, or in new combinations.
     </p>
     <p>
     <a data-control="Link" href="/catalog/DateComboBox" style="border: none;">
@@ -188,10 +181,14 @@ your UI code
     </a>
     </p>
     <p>
-        The point of this date picker example is not (just) that QuickUI has
-        good date components. The real point is that  the QuickUI framework
-        gives you a powerful way to express your user interface in classes.
+    The point of this date picker example is not (just) that QuickUI has
+    good date components. The real point is that  the QuickUI framework
+    gives you a powerful way to express your user interface in classes.
     </p>
+</td>
+<td>
+    <div data-control="CalendarWeek"></div>
+    <div class="caption">… or just a week, or a day, or month label, etc.</div>
 </td>
 </tr>
 
@@ -234,9 +231,11 @@ your UI code
 
 <tr>
 <td>
+    <p>
     Or you could create a new day component that renders a date with both Roman
     numerals and kanji calligraphy, and drop that into a calendar month for a
     result that's not possible with CSS alone:
+    </p>
     <div data-control="KanjiCalendarMonth"></div>
 </td>
 <td>
@@ -248,28 +247,26 @@ your UI code
 <tr>
 <td>
 <h2>Remixable user interface components</h2>
-<p>
+    <p>
     Everyone's user interface needs are different. That's why all QuickUI
     components are designed to be remixed: composed with other components,
     extended with custom behavior, and generally adapted to the needs of
     your app. In the case of this calendar, you can tell the calendar
     to use a different component to render the days — and in that component,
     you can do whatever you want.
-</p>
-<p>
+    </p>
+    <p>
     And if you have more complex needs, you can easily recombine these
     elements to create, for example, a date <i>range</i> picker that picks
     both a start and end date in a single component:
     *** Repeater ***
-</p>
+    </p>
 </td>
 </tr>
 
 <tr>
 <td colspan="2">
-    *** fix border-collapse ***
     <div data-control="DateRangeCalendar" data-count="3"></div>
-    <div class="caption">A date range component assembled from multiple calendars</div>
 </td>
 </tr>
 
@@ -280,9 +277,12 @@ your UI code
     There are many reasons why building user interfaces this way makes a lot
     of sense. One is that reusable components permit heavier in investment
     in fundamentals. Take the complex chore of localizing a calendar to other
-    languages. Here are some instances of the same calendar month component,
-    only now they've been instructed to show a calendar appropriate to French,
-    Japanese, Thai, or Arabic cultures:
+    languages. The QuickUI date controls use the
+    <a href="https://github.com/jquery/globalize">Globalize</a> library, with
+    support for roughly 350 different cultures around the world. Here are some
+    instances of the same calendar month control, only now they've been
+    instructed to show a calendar appropriate to French, Japanese, or Thai
+    cultures:
     </p>
 </td>
 </tr>
@@ -293,31 +293,19 @@ your UI code
         <div data-control="CalendarMonthWithHeadings" data-culture="fr"></div>
         <div data-control="CalendarMonthWithHeadings" data-culture="ja"></div>
         <div data-control="CalendarMonthWithHeadings" data-culture="th"></div>
-        <div data-control="CalendarMonthWithHeadings" data-culture="ar"></div>
     </div>
-    <div class="caption">… produces a completely different experience</div>
 </td>
 </tr>
 
 <tr>
 <td>
-    Not only do the text labels for the month or days of the week change —
+    <p>
+    Not only do the text labels for the month or days of the week change,
     different cultures prefer to see different days of the week as the "first"
-    day of a week (Sunday in North American, Monday in Europe, Monday in Arabic
-    cultures). And different cultures expect to see the different parts of a
-    date rendered differently in a text box:
-</td>
-<td>
-    <div data-control="DateTextBox" data-culture="fr"></div>
-    <div data-control="DateTextBox" data-culture="ja"></div>
-    <div data-control="DateTextBox" data-culture="th"></div>
-    <div data-control="DateTextBox" data-culture="ar"></div>
-    <div class="caption"></div>
-</td>
-</tr>
-
-<tr>
-<td>
+    day of a week: Sunday in North American, Monday in Europe. And different
+    cultures expect to see the different parts of a date rendered differently in
+    text, including a text box.
+    </p>
     <p>
     Few teams can afford to invest that kind of effort — but if everyone shares
     an implementation, then that kind of investment will produce returns for
@@ -325,16 +313,24 @@ your UI code
     reasonable are: performance, keyboard support, general accessibility, 
     cutting-edge CSS optimization, and device responsiveness.
     </p>
-    <p>
-    These days, your web applications need to be <i>responsive</i> and
-    adapt to the capabilities of the device and OS the user is running.
-    It's easy to create QuickUI components that go far beyond what's possible
-    with responsive CSS, and create components that use fundamentally
-    different presentations based on the context. The following date picker
-    uses a mobile OS' native date picker on a mobile device, but the date
-    combo box above on a full browser:
-    </p>
-    <!-- <div><div data-control="ResponsiveDatePicker"></div></div> -->
+</td>
+<td>
+    <div>
+        <div data-control="DateTextBox" data-culture="en"></div>
+        <span class="caption"> English</span>
+    </div>
+    <div>
+        <div data-control="DateTextBox" data-culture="fr"></div>
+        <span class="caption"> French</span>
+    </div>
+    <div>
+        <div data-control="DateTextBox" data-culture="ja"></div>
+        <span class="caption"> Japanese</span>
+    </div>
+    <div>
+        <div data-control="DateTextBox" data-culture="th"></div>
+        <span class="caption"> Thai</span>
+    </div>
 </td>
 </tr>
 
