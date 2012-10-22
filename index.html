@@ -96,8 +96,8 @@ your UI code
     Every web framework offers a date picker, but a date picker built in QuickUI
     packs in a world of power. You can see a typical example on the right.
     (Whenever you're up for it, you can check out the docs and source for the
-    above <a data-control="CatalogLink">DateComboBox</a> component, or most of
-    the other components described here.)
+    above <a data-control="CatalogLink">DateComboBox</a> control, or most of
+    the other controls described here.)
 </td>
 <td>
     <div data-control="DateComboBox">
@@ -125,12 +125,12 @@ your UI code
 
 <tr>
 <td>
-    By building on top of this combo box component, you can make lots of other
+    By building on top of this combo box control, you can make lots of other
     kinds of combo boxes, like a
     <a data-control="CatalogLink">ListComboBox</a> for picking things from lists.
     In this particular case, the text box portion of a date picker needs to
     actually understand how to parse and represent dates, so that's offered as
-    its own <a data-control="CatalogLink">DateTextBox</a> component.
+    its own <a data-control="CatalogLink">DateTextBox</a> control.
 </td>
 <td>
     <div data-control="DateTextBox"></div>
@@ -141,7 +141,7 @@ your UI code
 <tr>
 <td>
     The DateTextBox doesn't have a popup — it just handles dates as text.
-    Generally speaking, QuickUI components try to do just one thing really well.
+    Generally speaking, QuickUI controls try to do just one thing really well.
     The DateTextBox above gets combined with a
     <a data-control="CatalogLink">CalendarMonthNavigator</a> that
     just focuses on letting you navigate through dates, one month at a time.
@@ -177,7 +177,7 @@ your UI code
 <tr>
 <td>
     Here, you're navigating among calendar months. The month itself is rendered
-    using a <a data-control="CatalogLink">CalendarMonthWithHeadings</a> component.
+    using a <a data-control="CatalogLink">CalendarMonthWithHeadings</a> control.
 </td>
 <td>
     <div data-control="CalendarMonthWithHeadings"></div>
@@ -189,7 +189,7 @@ your UI code
 <td>
     <p>
     And each piece of the month — the headings, the cells for the days, etc.,
-    are all available as components, all of which you can use.
+    are all available as controls, all of which you can use.
     </p>
     <p>
     In all, the little date picker control turns out to be constructed from
@@ -203,9 +203,9 @@ your UI code
     </a>
     </p>
     <p>
-    The point of this date picker example is not (just) that QuickUI has
-    good date components. The real point is that  the QuickUI framework
-    gives you a powerful way to express your user interface in classes.
+    The point of this date picker example is not (just) that QuickUI has good
+    date controls — the point is that the QuickUI framework gives you a
+    powerful way to express your user interface in classes.
     </p>
 </td>
 <td>
@@ -227,16 +227,16 @@ your UI code
     work with. Your ability to customize them is limited to the things the
     widget author could image you'd want to change. And while you can 
     customize thigns a bit, there's a limit to what's possible with CSS.
-    QuickUI lets you go way beyond that limit, with components that can
-    accept <i>other</i> components. Suppose you can have a product like, say,
+    QuickUI lets you go way beyond that limit, with controls that can
+    accept <i>other</i> controls. Suppose you can have a product like, say,
     Flickr and want to show interesting the most
     <a href="http://www.flickr.com/explore/interesting/">interesting photo
     of the day</a> on a calendar. Using the <a data-control="CatalogLink">CalendarDay</a>
-    component as a starting point, create a new calendar-day-with-photo component:
+    control as a starting point, create a new calendar-day-with-photo control:
     </p>
     <p>
-    Drop the above component into the <i>exact same</i> calendar month navigator
-    component shown above, and voilà, a photo calendar:
+    Drop the above control into the <i>exact same</i> calendar month navigator
+    control shown above, and voilà, a photo calendar:
     </p>
 </td>
 <td>
@@ -254,7 +254,7 @@ your UI code
 <tr>
 <td>
     <p>
-    Or you could create a new day component that renders a date with both Roman
+    Or you could create a new day control that renders a date with both Roman
     numerals and kanji calligraphy, and drop that into a calendar month for a
     result that's not possible with CSS alone:
     </p>
@@ -268,19 +268,19 @@ your UI code
 
 <tr>
 <td>
-<h2>Remixable user interface components</h2>
+<h2>Remixable user interface controls</h2>
     <p>
     Everyone's user interface needs are different. That's why all QuickUI
-    components are designed to be remixed: composed with other components,
+    controls are designed to be remixed: composed with other controls,
     extended with custom behavior, and generally adapted to the needs of
     your app. In the case of this calendar, you can tell the calendar
-    to use a different component to render the days — and in that component,
+    to use a different control to render the days — and in that control,
     you can do whatever you want.
     </p>
     <p>
     And if you have more complex needs, you can easily recombine these
     elements to create, for example, a date <i>range</i> picker that picks
-    both a start and end date in a single component:
+    both a start and end date in a single control:
     </p>
     <div data-control="DateRangeCalendar" data-count="3"></div>
     <p>
@@ -383,7 +383,7 @@ your UI code
     <li>
     <b>Extensibility</b>. You can easily create specialized version of a control
     class by subclassing it. This is a killer feature, because it lets you build new
-    components out of existing ones. QuickUI provides well-defined semantics for how
+    controls out of existing ones. QuickUI provides well-defined semantics for how
     a subclass and its parent classes can work together to populate the DOM. Most
     frameworks that let you create UI subclasses force you to wrap the elements of a
     parent class, which turns out to be a dead end. In contrast, a QuickUI subclass
