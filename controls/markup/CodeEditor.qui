@@ -3,11 +3,11 @@
 <content>
     
     <div ref="runner">
-        <div>
+        <div class="labelRow">
             <div>
-                <span ref="CodeEditor_heading" class="label">Edit JavaScript here</span>
+                <span ref="CodeEditor_heading">Edit JavaScript here</span>
             </div>
-            <div class="label">
+            <div>
                 <BasicButton ref="buttonRun" class="prominent">&#9654; Run</BasicButton>
             </div>
         </div>
@@ -38,11 +38,14 @@
     width: 50%;
 }
 
-.label {
+.labelRow > * {
+    padding-bottom: 0.5em;
+}
+
+.CodeEditor_heading {
     color: #928274;
     font-size: larger;
     font-family: "Avenir Next LT W01 Bold", Helvetica, Arial, sans-serif;
-    padding-bottom: 0.5em;
 }
 
 .buttonRun {
