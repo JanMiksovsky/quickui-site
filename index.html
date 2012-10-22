@@ -62,17 +62,16 @@ your UI code
 <td>
     <p>
     QuickUI is a free and open JavaScript framework that lets you create your
-    web app with user interface components called <i>controls</i>. A control
-    includes all the DOM elements, interactive behavior, and visual styling
-    necessary for the control to function. You can define a control to implement
-    any level of your app's UI: a page template, a region on the page, a special
-    button, etc. This approach lets you create great web applications with
-    clean, intuitive, responsive user interfaces that fit the task and are a joy
-    to use.
+    web application's user interface with components called <i>controls</i>. A
+    control includes all the DOM elements, interactive behavior, and visual
+    styling necessary for the component to function. You can define a control to
+    implement any level of your app's UI: a page template, a region on the page,
+    a special button, etc. This approach lets you apply all the benefits of
+    traditional object-oriented design to your JavaScript UI code. You'll have a
+    rich set of components you can assemble into a great web application with a
+    clean, intuitive, and responsive user interface.
     </p>
     <p>
-    With this approach, you can apply all the benefits of traditional
-    object-oriented design to your JavaScript UI code.
     </p>
 </td>
 <td class="caption">
@@ -95,9 +94,9 @@ your UI code
 <td>
     Every web framework offers a date picker, but a date picker built in QuickUI
     packs in a world of power. You can see a typical example on the right.
-    (Whenever you're up for it, you can check out the docs and source for the
-    above <a data-control="CatalogLink">DateComboBox</a> control, or most of
-    the other controls described here.)
+    (Whenever you're up for it, you can check out the docs and source for
+    this <a data-control="CatalogLink">DateComboBox</a> control and the other
+    controls described here.)
 </td>
 <td>
     <div data-control="DateComboBox">
@@ -113,9 +112,14 @@ your UI code
 <tr>
 <td>
     It may not look like much, but under the covers, many pieces are working
-    together to make this date picker function — and every one of those pieces
+    together to make this date picker function. Every one of those pieces
     is available to you as a useful component in its own right. Take the combo
-    box behavior, for example:
+    box behavior, for example, which joins a popup with a text box, and adds a
+    little dropdown arrow for discoverability. You can use the 
+    <a data-control="CatalogLink">ComboBox</a> class on its own (see right),
+    or a common subclass called
+    <a data-control="CatalogLink">ListComboBox</a> that specializes in presenting
+    the user's choice in a list.
 </td>
 <td>
     <div data-control="ComboBox">
@@ -129,12 +133,11 @@ your UI code
 
 <tr>
 <td>
-    By building on top of this combo box control, you can make lots of other
-    kinds of combo boxes, like a
-    <a data-control="CatalogLink">ListComboBox</a> for picking things from lists.
-    In this particular case, the text box portion of a date picker needs to
+    In the date picker case, the text box portion of a date picker needs to
     actually understand how to parse and represent dates, so that's offered as
     its own <a data-control="CatalogLink">DateTextBox</a> control.
+    The DateTextBox doesn't have a popup — it just handles dates as text.
+    Generally speaking, QuickUI controls try to do just one thing really well.
 </td>
 <td>
     <div data-control="DateTextBox"></div>
@@ -144,12 +147,15 @@ your UI code
 
 <tr>
 <td>
-    The DateTextBox doesn't have a popup — it just handles dates as text.
-    Generally speaking, QuickUI controls try to do just one thing really well.
     The DateTextBox above gets combined with a
     <a data-control="CatalogLink">CalendarMonthNavigator</a> that
     just focuses on letting you navigate through dates, one month at a time.
-    Try the calendar on the right.
+    Try the calendar on the right. This sort of in-line calendar might be a
+    much better choice for your application's user interface than a normal, tiny
+    date picker. If you have the room for an inline-calendar, and selecting a
+    date is an important part of your UI, then an in-line calendar lets the
+    user select a date without having to go through the trouble of finding and
+    opening a popup calendar.
 </td>
 <td>
     <div data-control="CalendarMonthNavigator"></div>
@@ -163,8 +169,8 @@ your UI code
     user interface pattern that crops up in lots of other situations — so
     of course that's delivered as a control as well. In this case, it's a
     <a data-control="CatalogLink">LateralNavigator</a>, which is also the basis
-    of controls like <a data-control="CatalogLink">Carousel</a> for navigating
-    through sets of images.
+    of controls like <a data-control="CatalogLink">Carousel</a> (right) that
+    can navigate through sets of things like images.
 </td>
 <td>
     <div data-control="Carousel" style="display: inline-block;">
@@ -181,7 +187,10 @@ your UI code
 <tr>
 <td>
     Here, you're navigating among calendar months. The month itself is rendered
-    using a <a data-control="CatalogLink">CalendarMonthWithHeadings</a> control.
+    using a static
+    <a data-control="CatalogLink">CalendarMonthWithHeadings</a> control. This
+    control doesn't deal with navigation at all — it can focus entirely on just
+    rendering a clean, accurate calendar.
 </td>
 <td>
     <div data-control="CalendarMonthWithHeadings"></div>
@@ -192,8 +201,9 @@ your UI code
 <tr>
 <td>
     <p>
-    And each piece of the month — the headings, the cells for the days, etc.,
-    are all available as controls, all of which you can use.
+    Each piece of the month — the headings, the cells for the days, etc.,
+    are all available as controls, all of which you can use. These components
+    take care of all the date math, so you don't have to worry about that.
     </p>
     <p>
     In all, the little date picker control turns out to be constructed from
@@ -232,14 +242,15 @@ your UI code
     widget author could image you'd want to change. And while you can 
     customize thigns a bit, there's a limit to what's possible with CSS.
     QuickUI lets you go way beyond that limit, with controls that can
-    accept <i>other</i> controls. Suppose you can have a product like, say,
+    accept <i>other</i> controls.
+    </p>
+    <p>
+    Suppose you can have a product like, say,
     Flickr and want to show interesting the most
     <a href="http://www.flickr.com/explore/interesting/">interesting photo
     of the day</a> on a calendar. Using the <a data-control="CatalogLink">CalendarDay</a>
-    control as a starting point, create a new calendar-day-with-photo control:
-    </p>
-    <p>
-    Drop the above control into the <i>exact same</i> calendar month navigator
+    control as a starting point, create a new calendar-day-with-photo control.
+    Drop that control into the <i>exact same</i> calendar month navigator
     control shown above, and voilà, a photo calendar:
     </p>
 </td>
@@ -282,15 +293,16 @@ your UI code
     you can do whatever you want.
     </p>
     <p>
-    And if you have more complex needs, you can easily recombine these
-    elements to create, for example, a date <i>range</i> picker that picks
-    both a start and end date in a single control:
+    Or suppose you have more complex needs, and need to let the user select a
+    date <i>range</i>. You can recombine the above elements to create a date
+    range selector:
     </p>
     <div data-control="DateRangeCalendar" data-count="3"></div>
     <p>
-    The control above makes use of a meta-control called
+    This particular example above makes use of a meta-control called
     <a data-control="CatalogLink">Repeater</a> that instantiates a given control
-    class however many times you want.
+    class multiple times, so you can quickly adapt your UI to show two months,
+    or four months, or however many work best.
     </p>
 </td>
 </tr>
@@ -299,10 +311,13 @@ your UI code
 <td>
     <h2>Shared components encourage investment in fundamentals</h2>
     <p>
-    There are many reasons why building user interfaces this way makes a lot
-    of sense. One is that reusable components permit heavier in investment
-    in fundamentals. Take the complex chore of localizing a calendar to other
-    languages. The QuickUI date controls use the
+    There are many reasons why building user interfaces this way makes a lot of
+    sense. One is that reusable components change the economics of making a
+    heavier investment in user interface fundamentals.
+    </p>
+    <p>
+    Take the complex chore of
+    localizing a calendar to other languages. The QuickUI date controls use the
     <a href="https://github.com/jquery/globalize">Globalize</a> library, which
     supports roughly 350 different cultures around the world. Here are some
     instances of the same calendar month control, only now they've been
@@ -329,7 +344,8 @@ your UI code
     different cultures prefer to see different days of the week as the "first"
     day of a week: Sunday in North American, Monday in Europe. And different
     cultures expect to see the different parts of a date rendered differently in
-    text, including a text box.
+    text, so the DateTextBox control changes its presentation (and date parsing)
+    accordingly.
     </p>
     <p>
     Few teams can afford to invest that kind of effort — but if everyone shares
@@ -437,10 +453,12 @@ your UI code
 <h2>Good citizen of the open web</h2>
 <p>
 QuickUI is built with <a data-control="Link" href="http://jquery.com">jQuery</a>,
-the web’s most popular JavaScript library. QuickUI works in all mainstream
+the web’s most popular JavaScript library, and works in all mainstream
 browsers: Apple Safari, Google Chrome, Microsoft Internet Explorer 8+, and
 Mozilla Firefox. The framework is agnostic with regards to your back end, your
 data binding model, your workflow, and your tool pipeline.
+</p>
+<p>
 QuickUI is free, and the
 <a data-control="Link" href="https://github.com/JanMiksovsky/quickui">source code</a>
 is open under the
@@ -450,11 +468,11 @@ is open under the
 <h2>A catalog of parts to start with</h2>
 <p>
 The optional <a data-control="Link" href="/catalog/">QuickUI Catalog</a> is a
-library of ~80 UI controls. Each control tries to do just one thing really well,
-and these are intended as starting point for your own UI. Originally designed
-for full browsers, many controls work on mobile browsers as well.
-The page you are reading now, and this entire site, is built using QuickUI and
-controls from the QuickUI Catalog.
+library of approximately 80 UI controls. Each control tries to do just one thing
+really well, and these are intended as starting point for your own UI.
+Originally designed for full browsers, many of the catalog controls work on
+mobile browsers as well. The page you are reading now, and this entire site, is
+built using QuickUI and controls from the QuickUI Catalog.
 </p>
 
 <h2>Get started:</h2>
