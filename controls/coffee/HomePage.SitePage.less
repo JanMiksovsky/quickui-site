@@ -17,7 +17,7 @@
       color: #928274;
       font-size: 24px;
   }
-  .benefits b {
+  .benefits strong {
       color: #391C01;
   }
 
@@ -54,8 +54,13 @@
     font-size: 13px;
   }
 
-  .inlineDemos > *:not(:last-child) {
+  .inlineDemos {
+    > * {
       margin-right: 1em;
+    }
+    > *:last-child {
+      margin-right: 0;
+    }
   }
 
   ul,
