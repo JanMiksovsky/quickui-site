@@ -61,12 +61,10 @@
 }
 
 
-body, input {
+body,
+input,
+.Page.generic {
     font-family: "AvenirNextLTW01-Regular", Helvetica, Arial, sans-serif;
-    font-size: 15px;
-}
-
-body {
     font-size: 15px;
 }
 

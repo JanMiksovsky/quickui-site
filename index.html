@@ -53,8 +53,8 @@ your UI code
     to use.
     </p>
     <p>
-    With this approach, you can bring all the benefits of traditional
-    object-oriented design to bear on your JavaScript UI code.
+    With this approach, you can apply all the benefits of traditional
+    object-oriented design to your JavaScript UI code.
     </p>
 </td>
 <td>
@@ -107,10 +107,11 @@ your UI code
 <tr>
 <td>
     By building on top of this combo box component, you can make lots of other
-    kinds of combo boxes, like a ** combo box for picking things from lists ***.
+    kinds of combo boxes, like a
+    <a data-control="CatalogLink">ListComboBox</a> for picking things from lists.
     In this particular case, the text box portion of a date picker needs to
     actually understand how to parse and represent dates, so that's offered as
-    its own DateTextBox component.
+    its own <a data-control="CatalogLink">DateTextBox</a> component.
 </td>
 <td>
     <div data-control="DateTextBox"></div>
@@ -122,7 +123,8 @@ your UI code
 <td>
     The DateTextBox doesn't have a popup — it just handles dates as text.
     Generally speaking, QuickUI components try to do just one thing really well.
-    The DateTextBox above gets combined with a CalendarMonthNavigator that
+    The DateTextBox above gets combined with a
+    <a data-control="CatalogLink">CalendarMonthNavigator</a> that
     just focuses on letting you navigate through dates, one month at a time:
 </td>
 <td>
@@ -135,7 +137,8 @@ your UI code
 <td>
     The ability to navigate left and right between months is a general
     user interface pattern that crops up in lots of other situations — so
-    of course that's delivered as a component as well:
+    of course that's delivered as a control as well. In this case, it's a
+    <a data-control="CatalogLink">SequenceNavigator</a>.
 </td>
 <td>
     <div data-control="SequenceNavigator" style="display: inline-block;">
@@ -151,8 +154,8 @@ your UI code
 
 <tr>
 <td>
-    In this case, you're navigate among months. The month itself is rendered
-    using a component.
+    Here, you're navigating among calendar months. The month itself is rendered
+    using a <a data-control="CatalogLink">CalendarMonthWithHeadings</a> component.
 </td>
 <td>
     <div data-control="CalendarMonthWithHeadings"></div>
@@ -173,10 +176,22 @@ your UI code
 
 <tr>
 <td>
-    *** explain graph ***
+    <p>
+        In all, the little date picker control turns out to be constructed from
+        twenty different control classes, each playing a clearly-defined role
+        in the date picker's final appearance and behavior. You can use each of
+        those contributing control classes on their own, or in new combinations.
+    </p>
+    <p>
     <a data-control="Link" href="/catalog/DateComboBox" style="border: none;">
         <img data-control="ControlClassGraph" data-graphClass="DateComboBox" style="width: 580px;"/>
     </a>
+    </p>
+    <p>
+        The point of this date picker example is not (just) that QuickUI has
+        good date components. The real point is that  the QuickUI framework
+        gives you a powerful way to express your user interface in classes.
+    </p>
 </td>
 </tr>
 
@@ -195,26 +210,25 @@ your UI code
     customize thigns a bit, there's a limit to what's possible with CSS.
     QuickUI lets you go way beyond that limit, with components that can
     accept <i>other</i> components. Suppose you can have a product like, say,
-    Flickr that wants to show interesting the most
-    <a href="http://www.flickr.com/explore/interesting/">interesting</a> photo
-    of the day on a calendar. Using the <a data-control="CatalogLink">CalendarDay</a>
+    Flickr and want to show interesting the most
+    <a href="http://www.flickr.com/explore/interesting/">interesting photo
+    of the day</a> on a calendar. Using the <a data-control="CatalogLink">CalendarDay</a>
     component as a starting point, create a new calendar-day-with-photo component:
     </p>
     <p>
     Drop the above component into the <i>exact same</i> calendar month navigator
-    component shown above, and voilà:
+    component shown above, and voilà, a photo calendar:
     </p>
 </td>
 <td>
     <div data-control="FlickrInterestingDay" data-autoLoad="true"></div>
-    <div class="caption">A new control for the days …</div>
+    <div class="caption">A day control that shows a photo</div>
 </td>
 </tr>
 
 <tr>
 <td colspan="2">
     <div data-control="FlickrInterestingNavigator"></div>    
-    <div class="caption">… produces a completely different experience</div>
 </td>
 </tr>
 
@@ -223,18 +237,11 @@ your UI code
     Or you could create a new day component that renders a date with both Roman
     numerals and kanji calligraphy, and drop that into a calendar month for a
     result that's not possible with CSS alone:
+    <div data-control="KanjiCalendarMonth"></div>
 </td>
 <td>
     <div data-control="KanjiCalendarDay" style="display: inline-block;"></div>
-    <div class="caption">A different day control</div>
-</td>
-</tr>
-
-<tr>
-<td colspan="2">
-    *** Make narrower? ***
-    <div data-control="KanjiCalendarMonth"></div>
-    <div class="caption">… another experience — all using the same calendar code</div>
+    <div class="caption">A day control that includes calligraphy</div>
 </td>
 </tr>
 
