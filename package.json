@@ -1,0 +1,17 @@
+{
+    "name": "quickui-site",
+    "title": "QuickUI.org site",
+    "version": "0.9.3",
+    "homepage": "http://quickui.org",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/JanMiksovsky/quickui-site"
+    },
+    "devDependencies": {
+        "grunt": "~0.3",
+        "grunt-contrib-coffee": "~0.3",
+        "grunt-contrib-less": "~0.3",
+        "quickui-markup": "*",
+        "sort-dependencies": "~0.1"
+    }
+}

@@ -2,17 +2,17 @@
 
 module.exports = function(grunt) {
 
-    grunt.loadTasks( "../quickui/grunt" );
+    grunt.loadNpmTasks( "grunt-contrib-coffee" );
     grunt.loadNpmTasks( "grunt-contrib-less" );
-    grunt.loadTasks( "grunt" );
+    grunt.loadNpmTasks( "quickui-markup" );
 
-    var sortDependencies = require( "../quickui/grunt/sortDependencies.js" );
+    var sortDependencies = require( "sort-dependencies" );
 
     // Project configuration.
     grunt.initConfig({
         coffee: {
             controls: {
-                src: sortDependencies.sortClassFiles( "controls/coffee/*.coffee" ),
+                src: sortDependencies.sortFiles( "controls/coffee/*.coffee" ),
                 dest: "controls/coffee/coffee.js"
             },
             samples: {
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
         less: {
             controls: {
                 files: {
-                    "controls/coffee/coffee.css": sortDependencies.sortClassFiles( "controls/coffee/*.less" )
+                    "controls/coffee/coffee.css": sortDependencies.sortFiles( "controls/coffee/*.less" )
                 }
             }
         },
