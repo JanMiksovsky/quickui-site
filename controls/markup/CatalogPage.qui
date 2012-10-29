@@ -11,7 +11,7 @@
             
             <div ref="CatalogPage_summary" class="section"/>
 
-            <div ref="CatalogPage_examples"/>
+            <CodeEditor ref="editor" heading="Live demo" />
             
             <div ref="sectionBaseClasses" class="section">
                 <h2>Class relationships</h2>
@@ -44,9 +44,17 @@
 </prototype>
 
 <style>
+.SitePage_content {
+    max-width: inherit;
+}
+
 .section,
 .controlClassGraph {
     max-width: 800px;
+}
+
+.editor {
+    margin-top: 1em;
 }
 
 .sectionContent {
@@ -56,6 +64,8 @@
 
 <script>
 CatalogPage.prototype.extend({
+    
+    autoRun: Control.chain( "$editor", "autoRun" ),
     
     content: Control.chain( "$CatalogPage_content", "content", function( content ) {
         this.$sectionContent().toggle( content != null );
@@ -82,7 +92,14 @@ CatalogPage.prototype.extend({
             .href( sourceUrl );
     }),
     
-    examples: Control.chain( "$CatalogPage_examples", "content" ),
+    initialize: function() {
+        var demo = this._demo();
+        if ( demo && demo.length > 0 ) {
+            this.$editor().code( demo );
+        } else {
+            this.$editor().hide();
+        }
+    },
     
     summary: Control.chain( "$CatalogPage_summary", "content" ),
 
@@ -94,8 +111,20 @@ CatalogPage.prototype.extend({
             this.describeClass( title );
         }
         return result;
-    }
+    },
     
+    // Return the code from the page's script tag.
+    _demo: function() {
+        var code = $.trim( $( "script#demo" ).html() );
+        if ( code.length > 0 ) {
+            // Remove the first and last lines: the demo function wrapper.
+            lines = code.split( "\n" );
+            lines = lines.slice( 1, lines.length - 2 );
+            code = $.trim( lines.join( "\n" ) );
+        }
+        return code;
+    }    
+
 });
 </script>
 
