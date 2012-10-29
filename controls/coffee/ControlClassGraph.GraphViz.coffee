@@ -23,8 +23,8 @@ class window.ControlClassGraph extends GraphViz
   _baseClassEdges: ( controlInfo, nodeStyle, edgeStyle ) ->
     edges = ""
     baseClassName = controlInfo.baseClassName()
-    edges += @_baseClassEdge controlInfo.className, baseClassName, nodeStyle, edgeStyle
     if baseClassName != "Control"
+      edges += @_baseClassEdge controlInfo.className, baseClassName, nodeStyle, edgeStyle
       baseClassInfo = new ControlInfo baseClassName
       edges += @_baseClassEdges baseClassInfo, nodeStyle, edgeStyle
       edges += @_requiredClassEdges baseClassInfo
