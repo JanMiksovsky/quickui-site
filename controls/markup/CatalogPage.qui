@@ -57,6 +57,7 @@
     margin-top: 1em;
 }
 
+.sectionSource,
 .sectionContent {
     display: none;
 }
@@ -73,23 +74,32 @@ CatalogPage.prototype.extend({
     
     describeClass: Control.property[ "class" ]( function( describeClass ) {
 
-        var className = describeClass.prototype.className;
-        
-        // this.$controlClassHierarchy().describeClass( className );
-        // var baseClasses = this.$controlClassHierarchy().baseClasses();
-        // this.$sectionBaseClasses().toggle( baseClasses && baseClasses.length > 0 );
         this.$controlClassGraph().graphClass( describeClass );
         
+        var className = describeClass.prototype.className;
         this.$controlMemberTable().describeClass( className );
         var hasDocumentation = !$.isEmptyObject( $(".ControlMemberTable").control().content() );
         this.$sectionMembers().toggle( hasDocumentation );
 
-        var sourceUrlTemplate = "https://github.com/JanMiksovsky/quickui-catalog/blob/master/quickui.catalog/{0}.qui";
-        var sourceUrl = sourceUrlTemplate.replace( /\{0\}/g, className );
-        var sourceLinkText = "full source for " + className;
-        this.$linkSourceCodeControl()
-            .text( sourceLinkText )
-            .href( sourceUrl );
+        var documentation = controlDocumentation[ className ];
+        var fileType = documentation && documentation.type;
+        if ( fileType ) {
+            var folder = ( fileType === "qui" ) ? "markup" : fileType;
+            var fileName = className;
+            if ( fileType !== "qui" && documentation.baseClass ) {
+                fileName += "." + documentation.baseClass;
+            }
+            fileName += "." + fileType;
+            var sourceUrlTemplate = "https://github.com/JanMiksovsky/quickui-catalog/blob/master/{0}/{1}";
+            var sourceUrl = sourceUrlTemplate
+                .replace( /\{0\}/g, folder )
+                .replace( /\{1\}/g, fileName );
+            var sourceLinkText = "full source for " + className;
+            this.$linkSourceCodeControl()
+                .text( sourceLinkText )
+                .href( sourceUrl );
+            this.$sectionSource().show();
+        }
     }),
     
     initialize: function() {
