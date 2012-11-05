@@ -1405,18 +1405,6 @@
     vertical-align: middle;
 }
 
-/*** SampleSpriteButton ***/
-
-.SampleSpriteButton {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 9pt;
-    padding: 0.5em 1em;
-}
-
-.SampleSpriteButton.disabled {
-    color: #bbb;
-}
-
 /*** ColorSwatchComboBox ***/
 
 /* Generic appearance */
