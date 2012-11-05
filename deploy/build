@@ -24,7 +24,7 @@ grunt --color=false --config $quickuiSource/grunt.js
 
 # Extract version line from quickui.js, which looks like
 # 	quickui: "0.9.1"
-quickuiRuntimeBaseName="$quickuiSource/src/quickui"
+quickuiRuntimeBaseName="$quickuiSource/quickui"
 versionLine=`grep "quickui:" $quickuiRuntimeBaseName.js`
 # Extract the version number from that line.
 version=`echo $versionLine | sed -e "s/.*quickui: \"\(.*\)\"/\1/"`
