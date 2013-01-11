@@ -1,6 +1,6 @@
 /*
  * QuickUI
- * Version 0.9.3-pre
+ * Version 0.9.3
  * Modular web control framework
  * http://quickui.org
  *
@@ -196,7 +196,7 @@ the control class wants a different root tag than the tag on the supplied
 array of elements.
 */
 
-var Control, controlClassData, cssClasses, initialize, render, replaceElements, significantContent;
+var Control, controlClassData, cssClasses, initialize, replaceElements, significantContent;
 
 jQuery.fn.control = function(arg1, arg2) {
   var $cast, controlClass, properties;
@@ -374,7 +374,7 @@ Control.prototype.extend({
     itself in the semantics of its superclass.
   */
 
-  render: render = function() {
+  render: function() {
     var classFn, rendered, superclass;
     classFn = this.constructor;
     if (classFn !== Control) {
@@ -437,7 +437,7 @@ Control.prototype.extend({
     The current version of QuickUI.
   */
 
-  quickui: "0.9.3-pre"
+  quickui: "0.9.3"
 });
 
 /*
@@ -531,6 +531,36 @@ significantContent = function(element) {
   }
   return void 0;
 };
+
+/*
+This preserves jQuery's $.browser facility, which is deprecated in jQuery 1.9.
+It's all too common for a control to need to work around subtle bugs in
+browsers -- most often IE 8, but they all have quirks -- and these bugs are
+nearly never detectable by general feature-detection systems like Modernizr.
+So Control.browser supports the same properties as jQuery.browser used to.
+*/
+
+var userAgent, userAgentMatch;
+
+userAgent = navigator.userAgent.toLowerCase();
+
+userAgentMatch = /(chrome)[ \/]([\w.]+)/.exec(userAgent) || /(webkit)[ \/]([\w.]+)/.exec(userAgent) || /(opera)(?:.*version|)[ \/]([\w.]+)/.exec(userAgent) || /(msie) ([\w.]+)/.exec(userAgent) || userAgent.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec(userAgent) || [];
+
+Control.browser = {};
+
+if (userAgentMatch[1] != null) {
+  Control.browser[userAgentMatch[1]] = true;
+}
+
+if (userAgentMatch[2] != null) {
+  Control.browser.version = userAgentMatch[2];
+}
+
+if (Control.browser.chrome) {
+  Control.browser.webkit = true;
+} else if (Control.browser.webkit) {
+  Control.browser.safari = true;
+}
 
 /*
 Standardized handling of element content.
@@ -737,7 +767,7 @@ Return true if we can rely on DOM mutation events to detect DOM changes.
 
 
 mutationEvents = function() {
-  return !jQuery.browser.msie || parseInt(jQuery.browser.version) >= 9;
+  return !Control.browser.msie || parseInt(Control.browser.version) >= 9;
 };
 
 /*
@@ -907,21 +937,23 @@ The third form is any other JSON dictionary object, returned as is.
 
 
 evaluateControlJson = function(json, logicalParent) {
-  var control, firstKey, html, properties, reservedKeys, stripped;
-  for (firstKey in json) {
-    break;
-  }
-  if (firstKey !== "html" && firstKey !== "control") {
+  var control, html, properties, reservedKeys, stripped;
+  if (json.html != null) {
+    reservedKeys = {
+      html: true
+    };
+  } else if (json.control != null) {
+    reservedKeys = {
+      control: true
+    };
+  } else {
     return json;
   }
-  reservedKeys = {
-    ref: true
-  };
-  reservedKeys[firstKey] = true;
+  reservedKeys.ref = true;
   stripped = copyExcludingKeys(json, reservedKeys);
   properties = evaluateControlJsonProperties(stripped, logicalParent);
   control = void 0;
-  if (firstKey === "html") {
+  if (json.html != null) {
     html = json.html;
     if (/^\w+$/.test(html)) {
       html = "<" + html + ">";
