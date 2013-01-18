@@ -121,7 +121,7 @@ CodeEditor.prototype.extend({
         
         this.trigger( "run" );
         
-        var $demo = this.$result().demo();
+        var $demo = this.$result();
         $demo.empty();
         var code = this.code();
         try {

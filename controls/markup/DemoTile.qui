@@ -42,15 +42,17 @@
     width: 300px;
 }
 
-.demoContainer:hover {
+.DemoTile:hover {
     position: relative;
     z-index: 1; /* Make sure overlay for demo popups can cover up other tiles */
 }
-.demoContainer:hover .className {
+
+.DemoTile:hover .className {
     border-bottom-style: dotted;
     border-bottom-width: 1px;
 }
-.demoContainer:hover .className:hover {
+
+.DemoTile:hover .className:hover {
     border-bottom-style: solid;
 }
 </style>
@@ -71,7 +73,7 @@ DemoTile.prototype.extend({
             var demoFunction = window[ demoFunctionName ];
             if ( demoFunction) {
                 // Run the demo within the context of this tile.
-                window.$demo = this.$demoContainer().demo();
+                window.$demo = this.$demoContainer();
                 demoFunction();
             }
         }
