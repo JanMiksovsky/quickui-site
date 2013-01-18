@@ -62,14 +62,8 @@ DemoTile.prototype.extend({
         var className = controlRecord.name
         this.$className().content( className );
 
-        // var demoClass = controlRecord.demoClass != null
-        //     ? controlRecord.demoClass
-        //     : controlRecord.name;
-        // if ( demoClass ) {
-        //     this.$demo().transmute( demoClass );
-        // }
         var demoFunctionName = controlRecord.demoFunction;
-        if ( demoFunctionName == undefined ) {
+        if ( demoFunctionName === undefined ) {
             // Default demo function name for class Foo is demoFoo.
             demoFunctionName = "demo" + className;
         }
