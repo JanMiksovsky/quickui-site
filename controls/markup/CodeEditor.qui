@@ -86,7 +86,7 @@ CodeEditor.prototype.extend({
         if ( this.inDocument() && this.autoRun() ) {
             this.run();
         } else {
-            this.$result().demo().content( "(Click Run to see result.)" );
+            this.$result().content( "(Click Run to see result.)" );
         }
     }),
     
