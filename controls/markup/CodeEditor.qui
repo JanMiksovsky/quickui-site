@@ -74,11 +74,6 @@
     /* Ensure demos with popups can pop them over the editor */
     z-index: 1;
 }
-
-/* Space out demo elements */
-.result #demo > * {
-    margin: 0 0.25em 0.25em 0;
-}
 </style>
 
 <script>
@@ -91,7 +86,7 @@ CodeEditor.prototype.extend({
         if ( this.inDocument() && this.autoRun() ) {
             this.run();
         } else {
-            this.$result().content( "(Click Run to see result.)" );
+            this.$result().demo().content( "(Click Run to see result.)" );
         }
     }),
     
@@ -126,8 +121,8 @@ CodeEditor.prototype.extend({
         
         this.trigger( "run" );
         
-        var $demo = $( "<div id='demo'/>" );
-        this.$result().html( $demo );
+        var $demo = this.$result().demo();
+        $demo.empty();
         var code = this.code();
         try {
             eval( code );

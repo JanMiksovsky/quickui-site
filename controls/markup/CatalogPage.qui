@@ -84,11 +84,15 @@ CatalogPage.prototype.extend({
         var documentation = controlDocumentation[ className ];
         var fileType = documentation && documentation.type;
         if ( fileType ) {
+
             var folder = ( fileType === "qui" ) ? "markup" : fileType;
             var fileName = className;
             if ( fileType !== "qui" && documentation.baseClass ) {
                 fileName += "." + documentation.baseClass;
             }
+
+            this._loadDemo( className );
+
             fileName += "." + fileType;
             var sourceUrlTemplate = "https://github.com/JanMiksovsky/quickui-catalog/blob/master/{0}/{1}";
             var sourceUrl = sourceUrlTemplate
@@ -100,16 +104,8 @@ CatalogPage.prototype.extend({
                 .href( sourceUrl );
             this.$sectionSource().show();
         }
+
     }),
-    
-    initialize: function() {
-        var demo = this._demo();
-        if ( demo && demo.length > 0 ) {
-            this.$editor().code( demo );
-        } else {
-            this.$editor().hide();
-        }
-    },
     
     summary: Control.chain( "$CatalogPage_summary", "content" ),
 
@@ -123,17 +119,33 @@ CatalogPage.prototype.extend({
         return result;
     },
     
-    // Return the code from the page's script tag.
-    _demo: function() {
-        var code = $.trim( $( "script#demo" ).html() );
+    // Return the source code for the class' demo function. For class Foo, the
+    // demo function should be called demoFoo. If not found, this returns null.
+    _demoSource: function( className ) {
+        var demoFunctionName = "demo" + className;
+        var demoFunction = window[ demoFunctionName ];
+        if ( demoFunction == null ) {
+            return null;
+        }
+        var code = demoFunction.toString();
         if ( code.length > 0 ) {
-            // Remove the first and last lines: the demo function wrapper.
+            // Remove the the demo function wrapper, which should be the first
+            // and last lines.
             lines = code.split( "\n" );
             lines = lines.slice( 1, lines.length - 2 );
             code = $.trim( lines.join( "\n" ) );
         }
         return code;
-    }    
+    },
+
+    _loadDemo: function( className ) {
+        var demoSource = this._demoSource( className );
+        if ( demoSource && demoSource.length > 0 ) {
+            this.$editor().code( demoSource );
+        } else {
+            this.$editor().hide();
+        }
+    }
 
 });
 </script>
