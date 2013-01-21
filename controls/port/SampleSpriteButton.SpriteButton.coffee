@@ -4,6 +4,7 @@ control should be removed and replaced with real CSS styling.
 ###
 
 class window.SampleSpriteButton extends SpriteButton
+  
   inherited:
-    image: "url(/catalog/resources/sampleButtonStates.png)"
+    image: "url( /catalog/resources/sampleButtonStates.png )"
     cellHeight: "32"

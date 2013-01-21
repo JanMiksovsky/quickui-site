@@ -6,14 +6,12 @@ a file on another domain.
 ###
 
 class window.FileContents extends Control
-  tag: "pre"
 
-  content: Control.chain("text")
+  content: Control.chain "text"
   
   # Path of the file whose contents should be shown. 
-  path: Control.property((path) ->
-    self = this
-    $.get(path).success (data) ->
-      self.content data
+  path: Control.property ( path ) ->
+    $.get( path ).success ( data ) =>
+      @content data
 
-  )
+  tag: "pre"
