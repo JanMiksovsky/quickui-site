@@ -1,9 +1,10 @@
-#
-#Ace code editor wrapper.
-#Must set an ID on a control instance for this to work!
-#
-AceCodeEditor = Control.sub(className: "AceCodeEditor")
-AceCodeEditor::extend
+###
+Ace code editor wrapper.
+Must set an ID on a control instance for this to work!
+###
+
+class window.AceCodeEditor extends Control
+
   content: (content) ->
     editor = @_editor()
     if content is `undefined`
@@ -30,8 +31,6 @@ AceCodeEditor::extend
       session.setMode new JavaScriptMode()
       @content content
 
-
-  
   # Copy of the content, used to save content until editor is ready.
   _content: Control.property()
   _editor: Control.property()

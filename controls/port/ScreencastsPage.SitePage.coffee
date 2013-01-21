@@ -1,5 +1,8 @@
-ScreencastsPage = SitePage.sub(
-  className: "ScreencastsPage"
+###
+The Screencasts page.
+###
+
+class window.ScreencastsPage extends SitePage
   inherited:
     title: "QuickUI Screencasts"
     content: [" ",
@@ -12,4 +15,3 @@ ScreencastsPage = SitePage.sub(
       control: "YouTubeVideo"
       videoId: "skyxSnywAYo"
     , " "]
-)

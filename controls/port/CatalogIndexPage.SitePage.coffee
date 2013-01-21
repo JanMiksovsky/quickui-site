@@ -1,5 +1,8 @@
-CatalogIndexPage = SitePage.sub(
-  className: "CatalogIndexPage"
+###
+Top page for the Catalog area.
+###
+
+class window.CatalogIndexPage extends SitePage
   inherited:
     title: "QuickUI Catalog"
     navigationLinks: [" ",
@@ -19,5 +22,5 @@ CatalogIndexPage = SitePage.sub(
       itemClass: "DemoTile"
       mapFunction: "controlRecord"
     , " "]
-)
+
 CatalogIndexPage::extend controlRecords: Control.chain("$tileList", "items")

@@ -1,5 +1,8 @@
-NavigationBar = Control.sub(
-  className: "NavigationBar"
+###
+The quickui.org navigation bar.
+###
+
+class window.NavigationBar extends Control
   inherited:
     content: [" ",
       control: "Link"
@@ -22,16 +25,16 @@ NavigationBar = Control.sub(
       content: "Catalog"
     
     # Hide markup-based screencasts until they can be re-done for JS.
-    #    <Link href="/screencasts">Screencasts</Link>
-    #    
+    # <Link href="/screencasts">Screencasts</Link>
+    # 
     , " ", " ",
       control: "Link"
       href: "http://blog.quickui.org"
       content: "Blog"
     
     # Hide for now, since this isn't getting any use.
-    #    <Link href="http://discussions.zoho.com/quickui">Discuss</Link>
-    #    
+    # <Link href="http://discussions.zoho.com/quickui">Discuss</Link>
+    # 
     , " ", " ",
       control: "Link"
       href: "https://github.com/JanMiksovsky/quickui"
@@ -40,4 +43,3 @@ NavigationBar = Control.sub(
       control: "SearchBox"
       ref: "searchBox"
     , " "]
-)

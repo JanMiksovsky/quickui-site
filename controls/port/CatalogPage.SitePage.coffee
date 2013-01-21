@@ -1,6 +1,8 @@
-# A page in the QuickUI Catalog. 
-CatalogPage = SitePage.sub(
-  className: "CatalogPage"
+###
+A page in the QuickUI Catalog. 
+###
+
+class window.CatalogPage extends SitePage
   inherited:
     navigationLinks: [" ",
       control: "CatalogNavigationLinks"
@@ -46,8 +48,7 @@ CatalogPage = SitePage.sub(
         , " on GitHub. "]
       , " "]
     , " "]
-)
-CatalogPage::extend
+
   autoRun: Control.chain("$editor", "autoRun")
   content: Control.chain("$CatalogPage_content", "content", (content) ->
     @$sectionContent().toggle content?
@@ -81,7 +82,6 @@ CatalogPage::extend
     @describeClass title  if title isnt `undefined`
     result
 
-  
   # Return the source code for the class' demo function. For class Foo, the
   # demo function should be called demoFoo. If not found, this returns null.
   _demoSource: (className) ->

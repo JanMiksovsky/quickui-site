@@ -1,5 +1,8 @@
-ScreencastLink = Control.sub(
-  className: "ScreencastLink"
+###
+A link to a screencast.
+###
+
+class window.ScreencastLink extends Control
   inherited:
     content: [" ",
       html: "<img src=\"/resources/play.png\" />"
@@ -8,13 +11,11 @@ ScreencastLink = Control.sub(
       control: "Link"
       ref: "ScreencastLink_content"
     , " "]
-)
-ScreencastLink::extend
+
   content: Control.chain("$ScreencastLink_content", "content")
   href: Control.chain("$ScreencastLink_content", "href")
   initialize: ->
     self = this
     @$iconPlay().click ->
       self.$ScreencastLink_content().trigger "click"
-
 

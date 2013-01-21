@@ -1,5 +1,8 @@
-DocumentationPage = SitePage.sub(
-  className: "DocumentationPage"
+###
+A page in the Documentation area.
+###
+
+class window.DocumentationPage extends SitePage
   inherited:
     navigationLinks: [" ",
       control: "Link"
@@ -49,4 +52,4 @@ DocumentationPage = SitePage.sub(
       href: "control-guidelines.html"
       content: "Guidelines"
     , " "]
-)
+

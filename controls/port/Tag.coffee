@@ -1,10 +1,16 @@
-Tag = Control.sub(
-  className: "Tag"
-  tag: "span"
+###
+Formats its content as an XML tag.
+###
+
+class window.Tag extends Control
   inherited:
-    content: ["&lt;",
-      html: "<span />"
-      ref: "Tag_content"
-    , ">"]
-)
-Tag::extend content: Control.chain("$Tag_content", "content")
+    content: [
+      "&lt;"
+    ,
+      html: "<span/>", ref: "Tag_content"
+    ,
+      ">"
+    ]
+  tag: "span"
+
+  content: Control.chain "$Tag_content", "content"

@@ -1,5 +1,8 @@
-CodeEditor = Control.sub(
-  className: "CodeEditor"
+###
+Wraps the ACE code editor.
+###
+
+class window.CodeEditor extends Control
   inherited:
     content: [" ",
       html: "<div />"
@@ -42,9 +45,7 @@ CodeEditor = Control.sub(
       html: "<div />"
       ref: "CodeEditor_error"
     , " "]
-)
-CodeEditor::extend
-  
+
   # True if code should be run whenever it changes.
   autoRun: Control.property.bool(null, true)
   code: Control.chain("$CodeEditor_code", "content", ->
@@ -66,7 +67,6 @@ CodeEditor::extend
       @run()  if @autoRun()
       @$CodeEditor_code().focus()
 
-
   result: Control.chain("$result", "content")
   run: ->
     @error null
@@ -75,7 +75,7 @@ CodeEditor::extend
     $demo.empty()
     code = @code()
     try
-      eval_ code
+      eval code
     catch error
       @error error.toString()
 
@@ -98,9 +98,8 @@ CodeEditor::extend
       @_insertTextAtCursor "    "
       false
 
-
-# Set/get the position of the cursor in an element (namely, an input box or text area).
-# TODO: Fold into CodeEditor.
+# Set/get the position of the cursor in an element (namely, an input box or text
+# area). TODO: Fold into CodeEditor.
 jQuery.fn.cursorPosition = (position) ->
   if position is `undefined`
     position = 0

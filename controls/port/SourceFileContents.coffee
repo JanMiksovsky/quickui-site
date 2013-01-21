@@ -1,10 +1,10 @@
-#
-#Show the contents of a source code file.
-#The code is colorized via the SourceCode control, and a link to the original
-#file is provided.
-#
-SourceFileContents = Control.sub(
-  className: "SourceFileContents"
+###
+Show the contents of a source code file.
+The code is colorized via the SourceCode control, and a link to the original
+file is provided.
+###
+
+class window.SourceFileContents extends Control
   inherited:
     content: [" ",
       control: "SourceCode"
@@ -21,8 +21,7 @@ SourceFileContents = Control.sub(
         ]
       , " "]
     , " "]
-)
-SourceFileContents::extend
+
   content: Control.chain("$SourceFileContents_content", "content")
   path: Control.property((path) ->
     
@@ -31,7 +30,6 @@ SourceFileContents::extend
     $.get(path).success (data) ->
       self.content data
 
-    
     # Show the path to the file.
     if path isnt `undefined`
       @$link().attr "href", path

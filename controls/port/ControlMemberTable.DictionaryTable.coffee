@@ -1,19 +1,18 @@
-# Shows the documented members for a control class. 
-ControlMemberTable = DictionaryTable.sub(
-  className: "ControlMemberTable"
+###
+Shows the documented members for a control class. 
+###
+
+class window.ControlMemberTable extends DictionaryTable
   inherited: {}
-)
-ControlMemberTable::extend
+
   describeClass: Control.property["class"]((describeClass) ->
     documentation = @_classMemberDocumentation(describeClass)
     documentation = @_sortDictionary(documentation)
     @content documentation
   )
   
-  #
-  #     * Return the documentation for the given class, including its base classes
-  #     * up to (but not including) Control.
-  #     
+  # Return the documentation for the given class, including its base classes up
+  # to (but not including) Control.
   _classMemberDocumentation: (describeClass, linkToDeclaringClass) ->
     className = describeClass::className
     documentation = controlDocumentation and controlDocumentation[className]
@@ -30,11 +29,8 @@ ControlMemberTable::extend
       # Add base class documentation to the documentation for this class.
       baseClassDocumentation = @_classMemberDocumentation(superclass, true)
       for member of baseClassDocumentation
-        
-        #
-        #                 * Only grab base class members not already documented; we only
-        #                 * want the description from the most specific class.
-        #                 
+        # Only grab base class members not already documented; we only want the
+        # description from the most specific class.
         documentation[member] = documentation[member] or baseClassDocumentation[member]
     documentation
 
@@ -42,20 +38,15 @@ ControlMemberTable::extend
     formattedDocumentation = {}
     if documentation and documentation.members
       $.each documentation.members, (memberName, memberDescription) ->
-        
         # Add break tags wherever there are consecutive line breaks.
         formattedDescription = memberDescription.replace(/\n\n/g, "<br/><br/>")
-        
         # Add break tags wherever line breaks are followed by whitespace.
         formattedDescription = formattedDescription.replace(/\n\s+/g, "<br/>")
         formattedDocumentation[memberName] = formattedDescription
 
     formattedDocumentation
 
-  
-  #
-  #     * Return a copy of the given dictionary with its items sorted by keys.
-  #     
+  # Return a copy of the given dictionary with its items sorted by keys.
   _sortDictionary: (dictionary) ->
     keys = []
     for key of dictionary
@@ -70,4 +61,3 @@ ControlMemberTable::extend
       result[key] = dictionary[key]
       i++
     result
-

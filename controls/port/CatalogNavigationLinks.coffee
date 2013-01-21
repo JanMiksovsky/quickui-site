@@ -1,5 +1,8 @@
-CatalogNavigationLinks = Control.sub(
-  className: "CatalogNavigationLinks"
+###
+The list of links down the left side of a Catalog page.
+###
+
+class window.CatalogNavigationLinks extends Control
   inherited:
     content: [" ",
       control: "Link"
@@ -14,7 +17,7 @@ CatalogNavigationLinks = Control.sub(
       ref: "listControls"
       itemClass: "CatalogLink"
     , " "]
-)
+
 CatalogNavigationLinks::extend initialize: ->
   @$listControls().mapFunction((controlRecord) ->
     @content controlRecord.name

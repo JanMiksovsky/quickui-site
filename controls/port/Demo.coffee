@@ -1,6 +1,7 @@
-#
-#Control demo
-#
-#This turns off any styling applied to the quickui.org site.
-#
-Demo = Control.sub(className: "Demo")
+###
+Control demo
+
+This turns off any styling applied to the quickui.org site.
+###
+
+class window.Demo extends Control

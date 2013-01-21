@@ -1,5 +1,8 @@
-Logo = Control.sub(
-  className: "Logo"
+###
+The QuickUI logo
+###
+
+class window.Logo extends Control
   inherited:
     content: [" ",
       control: "Link"
@@ -10,4 +13,3 @@ Logo = Control.sub(
       html: "<div>Web control framework</div>"
       ref: "tagline"
     , " "]
-)

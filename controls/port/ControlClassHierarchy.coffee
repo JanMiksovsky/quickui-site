@@ -1,13 +1,15 @@
-ControlClassHierarchy = Control.sub(
-  className: "ControlClassHierarchy"
+###
+Shows a single control's control class hierarchy.
+###
+
+class window.ControlClassHierarchy extends Control
   inherited:
     content: [" ",
       control: "List"
       ref: "ControlClassHierarchy_baseClasses"
       itemClass: "CatalogLink"
     , " "]
-)
-ControlClassHierarchy::extend
+
   baseClasses: (classFn) ->
     classFn = classFn or @describeClass()
     superclass = classFn.superclass

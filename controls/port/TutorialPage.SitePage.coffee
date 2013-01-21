@@ -1,5 +1,8 @@
-TutorialPage = SitePage.sub(
-  className: "TutorialPage"
+###
+A page in the Tutorial area.
+###
+
+class window.TutorialPage extends SitePage
   inherited:
     navigationLinks: [" ",
       control: "Link"
@@ -126,8 +129,7 @@ TutorialPage = SitePage.sub(
       class: "prominent"
       content: "Next »"
     , " "]
-)
-TutorialPage::extend
+
   content: Control.chain("$TutorialPage_content", "content")
   initialize: ->
     self = this

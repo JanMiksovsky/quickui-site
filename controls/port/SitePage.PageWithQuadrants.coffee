@@ -1,5 +1,8 @@
-SitePage = PageWithQuadrants.sub(
-  className: "SitePage"
+###
+Main site template for quickui.org.
+###
+
+class window.SitePage extends PageWithQuadrants
   inherited:
     topLeft: [" ",
       control: "Logo"
@@ -23,8 +26,7 @@ SitePage = PageWithQuadrants.sub(
       control: "GoogleAnalytics"
       profileId: "UA-11520232-1"
     , " "]
-)
-SitePage::extend
+
   content: Control.chain("$SitePage_content", "content")
   navigationLinks: Control.chain("$SitePage_navigationLinks", "content")
   title: (value) ->

@@ -1,7 +1,9 @@
-# Google Analytics tracking code 
-GoogleAnalytics = Control.sub(className: "GoogleAnalytics")
-GoogleAnalytics::extend
-  
+###
+A Google Analytics tracking code 
+###
+
+class window.GoogleAnalytics extends Control
+
   # The Google Analytics profile ID
   profileId: Control.property()
   initialize: ->
@@ -18,6 +20,4 @@ GoogleAnalytics::extend
       s = document.getElementsByTagName("script")[0]
       s.parentNode.insertBefore ga, s
     )()
-
-
-# End Google Analytics snippet.
+    # End Google Analytics snippet.
