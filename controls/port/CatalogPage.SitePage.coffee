@@ -52,6 +52,7 @@ class window.CatalogPage extends SitePage
 
   content: Control.chain( "$CatalogPage_content", "content", ( content ) ->
     @$sectionContent().toggle content?
+  )
   
   describeClass: Control.property.class ( describeClass ) ->
     @$controlClassGraph().graphClass describeClass
@@ -90,7 +91,6 @@ class window.CatalogPage extends SitePage
     demoFunctionName = "demo" + className
     demoFunction = window[ demoFunctionName ]
     return null unless demoFunction?
-    
     code = demoFunction.toString()
     if code.length > 0
       # Remove the the demo function wrapper, which should be the first and last
@@ -106,4 +106,3 @@ class window.CatalogPage extends SitePage
       @$editor().code demoSource
     else
       @$editor().hide()
-

@@ -27,5 +27,5 @@ class window.ControlClassHierarchy extends Control
     baseClasses = @baseClasses()
     baseClassNames = $.map( baseClasses, ( classFn ) ->
       classFn::className
-     )
+    )
     @baseClassNames baseClassNames

@@ -34,13 +34,14 @@ class window.CodeEditor extends Control
     ]
 
   # True if code should be run whenever it changes.
-  autoRun: Control.property.bool null, true
+  autoRun: Control.property.bool( null, true )
 
-  code: Control.chain "$CodeEditor_code", "content", ->
+  code: Control.chain( "$CodeEditor_code", "content", ->
     if @inDocument() and @autoRun()
       @run()
     else
       @$result().content "( Click Run to see result. )"
+  )
   
   error: Control.chain "$CodeEditor_error", "content"
 

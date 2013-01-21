@@ -19,5 +19,5 @@ class window.GoogleAnalytics extends Control
       ga.src = ( ( if "https:" is document.location.protocol then "https://ssl" else "http://www" ) ) + ".google-analytics.com/ga.js"
       s = document.getElementsByTagName( "script" )[0]
       s.parentNode.insertBefore ga, s
-     )()
+    )()
     # End Google Analytics snippet.
