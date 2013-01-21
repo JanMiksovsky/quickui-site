@@ -1,0 +1,49 @@
+/*** DemoTile ***/
+
+.DemoTile {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: 0 15px 25px 0;
+    width: 300px;
+}
+
+.DemoTile .classNameContainer {
+    border-top: 2px solid #928274;
+    padding-top: 0.5em;
+}
+
+.DemoTile .className {
+    border: none;
+    color: #391c01;
+    font-size: 12pt;
+    font-family: "Avenir Next LT W01 Bold", Helvetica, Arial, sans-serif;
+}
+
+.DemoTile .description {
+    color: #444;
+    font-size: 90%;
+}
+
+.DemoTile .demoContainer {
+    max-height: 250px;
+    overflow: hidden;
+    padding: 1px 0; /* Chrome seems to crop borders at top/bottom of demo. */
+    width: 300px;
+}
+
+.DemoTile:hover {
+    position: relative;
+    z-index: 1; /* Make sure overlay for demo popups can cover up other tiles */
+}
+
+.DemoTile:hover .className {
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+}
+
+.DemoTile:hover .className:hover {
+    border-bottom-style: solid;
+}
+

@@ -8,6 +8,7 @@ catalog
 controls/controls.*
 controls/coffee/coffee.*
 controls/markup/markup.*
+controls/port/port.*
 demos
 docs/samples/samples.*
 downloads/downloads.*

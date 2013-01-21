@@ -1,0 +1,36 @@
+/*** SitePage ***/
+
+.SitePage .cell {
+    padding: 1.5em;
+}
+.SitePage .cell.top {
+    vertical-align: bottom;
+}
+.SitePage .cell.left {
+    padding-right: 2em;
+}
+.SitePage .cell.right {
+    padding-left: 2em;
+}
+
+.SitePage .row.top {
+    background: #2d7ab0;
+    background: -moz-linear-gradient(top, #2d7ab0 90%, white);
+    background: -ms-linear-gradient(top, #2d7ab0 90%, white);
+    background: -webkit-linear-gradient(top, #2d7ab0 90%, white);
+    color: white;
+}
+
+.SitePage .cell.bottom.left {
+    width: 1px; /* Browser will (should) actually make wide enough for content */
+}
+
+.SitePage .SitePage_title,
+.SitePage .SitePage_content {
+    max-width: 800px;
+}
+
+.SitePage .CodeOutput {
+    margin: 5px 0 10px 0;
+}
+

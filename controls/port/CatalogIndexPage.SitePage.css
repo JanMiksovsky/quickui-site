@@ -1,0 +1,19 @@
+/*** CatalogIndexPage ***/
+
+.CatalogIndexPage .SitePage_content {
+    max-width: inherit;
+}
+
+.CatalogIndexPage .intro {
+    margin-bottom: 25px;
+}
+
+.CatalogIndexPage .tileList {
+    border-collapse: separate;
+}
+
+.CatalogIndexPage .DemoTile {
+    display: inline-table;
+    vertical-align: top;
+}
+

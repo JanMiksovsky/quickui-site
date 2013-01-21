@@ -1,0 +1,52 @@
+/*** CodeEditor ***/
+
+.CodeEditor .runner {
+    display: table;
+    width: 100%;
+}
+.CodeEditor .runner > * {
+    display: table-row;
+}
+.CodeEditor .runner > * > * {
+    box-sizing: border-box;
+    display: table-cell;
+    width: 50%;
+}
+
+.CodeEditor .labelRow > * {
+    padding-bottom: 0.5em;
+}
+
+.CodeEditor .CodeEditor_heading {
+    color: #928274;
+    font-size: larger;
+    font-family: "Avenir Next LT W01 Bold", Helvetica, Arial, sans-serif;
+}
+
+.CodeEditor .buttonRun {
+    margin: 0;
+}
+
+.CodeEditor .codePane {
+    padding-right: 1em;
+}
+
+.CodeEditor .CodeEditor_code {
+    /* Inconsolata from Google Web Fonts */
+    border: 1px solid lightgray;
+    font-family: Inconsolata, Monaco, Courier, Courier New, monospace;
+    font-size: 14px;
+    height: 400px;
+    margin: 0;
+    position: relative;
+    resize: none;
+    width: 100%;
+}
+
+.CodeEditor .result {
+    vertical-align: top;
+    position: relative;
+    /* Ensure demos with popups can pop them over the editor */
+    z-index: 1;
+}
+

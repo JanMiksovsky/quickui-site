@@ -1,0 +1,21 @@
+/*** ControlMemberTable ***/
+
+.ControlMemberTable {
+    border-collapse: collapse;
+}
+
+.ControlMemberTable > * {
+    border-top: 1px dotted #D7C5B4;
+}
+.ControlMemberTable > *:first-child {
+    border: none;
+}
+
+.ControlMemberTable > * > * {
+    padding: 0.5em 1em 0.5em 0;
+}
+.ControlMemberTable > * > *:first-child {
+    color: #928274;
+    font-family: "Avenir Next LT W01 Bold", Helvetica, Arial, sans-serif;
+}
+

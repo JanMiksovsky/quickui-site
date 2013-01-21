@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks( "grunt-contrib-coffee" );
     grunt.loadNpmTasks( "grunt-contrib-less" );
-    grunt.loadNpmTasks( "quickui-markup" );
+    // grunt.loadNpmTasks( "quickui-markup" );
 
     var sortDependencies = require( "sort-dependencies" );
 
@@ -15,6 +15,10 @@ module.exports = function(grunt) {
                 src: sortDependencies.sortFiles( "controls/coffee/*.coffee" ),
                 dest: "controls/coffee/coffee.js"
             },
+            port: {
+                src: sortDependencies.sortFiles( "controls/port/*.coffee" ),
+                dest: "controls/port/port.js"
+            },
             samples: {
                 src: [ "docs/samples/*.coffee",
                 ],
@@ -24,14 +28,14 @@ module.exports = function(grunt) {
         concat: {
             controlsJs: {
                 src: [
-                    "controls/markup/markup.js",
+                    "controls/port/port.js",
                     "controls/coffee/coffee.js"
                 ],
                 dest: "controls/controls.js"
             },
             controlsCss: {
                 src: [
-                    "controls/markup/markup.css",
+                    "controls/port/port.css",
                     "controls/coffee/coffee.css"
                 ],
                 dest: "controls/controls.css"
@@ -52,29 +56,24 @@ module.exports = function(grunt) {
                 files: {
                     "controls/coffee/coffee.css": sortDependencies.sortFiles( "controls/coffee/*.less" )
                 }
-            }
-        },
-        qb: {
-            controls: {
-                path: "controls/markup"
             },
-            markup: {
-                path: "markup"
-            }
-        },
-        watch: {
-            coffee: {
-                files: "<config:coffee.samples.src>",
-                tasks: "coffee:samples"
+            port: {
+                files: {
+                    "controls/port/port.css": sortDependencies.sortFiles( "controls/port/*.less" )
+                }
             },
-            concat: {
-                files: "<config:concat.samples.src>",
-                tasks: "concat:samples"
-            }
-        }
+        },
+        // qb: {
+        //     controls: {
+        //         path: "controls/markup"
+        //     },
+        //     markup: {
+        //         path: "markup"
+        //     }
+        // }
     });
 
     // Default task.
-    grunt.registerTask( "default", "coffee less qb concat" );
+    grunt.registerTask( "default", "coffee less concat" );
     
 };

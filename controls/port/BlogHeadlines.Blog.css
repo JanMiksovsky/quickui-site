@@ -1,0 +1,17 @@
+/*** BlogHeadlines ***/
+
+.BlogHeadlines a {
+    display: block;
+    margin: 3px;
+    padding: 3px;
+}
+
+.BlogHeadlines .BlogPost .BlogPost_postTitle {
+    font-size: inherit;
+    font-weight: normal;
+}
+
+.BlogHeadlines .BlogPost .BlogPost_content {
+    display: none;
+}
+
