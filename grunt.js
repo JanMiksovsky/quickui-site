@@ -11,12 +11,8 @@ module.exports = function(grunt) {
     grunt.initConfig({
         coffee: {
             controls: {
-                src: sortDependencies.sortFiles( "controls/coffee/*.coffee" ),
-                dest: "controls/coffee/coffee.js"
-            },
-            port: {
-                src: sortDependencies.sortFiles( "controls/port/*.coffee" ),
-                dest: "controls/port/port.js"
+                src: sortDependencies.sortFiles( "controls/*.coffee" ),
+                dest: "controls/controls.js"
             },
             samples: {
                 src: [ "docs/samples/*.coffee",
@@ -25,20 +21,6 @@ module.exports = function(grunt) {
             }
         },
         concat: {
-            controlsJs: {
-                src: [
-                    "controls/port/port.js",
-                    "controls/coffee/coffee.js"
-                ],
-                dest: "controls/controls.js"
-            },
-            controlsCss: {
-                src: [
-                    "controls/port/port.css",
-                    "controls/coffee/coffee.css"
-                ],
-                dest: "controls/controls.css"
-            },
             samples: {
                 src: [
                     "docs/samples/SiteTemplate.js",
@@ -53,14 +35,9 @@ module.exports = function(grunt) {
         less: {
             controls: {
                 files: {
-                    "controls/coffee/coffee.css": sortDependencies.sortFiles( "controls/coffee/*.less" )
+                    "controls/controls.css": sortDependencies.sortFiles( "controls/*.less" )
                 }
-            },
-            port: {
-                files: {
-                    "controls/port/port.css": sortDependencies.sortFiles( "controls/port/*.less" )
-                }
-            },
+            }
         }
     });
 
