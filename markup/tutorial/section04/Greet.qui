@@ -1,3 +1,0 @@
-<Control className="Greet">
-    Hello, <i><span ref="Greet_content"/></i>!
-</Control>

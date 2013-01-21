@@ -82,9 +82,10 @@ qb $sitePath
 echo Building site
 grunt --color=false ---config $sitePath/grunt.js
 
-echo Building demos
-demosSource="$sitePath/../quickui-demos"
-qb $demosSource
+# echo Building demos
+# demosSource="$sitePath/../quickui-demos"
+# TODO: Build demos with grunt
+# qb $demosSource
 
 echo Copying demos
 demosPath="$sitePath/demos"

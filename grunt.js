@@ -4,7 +4,6 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks( "grunt-contrib-coffee" );
     grunt.loadNpmTasks( "grunt-contrib-less" );
-    // grunt.loadNpmTasks( "quickui-markup" );
 
     var sortDependencies = require( "sort-dependencies" );
 
@@ -62,15 +61,7 @@ module.exports = function(grunt) {
                     "controls/port/port.css": sortDependencies.sortFiles( "controls/port/*.less" )
                 }
             },
-        },
-        // qb: {
-        //     controls: {
-        //         path: "controls/markup"
-        //     },
-        //     markup: {
-        //         path: "markup"
-        //     }
-        // }
+        }
     });
 
     // Default task.
