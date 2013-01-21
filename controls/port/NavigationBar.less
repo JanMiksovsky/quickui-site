@@ -1,40 +1,38 @@
-/*** NavigationBar ***/
-
 .NavigationBar {
-    font-size: 12pt;
-    max-width: 800px;
-}
+  font-size: 12pt;
+  max-width: 800px;
 
-.NavigationBar > * {
+  & > * {
     margin: 0 0.25em;
-}
-.NavigationBar > *:first-child {
+  }
+  & > *:first-child {
     margin-left: 0;
-}
-.NavigationBar > *:last-child {
+  }
+  & > *:last-child {
     margin-right: 0;
-}
+  }
 
-.NavigationBar .Link {
+  .Link {
     padding: 0.25em 0.5em;
-}
-.NavigationBar .Link.current {
+  }
+  .Link.current {
     background-color: #358dcc;
-    font-family: "Avenir Next LT W01 Bold", Helvetica, Arial, sans-serif;    
-}
-.NavigationBar .Link:hover {
+    font-family: "Avenir Next LT W01 Bold", Helvetica, Arial, sans-serif;  
+  }
+  .Link:hover {
     background-color: #47aaf0;
-}
+  }
 
-.NavigationBar a {
+  a {
     border: none !important;
     color: white !important;
-}
+  }
 
-.NavigationBar .searchBox {
+  .searchBox {
     float: right;
     font-size: smaller;
     position: relative;
-    top: -0.2em;    /* HACK to vertically align w.r.t links, should revisit. */  
-}
+    top: -0.2em;  /* HACK to vertically align w.r.t links, should revisit. */  
+  }
 
+}

@@ -1,37 +1,37 @@
-/*** CodeEditor ***/
+.CodeEditor {
 
-.CodeEditor .runner {
+  .runner {
     display: table;
     width: 100%;
-}
-.CodeEditor .runner > * {
+  }
+  .runner > * {
     display: table-row;
-}
-.CodeEditor .runner > * > * {
+  }
+  .runner > * > * {
     box-sizing: border-box;
     display: table-cell;
     width: 50%;
-}
+  }
 
-.CodeEditor .labelRow > * {
+  .labelRow > * {
     padding-bottom: 0.5em;
-}
+  }
 
-.CodeEditor .CodeEditor_heading {
+  .CodeEditor_heading {
     color: #928274;
     font-size: larger;
     font-family: "Avenir Next LT W01 Bold", Helvetica, Arial, sans-serif;
-}
+  }
 
-.CodeEditor .buttonRun {
+  .buttonRun {
     margin: 0;
-}
+  }
 
-.CodeEditor .codePane {
+  .codePane {
     padding-right: 1em;
-}
+  }
 
-.CodeEditor .CodeEditor_code {
+  .CodeEditor_code {
     /* Inconsolata from Google Web Fonts */
     border: 1px solid lightgray;
     font-family: Inconsolata, Monaco, Courier, Courier New, monospace;
@@ -41,12 +41,13 @@
     position: relative;
     resize: none;
     width: 100%;
-}
+  }
 
-.CodeEditor .result {
+  .result {
     vertical-align: top;
     position: relative;
     /* Ensure demos with popups can pop them over the editor */
     z-index: 1;
-}
+  }
 
+}

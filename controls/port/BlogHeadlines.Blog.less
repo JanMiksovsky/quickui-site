@@ -1,17 +1,19 @@
-/*** BlogHeadlines ***/
+.BlogHeadlines {
 
-.BlogHeadlines a {
+  a {
     display: block;
     margin: 3px;
     padding: 3px;
-}
+  }
 
-.BlogHeadlines .BlogPost .BlogPost_postTitle {
-    font-size: inherit;
-    font-weight: normal;
-}
+  .BlogPost {
+    .BlogPost_postTitle {
+      font-size: inherit;
+      font-weight: normal;
+    }
+    .BlogPost_content {
+      display: none;
+    }
+  }
 
-.BlogHeadlines .BlogPost .BlogPost_content {
-    display: none;
 }
-

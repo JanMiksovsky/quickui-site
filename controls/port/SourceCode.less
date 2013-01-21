@@ -1,37 +1,38 @@
-/*** SourceCode ***/
-
 .SourceCode {
-    margin: 0;
-    white-space: pre-wrap;
-}
+  margin: 0;
+  white-space: pre-wrap;
 
-/* Generic appearance */
-.SourceCode.generic .comment {
-    color: #08f;
-}
+  /* Generic appearance */
+  &.generic {
 
-.SourceCode.generic .keyword {
-    color: #04f;
-    font-weight: bold;
-}
+    .comment {
+      color: #08f;
+    }
 
-.SourceCode.generic .string {
-    color: green;
-}
+    .keyword {
+      color: #04f;
+      font-weight: bold;
+    }
 
-.SourceCode.generic .tag {
-}
-.SourceCode.generic .tag .title {
-    color: blue;
-}
-.SourceCode.generic .tag .attribute {
-    /* font-style: italic; */
-}
-.SourceCode.generic .tag .value {
-    color: green;
-}
+    .string {
+      color: green;
+    }
 
-.SourceCode.generic .css .value {
-    color: green;
-}
+    .tag {
+      .title {
+        color: blue;
+      }
+      .attribute {
+        /* font-style: italic; */
+      }
+      .value {
+        color: green;
+      }
+    }
 
+    .css .value {
+      color: green;
+    }
+
+  }
+}
