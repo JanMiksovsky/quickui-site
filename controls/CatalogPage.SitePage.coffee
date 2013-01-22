@@ -17,7 +17,7 @@ class window.CatalogPage extends SitePage
         """
           <h2>Class relationships</h2>
           <p>
-            This shows the control's base classes ( in black ), other classes
+            This shows the control's base classes (in black), other classes
             used by the control, and any subclasses.
           </p>
         """
