@@ -25,8 +25,10 @@ class window.CodeEditor extends Control
             # CodeEditor needs an ID on the control to work. 
             control: "AceCodeEditor", id: "editor", ref: "CodeEditor_code"
           ]
-        , 
-          control: "Demo", ref: "result"
+        ,
+          html: "<div/>", ref: "resultPane", content: [
+            control: "Demo", ref: "result"
+          ]
         ]
       ]
     , 
