@@ -57,7 +57,7 @@ cp -fp $updateParam $catalogRuntimeBaseName.* $releasePath
 
 # Extract version line from quickui.catalog.js, same as for quickui.js (above).
 catalogVersionLine=`grep "_Version.catalog =" $catalogRuntimeBaseName.js`
-catalogVersion=`echo $catalogVersionLine | sed -e "s/.*catalog = \"\(.*\)\"/\1/"`
+catalogVersion=`echo $catalogVersionLine | sed -e "s/.*catalog = \"\(.*\)\";/\1/"`
 
 echo Copying versioned catalog runtime for version $catalogVersion
 cp -fp $updateParam $catalogRuntimeBaseName.js $releasePath/quickui.catalog-$catalogVersion.js
