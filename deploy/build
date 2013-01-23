@@ -49,7 +49,6 @@ echo Building catalog
 catalogSource="$sitePath/../quickui-catalog"
 grunt --color=false --config $catalogSource/grunt.js all
 
-#grunt --config $catalogPath/grunt.js
 # TODO: run unit tests
 
 echo Copying catalog runtime files
@@ -57,8 +56,8 @@ catalogRuntimeBaseName="$catalogSource/quickui.catalog"
 cp -fp $updateParam $catalogRuntimeBaseName.* $releasePath
 
 # Extract version line from quickui.catalog.js, same as for quickui.js (above).
-catalogVersionLine=`grep "catalog:" $catalogRuntimeBaseName.js`
-catalogVersion=`echo $catalogVersionLine | sed -e "s/.*catalog: \"\(.*\)\"/\1/"`
+catalogVersionLine=`grep "_Version.catalog =" $catalogRuntimeBaseName.js`
+catalogVersion=`echo $catalogVersionLine | sed -e "s/.*catalog = \"\(.*\)\"/\1/"`
 
 echo Copying versioned catalog runtime for version $catalogVersion
 cp -fp $updateParam $catalogRuntimeBaseName.js $releasePath/quickui.catalog-$catalogVersion.js
@@ -76,16 +75,15 @@ fi
 echo Copying catalog documentation
 cp -fpr $updateParam $catalogSource/docs/* $catalogDest
 
-echo Compiling site markup
-qb $sitePath
-
 echo Building site
 grunt --color=false ---config $sitePath/grunt.js
 
-# echo Building demos
-# demosSource="$sitePath/../quickui-demos"
-# TODO: Build demos with grunt
-# qb $demosSource
+echo Building demos that can be built with Grunt
+demosSource="$sitePath/../quickui-demos"
+for gruntFile in $demosSource/*/grunt.js
+do
+	grunt --config $gruntFile
+done
 
 echo Copying demos
 demosPath="$sitePath/demos"
