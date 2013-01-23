@@ -6,7 +6,10 @@
  * Fonts from fonts.com
  * font-face declarations modified by hand to avoid faux bold and faux italic.
  */
-@import url("http://fast.fonts.com/t/1.css?apiType=css&projectid=72bd3277-b253-4903-97d8-6a9d18744569");
+/*
+Fonts.com asks for the following line, but it generates MIME type errors. Turning this off for the moment...
+@import url("http://fast.fonts.com/t/1.css?apiType=css&projectid=72bd3277-b253-4903-97d8-6a9d18744569")
+*/
 @font-face{
     font-family:"AvenirNextLTW01-Regular";
     font-style: normal;
