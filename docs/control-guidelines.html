@@ -31,7 +31,7 @@ and reuse your code, consider the following guidelines.
 <ul>
     <li>
         Each control should have a clear task or responsibility that can be succinctly
-        stated. State this purpose in a comment at the top of the markup.
+        stated. State this purpose in a comment at the top of the control's source file.
     </li>
     <li>
         Design controls to be as context-independent as possible. The control should
@@ -101,7 +101,7 @@ MyControl.extend({
         Avoid requiring that a control must have properties set on it, and provide
         useful default values for all properties. It should be possible to
         instantiate a control class with a standalone tag. E.g., a control class called
-        Foo should be instantiable in markup just by saying <Tag>Foo/</Tag>. If possible,
+        Foo should be instantiable with an unadorned call to Foo.create(). If possible,
         the resulting control should ideally provide some minimal functionality or
         behavior.
     </li>
@@ -164,8 +164,7 @@ Greet.prototype.extend({
     </li>
     <li>
         Classes and properties should have meaningful names in PascalCase (for classes)
-        and camelCase (for properties). This convention is actually enforced by the QuickUI
-        markup compiler so that it can correctly identify classes and properties. 
+        and camelCase (for properties).
     </li>
     <li>
         Class names are generally nouns rather than verbs, and often reflect the

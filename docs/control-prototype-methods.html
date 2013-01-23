@@ -101,8 +101,7 @@ be returned as a single string. (In comparison, reading text nodes via $.content
 will return an array.)  
 </p>
 <p>
-The JavaScript generated for a control's markup makes use of the content() function
-to render a control. In particular, if a QuickUI control tag contains HTML
+When rehydrating QuickUI controls from HTML, if a control tag contains HTML
 or subcontrols, those elements will be passed into the content() function to render
 the control. Control classes often override content() to identify where their primary
 content should go.
