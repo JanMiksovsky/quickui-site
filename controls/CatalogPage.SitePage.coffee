@@ -55,25 +55,23 @@ class window.CatalogPage extends SitePage
   )
   
   describeClass: Control.property.class ( describeClass ) ->
+
     @$controlClassGraph().graphClass describeClass
     className = describeClass::className
     @$controlMemberTable().describeClass className
     hasDocumentation = not $.isEmptyObject $( ".ControlMemberTable" ).control().content()
     @$sectionMembers().toggle hasDocumentation
+
+    @_loadDemo className
+
     documentation = controlDocumentation[ className ]
-    # TODO: Remove support for old .qui file type.
-    fileType = documentation and documentation.type
-    if fileType
-      folder = if fileType is "qui" then "markup" else fileType
-      fileName = className
-      fileName += "." + documentation.baseClass if fileType isnt "qui" and documentation.baseClass
-      @_loadDemo className
-      fileName += "." + fileType
-      sourceUrlTemplate = "https://github.com/JanMiksovsky/quickui-catalog/blob/master/{0}/{1}"
-      sourceUrl = sourceUrlTemplate.replace( /\{0\}/g, folder ).replace( /\{1\}/g, fileName )
-      sourceLinkText = "full source for " + className
-      @$linkSourceCodeControl().text( sourceLinkText ).href sourceUrl
-      @$sectionSource().show()
+    fileName = className
+    if documentation?.baseClass?
+      fileName += "." + documentation.baseClass
+    fileName += ".coffee"
+    link = @$linkSourceCodeControl()
+    link.text "full source for #{className}"
+    link.href "https://github.com/JanMiksovsky/quickui-catalog/blob/master/controls/#{fileName}"
 
   summary: Control.chain "$CatalogPage_summary", "content"
 
