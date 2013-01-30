@@ -62,7 +62,7 @@ class window.CodeEditor extends Control
   run: ->
     @error null
     @trigger "run"
-    $demo = @$result()
+    $demo = $ @$result() # Cast to plain jQuery instance.
     $demo.empty()
     code = @code()
     try

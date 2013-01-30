@@ -30,7 +30,9 @@ var Message = Control.sub({
                 html: "<h2>Compose message:</h2>",
                 css: { color: "Green" }
             },
-            { control: AutoSizeTextBox },
+            {
+                control: AutoSizeTextBox
+            },
             "<br/>",
             { control: BasicButton, content: "Send" }
         ]
