@@ -48,6 +48,6 @@ class window.SourceCode extends Control
     if window.hljs
       # HACK: disable highlighting in IE8, which does weird things with
       # formatted XML tags, until this can be resolved.
-      if not $.browser.msie or parseInt( $.browser.version ) >= 9
+      if not Control.browser.msie or parseInt( Control.browser.version ) >= 9
         @each ( index, element ) ->
           hljs.highlightBlock element
