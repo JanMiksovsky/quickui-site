@@ -6962,12 +6962,6 @@ window.MobileDateTextBox = (function(_super) {
     return MobileDateTextBox.__super__.constructor.apply(this, arguments);
   }
 
-  MobileDateTextBox.prototype.inherited = {
-    prop: {
-      type: "date"
-    }
-  };
-
   MobileDateTextBox.prototype.date = Control.iterator(function(date) {
     var content;
     if (date === void 0) {
@@ -6981,6 +6975,12 @@ window.MobileDateTextBox = (function(_super) {
       return this.content(this._convertJavaScriptDateToRfc3339(date));
     }
   });
+
+  MobileDateTextBox.prototype.initialize = function() {
+    if (!Control.browser.msie) {
+      return this.prop("type", "date");
+    }
+  };
 
   MobileDateTextBox.prototype._convertJavaScriptDateToRfc3339 = function(date) {
     var isoDate, parts;
