@@ -57,6 +57,10 @@ class window.CatalogPage extends SitePage
   describeClass: Control.property.class ( describeClass ) ->
 
     @$controlClassGraph().graphClass describeClass
+
+    # Instantiate class to force updating of class name.
+    describeClass.create()
+
     className = describeClass::className
     @$controlMemberTable().describeClass className
     hasDocumentation = not $.isEmptyObject $( ".ControlMemberTable" ).control().content()
