@@ -5,6 +5,7 @@ Show a class graph for a control class.
 class window.ControlClassGraph extends GraphViz
 
   graphClass: Control.property.class ( graphClass ) ->
+    graphClass.initialize() # Ensure class is set up.
     controlInfo = new ControlInfo graphClass::className
     classNode = @_classNode controlInfo
     baseClassEdges = @_baseClassEdges controlInfo, "[color=black fontcolor=black]", "[color=black]"

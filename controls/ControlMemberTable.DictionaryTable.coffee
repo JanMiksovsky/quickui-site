@@ -5,6 +5,7 @@ Shows the documented members for a control class.
 class window.ControlMemberTable extends DictionaryTable
 
   describeClass: Control.property.class ( describeClass ) ->
+    describeClass.initialize()
     documentation = @_classMemberDocumentation describeClass
     documentation = @_sortDictionary documentation
     @content documentation
