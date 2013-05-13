@@ -25,9 +25,9 @@ grunt --no-color --gruntfile $quickuiSource/Gruntfile.coffee
 # Extract version line from quickui.js, which looks like
 # 	quickui: "0.9.1"
 quickuiRuntimeBaseName="$quickuiSource/quickui"
-versionLine=`grep "quickui:" $quickuiRuntimeBaseName.js`
+versionLine=`grep "quickui = " $quickuiRuntimeBaseName.js`
 # Extract the version number from that line.
-version=`echo $versionLine | sed -e "s/.*quickui: \"\(.*\)\"/\1/"`
+version=`echo $versionLine | sed -e "s/.*quickui = \"\(.*\)\";/\1/"`
 
 # Unfortunately, OS/X version of cp doesn't support --update
 os=`uname`
