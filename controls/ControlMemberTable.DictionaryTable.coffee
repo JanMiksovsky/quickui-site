@@ -5,7 +5,6 @@ Shows the documented members for a control class.
 class window.ControlMemberTable extends DictionaryTable
 
   describeClass: Control.property.class ( describeClass ) ->
-    describeClass.initialize()
     documentation = @_classMemberDocumentation describeClass
     documentation = @_sortDictionary documentation
     @content documentation
@@ -13,6 +12,7 @@ class window.ControlMemberTable extends DictionaryTable
   # Return the documentation for the given class, including its base classes up
   # to ( but not including ) Control.
   _classMemberDocumentation: ( describeClass, linkToDeclaringClass ) ->
+    describeClass.initialize()
     className = describeClass::className
     documentation = controlDocumentation and controlDocumentation[ className ]
     return null unless documentation?
@@ -21,7 +21,7 @@ class window.ControlMemberTable extends DictionaryTable
       # Append to each member description a link to this class' catalog page.
       for member of documentation
         documentation[ member] = [documentation[member], " From ", CatalogLink.create().content( className ), "." ]
-    superclass = describeClass.superclass
+    superclass = describeClass.superclass()
     if superclass and superclass isnt Control
       # Add base class documentation to the documentation for this class.
       baseClassDocumentation = @_classMemberDocumentation( superclass, true )
