@@ -18,7 +18,7 @@ fi
 
 echo Building QuickUI runtime
 quickuiSource="$sitePath/../quickui"
-grunt --color=false --config $quickuiSource/grunt.js
+grunt --no-color --gruntfile $quickuiSource/Gruntfile.coffee
 
 # TODO: run unit tests
 
@@ -47,7 +47,7 @@ cp -fp $updateParam $quickuiRuntimeBaseName.css $releasePath/quickui-$version.cs
 
 echo Building catalog
 catalogSource="$sitePath/../quickui-catalog"
-grunt --color=false --config $catalogSource/grunt.js all
+grunt --no-color --gruntfile $catalogSource/Gruntfile.coffee all
 
 # TODO: run unit tests
 
@@ -76,7 +76,7 @@ echo Copying catalog documentation
 cp -fpr $updateParam $catalogSource/docs/* $catalogDest
 
 echo Building site
-grunt --color=false ---config $sitePath/grunt.js
+grunt --no-color --gruntfile $sitePath/Gruntfile.coffee
 
 echo Building demos that can be built with Grunt
 demosSource="$sitePath/../quickui-demos"
