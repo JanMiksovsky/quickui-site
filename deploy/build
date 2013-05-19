@@ -18,12 +18,12 @@ fi
 
 echo Building QuickUI runtime
 quickuiSource="$sitePath/../quickui"
-grunt --no-color --gruntfile $quickuiSource/Gruntfile.coffee
+grunt --no-color --gruntfile $quickuiSource/Gruntfile.coffee all
 
 # TODO: run unit tests
 
 # Extract version line from quickui.js, which looks like
-# 	quickui: "0.9.1"
+# 	quickui = "0.9.1"
 quickuiRuntimeBaseName="$quickuiSource/quickui"
 versionLine=`grep "quickui = " $quickuiRuntimeBaseName.js`
 # Extract the version number from that line.
@@ -40,6 +40,7 @@ fi
 echo Copying QuickUI runtime files
 # cp options are: force, preserve (times), update (if available)
 cp -fp $updateParam $quickuiRuntimeBaseName.* $releasePath
+cp -fp $updateParam $quickuiRuntimeBaseName.min.* $releasePath
 
 echo Copying versioned runtime files for version $version
 cp -fp $updateParam $quickuiRuntimeBaseName.js $releasePath/quickui-$version.js
@@ -54,6 +55,7 @@ grunt --no-color --gruntfile $catalogSource/Gruntfile.coffee all
 echo Copying catalog runtime files
 catalogRuntimeBaseName="$catalogSource/quickui.catalog"
 cp -fp $updateParam $catalogRuntimeBaseName.* $releasePath
+cp -fp $updateParam $catalogRuntimeBaseName.min.* $releasePath
 
 # Extract version line from quickui.catalog.js, same as for quickui.js (above).
 catalogVersionLine=`grep "_Version.catalog =" $catalogRuntimeBaseName.js`
